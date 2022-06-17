@@ -39,9 +39,10 @@ nmap('<C-k>', '<C-w>k')
 nmap('<C-l>', '<C-w>l')
 
 -- Better buffer navigation
-nmap('<S-l>', ':bnext<cr>')
-nmap('<S-h>', ':bprevious<cr>')
-nmap('<S-q>', ':bd!<cr>')
+nmap('<TAB>', ':bnext<cr>')
+nmap('<S-TAB>', ':bprevious<cr>')
+nmap('<S-q>', ':bd!<cr>')  -- close buffer
+nmap('<S-b>', ':enew<cr>') -- new buffer
 
 -- Easy window split;
 nmap('vv', '<C-w>v')
