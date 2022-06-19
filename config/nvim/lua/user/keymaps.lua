@@ -32,6 +32,9 @@ vim.g.maplocalleader = ' '
 map('', '<C-b>', ':noh<cr>:call clearmatches()<cr>') 
 
 -- Normal mode
+-- Reload configuration
+nmap('<leader>s', '<cmd> lua ReloadConfig()<cr>')
+
 -- Better window navigation
 nmap('<C-h>', '<C-w>h')
 nmap('<C-j>', '<C-w>j')

@@ -31,7 +31,10 @@ packer.init {
 return require('packer').startup(function(use)
   -- My plugins here
   use 'wbthomason/packer.nvim'
-  use 'nvim-lua/plenary.nvim'
+  -- use 'lunarvim/darkplus.nvim'
+
+  -- Colorschemes
+  -- use 'lunarvim/darkplus.nvim'
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
