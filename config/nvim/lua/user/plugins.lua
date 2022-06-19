@@ -31,10 +31,12 @@ packer.init {
 return require('packer').startup(function(use)
   -- My plugins here
   use 'wbthomason/packer.nvim'
-  -- use 'lunarvim/darkplus.nvim'
-
+  use 'nvim-lua/plenary.nvim'
   -- Colorschemes
-  -- use 'lunarvim/darkplus.nvim'
+  use 'lunarvim/darkplus.nvim'
+  use 'cpea2506/one_monokai.nvim'
+  use 'navarasu/onedark.nvim'
+  use 'olimorris/onedarkpro.nvim'
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
