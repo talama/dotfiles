@@ -29,7 +29,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- clear matches with Ctrl+b
-map('', '<C-b>', ':noh<cr>:call clearmatches()<cr>') 
+map('', '<leader>h', ':noh<cr>:call clearmatches()<cr>') 
 
 -- Normal mode
 -- Reload configuration
@@ -57,10 +57,6 @@ nmap('<C-Down>', ':resize -2<cr>')
 nmap('<C-Left>', ': vertical resize -2<cr>')
 nmap('<C-Right>', ':vertical resize +2<cr>')
 
--- Move text up and down
-nmap('<A-j>', '<Esc>:m .+1<CR>==gi')
-nmap('<A-k>', '<Esc>:m .-2<CR>==gi')
-
 nmap('<leader>e', ':Lex 30<cr>')
 
 -- Insert Mode
@@ -68,6 +64,10 @@ nmap('<leader>e', ':Lex 30<cr>')
 imap('jk', '<ESC>')
 
 -- Visual Mode
+-- Move text up and down
+vmap("<A-j>", ":m .+1<CR>==gv")
+vmap("<A-k>", ":m .-2<CR>==gv")
+vmap("p", '"_dP')
 -- Stay in indent mode
 vmap('<', '<gv')
 vmap('<', '<gv')
