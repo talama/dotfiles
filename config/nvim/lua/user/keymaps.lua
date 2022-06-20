@@ -67,6 +67,7 @@ imap('jk', '<ESC>')
 -- Move text up and down
 vmap("<A-j>", ":m .+1<CR>==gv")
 vmap("<A-k>", ":m .-2<CR>==gv")
+-- Better paste
 vmap("p", '"_dP')
 -- Stay in indent mode
 vmap('<', '<gv')
