@@ -38,15 +38,20 @@ return require('packer').startup(function(use)
   use 'cpea2506/one_monokai.nvim'
   use 'navarasu/onedark.nvim'
   use 'olimorris/onedarkpro.nvim'
-  
+
   -- Completion
-  use 'hrsh7th/nvim-cmp'
-  use 'hrsh7th/cmp-buffer'
-  use 'hrsh7th/cmp-path'
+  use 'hrsh7th/nvim-cmp' -- The completion plugin
+  use 'hrsh7th/cmp-buffer' -- buffer completions
+  use 'hrsh7th/cmp-path' -- path completions
   use 'L3MON4D3/LuaSnip'
-  use 'saadparwaiz1/cmp_luasnip'
+  use 'saadparwaiz1/cmp_luasnip' -- snippet completions
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-nvim-lua'
+
+  -- LSP
+  use 'neovim/nvim-lspconfig'           -- enable LSP
+  use 'williamboman/nvim-lsp-installer' -- language server installer
+  use 'RRethy/vim-illuminate'           -- automatically highlighting other uses of the current word under the cursor
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
