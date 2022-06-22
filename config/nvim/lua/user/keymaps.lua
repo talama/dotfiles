@@ -5,23 +5,23 @@ end
 
 function nmap(shortcut, command)
   map('n', shortcut, command)
-end 
+end
 
 function imap(shortcut, command)
   map('i', shortcut, command)
-end 
+end
 
 function vmap(shortcut, command)
   map('v', shortcut, command)
-end 
+end
 
 function cmap(shortcut, command)
   map('c', shortcut, command)
-end 
+end
 
 function tmap(shortcut, command)
   map('t', shortcut, command)
-end 
+end
 
 -- Remap leader to space
 map('', '<Space>', '<Nop>')
@@ -77,3 +77,17 @@ vmap('<', '<gv')
 -- ESC to go to normal mode in terminal
 tmap('<C-s>', '<C-\\><C-n>')
 tmap('<Esc><Esc>', '<C-\\><C-n>')
+
+-- Telescope
+-- find
+nmap('<leader>ff', ':Telescope find_files <CR>')
+nmap('<leader>fa', ':Telescope find_files follow=true no_ignore=true hidden=true <CR>')
+nmap('<leader>fw', ':Telescope live_grep <CR>')
+nmap('<leader>fb', ':Telescope buffers <CR>')
+nmap('<leader>fh', ':Telescope help_tags <CR>')
+nmap('<leader>fo', ':Telescope oldfiles <CR>')
+nmap('<leader>fk', ':Telescope keymaps<CR>')
+-- git
+nmap('<leader>cm', ':Telescope git_commits<CR>')
+nmap('<leader>gt', ':Telescope git_status<CR>')
+

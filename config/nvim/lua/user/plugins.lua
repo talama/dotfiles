@@ -49,9 +49,12 @@ return require('packer').startup(function(use)
   use 'hrsh7th/cmp-nvim-lua'
 
   -- LSP
-  use 'neovim/nvim-lspconfig'           -- enable LSP
-  use 'williamboman/nvim-lsp-installer' -- language server installer
-  use 'RRethy/vim-illuminate'           -- automatically highlighting other uses of the current word under the cursor
+ use 'neovim/nvim-lspconfig'           -- enable LSP
+ use 'williamboman/nvim-lsp-installer' -- language server installer 
+ use 'RRethy/vim-illuminate'           -- automatically highlighting other uses of the current word under the cursor
+
+  -- Telescope
+  use 'nvim-telescope/telescope.nvim'
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

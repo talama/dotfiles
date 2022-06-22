@@ -27,11 +27,11 @@ vim.o.synmaxcol = 300 -- stop syntax highlight after x lines for performance
 vim.o.laststatus = 2 -- always show status line
 vim.opt.cursorline = true -- highlight the current line
 vim.o.list = false -- do not display white characters
+
 vim.o.foldenable = false
 vim.o.foldlevel = 4 -- limit folding to 4 levels
 vim.o.foldmethod = 'syntax' -- use language syntax to generate folds
 vim.o.wrap = false --do not wrap lines even if very long
-vim.o.eol = false -- show if there's no eol char
 vim.o.showbreak= '↪' -- character to show when line is broken
 vim.o.background = 'dark'
 vim.opt.termguicolors = true

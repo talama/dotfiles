@@ -83,10 +83,10 @@ options = {
       }),
    },
    sources = {
-      { name = "luasnip" },
       { name = "nvim_lsp" },
-      { name = "buffer" },
       { name = "nvim_lua" },
+      { name = "luasnip" },
+      { name = "buffer" },
       { name = "path" },
    },
 }

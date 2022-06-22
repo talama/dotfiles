@@ -1,6 +1,6 @@
 local status_ok, lsp_installer = pcall(require, 'nvim-lsp-installer')
-if not status_ok then 
-  return 
+if not status_ok then
+  return
 end
 
 -- List of server to be installed automatically
@@ -39,7 +39,7 @@ local opts = {
       },
    },
 
-   max_concurrent_installers = 10, 
+   max_concurrent_installers = 10,
 }
 
 lsp_installer.setup(opts);
