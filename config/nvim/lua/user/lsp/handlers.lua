@@ -14,11 +14,11 @@ M.setup = function()
   end
 
   local config = {
-    virtual_text = false, -- disable virtual text
-    signs = {
-      active = signs, -- show signs
+    virtual_text = {
+      prefix = ""
     },
-    update_in_insert = true,
+    signs = true,
+    update_in_insert = false,
     underline = true,
     severity_sort = true,
     float = {

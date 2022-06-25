@@ -36,8 +36,8 @@ return require('packer').startup(function(use)
   -- Colorschemes
   use 'lunarvim/darkplus.nvim'
   use 'cpea2506/one_monokai.nvim'
-  use 'navarasu/onedark.nvim'
   use 'olimorris/onedarkpro.nvim'
+  use 'ful1e5/onedark.nvim'
 
   -- Completion
   use 'hrsh7th/nvim-cmp' -- The completion plugin
@@ -55,6 +55,8 @@ return require('packer').startup(function(use)
 
   -- Telescope
   use 'nvim-telescope/telescope.nvim'
+
+  use 'nvim-treesitter/nvim-treesitter'
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

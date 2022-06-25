@@ -119,6 +119,11 @@ _G.packer_plugins = {
     path = "/home/talama/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
   },
+  ["nvim-treesitter"] = {
+    loaded = true,
+    path = "/home/talama/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
+    url = "https://github.com/nvim-treesitter/nvim-treesitter"
+  },
   ["one_monokai.nvim"] = {
     loaded = true,
     path = "/home/talama/.local/share/nvim/site/pack/packer/start/one_monokai.nvim",
@@ -127,7 +132,7 @@ _G.packer_plugins = {
   ["onedark.nvim"] = {
     loaded = true,
     path = "/home/talama/.local/share/nvim/site/pack/packer/start/onedark.nvim",
-    url = "https://github.com/navarasu/onedark.nvim"
+    url = "https://github.com/ful1e5/onedark.nvim"
   },
   ["onedarkpro.nvim"] = {
     loaded = true,
