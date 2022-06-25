@@ -2,7 +2,16 @@ local fn = vim.fn
 -- Automatically install packer
 local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
-  packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+  PACKER_BOOTSTRAP = fn.system {
+    "git",
+    "clone",
+    "--depth",
+    "1",
+    "https://github.com/wbthomason/packer.nvim",
+    install_path,
+  }
+  print "Installing packer close and reopen Neovim..."
+  vim.cmd [[packadd packer.nvim]]
 end
 
 -- Autocommand that reloads neovim whenever you save the plugins.lua file
@@ -50,7 +59,7 @@ return require('packer').startup(function(use)
 
   -- LSP
  use 'neovim/nvim-lspconfig'           -- enable LSP
- use 'williamboman/nvim-lsp-installer' -- language server installer 
+ use 'williamboman/nvim-lsp-installer' -- language server installer
  use 'RRethy/vim-illuminate'           -- automatically highlighting other uses of the current word under the cursor
 
   -- Telescope

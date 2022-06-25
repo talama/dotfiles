@@ -3,11 +3,6 @@ if not status_ok then
   return
 end
 
-local status_ok, luasnip = pcall(require, 'luasnip')
-if not status_ok then
-  return
-end
-
 require("luasnip/loaders/from_vscode").lazy_load()
 
 local function border(hl_name)
@@ -23,7 +18,7 @@ local function border(hl_name)
    }
 end
 
-options = {
+local options = {
   snippet = {
     expand = function(args)
        require("luasnip").lsp_expand(args.body)

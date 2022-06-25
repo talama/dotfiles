@@ -1,25 +1,21 @@
 -- Mapping functions for different modes
-function map(mode, shortcut, command)
+local function map(mode, shortcut, command)
   vim.keymap.set(mode, shortcut, command, {noremap = true, silent = true})
 end
 
-function nmap(shortcut, command)
+local function nmap(shortcut, command)
   map('n', shortcut, command)
 end
 
-function imap(shortcut, command)
+ local function imap(shortcut, command)
   map('i', shortcut, command)
 end
 
-function vmap(shortcut, command)
+local function vmap(shortcut, command)
   map('v', shortcut, command)
 end
 
-function cmap(shortcut, command)
-  map('c', shortcut, command)
-end
-
-function tmap(shortcut, command)
+ local function tmap(shortcut, command)
   map('t', shortcut, command)
 end
 
@@ -29,7 +25,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- clear matches with Ctrl+b
-map('', '<leader>h', ':noh<cr>:call clearmatches()<cr>') 
+map('', '<leader>h', ':noh<cr>:call clearmatches()<cr>')
 
 -- Normal mode
 -- Reload configuration

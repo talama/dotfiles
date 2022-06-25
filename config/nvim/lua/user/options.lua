@@ -12,15 +12,14 @@ vim.opt.splitright = true -- force all vertical splits to go to the right of cur
 vim.opt.undofile = true   -- enable persistent undo
 vim.opt.whichwrap:append("<,>,[,],h,l")
 vim.opt.iskeyword:append("-")
-relativenumber = false -- set relative numbered lines
 
 -- Waiting time
-vim.opt.timeoutlen = 1000  
+vim.opt.timeoutlen = 1000
 vim.opt.updatetime = 300
 
 -- Display
 vim.o.showmatch  = true -- show matching brackets
-vim.o.scrolloff = 8 
+vim.o.scrolloff = 8
 vim.opt.sidescrolloff = 8
 vim.opt.cmdheight = 1 -- more space in the neovim command line for displaying messages
 vim.o.synmaxcol = 300 -- stop syntax highlight after x lines for performance
