@@ -2,7 +2,7 @@ local fn = vim.fn
 -- Automatically install packer
 local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
-  PACKER_BOOTSTRAP = fn.system {
+  PACKER_BOOTSRAP = fn.system {
     "git",
     "clone",
     "--depth",
@@ -72,9 +72,13 @@ return require('packer').startup(function(use)
   use 'JoosepAlviste/nvim-ts-context-commentstring'
   -- Git Signs
   use 'lewis6991/gitsigns.nvim'
+  -- Nvim Tree
+  use 'kyazdani42/nvim-web-devicons'
+  use 'kyazdani42/nvim-tree.lua'
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
-  if packer_bootstrap then
+  if PACKER_BOOTSRAP then
     require('packer').sync()
   end
 end)

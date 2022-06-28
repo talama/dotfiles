@@ -28,7 +28,7 @@ map('', '<Space>', '<Nop>')
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
--- clear matches with Ctrl+b
+-- clear matches
 map('', '<leader>h', ':noh<cr>:call clearmatches()<cr>')
 
 -- Normal mode
@@ -56,8 +56,6 @@ nmap('<C-Up>', ':resize +2<cr>')
 nmap('<C-Down>', ':resize -2<cr>')
 nmap('<C-Left>', ': vertical resize -2<cr>')
 nmap('<C-Right>', ':vertical resize +2<cr>')
-
-nmap('<leader>e', ':Lex 30<cr>')
 
 -- Insert Mode
 -- Press jk fast to enter
@@ -95,3 +93,5 @@ nmap('<leader>gt', ':Telescope git_status<CR>')
 nmap('<leader>/', '<cmd>lua require("Comment.api").toggle_current_linewise()<CR>')
 nmap('<A-/>', '<cmd>lua require("Comment.api").toggle_current_blockwise()<CR>')
 xmap('<leader>/', '<ESC><CMD>lua require("Comment.api").toggle_linewise_op(vim.fn.visualmode())<CR>')
+-- Nvim Tree
+nmap('<leader>e', ':NvimTreeToggle<cr>')
