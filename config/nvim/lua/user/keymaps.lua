@@ -15,6 +15,10 @@ local function vmap(shortcut, command)
   map('v', shortcut, command)
 end
 
+local function xmap(shortcut, command)
+  map('x', shortcut, command)
+end
+
  local function tmap(shortcut, command)
   map('t', shortcut, command)
 end
@@ -74,6 +78,7 @@ vmap('<', '<gv')
 tmap('<C-s>', '<C-\\><C-n>')
 tmap('<Esc><Esc>', '<C-\\><C-n>')
 
+-- PLUGINS
 -- Telescope
 -- find
 nmap('<leader>ff', ':Telescope find_files <CR>')
@@ -86,4 +91,7 @@ nmap('<leader>fk', ':Telescope keymaps<CR>')
 -- git
 nmap('<leader>cm', ':Telescope git_commits<CR>')
 nmap('<leader>gt', ':Telescope git_status<CR>')
-
+-- Comments
+nmap('<leader>/', '<cmd>lua require("Comment.api").toggle_current_linewise()<CR>')
+nmap('<A-/>', '<cmd>lua require("Comment.api").toggle_current_blockwise()<CR>')
+xmap('<leader>/', '<ESC><CMD>lua require("Comment.api").toggle_linewise_op(vim.fn.visualmode())<CR>')

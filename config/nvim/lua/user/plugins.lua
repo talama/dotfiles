@@ -41,6 +41,9 @@ return require('packer').startup(function(use)
   -- My plugins here
   use 'wbthomason/packer.nvim'
   use 'nvim-lua/plenary.nvim'
+  use 'windwp/nvim-autopairs'
+  use 'RRethy/vim-illuminate' -- automatically highlighting other uses of the current word under the cursor
+
 
   -- Colorschemes
   use 'lunarvim/darkplus.nvim'
@@ -60,12 +63,13 @@ return require('packer').startup(function(use)
   -- LSP
  use 'neovim/nvim-lspconfig'           -- enable LSP
  use 'williamboman/nvim-lsp-installer' -- language server installer
- use 'RRethy/vim-illuminate'           -- automatically highlighting other uses of the current word under the cursor
-
   -- Telescope
   use 'nvim-telescope/telescope.nvim'
-
+  -- Treesitter
   use 'nvim-treesitter/nvim-treesitter'
+  -- Comments
+  use 'numToStr/Comment.nvim'
+  use 'JoosepAlviste/nvim-ts-context-commentstring'
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
