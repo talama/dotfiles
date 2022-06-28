@@ -109,6 +109,11 @@ _G.packer_plugins = {
     path = "/home/talama/.local/share/nvim/site/pack/packer/start/darkplus.nvim",
     url = "https://github.com/lunarvim/darkplus.nvim"
   },
+  ["gitsigns.nvim"] = {
+    loaded = true,
+    path = "/home/talama/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
+    url = "https://github.com/lewis6991/gitsigns.nvim"
+  },
   ["nvim-autopairs"] = {
     loaded = true,
     path = "/home/talama/.local/share/nvim/site/pack/packer/start/nvim-autopairs",
