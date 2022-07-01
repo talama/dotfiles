@@ -11,7 +11,8 @@ local servers = {
   'tsserver',
   'pyright',
   'jsonls',
-  'yamlls'
+  'yamlls',
+  'eslint',
 }
 
 -- LSP installer options
