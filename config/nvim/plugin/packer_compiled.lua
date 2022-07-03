@@ -87,18 +87,7 @@ _G.packer_plugins = {
     path = "/home/talama/.local/share/nvim/site/pack/packer/opt/cmp-buffer",
     url = "https://github.com/hrsh7th/cmp-buffer"
   },
-  ["cmp-calc"] = {
-    after_files = { "/home/talama/.local/share/nvim/site/pack/packer/opt/cmp-calc/after/plugin/cmp_calc.lua" },
-    load_after = {
-      ["cmp-cmdline"] = true
-    },
-    loaded = false,
-    needs_bufread = false,
-    path = "/home/talama/.local/share/nvim/site/pack/packer/opt/cmp-calc",
-    url = "https://github.com/hrsh7th/cmp-calc"
-  },
   ["cmp-cmdline"] = {
-    after = { "cmp-calc" },
     after_files = { "/home/talama/.local/share/nvim/site/pack/packer/opt/cmp-cmdline/after/plugin/cmp_cmdline.lua" },
     load_after = {
       ["cmp-path"] = true
@@ -156,6 +145,11 @@ _G.packer_plugins = {
     path = "/home/talama/.local/share/nvim/site/pack/packer/start/impatient.nvim",
     url = "https://github.com/lewis6991/impatient.nvim"
   },
+  ["lspkind-nvim"] = {
+    loaded = true,
+    path = "/home/talama/.local/share/nvim/site/pack/packer/start/lspkind-nvim",
+    url = "https://github.com/onsails/lspkind-nvim"
+  },
   ["nvim-cmp"] = {
     after = { "cmp-nvim-lua" },
     config = { "require('plugins.cmp')" },
@@ -194,6 +188,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/talama/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
+  },
+  ["popup.nvim"] = {
+    loaded = true,
+    path = "/home/talama/.local/share/nvim/site/pack/packer/start/popup.nvim",
+    url = "https://github.com/nvim-lua/popup.nvim"
   }
 }
 

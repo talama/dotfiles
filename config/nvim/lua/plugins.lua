@@ -66,8 +66,11 @@ return require('packer').startup(function(use)
     use { 'hrsh7th/cmp-buffer', after = 'cmp-nvim-lsp' }
     use { 'hrsh7th/cmp-path', after = 'cmp-buffer' }
     use { 'hrsh7th/cmp-cmdline', after = 'cmp-path' }
-    use { 'hrsh7th/cmp-calc', after = 'cmp-cmdline' }
-    
+
+    -- LSP Addons
+    use { 'onsails/lspkind-nvim' } -- adds vscode-like pictograms to neovim built-in lsp
+    use { 'nvim-lua/popup.nvim' }
+
     -- Snippets
     use { 'saadparwaiz1/cmp_luasnip'}
     use { "rafamadriz/friendly-snippets"}
