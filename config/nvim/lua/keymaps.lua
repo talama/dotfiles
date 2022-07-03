@@ -65,10 +65,12 @@ imap('jk', '<ESC>')
 
 -- Visual Mode
 -- Move text up and down
-vmap("<A-j>", ":m .+1<CR>==gv")
-vmap("<A-k>", ":m .-2<CR>==gv")
+vmap('<A-j>', ':m .+1<CR>==gv')
+vmap('<A-k>', ':m .-2<CR>==gv')
+
 -- Better paste
-vmap("p", '"_dP')
+vmap('p', '_dP')
+
 -- Stay in indent mode
 vmap('<', '<gv')
 vmap('<', '<gv')
@@ -77,3 +79,20 @@ vmap('<', '<gv')
 -- ESC to go to normal mode in terminal
 tmap('<C-s>', '<C-\\><C-n>')
 tmap('<Esc><Esc>', '<C-\\><C-n>')
+
+-- PLUGINS
+-- LSP
+nmap('gD', '<cmd>lua vim.lsp.buf.declaration()<CR>')
+nmap("gd", '<cmd>lua vim.lsp.buf.definition()<CR>')
+nmap('K', '<cmd>lua vim.lsp.buf.hover()<CR>')
+nmap('gi', '<cmd>lua vim.lsp.buf.implementation()<CR>')
+nmap('gr', '<cmd>lua vim.lsp.buf.references()<CR>')
+nmap('gl', '<cmd>lua vim.diagnostic.open_float()<CR>')
+nmap('<leader>lf', '<cmd>lua vim.lsp.buf.formatting()<CR>')
+nmap('<leader>li', '<cmd>LspInfo<cr>')
+nmap('<leader>lI', '<cmd>LspInstallInfo<cr>')
+nmap('<leader>la', '<cmd>lua vim.lsp.buf.code_action()<cr>')
+nmap('<leader>lj"', '<cmd>lua vim.diagnostic.goto_next({buffer=0})<cr>"')
+nmap('<leader>lk', '<cmd>lua vim.diagnostic.goto_prev({buffer=0})<cr>')
+nmap('<leader>lr', '<cmd>lua vim.lsp.buf.rename()<cr>')
+nmap('<leader>ld', '<cmd>lua vim.diagnostic.open_float({ border = "rounded", max_width = 100 })<CR>')
