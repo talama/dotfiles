@@ -55,6 +55,10 @@ return require('packer').startup(function(use)
     -- Colorschemes
     use {'ful1e5/onedark.nvim'}
 
+    -- Treesitter
+    use { 'nvim-treesitter/nvim-treesitter', config = "require('plugins.treesitter')" }
+    use { 'nvim-treesitter/nvim-treesitter-textobjects', after = { 'nvim-treesitter' } }
+
     -- LSP Base
     use { 'williamboman/nvim-lsp-installer' }
     use { 'neovim/nvim-lspconfig' }
