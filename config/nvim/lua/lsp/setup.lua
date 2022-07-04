@@ -11,12 +11,12 @@ lsp_installer.setup {
   automatic_installation = true,
 
   ui = {
-    -- The border to use for the UI window. 
+    -- The border to use for the UI window.
     border = "rounded",
     icons = {
-            server_installed = "✓",
-            server_pending = "➜",
-            server_uninstalled = "✗"
+      server_installed = "✓",
+      server_pending = "➜",
+      server_uninstalled = "✗"
     }
   }
 }
@@ -33,7 +33,7 @@ _G.border = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' }
 -- Docs Window
 local handlers = {
   ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" }),
-  ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded"}),
+  ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" }),
 }
 
 -- set border in lspconfig

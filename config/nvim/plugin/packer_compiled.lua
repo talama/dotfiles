@@ -145,13 +145,29 @@ _G.packer_plugins = {
     path = "/home/talama/.local/share/nvim/site/pack/packer/start/impatient.nvim",
     url = "https://github.com/lewis6991/impatient.nvim"
   },
+  ["lsp-trouble.nvim"] = {
+    config = { "require('plugins.trouble')" },
+    loaded = true,
+    path = "/home/talama/.local/share/nvim/site/pack/packer/start/lsp-trouble.nvim",
+    url = "https://github.com/folke/lsp-trouble.nvim"
+  },
   ["lspkind-nvim"] = {
     loaded = true,
     path = "/home/talama/.local/share/nvim/site/pack/packer/start/lspkind-nvim",
     url = "https://github.com/onsails/lspkind-nvim"
   },
+  ["nvim-autopairs"] = {
+    config = { "require('plugins.autopairs')" },
+    load_after = {
+      ["nvim-cmp"] = true
+    },
+    loaded = false,
+    needs_bufread = false,
+    path = "/home/talama/.local/share/nvim/site/pack/packer/opt/nvim-autopairs",
+    url = "https://github.com/windwp/nvim-autopairs"
+  },
   ["nvim-cmp"] = {
-    after = { "cmp-nvim-lua" },
+    after = { "nvim-autopairs", "cmp-nvim-lua" },
     config = { "require('plugins.cmp')" },
     loaded = false,
     needs_bufread = false,
@@ -170,7 +186,7 @@ _G.packer_plugins = {
     url = "https://github.com/neovim/nvim-lspconfig"
   },
   ["nvim-treesitter"] = {
-    after = { "nvim-treesitter-textobjects" },
+    after = { "nvim-autopairs", "nvim-treesitter-textobjects" },
     loaded = true,
     only_config = true
   },
@@ -213,11 +229,15 @@ time([[Defining packer_plugins]], false)
 time([[Config for nvim-treesitter]], true)
 require('plugins.treesitter')
 time([[Config for nvim-treesitter]], false)
+-- Config for: lsp-trouble.nvim
+time([[Config for lsp-trouble.nvim]], true)
+require('plugins.trouble')
+time([[Config for lsp-trouble.nvim]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)
+vim.cmd [[ packadd nvim-treesitter-textobjects ]]
 vim.cmd [[ packadd cmp_luasnip ]]
 vim.cmd [[ packadd LuaSnip ]]
-vim.cmd [[ packadd nvim-treesitter-textobjects ]]
 time([[Sequenced loading]], false)
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
