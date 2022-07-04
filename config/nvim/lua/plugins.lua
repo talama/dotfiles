@@ -75,9 +75,11 @@ return require('packer').startup(function(use)
     use { 'onsails/lspkind-nvim' } -- adds vscode-like pictograms to neovim built-in lsp
     use { 'folke/lsp-trouble.nvim', config = "require('plugins.trouble')" }
     use { 'nvim-lua/popup.nvim' }
-  
+
     -- Language and syntax
     use { 'windwp/nvim-autopairs', after = { 'nvim-treesitter', 'nvim-cmp' }, config = "require('plugins.autopairs')" }
+    use { 'p00f/nvim-ts-rainbow', after = { 'nvim-treesitter' } }
+    use { 'NvChad/nvim-colorizer.lua', config = "require('plugins.colorizer')" }
 
     -- Snippets
     use { 'saadparwaiz1/cmp_luasnip'}
