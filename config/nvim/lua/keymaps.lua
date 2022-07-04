@@ -96,5 +96,11 @@ nmap('<leader>lk', '<cmd>lua vim.diagnostic.goto_prev({buffer=0})<cr>')
 nmap('<leader>lr', '<cmd>lua vim.lsp.buf.rename()<cr>')
 nmap('<leader>ld', '<cmd>lua vim.diagnostic.open_float({ border = "rounded", max_width = 100 })<CR>')
 
+-- Telescope
+nmap('<leader>ff', ':Telescope find_files<CR>')
+nmap('<leader>ft', ':Telescope live_grep<CR>')
+nmap('<leader>fp', ':Telescope projects<CR>')
+nmap('<leader>fb', ':Telescope buffers<CR>')
+
 -- Trouble
 nmap('<leader>t', ':TroubleToggle<cr>')

@@ -60,8 +60,18 @@ return require('packer').startup(function(use)
     use { 'nvim-treesitter/nvim-treesitter-textobjects', after = { 'nvim-treesitter' } }
 
     -- Telescope/Tree
+    use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+    use { 'nvim-telescope/telescope.nvim',
+      config = "require('plugins.telescope')",
+      requires = {
+        { 'nvim-lua/popup.nvim' },
+        { 'nvim-lua/plenary.nvim' },
+        { 'nvim-telescope/telescope-fzf-native.nvim' }
+      }
+    }
     use { 'kyazdani42/nvim-tree.lua', config = "require('plugins.tree')" }
-    -- LSP Base
+
+     -- LSP Base
     use { 'williamboman/nvim-lsp-installer' }
     use { 'neovim/nvim-lspconfig' }
 
