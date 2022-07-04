@@ -42,6 +42,9 @@ nmap('<C-j>', '<C-w>j')
 nmap('<C-k>', '<C-w>k')
 nmap('<C-l>', '<C-w>l')
 
+-- H to move to the first non-blank charachter of the line
+nmap('H', '^')
+
 -- Better buffer navigation
 nmap('<TAB>', ':bnext<cr>')
 nmap('<S-TAB>', ':bprevious<cr>')
@@ -58,17 +61,51 @@ nmap('<C-Down>', ':resize -2<cr>')
 nmap('<C-Left>', ': vertical resize -2<cr>')
 nmap('<C-Right>', ':vertical resize +2<cr>')
 
+-- Move between barbar buffers
+nmap('<Space>1', ':BufferGoto 1<CR>')
+nmap('<Space>2', ':BufferGoto 2<CR>')
+nmap('<Space>3', ':BufferGoto 3<CR>')
+nmap('<Space>4', ':BufferGoto 4<CR>')
+nmap('<Space>5', ':BufferGoto 5<CR>')
+nmap('<Space>6', ':BufferGoto 6<CR>')
+nmap('<Space>7', ':BufferGoto 7<CR>')
+nmap('<Space>8', ':BufferGoto 8<CR>')
+nmap('<Space>9', ':BufferGoto 9<CR>')
+nmap('<A-1>', ':BufferGoto 1<CR>')
+nmap('<A-2>', ':BufferGoto 2<CR>')
+nmap('<A-3>', ':BufferGoto 3<CR>')
+nmap('<A-4>', ':BufferGoto 4<CR>')
+nmap('<A-5>', ':BufferGoto 5<CR>')
+nmap('<A-6>', ':BufferGoto 6<CR>')
+nmap('<A-7>', ':BufferGoto 7<CR>')
+nmap('<A-8>', ':BufferGoto 8<CR>')
+nmap('<A-9>', ':BufferGoto 9<CR>')
+
+-- Don't yank on delete char
+nmap('x', '"_x')
+nmap('X', '"_X')
+vmap('x', '"_x')
+vmap('X', '"_X')
+
+-- Quickfix
+nmap('<leader>,', ':cp<CR>')
+nmap('<leader>.', ':cn<CR>')
+
 -- Insert Mode
 -- Press jk fast to enter
 imap('jk', '<ESC>')
 
+-- Save file with CTRL-S
+nmap('<C-s>', ':w<CR>')
+imap('<C-s>', '<ESC> :w<CR>')
+
 -- Visual Mode
 -- Move text up and down
-vmap('<A-j>', ':m .+1<CR>==gv')
-vmap('<A-k>', ':m .-2<CR>==gv')
+xmap('K', ":move '<-2<CR>gv-gv")
+xmap('J', ":move '>+1<CR>gv-gv")
 
--- Better paste
-vmap('p', '_dP')
+-- Don't yank on visual paste
+vmap('p', '"_dP')
 
 -- Stay in indent mode
 vmap('<', '<gv')
@@ -104,3 +141,5 @@ nmap('<leader>fb', ':Telescope buffers<CR>')
 
 -- Trouble
 nmap('<leader>t', ':TroubleToggle<cr>')
+
+
