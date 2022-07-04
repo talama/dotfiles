@@ -1,6 +1,6 @@
 function _G.ReloadConfig()
   for name,_ in pairs(package.loaded) do
-    if name:match('^user') and not name:match('nvim-tree') then
+    if name:match('^lsp') or name:match('^plugins') and not name:match('nvim-tree') then
       package.loaded[name] = nil
     end
   end
