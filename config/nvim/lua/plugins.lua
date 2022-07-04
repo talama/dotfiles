@@ -59,6 +59,8 @@ return require('packer').startup(function(use)
     use { 'nvim-treesitter/nvim-treesitter', config = "require('plugins.treesitter')" }
     use { 'nvim-treesitter/nvim-treesitter-textobjects', after = { 'nvim-treesitter' } }
 
+    -- Telescope/Tree
+    use { 'kyazdani42/nvim-tree.lua', config = "require('plugins.tree')" }
     -- LSP Base
     use { 'williamboman/nvim-lsp-installer' }
     use { 'neovim/nvim-lspconfig' }
@@ -75,6 +77,9 @@ return require('packer').startup(function(use)
     use { 'onsails/lspkind-nvim' } -- adds vscode-like pictograms to neovim built-in lsp
     use { 'folke/lsp-trouble.nvim', config = "require('plugins.trouble')" }
     use { 'nvim-lua/popup.nvim' }
+    
+    -- General
+      use { 'romgrk/barbar.nvim', requires = { 'kyazdani42/nvim-web-devicons' }, config = "require('plugins.barbar')" }
 
     -- Language and syntax
     use { 'windwp/nvim-autopairs', after = { 'nvim-treesitter', 'nvim-cmp' }, config = "require('plugins.autopairs')" }
