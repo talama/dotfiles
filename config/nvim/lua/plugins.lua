@@ -79,6 +79,7 @@ return require('packer').startup(function(use)
     -- Language and syntax
     use { 'windwp/nvim-autopairs', after = { 'nvim-treesitter', 'nvim-cmp' }, config = "require('plugins.autopairs')" }
     use { 'p00f/nvim-ts-rainbow', after = { 'nvim-treesitter' } }
+    use { 'lukas-reineke/indent-blankline.nvim', config = "require('plugins.indent')" }
     use { 'NvChad/nvim-colorizer.lua', config = "require('plugins.colorizer')" }
 
     -- Snippets
