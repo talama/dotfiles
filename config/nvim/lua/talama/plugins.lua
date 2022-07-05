@@ -93,6 +93,7 @@ return require('packer').startup(function(use)
   -- General
   use { 'romgrk/barbar.nvim', requires = { 'kyazdani42/nvim-web-devicons' }, config = "require('talama.plugins.barbar')" }
   use { 'rcarriga/nvim-notify' }
+  use { "nvim-lualine/lualine.nvim", config = "require('talama.plugins.lualine')" }
 
   -- Language and syntax
   use { 'windwp/nvim-autopairs', after = { 'nvim-treesitter', 'nvim-cmp' },
