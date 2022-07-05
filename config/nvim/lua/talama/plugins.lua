@@ -109,6 +109,16 @@ return require('packer').startup(function(use)
   use { "rafamadriz/friendly-snippets" }
   use { 'L3MON4D3/LuaSnip', requires = { 'rafamadriz/friendly-snippets' }, after = 'cmp_luasnip' }
 
+  -- Git
+  use { 'lewis6991/gitsigns.nvim',
+    requires = { 'nvim-lua/plenary.nvim' },
+    config = "require('talama.plugins.git.signs')",
+    event = "BufRead"
+  }
+  use { 'sindrets/diffview.nvim', config = "require('talama.plugins.git.diffview')" }
+  use { 'akinsho/git-conflict.nvim', config = "require('talama.plugins.git.conflict')" }
+  use { 'kdheepak/lazygit.nvim' }
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then

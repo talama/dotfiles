@@ -150,3 +150,6 @@ nmap('<A-/>', '<cmd>lua require("Comment.api").toggle_current_linewise()<CR>')
 nmap('<leader>/', '<cmd>lua require("Comment.api").toggle_current_blockwise()<CR>')
 xmap('<A-/>', '<ESC><CMD>lua require("Comment.api").toggle_linewise_op(vim.fn.visualmode())<CR>')
 xmap('<leader>/', '<ESC><CMD>lua require("Comment.api").toggle_linewise_op(vim.fn.visualmode())<CR>')
+
+-- Git
+nmap('<A-g>', ':LazyGit<CR>')
