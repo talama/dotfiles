@@ -168,6 +168,12 @@ _G.packer_plugins = {
     path = "/home/talama/.local/share/nvim/site/pack/packer/start/lspkind-nvim",
     url = "https://github.com/onsails/lspkind-nvim"
   },
+  ["null-ls.nvim"] = {
+    config = { "require('talama.lsp.null-ls')" },
+    loaded = true,
+    path = "/home/talama/.local/share/nvim/site/pack/packer/start/null-ls.nvim",
+    url = "https://github.com/jose-elias-alvarez/null-ls.nvim"
+  },
   ["nvim-autopairs"] = {
     config = { "require('talama.plugins.autopairs')" },
     load_after = {
@@ -215,7 +221,7 @@ _G.packer_plugins = {
     url = "https://github.com/kyazdani42/nvim-tree.lua"
   },
   ["nvim-treesitter"] = {
-    after = { "nvim-ts-rainbow", "nvim-treesitter-textobjects", "nvim-autopairs" },
+    after = { "nvim-ts-rainbow", "nvim-autopairs", "nvim-treesitter-textobjects" },
     loaded = true,
     only_config = true
   },
@@ -268,18 +274,28 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/talama/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
+  },
+  ["vim-illuminate"] = {
+    config = { "require('talama.plugins.illuminate')" },
+    loaded = true,
+    path = "/home/talama/.local/share/nvim/site/pack/packer/start/vim-illuminate",
+    url = "https://github.com/RRethy/vim-illuminate"
   }
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: barbar.nvim
-time([[Config for barbar.nvim]], true)
-require('talama.plugins.barbar')
-time([[Config for barbar.nvim]], false)
 -- Config for: lsp-trouble.nvim
 time([[Config for lsp-trouble.nvim]], true)
 require('talama.plugins.trouble')
 time([[Config for lsp-trouble.nvim]], false)
+-- Config for: null-ls.nvim
+time([[Config for null-ls.nvim]], true)
+require('talama.lsp.null-ls')
+time([[Config for null-ls.nvim]], false)
+-- Config for: barbar.nvim
+time([[Config for barbar.nvim]], true)
+require('talama.plugins.barbar')
+time([[Config for barbar.nvim]], false)
 -- Config for: nvim-treesitter
 time([[Config for nvim-treesitter]], true)
 require('talama.plugins.treesitter')
@@ -288,18 +304,22 @@ time([[Config for nvim-treesitter]], false)
 time([[Config for telescope.nvim]], true)
 require('talama.plugins.telescope')
 time([[Config for telescope.nvim]], false)
--- Config for: indent-blankline.nvim
-time([[Config for indent-blankline.nvim]], true)
-require('talama.plugins.indent')
-time([[Config for indent-blankline.nvim]], false)
--- Config for: nvim-tree.lua
-time([[Config for nvim-tree.lua]], true)
-require('talama.plugins.tree')
-time([[Config for nvim-tree.lua]], false)
 -- Config for: nvim-colorizer.lua
 time([[Config for nvim-colorizer.lua]], true)
 require('talama.plugins.colorizer')
 time([[Config for nvim-colorizer.lua]], false)
+-- Config for: nvim-tree.lua
+time([[Config for nvim-tree.lua]], true)
+require('talama.plugins.tree')
+time([[Config for nvim-tree.lua]], false)
+-- Config for: indent-blankline.nvim
+time([[Config for indent-blankline.nvim]], true)
+require('talama.plugins.indent')
+time([[Config for indent-blankline.nvim]], false)
+-- Config for: vim-illuminate
+time([[Config for vim-illuminate]], true)
+require('talama.plugins.illuminate')
+time([[Config for vim-illuminate]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)
 vim.cmd [[ packadd cmp_luasnip ]]
