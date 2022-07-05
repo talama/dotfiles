@@ -69,6 +69,12 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  ["Comment.nvim"] = {
+    config = { "require('talama.plugins.comment')" },
+    loaded = true,
+    path = "/home/talama/.local/share/nvim/site/pack/packer/start/Comment.nvim",
+    url = "https://github.com/numToStr/Comment.nvim"
+  },
   LuaSnip = {
     load_after = {},
     loaded = true,
@@ -191,7 +197,7 @@ _G.packer_plugins = {
     url = "https://github.com/windwp/nvim-autopairs"
   },
   ["nvim-cmp"] = {
-    after = { "cmp-nvim-lua", "nvim-autopairs" },
+    after = { "nvim-autopairs", "cmp-nvim-lua" },
     config = { "require('talama.plugins.cmp')" },
     loaded = false,
     needs_bufread = false,
@@ -243,6 +249,11 @@ _G.packer_plugins = {
     needs_bufread = false,
     path = "/home/talama/.local/share/nvim/site/pack/packer/opt/nvim-treesitter-textobjects",
     url = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects"
+  },
+  ["nvim-ts-context-commentstring"] = {
+    loaded = true,
+    path = "/home/talama/.local/share/nvim/site/pack/packer/start/nvim-ts-context-commentstring",
+    url = "https://github.com/JoosepAlviste/nvim-ts-context-commentstring"
   },
   ["nvim-ts-rainbow"] = {
     load_after = {},
@@ -296,30 +307,10 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: null-ls.nvim
-time([[Config for null-ls.nvim]], true)
-require('talama.lsp.null-ls')
-time([[Config for null-ls.nvim]], false)
--- Config for: nvim-toggleterm.lua
-time([[Config for nvim-toggleterm.lua]], true)
-require('talama.plugins.toggleterm')
-time([[Config for nvim-toggleterm.lua]], false)
--- Config for: barbar.nvim
-time([[Config for barbar.nvim]], true)
-require('talama.plugins.barbar')
-time([[Config for barbar.nvim]], false)
--- Config for: lualine.nvim
-time([[Config for lualine.nvim]], true)
-require('talama.plugins.lualine')
-time([[Config for lualine.nvim]], false)
--- Config for: nvim-tree.lua
-time([[Config for nvim-tree.lua]], true)
-require('talama.plugins.tree')
-time([[Config for nvim-tree.lua]], false)
--- Config for: nvim-treesitter
-time([[Config for nvim-treesitter]], true)
-require('talama.plugins.treesitter')
-time([[Config for nvim-treesitter]], false)
+-- Config for: nvim-colorizer.lua
+time([[Config for nvim-colorizer.lua]], true)
+require('talama.plugins.colorizer')
+time([[Config for nvim-colorizer.lua]], false)
 -- Config for: lsp-trouble.nvim
 time([[Config for lsp-trouble.nvim]], true)
 require('talama.plugins.trouble')
@@ -328,24 +319,48 @@ time([[Config for lsp-trouble.nvim]], false)
 time([[Config for vim-illuminate]], true)
 require('talama.plugins.illuminate')
 time([[Config for vim-illuminate]], false)
--- Config for: nvim-colorizer.lua
-time([[Config for nvim-colorizer.lua]], true)
-require('talama.plugins.colorizer')
-time([[Config for nvim-colorizer.lua]], false)
 -- Config for: indent-blankline.nvim
 time([[Config for indent-blankline.nvim]], true)
 require('talama.plugins.indent')
 time([[Config for indent-blankline.nvim]], false)
+-- Config for: Comment.nvim
+time([[Config for Comment.nvim]], true)
+require('talama.plugins.comment')
+time([[Config for Comment.nvim]], false)
+-- Config for: nvim-treesitter
+time([[Config for nvim-treesitter]], true)
+require('talama.plugins.treesitter')
+time([[Config for nvim-treesitter]], false)
+-- Config for: nvim-toggleterm.lua
+time([[Config for nvim-toggleterm.lua]], true)
+require('talama.plugins.toggleterm')
+time([[Config for nvim-toggleterm.lua]], false)
+-- Config for: null-ls.nvim
+time([[Config for null-ls.nvim]], true)
+require('talama.lsp.null-ls')
+time([[Config for null-ls.nvim]], false)
+-- Config for: nvim-tree.lua
+time([[Config for nvim-tree.lua]], true)
+require('talama.plugins.tree')
+time([[Config for nvim-tree.lua]], false)
 -- Config for: telescope.nvim
 time([[Config for telescope.nvim]], true)
 require('talama.plugins.telescope')
 time([[Config for telescope.nvim]], false)
+-- Config for: lualine.nvim
+time([[Config for lualine.nvim]], true)
+require('talama.plugins.lualine')
+time([[Config for lualine.nvim]], false)
+-- Config for: barbar.nvim
+time([[Config for barbar.nvim]], true)
+require('talama.plugins.barbar')
+time([[Config for barbar.nvim]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)
+vim.cmd [[ packadd nvim-treesitter-textobjects ]]
+vim.cmd [[ packadd nvim-ts-rainbow ]]
 vim.cmd [[ packadd cmp_luasnip ]]
 vim.cmd [[ packadd LuaSnip ]]
-vim.cmd [[ packadd nvim-ts-rainbow ]]
-vim.cmd [[ packadd nvim-treesitter-textobjects ]]
 time([[Sequenced loading]], false)
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]

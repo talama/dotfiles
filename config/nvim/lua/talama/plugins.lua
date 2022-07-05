@@ -91,6 +91,8 @@ return require('packer').startup(function(use)
   use { 'nvim-lua/popup.nvim' }
 
   -- General
+  use { 'numToStr/Comment.nvim', config = "require('talama.plugins.comment')" }
+  use { 'JoosepAlviste/nvim-ts-context-commentstring' }
   use { 'romgrk/barbar.nvim', requires = { 'kyazdani42/nvim-web-devicons' }, config = "require('talama.plugins.barbar')" }
   use { 'rcarriga/nvim-notify' }
   use { "nvim-lualine/lualine.nvim", config = "require('talama.plugins.lualine')" }
