@@ -84,13 +84,16 @@ return require('packer').startup(function(use)
     use { 'hrsh7th/cmp-cmdline', after = 'cmp-path' }
 
     -- LSP Addons
+    use { 'jose-elias-alvarez/null-ls.nvim', config = "require('talama.lsp.null-ls')"}
+    use { 'RRethy/vim-illuminate', config = "require('talama.plugins.illuminate')" }
     use { 'onsails/lspkind-nvim' } -- adds vscode-like pictograms to neovim built-in lsp
     use { 'folke/lsp-trouble.nvim', config = "require('talama.plugins.trouble')" }
     use { 'nvim-lua/popup.nvim' }
-    
+
     -- General
       use { 'romgrk/barbar.nvim', requires = { 'kyazdani42/nvim-web-devicons' }, config = "require('talama.plugins.barbar')" }
       use { 'rcarriga/nvim-notify' }
+
     -- Language and syntax
     use { 'windwp/nvim-autopairs', after = { 'nvim-treesitter', 'nvim-cmp' }, config = "require('talama.plugins.autopairs')" }
     use { 'p00f/nvim-ts-rainbow', after = { 'nvim-treesitter' } }
