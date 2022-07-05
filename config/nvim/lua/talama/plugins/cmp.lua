@@ -14,7 +14,7 @@ if not snip_status_ok then
   return
 end
 
-local icons = require('icons')
+local icons = require('talama.icons')
 
 require("luasnip/loaders/from_vscode").lazy_load()
 

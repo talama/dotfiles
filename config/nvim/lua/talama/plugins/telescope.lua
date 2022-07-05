@@ -1,5 +1,5 @@
 local actions    = require('telescope.actions')
-local icons      = require('icons');
+local icons      = require('talama.icons');
 
 require('telescope').load_extension('fzf')
 -- require('telescope').load_extension('repo')

@@ -56,27 +56,27 @@ return require('packer').startup(function(use)
     use {'ful1e5/onedark.nvim'}
 
     -- Treesitter
-    use { 'nvim-treesitter/nvim-treesitter', config = "require('plugins.treesitter')" }
+    use { 'nvim-treesitter/nvim-treesitter', config = "require('talama.plugins.treesitter')" }
     use { 'nvim-treesitter/nvim-treesitter-textobjects', after = { 'nvim-treesitter' } }
 
     -- Telescope/Tree
     use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
     use { 'nvim-telescope/telescope.nvim',
-      config = "require('plugins.telescope')",
+      config = "require('talama.plugins.telescope')",
       requires = {
         { 'nvim-lua/popup.nvim' },
         { 'nvim-lua/plenary.nvim' },
         { 'nvim-telescope/telescope-fzf-native.nvim' }
       }
     }
-    use { 'kyazdani42/nvim-tree.lua', config = "require('plugins.tree')" }
+    use { 'kyazdani42/nvim-tree.lua', config = "require('talama.plugins.tree')" }
 
      -- LSP Base
     use { 'williamboman/nvim-lsp-installer' }
     use { 'neovim/nvim-lspconfig' }
 
     -- LSP Cmp
-    use { 'hrsh7th/nvim-cmp', event = 'InsertEnter', config = "require('plugins.cmp')" }
+    use { 'hrsh7th/nvim-cmp', event = 'InsertEnter', config = "require('talama.plugins.cmp')" }
     use { 'hrsh7th/cmp-nvim-lua', after = 'nvim-cmp' }
     use { 'hrsh7th/cmp-nvim-lsp', after = 'cmp-nvim-lua' }
     use { 'hrsh7th/cmp-buffer', after = 'cmp-nvim-lsp' }
@@ -85,17 +85,17 @@ return require('packer').startup(function(use)
 
     -- LSP Addons
     use { 'onsails/lspkind-nvim' } -- adds vscode-like pictograms to neovim built-in lsp
-    use { 'folke/lsp-trouble.nvim', config = "require('plugins.trouble')" }
+    use { 'folke/lsp-trouble.nvim', config = "require('talama.plugins.trouble')" }
     use { 'nvim-lua/popup.nvim' }
     
     -- General
-      use { 'romgrk/barbar.nvim', requires = { 'kyazdani42/nvim-web-devicons' }, config = "require('plugins.barbar')" }
-
+      use { 'romgrk/barbar.nvim', requires = { 'kyazdani42/nvim-web-devicons' }, config = "require('talama.plugins.barbar')" }
+      use { 'rcarriga/nvim-notify' }
     -- Language and syntax
-    use { 'windwp/nvim-autopairs', after = { 'nvim-treesitter', 'nvim-cmp' }, config = "require('plugins.autopairs')" }
+    use { 'windwp/nvim-autopairs', after = { 'nvim-treesitter', 'nvim-cmp' }, config = "require('talama.plugins.autopairs')" }
     use { 'p00f/nvim-ts-rainbow', after = { 'nvim-treesitter' } }
-    use { 'lukas-reineke/indent-blankline.nvim', config = "require('plugins.indent')" }
-    use { 'NvChad/nvim-colorizer.lua', config = "require('plugins.colorizer')" }
+    use { 'lukas-reineke/indent-blankline.nvim', config = "require('talama.plugins.indent')" }
+    use { 'NvChad/nvim-colorizer.lua', config = "require('talama.plugins.colorizer')" }
 
     -- Snippets
     use { 'saadparwaiz1/cmp_luasnip'}

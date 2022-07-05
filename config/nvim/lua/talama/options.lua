@@ -55,7 +55,7 @@ vim.opt.shortmess:append('c');
 vim.opt.formatoptions:remove('c');
 vim.opt.formatoptions:remove('r');
 vim.opt.formatoptions:remove('o');
-
+vim.notify  = require('notify')
 for k, v in pairs(options) do
   vim.opt[k] = v
 end

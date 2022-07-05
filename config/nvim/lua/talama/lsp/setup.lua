@@ -58,30 +58,30 @@ if cmp_nvim_lsp_ok then
 end
 
 lspconfig.tsserver.setup {
-  capabilities = require('lsp.servers.tsserver').capabilities,
+  capabilities = require('talama.lsp.servers.tsserver').capabilities,
   handlers = handlers,
-  on_attach = require('lsp.servers.tsserver').on_attach,
-  settings = require('lsp.servers.tsserver').settings
+  on_attach = require('talama.lsp.servers.tsserver').on_attach,
+  settings = require('talama.lsp.servers.tsserver').settings
 }
 
 lspconfig.eslint.setup {
   capabilities = capabilities,
   handlers = handlers,
-  on_attach = require('lsp.servers.eslint').on_attach,
-  settings = require('lsp.servers.eslint').settings,
+  on_attach = require('talama.lsp.servers.eslint').on_attach,
+  settings = require('talama.lsp.servers.eslint').settings,
 }
 
 lspconfig.jsonls.setup {
   capabilities = capabilities,
   handlers = handlers,
   on_attach = on_attach,
-  settings = require('lsp.servers.jsonls').settings,
+  settings = require('talama.lsp.servers.jsonls').settings,
 }
 
 lspconfig.sumneko_lua.setup {
   handlers = handlers,
   on_attach = on_attach,
-  settings = require('lsp.servers.sumneko_lua').settings,
+  settings = require('talama.lsp.servers.sumneko_lua').settings,
 }
 
 for _, server in ipairs { "bashls", "cssls", "graphql", "html", } do

@@ -8,7 +8,7 @@ local function nmap(shortcut, command)
   map('n', shortcut, command)
 end
 
- local function imap(shortcut, command)
+local function imap(shortcut, command)
   map('i', shortcut, command)
 end
 
@@ -88,21 +88,25 @@ vmap('x', '"_x')
 vmap('X', '"_X')
 
 -- Quickfix
-nmap('<leader>,', ':cp<CR>')
-nmap('<leader>.', ':cn<CR>')
+nmap(']q', ':cprev<CR>')
+nmap('[q', ':cnext<CR>')
+nmap('<C-q>', ':call QuickFixToggle()<CR>')
 
 -- Insert Mode
 -- Press jk fast to enter
 imap('jk', '<ESC>')
-
 -- Save file with CTRL-S
 nmap('<C-s>', ':w<CR>')
 imap('<C-s>', '<ESC> :w<CR>')
 
+-- Move text up and down
+imap('<A-k>', "<Esc>:m .-2<CR>==gi")
+imap('<A-j>', "<Esc>:m .+1<CR>==gi")
+
 -- Visual Mode
 -- Move text up and down
-xmap('K', ":move '<-2<CR>gv-gv")
-xmap('J', ":move '>+1<CR>gv-gv")
+xmap('<A-k>', ":move '<-2<CR>gv-gv")
+xmap('<A-j>', ":move '>+1<CR>gv-gv")
 
 -- Don't yank on visual paste
 vmap('p', '"_dP')

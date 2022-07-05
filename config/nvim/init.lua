@@ -1,8 +1,8 @@
 pcall(require, 'impatient')
 
-require 'options'
-require 'keymaps'
-require 'reload'
-require 'plugins'
-require 'colorscheme'
-require 'lsp.setup'
+require 'talama.options'
+require 'talama.keymaps'
+require 'talama.reload'
+require 'talama.plugins'
+require 'talama.colorscheme'
+require 'talama.lsp.setup'

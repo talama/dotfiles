@@ -1,4 +1,4 @@
-local icons = require('icons')
+local icons = require('talama.icons')
 
 require("trouble").setup {
   position = "bottom", -- position of the list can be: bottom, top, left, right
