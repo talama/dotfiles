@@ -1,6 +1,6 @@
 function _G.ReloadConfig()
-  for name,_ in pairs(package.loaded) do
-    if name:match('^talama')  and not name:match('nvim-tree') then
+  for name, _ in pairs(package.loaded) do
+    if name:match('^Talama') then
       package.loaded[name] = nil
     end
   end

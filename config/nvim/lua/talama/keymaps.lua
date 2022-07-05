@@ -1,7 +1,6 @@
-
 -- Mapping functions for different modes
 local function map(mode, shortcut, command)
-  vim.keymap.set(mode, shortcut, command, {noremap = true, silent = true})
+  vim.keymap.set(mode, shortcut, command, { noremap = true, silent = true })
 end
 
 local function nmap(shortcut, command)
@@ -20,7 +19,7 @@ local function xmap(shortcut, command)
   map('x', shortcut, command)
 end
 
- local function tmap(shortcut, command)
+local function tmap(shortcut, command)
   map('t', shortcut, command)
 end
 
@@ -34,7 +33,7 @@ map('', '<leader>h', ':noh<cr>:call clearmatches()<cr>')
 
 -- Normal mode
 -- Reload configuration
-nmap('<leader>s', '<cmd>lua ReloadConfig()<cr>')
+nmap('<leader>s', '<cmd>lua ReloadConfig()<CR>')
 
 -- Better window navigation
 nmap('<C-h>', '<C-w>h')
@@ -48,7 +47,7 @@ nmap('H', '^')
 -- Better buffer navigation
 nmap('<TAB>', ':bnext<cr>')
 nmap('<S-TAB>', ':bprevious<cr>')
-nmap('<S-q>', ':bd!<cr>')  -- close buffer
+nmap('<S-q>', ':bd!<cr>') -- close buffer
 nmap('<S-b>', ':enew<cr>') -- new buffer
 
 -- Easy window split;
@@ -145,5 +144,3 @@ nmap('<leader>fb', ':Telescope buffers<CR>')
 
 -- Trouble
 nmap('<leader>t', ':TroubleToggle<cr>')
-
-
