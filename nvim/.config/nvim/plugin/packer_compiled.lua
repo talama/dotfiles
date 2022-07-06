@@ -264,7 +264,7 @@ _G.packer_plugins = {
     url = "https://github.com/kyazdani42/nvim-tree.lua"
   },
   ["nvim-treesitter"] = {
-    after = { "nvim-ts-rainbow", "nvim-autopairs", "nvim-treesitter-textobjects" },
+    after = { "nvim-autopairs", "nvim-ts-rainbow", "nvim-treesitter-textobjects" },
     loaded = true,
     only_config = true
   },
@@ -332,14 +332,22 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: Comment.nvim
+time([[Config for Comment.nvim]], true)
+require('talama.plugins.comment')
+time([[Config for Comment.nvim]], false)
+-- Config for: null-ls.nvim
+time([[Config for null-ls.nvim]], true)
+require('talama.lsp.null-ls')
+time([[Config for null-ls.nvim]], false)
 -- Config for: git-conflict.nvim
 time([[Config for git-conflict.nvim]], true)
 require('talama.plugins.git.conflict')
 time([[Config for git-conflict.nvim]], false)
--- Config for: barbar.nvim
-time([[Config for barbar.nvim]], true)
-require('talama.plugins.barbar')
-time([[Config for barbar.nvim]], false)
+-- Config for: indent-blankline.nvim
+time([[Config for indent-blankline.nvim]], true)
+require('talama.plugins.indent')
+time([[Config for indent-blankline.nvim]], false)
 -- Config for: lsp-trouble.nvim
 time([[Config for lsp-trouble.nvim]], true)
 require('talama.plugins.trouble')
@@ -348,10 +356,22 @@ time([[Config for lsp-trouble.nvim]], false)
 time([[Config for nvim-tree.lua]], true)
 require('talama.plugins.tree')
 time([[Config for nvim-tree.lua]], false)
--- Config for: indent-blankline.nvim
-time([[Config for indent-blankline.nvim]], true)
-require('talama.plugins.indent')
-time([[Config for indent-blankline.nvim]], false)
+-- Config for: barbar.nvim
+time([[Config for barbar.nvim]], true)
+require('talama.plugins.barbar')
+time([[Config for barbar.nvim]], false)
+-- Config for: vim-illuminate
+time([[Config for vim-illuminate]], true)
+require('talama.plugins.illuminate')
+time([[Config for vim-illuminate]], false)
+-- Config for: lualine.nvim
+time([[Config for lualine.nvim]], true)
+require('talama.plugins.lualine')
+time([[Config for lualine.nvim]], false)
+-- Config for: nvim-colorizer.lua
+time([[Config for nvim-colorizer.lua]], true)
+require('talama.plugins.colorizer')
+time([[Config for nvim-colorizer.lua]], false)
 -- Config for: telescope.nvim
 time([[Config for telescope.nvim]], true)
 require('talama.plugins.telescope')
@@ -360,47 +380,27 @@ time([[Config for telescope.nvim]], false)
 time([[Config for nvim-toggleterm.lua]], true)
 require('talama.plugins.toggleterm')
 time([[Config for nvim-toggleterm.lua]], false)
--- Config for: null-ls.nvim
-time([[Config for null-ls.nvim]], true)
-require('talama.lsp.null-ls')
-time([[Config for null-ls.nvim]], false)
--- Config for: vim-illuminate
-time([[Config for vim-illuminate]], true)
-require('talama.plugins.illuminate')
-time([[Config for vim-illuminate]], false)
 -- Config for: diffview.nvim
 time([[Config for diffview.nvim]], true)
 require('talama.plugins.git.diffview')
 time([[Config for diffview.nvim]], false)
--- Config for: lualine.nvim
-time([[Config for lualine.nvim]], true)
-require('talama.plugins.lualine')
-time([[Config for lualine.nvim]], false)
 -- Config for: nvim-treesitter
 time([[Config for nvim-treesitter]], true)
 require('talama.plugins.treesitter')
 time([[Config for nvim-treesitter]], false)
--- Config for: nvim-colorizer.lua
-time([[Config for nvim-colorizer.lua]], true)
-require('talama.plugins.colorizer')
-time([[Config for nvim-colorizer.lua]], false)
--- Config for: Comment.nvim
-time([[Config for Comment.nvim]], true)
-require('talama.plugins.comment')
-time([[Config for Comment.nvim]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)
-vim.cmd [[ packadd cmp_luasnip ]]
-vim.cmd [[ packadd LuaSnip ]]
 vim.cmd [[ packadd nvim-ts-rainbow ]]
 vim.cmd [[ packadd nvim-treesitter-textobjects ]]
+vim.cmd [[ packadd cmp_luasnip ]]
+vim.cmd [[ packadd LuaSnip ]]
 time([[Sequenced loading]], false)
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
-vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'nvim-cmp'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
 vim.cmd [[au BufRead * ++once lua require("packer.load")({'gitsigns.nvim'}, { event = "BufRead *" }, _G.packer_plugins)]]
+vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'nvim-cmp'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 if should_profile then save_profiles() end
