@@ -48,7 +48,11 @@ win.default_opts = function(options)
 end
 
 local function on_attach(client, bufnr)
-  -- set up buffer keymaps, etc.
+  local status_ok, illuminate = pcall(require, "illuminate")
+  if not status_ok then
+    return
+  end
+  illuminate.on_attach(client)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
