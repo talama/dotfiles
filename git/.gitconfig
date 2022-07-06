@@ -1,0 +1,15 @@
+[user]
+  name = talama
+  email = talama@protonmail.com
+[alias]
+  gl = config --global -l
+  st = status -sb
+  a = add
+  al = add .
+  cm = commit -m
+  br = branch
+  co = checkout
+  se = !git rev-list --all | xargs git grep -F
+  last = log -1 HEAD --stat
+  lo = log --oneline --decorate
+  lg = log --graph --abbrev-commit --decorate --pretty=format:'%C(bold blue)%h%C(reset) -%C(bold yellow)%d%C(reset) %C(white)%s%C(reset) %Cgreen(%cr)%C(reset) %C(dim white)<%an>%Creset'
