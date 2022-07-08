@@ -7,6 +7,9 @@ if type -q exa
   alias lla "ll -a"
 end
 
+# PATH
+fish_add_path ~/.local/bin/
+
 #ALIASES
 alias .rl=". ~/.config/fish/config.fish" #source fish config.
 alias ak='ANKI_NOHIGHDPI=1 anki'
