@@ -13,6 +13,7 @@ local diagnostics = {
   sections = { "error", "warn" },
   symbols = { error = " ", warn = " " },
   colored = false,
+  update_in_insert = false,
   always_visible = true,
 }
 
@@ -44,7 +45,7 @@ lualine.setup {
     theme = "auto",
     component_separators = { left = "", right = "" },
     section_separators = { left = "", right = "" },
-    disabled_filetypes = { "alpha", "dashboard" },
+    disabled_filetypes = { "alpha", "dashboard", "NvimTree", "Outline" },
     always_divide_middle = true,
   },
   sections = {
