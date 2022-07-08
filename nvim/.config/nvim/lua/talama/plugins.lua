@@ -49,7 +49,7 @@ return require('packer').startup(function(use)
   -- use { 'nathom/filetype.nvim' }
   use { 'nvim-lua/plenary.nvim' }
   use { 'kyazdani42/nvim-web-devicons' }
-  -- use { 'goolord/alpha-nvim', config = "require('plugins.alpha')" }
+  use { 'goolord/alpha-nvim', config = "require('talama.plugins.alpha')" }
 
   -- Colorschemes
   use { 'ful1e5/onedark.nvim' }
