@@ -50,6 +50,7 @@ return require('packer').startup(function(use)
   use { 'nvim-lua/plenary.nvim' }
   use { 'kyazdani42/nvim-web-devicons' }
   use { 'goolord/alpha-nvim', config = "require('talama.plugins.alpha')" }
+  use("antoinemadec/FixCursorHold.nvim")
 
   -- Colorschemes
   use { 'ful1e5/onedark.nvim' }
