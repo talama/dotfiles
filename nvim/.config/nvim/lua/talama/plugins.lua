@@ -59,16 +59,20 @@ return require('packer').startup(function(use)
   use { 'nvim-treesitter/nvim-treesitter', config = "require('talama.plugins.treesitter')" }
   use { 'nvim-treesitter/nvim-treesitter-textobjects', after = { 'nvim-treesitter' } }
 
-  -- Telescope/Tree
+  -- Telescope
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
   use { 'nvim-telescope/telescope.nvim',
     config = "require('talama.plugins.telescope')",
     requires = {
       { 'nvim-lua/popup.nvim' },
       { 'nvim-lua/plenary.nvim' },
-      { 'nvim-telescope/telescope-fzf-native.nvim' }
-    }
+      { 'nvim-telescope/telescope-fzf-native.nvim' },
+      { 'nvim-telescope/telescope-media-files.nvim', },
+    },
   }
+  use("nvim-telescope/telescope-media-files.nvim")
+
+  --- Nvim-tree
   use { 'kyazdani42/nvim-tree.lua', config = "require('talama.plugins.tree')" }
 
   -- LSP Base

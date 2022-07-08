@@ -138,7 +138,7 @@ nmap('<leader>ld', '<cmd>lua vim.diagnostic.open_float({ border = "rounded", max
 
 -- Telescope
 nmap('<leader>ff', ':Telescope find_files<CR>')
-nmap('<leader>ft', ':Telescope live_grep<CR>')
+nmap('<leader>fg', ':Telescope live_grep<CR>')
 nmap('<leader>fp', ':Telescope projects<CR>')
 nmap('<leader>fb', ':Telescope buffers<CR>')
 

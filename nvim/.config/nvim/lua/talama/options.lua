@@ -57,6 +57,7 @@ vim.opt.formatoptions:remove('c');
 vim.opt.formatoptions:remove('r');
 vim.opt.formatoptions:remove('o');
 vim.notify = require('notify')
+
 for k, v in pairs(options) do
   vim.opt[k] = v
 end
@@ -64,3 +65,5 @@ end
 for k, v in pairs(globals) do
   vim.g[k] = v
 end
+
+vim.cmd "set whichwrap+=<,>,[,],h,l"
