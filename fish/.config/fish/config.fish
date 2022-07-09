@@ -19,7 +19,7 @@ alias .dot="cd ~/.dotfiles"
 alias .fish="cd ~/.config/fish && nvim config.fish"
 alias .nvim="cd ~/.config/nvim && nvim lua/talama/plugins.lua"
 alias .kitty="cd ~/.config/kitty && nvim kitty.conf"
-
+alias .i3 ="cd ~/.config/i3 && nvim config"
 # vim
 alias nv="nvim"
 alias g="git"
