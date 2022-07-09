@@ -96,7 +96,7 @@ cmp.setup {
       "i",
       "s",
     }),
-        ["<C-l>"] = cmp.mapping(function(fallback)
+    ["<C-l>"] = cmp.mapping(function(fallback)
       if luasnip.expandable() then
         luasnip.expand()
       elseif luasnip.expand_or_jumpable() then
@@ -119,7 +119,7 @@ cmp.setup {
       "s",
     }),
   }),
-    formatting = {
+  formatting = {
     format = function(entry, vim_item)
       vim_item.kind = lspkind.symbolic(vim_item.kind, { with_text = true })
       local menu = source_mapping[entry.source.name]
@@ -132,7 +132,7 @@ cmp.setup {
     end
   },
 
-    -- You should specify your *installed* sources.
+  -- You should specify your *installed* sources.
   sources = {
     { name = 'nvim_lsp', priority = 9 },
     { name = 'npm', priority = 9 },
@@ -142,7 +142,7 @@ cmp.setup {
     { name = 'path', priority = 4 },
   },
 
-    sorting = {
+  sorting = {
     comparators = {
       cmp.config.compare.exact,
       cmp.config.compare.locality,

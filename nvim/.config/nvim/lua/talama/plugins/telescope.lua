@@ -4,16 +4,15 @@ if not status_ok then
 end
 
 local actions = require('telescope.actions')
-local icons   = require('talama.icons');
 
 telescope.load_extension('media_files')
 telescope.load_extension('fzf')
 
 local git_icons = {
-  added = icons.gitAdd,
-  changed = icons.gitChange,
+  added = "  ",
+  changed = " 柳",
   copied = ">",
-  deleted = icons.gitRemove,
+  deleted = "  ",
   renamed = "➡",
   unmerged = "‡",
   untracked = "?",
