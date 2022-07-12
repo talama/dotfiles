@@ -32,17 +32,17 @@ workspace_layout default
 new_window pixel 1
 
 # thin borders
-# hide_edge_borders both
+hide_edge_borders smart
 
 # Set inner/outer gaps
 gaps inner 6
-gaps outer 2
+gaps outer 3
 
 # show window title bars (not officially supported with i3gaps)
 #default_border normal
 
 # window title alignment
-#title_align center
+title_align center
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -257,10 +257,10 @@ bindsym $mod+Shift+p exec ~/.config/i3/scripts/power-profiles
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
 set $ws1 "1:"
-set $ws2 "2:"
-set $ws3 "3:"
-set $ws4 "4:"
-set $ws5 "5:"
+set $ws2 "2:"
+set $ws3 "3:"
+set $ws4 "4:"
+set $ws5 "5:"
 set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
@@ -270,16 +270,23 @@ set $ws10 "10"
 # use workspaces on different displays:
 # where you have to replace VGA-0/HDMI-0 with the names for your displays
 # you can get from xrandr command
-#workspace $ws1 output VGA-0
-#workspace $ws2 output VGA-0
-#workspace $ws3 output HDMI-0
-#workspace $ws4 output HDMI-0
-#workspace $ws5 output HDMI-0
+workspace $ws1 output DP-0
+workspace $ws2 output DP-0
+workspace $ws3 output DP-3
+workspace $ws4 output DP-3
+workspace $ws5 output DP-0
 
-# bind program to workspace and focus to them on startup:
-assign [class="kitty"] $ws1
-assign [class="brave-browser"] $ws2
-assign [class="Thunar"] $ws3
+exec_always --no-startup-id "i3-msg '
+Workspace 2:; append_layout ~/.config/i3/layouts/ws2.json;
+Workspace 4:; append_layout ~/.config/i3/layouts/ws4.json;
+Workspace 1:; append_layout ~/.config/i3/layouts/ws1.json;
+Workspace 3:; append_layout ~/.config/i3/layouts/ws3.json;
+exec brave-browser; exec discord; exec brave-browser; exec kitty; '"
+
+# bind program to workspace and focus to them on startup
+# assign [class="kitty"] $ws1
+# assign [class="brave-browser"] $ws2
+# assign [class="Thunar"] $ws3
 # assign [class="Thunderbird"] $ws4
 # assign [class="TelegramDesktop"] $ws5
 

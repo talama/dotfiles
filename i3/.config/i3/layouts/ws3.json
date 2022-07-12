@@ -1,0 +1,42 @@
+// vim:ts=4:sw=4:et
+{
+    // floating_con with 1 children
+    "border": "pixel",
+    "floating": "auto_off",
+    "layout": "splith",
+    "marks": [],
+    "percent": null,
+    "rect": {
+        "height": 903,
+        "width": 1904,
+        "x": 1930,
+        "y": 31
+    },
+    "type": "floating_con",
+    "nodes": [
+        {
+            "border": "pixel",
+            "current_border_width": 1,
+            "floating": "user_on",
+            "geometry": {
+                "height": 891,
+                "width": 1902,
+                "x": 1930,
+                "y": 31
+            },
+            "marks": [],
+            "name": "NoU - Discord",
+            "percent": 1,
+            "swallows": [
+                {
+                    "class": "^discord$",
+                    "instance": "^discord$"
+                    // "machine": "^Foucault$",
+                    // "title": "^NoU\\ \\-\\ Discord$",
+                    // "window_role": "^browser\\-window$"
+                }
+            ],
+            "type": "con"
+        }
+    ]
+}

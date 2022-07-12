@@ -1,0 +1,42 @@
+// vim:ts=4:sw=4:et
+{
+    // floating_con with 1 children
+    "border": "pixel",
+    "floating": "auto_off",
+    "layout": "splith",
+    "marks": [],
+    "percent": null,
+    "rect": {
+        "height": 911,
+        "width": 1902,
+        "x": 1931,
+        "y": 32
+    },
+    "type": "floating_con",
+    "nodes": [
+        {
+            "border": "pixel",
+            "current_border_width": 1,
+            "floating": "user_on",
+            "geometry": {
+                "height": 909,
+                "width": 1900,
+                "x": 1931,
+                "y": 32
+            },
+            "marks": [],
+            "name": "Using preset layouts in i3 :: Gideon Wolfe - Brave",
+            "percent": 1,
+            "swallows": [
+                {
+                    "class": "^Brave-browser$",
+                    "instance": "^brave-browser$"
+                    // "machine": "^Foucault$",
+                    // "title": "^Using\\ preset\\ layouts\\ in\\ i3\\ \\:\\:\\ Gideon\\ Wolfe\\ \\-\\ Brave$",
+                    // "window_role": "^browser$"
+                }
+            ],
+            "type": "con"
+        }
+    ]
+}
