@@ -9,6 +9,7 @@ end
 
 # PATH
 fish_add_path ~/.local/bin/
+fish_add_path /home/talama/.spicetify
 
 #ALIASES
 alias .rl=". ~/.config/fish/config.fish" #source fish config.
