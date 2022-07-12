@@ -276,7 +276,8 @@ workspace $ws3 output DP-3
 workspace $ws4 output DP-3
 workspace $ws5 output DP-0
 
-exec_always --no-startup-id "i3-msg '
+# Restore saved layouts
+exec --no-startup-id "i3-msg '
 Workspace 2:; append_layout ~/.config/i3/layouts/ws2.json;
 Workspace 4:; append_layout ~/.config/i3/layouts/ws4.json;
 Workspace 1:; append_layout ~/.config/i3/layouts/ws1.json;
