@@ -4,3 +4,11 @@ fish/.config/fish/functions/
 fish/.config/fish/themes/
 fish/.config/fish/fish_variables
 nvim/.config/nvim/plugin/packer_compiled.lua
+spicetify/.config/spicetify/Backup/
+spicetify/.config/spicetify/CustomApps/
+spicetify/.config/spicetify/Extensions/
+spicetify/.config/spicetify/Extracted/
+spicetify/.config/spicetify/config.xpui.ini
+spicetify/.config/spicetify/core
+
+

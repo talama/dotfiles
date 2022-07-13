@@ -10,6 +10,7 @@ end
 # PATH
 fish_add_path ~/.local/bin/
 fish_add_path /home/talama/.spicetify
+fish_add_path /home/talama/.cargo/bin
 
 #ALIASES
 alias .rl=". ~/.config/fish/config.fish" #source fish config.
@@ -21,7 +22,7 @@ alias .fish="cd ~/.config/fish && nvim config.fish"
 alias .nvim="cd ~/.config/nvim && nvim lua/talama/plugins.lua"
 alias .kitty="cd ~/.config/kitty && nvim kitty.conf"
 alias .i3="cd ~/.config/i3 && nvim config"
-alias .picom="cd ~/.config/picom/picom.conf"
+alias .picom="cd ~/.config/picom && nvim picom.conf"
 # vim
 alias nv="nvim"
 alias g="git"
