@@ -1,12 +1,12 @@
 * {
   background:             #282c34;
-  foreground:             #393f4a;
+  foreground:             #abb2bf;
   selection-background:   #393f4a;
   selection-foreground:   #abb2bf;
   blue-dark:              #528bff;
 
   active-border:          #393f4a;
-  inactive-border:        #393f4a;
+  inactive-border:        #3a456b;
 
   black:               #20232A;
   red:                 #e06c75;
@@ -24,7 +24,6 @@
   blue-alt:            #528bff;
   magenta-alt:         #c678dd;
   cyan-alt:            #56b6c2;
-  grey-alt:            #abb2bf;
 
   orange:              #d19a66;
   transparent:         #002e3440;
