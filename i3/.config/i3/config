@@ -280,8 +280,8 @@ workspace $ws5 output DP-3
 exec --no-startup-id "i3-msg '
 Workspace 2:; append_layout ~/.config/i3/layouts/ws2.json;
 Workspace 4:; append_layout ~/.config/i3/layouts/ws4.json;
-Workspace 1:; append_layout ~/.config/i3/layouts/ws1.json;
 Workspace 3:; append_layout ~/.config/i3/layouts/ws3.json;
+Workspace 1:; append_layout ~/.config/i3/layouts/ws1.json;
 exec brave-browser; exec discord; exec brave-browser; exec kitty; '"
 
 # bind program to workspace and focus to them on startup
@@ -314,7 +314,7 @@ exec --no-startup-id dex --autostart --environment i3
 
 #networkmanager-applet
 # exec --no-startup-id nm-applet
-exec --no-startup-id nm-tray
+# exec --no-startup-id nm-tray
 # num lock activated
 #exec --no-startup-id numlockx on
 
