@@ -1,38 +1,31 @@
 * {
-    foreground:           rgba(196, 203, 212, 100%);
-    selected-foreground:  rgba(0, 0, 0, 100%);
-    
-    background:           #1f243aa0;
-    background-solid:     #131a31fd;
-    background-solid:     #1c1f36ff;
-    background-solid:     #141929;
-    
-    // a8b0d5
+  background:             #282c34;
+  foreground:             #393f4a;
+  selection-background:   #393f4a;
+  selection-foreground:   #abb2bf;
+  blue-dark:              #528bff;
 
-    /*
-       selected-background:  #fe6c5a;
-       selected-background:  #1994fd;
-    */
+  active-border:          #393f4a;
+  inactive-border:        #393f4a;
 
-    // **** green
-    selected-background: #5dbe88;    
+  black:               #20232A;
+  red:                 #e06c75;
+  green:               #98c379;
+  yellow:              #ebd09c;
+  blue:                #61afef;
+  magenta:             #c678dd;
+  cyan:                #56b6c2;
+  grey:                #798294;
 
-    selected-background: #e3ad63;
-    selected-background: #6e8fe9;
-    selected-background: #6fa6e7;
+  black-alt:           #798294;
+  red-alt:             #e86671;
+  green-alt:           #98c379;
+  yellow-alt:          #e5c07b;
+  blue-alt:            #528bff;
+  magenta-alt:         #c678dd;
+  cyan-alt:            #56b6c2;
+  grey-alt:            #abb2bf;
 
-    selected-background: #6092d9;
-    selected-background-alt: #4d86d3;
-    /* selected-background-gradient: linear-gradient(#6092d9, #4d86d3); */
-
-    /*#87b5d7;*/  
-    /*#6eacda;*/
-    /*#deca72;*/
-    /*#39c9fe;*/
-    
-    
-    unselected-background:  #0d1120;
-    
-    red: rgba(220, 50, 47, 100%);
-    blue: rgba(38, 139, 210, 100%);
+  orange:              #d19a66;
+  transparent:         #002e3440;
 }

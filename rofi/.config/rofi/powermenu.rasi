@@ -1,3 +1,4 @@
+
 configuration {
     // modi: "window,run,drun";
     show-icons: true;
@@ -10,20 +11,21 @@ configuration {
 
 #window {
     width: 480px;
-    height: 180px;
-    background-color: @background-solid;
+    height: 130px;
+    background-color: @background;
     padding: 10px;
 }
 
 #mainbox {
     border:  0;
     padding: 0;
+    border-radius: 8px;
     children: [listview];
-    background-color: @background-solid;
+    background-color: @foreground;
 }
 
 #listview {
-    columns: 2;
+    columns: 3;
     layout: vertical;
     background-color: transparent;
 }
@@ -46,8 +48,8 @@ element-text {
 }
 
 #element.normal.normal, element.alternate.normal {
-    background-color: @unselected-background;
-    text-color:       @foreground;
+    background-color: @background;
+    text-color:       @grey;
     size: 0px;
 }
 
@@ -61,15 +63,14 @@ element-text {
 }
 
 #element.selected.normal {
-    background-image: @selected-background-gradient;
-    // background-color: @selected-background;
-    text-color:       @selected-foreground;
-    border-color: #d07ef2;
+    background-color: @blue-dark;
+    text-color:       @black;
+    border-color:     @acive-border;
 }
 
 #mode-switcher {
     border:       0px 0px 0px ;
-    border-color: @separatorcolor;
+    border-color: @orange;
 }
 
 #button {
@@ -78,8 +79,8 @@ element-text {
 }
 
 #button.selected {
-    background-color: @selected-background;
-    text-color:       @selected-foreground;
+    background-color: @selection-background;
+    text-color:       @selection-foreground;
 }
 
 element-text, element-icon {
