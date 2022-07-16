@@ -1,135 +1,161 @@
-/*******************************************************
- * ROFI configs i3 Apps menu for EndeavourOS
- * Maintainer: joekamprad <joekamprad@endeavouros.com>
- *******************************************************/
 configuration {
-    font:				"Noto Sans Regular 10";
-    show-icons:				true;
-    icon-theme:				"Qogir";
-    display-drun:			"Apps";
-    drun-display-format:		"{name}";
-    scroll-method:			0;
-    disable-history:			false;
-    sidebar-mode:			false;
+  modi: "drun,window,windowcd,keys,run,combi";
+
+  font: "Dosis 14";
+  drun-display-format: " {name} ";
+  sidebar-mode: true;
+  matching: "fuzzy";
+  scroll-method: 0;
+  disable-history: false;
+
+  display-drun: "  Menu";
+  display-run: "  Run";
+  display-window: "   Window";
+  display-windowcd: "   Window+";
+  display-keys: "   Keys";
+  display-filebrowser: "  Browse";
+  display-combi: "   Binds";
+
+  window-thumbnail: true;
+  sort: true;
+  sorting-method: "normal";
+
+  /* timeout { */
+  /*   action: "kb-cancel"; */
+  /*   delay: 30; */
+  /* } */
+
+  /* filebrowser { */
+  /*   directories-first: true; */
+  /*   sorting-method: "name"; */
+  /* } */
 }
 
-@import "~/.config/rofi/arc_dark_transparent_colors.rasi"
+@theme"/dev/null"
+
+* {
+  bg: #1f222d;
+  fg: #81a1c1;
+  button: #81a1c1;
+  background-color: @bg;
+  text-color: @fg;
+}
+
+element-text,
+element-icon,
+mode-switcher {
+  background-color: inherit;
+  text-color: inherit;
+}
 
 window {
-    background-color: @background;
-    border:           0;
-    padding:          30;
+  transparency: "real";
+  width: 60%;
+  border: 10px;
+  border-radius: 15px;
+  border-color: #1f222d;
+  height: 70%;
 }
-listview {
-    lines:                          10;
-    columns:                        3;
-}
-mainbox {
-    border:  0;
-    padding: 0;
-}
-message {
-    border:       2px 0px 0px ;
-    border-color: @separatorcolor;
-    padding:      1px ;
-}
-textbox {
-    text-color: @foreground;
-}
-listview {
-    fixed-height: 0;
-    border:       8px 0px 0px ;
-    border-color: @separatorcolor;
-    spacing:      8px ;
-    scrollbar:    false;
-    padding:      2px 0px 0px ;
-}
-element {
-    border:  0;
-    padding: 1px ;
-}
-element-text {
-    background-color: inherit;
-    text-color:       inherit;
-}
-element.normal.normal {
-    background-color: @normal-background;
-    text-color:       @normal-foreground;
-}
-element.normal.urgent {
-    background-color: @urgent-background;
-    text-color:       @urgent-foreground;
-}
-element.normal.active {
-    background-color: @active-background;
-    text-color:       @active-foreground;
-}
-element.selected.normal {
-    background-color: @selected-normal-background;
-    text-color:       @selected-normal-foreground;
-}
-element.selected.urgent {
-    background-color: @selected-urgent-background;
-    text-color:       @selected-urgent-foreground;
-}
-element.selected.active {
-    background-color: @selected-active-background;
-    text-color:       @selected-active-foreground;
-}
-element.alternate.normal {
-    background-color: @alternate-normal-background;
-    text-color:       @alternate-normal-foreground;
-}
-element.alternate.urgent {
-    background-color: @alternate-urgent-background;
-    text-color:       @alternate-urgent-foreground;
-}
-element.alternate.active {
-    background-color: @alternate-active-background;
-    text-color:       @alternate-active-foreground;
-}
-scrollbar {
-    width:        4px ;
-    border:       0;
-    handle-color: @normal-foreground;
-    handle-width: 8px ;
-    padding:      0;
-}
-mode-switcher {
-    border:       2px 0px 0px ;
-    border-color: @separatorcolor;
-}
-button {
-    spacing:    0;
-    text-color: @normal-foreground;
-}
-button.selected {
-    background-color: @selected-normal-background;
-    text-color:       @selected-normal-foreground;
-}
-inputbar {
-    spacing:    0;
-    text-color: @normal-foreground;
-    padding:    1px ;
-}
-case-indicator {
-    spacing:    0;
-    text-color: @normal-foreground;
-}
-entry {
-    spacing:    0;
-    text-color: @normal-foreground;
-}
+
 prompt {
-    spacing:    0;
-    text-color: @normal-foreground;
+  enabled: true;
+  background-color: @bg;
+  padding: 20px 15px 5px 15px;
+  text-color: @fg;
+  border-radius: 50%;
+  expand: true;
+  font: "Iosevka Nerd Font 14";
 }
-inputbar {
-    children:   [ prompt,textbox-prompt-colon,entry,case-indicator ];
-}
+
 textbox-prompt-colon {
-    expand:     false;
-    str:        ":";
-    margin:     0px 0.3em 0em 0em ;
-    text-color: @normal-foreground;
+  expand: false;
+  padding: 1% 2% 0% 2%;
+  margin: 0% 1% 0% 1%;
+  font: "Iosevka Nerd Font 30";
+  border-radius: 50%;
+  str: " ";
+}
+
+entry {
+  placeholder: "Search";
+  placeholder-color: #81a1c1;
+  text-color: #81a1c1;
+  expand: true;
+  padding: 2.0%;
+  border-radius: 50%;
+}
+
+inputbar {
+  children: [prompt,textbox-prompt-colon,entry];
+  /* background-image: url("bg.jpg"); */
+  expand: false;
+  border-radius: 10px 10px 0 0px;
+  font: "Dosis 14";
+  margin: 0 0 20px 0;
+  padding: 200px 20px 20px 20px;
+}
+
+listview {
+  columns: 3;
+  lines: 2;
+  cycle: false;
+  dynamic: true;
+  layout: vertical;
+  padding: 0 15px 0 15px;
+  scrollbar: false;
+}
+
+mainbox {
+  children: [inputbar,listview,mode-switcher];
+}
+
+element {
+  orientation: vertical;
+  padding: 5% 2% 2% 0;
+  font: "Dosis 14";
+  margin: 5px 5px 5px 5px;
+  border-radius: 10px;
+  background-color: #3b4252;
+}
+
+element-text {
+  expand: true;
+  vertical-align: 0.5;
+  margin: 0% 1% 0% 1%;
+  font: "Dosis 14";
+  background-color: inherit;
+  text-color: inherit;
+}
+
+element selected {
+  background-color: @button;
+  font: "Dosis 14";
+  text-color: #2e3440;
+  border-radius: 10px;
+}
+
+mode-switcher {
+  spacing: 0;
+  border-radius: 10px;
+  margin: 0 20px 20px 20px;
+}
+
+button {
+  padding: 15px;
+  margin: 0;
+  font: "Dosis,Iosevka Nerd Font 14";
+  background-color: #88C0D0;
+  text-color: #3b4252;
+  vertical-align: 0.5;
+  horizontal-align: 0.5;
+}
+
+button selected {
+  padding: 15px;
+  margin: 0;
+  background-color: #3b4252;
+  text-color: #81a1c1;
+
+  // border: 0 0 5px 0;
+  // border-color: #88C0D0;
 }

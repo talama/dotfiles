@@ -66,10 +66,10 @@ bindsym $mod+Shift+l move up
 bindsym $mod+Shift+semicolon move right
 
 # alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
+bindsym $mod+Shift+Left move left
 
 # split in horizontal orientation
 bindsym $mod+h split h
@@ -208,7 +208,7 @@ bindsym $mod+Return exec kitty
 bindsym $mod+q kill
 
 # exit-menu
-bindsym $mod+Shift+e exec rofi -modi 'Powermenu:~/.config/rofi/scripts/powermenu.sh' -show Powermenu -theme powermenu
+bindsym $mod+Shift+e exec ~/.config/rofi/scripts/launcher.sh powermenu 
 
 # Lock the system
 # lock with a picture:
