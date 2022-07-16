@@ -3,8 +3,8 @@
 # Status bar module for disk space
 # $1 should be drive mountpoint, otherwise assumed /.
 
-location=/home/talama
+location=/home
 [ -d "$location" ] || exit
 
 icon=" "
-echo "$icon $(df -h "$location" | awk ' /[0-9]/ {print $3}')"
+echo "$icon $(df -h "$location" | awk ' /[0-9]/ {printf"%s %s\n",$4, $5} ')"
