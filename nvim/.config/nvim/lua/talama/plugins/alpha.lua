@@ -29,7 +29,7 @@ dashboard.section.buttons.val = {
   dashboard.button("K", "  Find Keymaps", "<cmd>Telescope keymaps<CR>"),
   dashboard.button("C", " Find commands", "<cmd>Telescope commands<CR>"),
   dashboard.button("u", "  Update Plugins", "<cmd>PackerSync<CR>"),
-  dashboard.button("c", "  Configuration", "<cmd>e lua/talama/plugins.lua<CR>"),
+  dashboard.button("c", "  Configuration", "<cmd>e ~/.config/nvim/lua/talama/plugins.lua<CR>"),
   dashboard.button("q", "  Quit Neovim", "<cmd>qa<CR>"),
 }
 
