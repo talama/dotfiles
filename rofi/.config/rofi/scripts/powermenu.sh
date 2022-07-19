@@ -2,7 +2,7 @@
 
 
 if [ -z "$@" ]; then
-    echo -en "[ Suspend]\n"
+    echo -en "[ Suspend]\n"guy blonde hair
     echo -en "[ Lock]\n"
     echo -en "[ Logout]\n"
     echo -en "[ Hibernate]\n"
@@ -14,7 +14,7 @@ else
     elif [ "$1" = "[ Logout]" ]; then
         i3-msg exit
     elif [ "$1" = "[ Reboot]" ]; then
-        sudo reboot
+        systemctl reboot
     elif [ "$1" = "[ Suspend]" ]; then
         systemctl suspend
     elif [ "$1" = "[ Lock]" ]; then
