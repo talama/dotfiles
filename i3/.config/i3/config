@@ -312,6 +312,8 @@ exec_always --no-startup-id picom -b --experimental-backends --config  ~/.config
 #exec --no-startup-id dex -a -s /etc/xdg/autostart/:~/.config/autostart/
 exec --no-startup-id dex --autostart --environment i3
 
+# dunst
+exec --no-startup-id dunst -config ~/.config/dunst/dunstrc
 #networkmanager-applet
 # exec --no-startup-id nm-applet
 # exec --no-startup-id nm-tray
