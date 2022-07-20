@@ -106,6 +106,7 @@ return require("packer").startup(function(use)
 	})
 	use({ "rcarriga/nvim-notify" })
 	use({ "nvim-lualine/lualine.nvim", config = "require('talama.plugins.lualine')" })
+	use({ "ahmedkhalf/project.nvim", config = "require('talama.plugins.project')" })
 
 	-- Language and syntax
 	use({
