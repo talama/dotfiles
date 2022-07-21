@@ -46,11 +46,10 @@ return require("packer").startup(function(use)
 
 	-- Needed to load first
 	use({ "lewis6991/impatient.nvim" })
-	-- use { 'nathom/filetype.nvim' }
 	use({ "nvim-lua/plenary.nvim" })
 	use({ "kyazdani42/nvim-web-devicons" })
 	use({ "goolord/alpha-nvim", config = "require('talama.plugins.alpha')" })
-	use("antoinemadec/FixCursorHold.nvim")
+	use({ "antoinemadec/FixCursorHold.nvim" })
 
 	-- Colorschemes
 	use({ "ful1e5/onedark.nvim" })
@@ -60,7 +59,6 @@ return require("packer").startup(function(use)
 	use({ "nvim-treesitter/nvim-treesitter-textobjects", after = { "nvim-treesitter" } })
 
 	-- Telescope
-	use({ "nvim-telescope/telescope-media-files.nvim" })
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 	use({
 		"nvim-telescope/telescope.nvim",
@@ -80,7 +78,7 @@ return require("packer").startup(function(use)
 	use({ "williamboman/nvim-lsp-installer" })
 	use({ "neovim/nvim-lspconfig" })
 
-	-- LSP Cmp
+	-- Completion plugins
 	use({ "hrsh7th/nvim-cmp", event = "InsertEnter", config = "require('talama.plugins.cmp')" })
 	use({ "hrsh7th/cmp-nvim-lua", after = "nvim-cmp" })
 	use({ "hrsh7th/cmp-nvim-lsp", after = "cmp-nvim-lua" })
@@ -89,14 +87,14 @@ return require("packer").startup(function(use)
 	use({ "hrsh7th/cmp-cmdline", after = "cmp-path" })
 
 	-- LSP Addons
-	use({ "akinsho/nvim-toggleterm.lua", branch = "main", config = "require('talama.plugins.toggleterm')" })
 	use({ "jose-elias-alvarez/null-ls.nvim", config = "require('talama.lsp.null-ls')" })
-	use({ "RRethy/vim-illuminate", config = "require('talama.plugins.illuminate')" })
 	use({ "onsails/lspkind-nvim" }) -- adds vscode-like pictograms to neovim built-in lsp
 	use({ "folke/lsp-trouble.nvim", config = "require('talama.plugins.trouble')" })
 	use({ "nvim-lua/popup.nvim" })
 
 	-- General
+	use({ "akinsho/nvim-toggleterm.lua", branch = "main", config = "require('talama.plugins.toggleterm')" })
+	use({ "RRethy/vim-illuminate", config = "require('talama.plugins.illuminate')" })
 	use({ "numToStr/Comment.nvim", config = "require('talama.plugins.comment')" })
 	use({ "JoosepAlviste/nvim-ts-context-commentstring" })
 	use({
