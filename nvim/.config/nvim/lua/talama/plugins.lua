@@ -55,7 +55,7 @@ return require("packer").startup(function(use)
 	use({ "ful1e5/onedark.nvim" })
 
 	-- Treesitter
-	use({ "nvim-treesitter/nvim-treesitter", config = "require('talama.plugins.treesitter')" })
+	use({ "nvim-treesitter/nvim-treesitter", config = "require('talama.plugins.treesitter')", run = ":TSUpdate" })
 	use({ "nvim-treesitter/nvim-treesitter-textobjects", after = { "nvim-treesitter" } })
 
 	-- Telescope
