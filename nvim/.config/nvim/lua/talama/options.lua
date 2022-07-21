@@ -52,6 +52,7 @@ local globals = {
 	highlighturl_enabled = true, -- highlight URLs by default
 	mapleader = " ", --- Map leader key to SPC
 	speeddating_no_mappings = 1, --- Disable default mappings for speeddating
+	cursorhold_updatetime = 100,
 }
 
 vim.opt.shortmess:append("c")
