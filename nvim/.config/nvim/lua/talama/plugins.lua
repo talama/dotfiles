@@ -50,10 +50,13 @@ return require("packer").startup(function(use)
 
 	-- Lua functions
 	use({ "nvim-lua/plenary.nvim" })
+
 	-- Icons
 	use({ "kyazdani42/nvim-web-devicons" })
+
 	-- Start screen
 	use({ "goolord/alpha-nvim", config = "require('talama.plugins.alpha')" })
+
 	-- Cursorhold fix
 	use({ "antoinemadec/FixCursorHold.nvim", event = { "BufRead", "BufNewFile" } })
 
@@ -61,10 +64,14 @@ return require("packer").startup(function(use)
 	use({ "ful1e5/onedark.nvim" })
 
 	-- Treesitter
-	use({ "nvim-treesitter/nvim-treesitter", config = "require('talama.plugins.treesitter')", run = ":TSUpdate" })
+	use({
+		"nvim-treesitter/nvim-treesitter",
+		config = "require('talama.plugins.treesitter')",
+		run = ":TSUpdate",
+	})
 	use({ "nvim-treesitter/nvim-treesitter-textobjects", after = { "nvim-treesitter" } })
 
-	-- Telescope
+	-- Telescope fuzzy finder
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 	use({
 		"nvim-telescope/telescope.nvim",
@@ -80,55 +87,108 @@ return require("packer").startup(function(use)
 	--- Nvim-tree
 	use({ "kyazdani42/nvim-tree.lua", config = "require('talama.plugins.tree')" })
 
-	-- LSP Base
-	use({ "williamboman/nvim-lsp-installer" })
-	use({ "neovim/nvim-lspconfig" })
+	-- LSP manager
+	use({ "williamboman/nvim-lsp-installer", after = "nvim-lspconfig" })
 
-	-- Completion plugins
+	-- Built-in LSP
+	use({ "neovim/nvim-lspconfig", event = "VimEnter" })
+
+	-- Completion engine
 	use({ "hrsh7th/nvim-cmp", event = "InsertEnter", config = "require('talama.plugins.cmp')" })
+
+	-- Lua completion source
 	use({ "hrsh7th/cmp-nvim-lua", after = "nvim-cmp" })
+
+	-- Lsp completion source
 	use({ "hrsh7th/cmp-nvim-lsp", after = "cmp-nvim-lua" })
+
+	-- Buffer completion source
 	use({ "hrsh7th/cmp-buffer", after = "cmp-nvim-lsp" })
+
+	-- Path completion source
 	use({ "hrsh7th/cmp-path", after = "cmp-buffer" })
+
+	-- Command line completion source
 	use({ "hrsh7th/cmp-cmdline", after = "cmp-path" })
 
-	-- LSP Addons
+	-- Formatting and linting
 	use({ "jose-elias-alvarez/null-ls.nvim", config = "require('talama.lsp.null-ls')" })
-	use({ "onsails/lspkind-nvim" }) -- adds vscode-like pictograms to neovim built-in lsp
+
+	-- adds vscode-like pictograms to neovim built-in lsp
+	use({ "onsails/lspkind-nvim" })
+
+	-- Diagnostic
 	use({ "folke/lsp-trouble.nvim", config = "require('talama.plugins.trouble')" })
+
+	-- Popup API
 	use({ "nvim-lua/popup.nvim" })
 
-	-- General
+	-- Better buffer closing
 	use({ "famiu/bufdelete.nvim", cmd = { "Bdelete", "Bwipeout" } })
+
+	-- Terminal
 	use({ "akinsho/nvim-toggleterm.lua", branch = "main", config = "require('talama.plugins.toggleterm')" })
+
+	-- Highlight
 	use({ "RRethy/vim-illuminate", config = "require('talama.plugins.illuminate')" })
+
+	-- Commenting
 	use({ "numToStr/Comment.nvim", config = "require('talama.plugins.comment')" })
 	use({ "JoosepAlviste/nvim-ts-context-commentstring" })
+
+	-- Buffer Bar
 	use({
 		"romgrk/barbar.nvim",
 		requires = { "kyazdani42/nvim-web-devicons" },
 		config = "require('talama.plugins.barbar')",
 	})
+
+	-- Notification Enhancer
 	use({ "rcarriga/nvim-notify" })
+
+	-- Lua line
 	use({ "nvim-lualine/lualine.nvim", config = "require('talama.plugins.lualine')" })
+
+	-- Project manager for telescope
 	use({ "ahmedkhalf/project.nvim", config = "require('talama.plugins.project')" })
 
-	-- Language and syntax
+	-- Autopairs
 	use({
 		"windwp/nvim-autopairs",
 		after = { "nvim-treesitter", "nvim-cmp" },
 		config = "require('talama.plugins.autopairs')",
 	})
+
+	-- Autoclose tags
+	use({ "windwp/nvim-ts-autotag", after = { "nvim-treesitter" } })
+
+	-- Parenthesis highlighting
 	use({ "p00f/nvim-ts-rainbow", after = { "nvim-treesitter" } })
+
+	-- Indentation
 	use({ "lukas-reineke/indent-blankline.nvim", config = "require('talama.plugins.indent')" })
+
+	-- Display colors
 	use({ "NvChad/nvim-colorizer.lua", config = "require('talama.plugins.colorizer')" })
 
-	-- Snippets
-	use({ "saadparwaiz1/cmp_luasnip" })
+	-- -- Snippet completion source
+	use({ "saadparwaiz1/cmp_luasnip", after = "nvim-cmp" })
+
+	-- Snippets collection
 	use({ "rafamadriz/friendly-snippets" })
+
+	-- Snippets engine
 	use({ "L3MON4D3/LuaSnip", requires = { "rafamadriz/friendly-snippets" }, after = "cmp_luasnip" })
 
-	-- Git
+	-- Session manager
+	use({
+		"Shatur/neovim-session-manager",
+		cmd = "SessionManager",
+		event = "BufWritePost",
+		config = "require('talama.plugins.session_manager')",
+	})
+
+	-- Gitsigns
 	use({
 		"lewis6991/gitsigns.nvim",
 		requires = { "nvim-lua/plenary.nvim" },
@@ -137,6 +197,8 @@ return require("packer").startup(function(use)
 	})
 	use({ "sindrets/diffview.nvim", config = "require('talama.plugins.git.diffview')" })
 	use({ "akinsho/git-conflict.nvim", config = "require('talama.plugins.git.conflict')" })
+
+	-- lazygit
 	use({ "kdheepak/lazygit.nvim" })
 
 	-- Automatically set up your configuration after cloning packer.nvim
