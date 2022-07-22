@@ -45,10 +45,16 @@ return require("packer").startup(function(use)
 	use("wbthomason/packer.nvim")
 
 	-- Needed to load first
+	-- Optimiser
 	use({ "lewis6991/impatient.nvim" })
+
+	-- Lua functions
 	use({ "nvim-lua/plenary.nvim" })
+	-- Icons
 	use({ "kyazdani42/nvim-web-devicons" })
+	-- Start screen
 	use({ "goolord/alpha-nvim", config = "require('talama.plugins.alpha')" })
+	-- Cursorhold fix
 	use({ "antoinemadec/FixCursorHold.nvim", event = { "BufRead", "BufNewFile" } })
 
 	-- Colorschemes
@@ -93,6 +99,7 @@ return require("packer").startup(function(use)
 	use({ "nvim-lua/popup.nvim" })
 
 	-- General
+	use({ "famiu/bufdelete.nvim", cmd = { "Bdelete", "Bwipeout" } })
 	use({ "akinsho/nvim-toggleterm.lua", branch = "main", config = "require('talama.plugins.toggleterm')" })
 	use({ "RRethy/vim-illuminate", config = "require('talama.plugins.illuminate')" })
 	use({ "numToStr/Comment.nvim", config = "require('talama.plugins.comment')" })
