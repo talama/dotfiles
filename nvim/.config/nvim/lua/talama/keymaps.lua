@@ -30,7 +30,7 @@ vim.g.maplocalleader = " "
 
 -- Normal mode
 -- Reload configuration
-nmap("<leader>s", "<cmd>lua ReloadConfig()<CR>")
+nmap("<leader>rl", "<cmd>lua ReloadConfig()<CR>")
 
 -- Standard operations
 nmap("<leader>h", "<cmd>nohlsearch<cr>")
@@ -89,11 +89,6 @@ nmap("X", '"_X')
 vmap("x", '"_x')
 vmap("X", '"_X')
 
--- Quickfix
-nmap("]q", ":cprev<CR>")
-nmap("[q", ":cnext<CR>")
-nmap("<C-q>", ":call QuickFixToggle()<CR>")
-
 -- Insert Mode
 -- Press jk fast to enter
 imap("jk", "<ESC>")
@@ -123,8 +118,6 @@ vmap("<", "<gv")
 tmap("<C-s>", "<C-\\><C-n>")
 tmap("<Esc><Esc>", "<C-\\><C-n>")
 tmap("jk", "<C-\\><C-n>")
-
--- PLUGINS
 
 -- Packer
 nmap("<leader>ps", "<cmd>PackerSync<cr>")
@@ -164,7 +157,10 @@ nmap("<leader>pr", ":Telescope projects<CR>")
 nmap("<leader>fw", ":Telescope live_grep<CR>")
 
 -- Session Manager
-
+nmap("<leader>sl", "<cmd>SessionManager! load_last_session<cr>")
+nmap("<leader>ss", "<cmd>SessionManager! save_current_session<cr>")
+nmap("<leader>sd", "<cmd>SessionManager! delete_session<cr>")
+nmap("<leader>sf", "<cmd>SessionManager! load_session<cr>")
 
 -- Trouble
 nmap("<leader>t", ":TroubleToggle<cr>")
