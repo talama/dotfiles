@@ -28,12 +28,15 @@ map("", "<Space>", "<Nop>")
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- clear matches
-map("", "<leader>h", ":noh<cr>:call clearmatches()<cr>")
-
 -- Normal mode
 -- Reload configuration
 nmap("<leader>s", "<cmd>lua ReloadConfig()<CR>")
+
+-- Standard operations
+nmap("<leader>h", "<cmd>nohlsearch<cr>")
+nmap("<leader>w", "<cmd>w<cr>")
+nmap("<leader>q", "<cmd>q<cr>")
+nmap("<leader>fn", "<cmd>enew<cr>")
 
 -- Better window navigation
 nmap("<C-h>", "<C-w>h")
@@ -47,7 +50,7 @@ nmap("H", "^")
 -- Better buffer navigation
 nmap("<TAB>", ":bnext<cr>")
 nmap("<S-TAB>", ":bprevious<cr>")
-nmap("<S-q>", ":bd!<cr>") -- close buffer
+nmap("<S-q>", ":Bdelete<cr>") -- close buffer
 nmap("<S-b>", ":enew<cr>") -- new buffer
 
 -- Easy window split;
@@ -94,15 +97,13 @@ nmap("<C-q>", ":call QuickFixToggle()<CR>")
 -- Insert Mode
 -- Press jk fast to enter
 imap("jk", "<ESC>")
--- Save file with CTRL-S
-nmap("<C-s>", ":w<CR>")
-imap("<C-s>", "<ESC> :w<CR>")
 
 -- Move text up and down
 imap("<A-k>", "<Esc>:m .-2<CR>==gi")
 imap("<A-j>", "<Esc>:m .+1<CR>==gi")
 imap("<A-Up>", "<Esc>:m .-2<CR>==gi")
 imap("<A-Down>", "<Esc>:m .+1<CR>==gi")
+
 -- Visual Mode
 -- Move text up and down
 xmap("<A-k>", ":move '<-2<CR>gv-gv")
@@ -121,8 +122,21 @@ vmap("<", "<gv")
 -- ESC to go to normal mode in terminal
 tmap("<C-s>", "<C-\\><C-n>")
 tmap("<Esc><Esc>", "<C-\\><C-n>")
+tmap("jk", "<C-\\><C-n>")
 
 -- PLUGINS
+
+-- Packer
+nmap("<leader>ps", "<cmd>PackerSync<cr>")
+nmap("<leader>pu", "<cmd>PackerUpdate<cr>")
+
+-- Alpha
+nmap("<leader>d", "<cmd>Alpha<cr>")
+
+-- Nvim-Tree
+nmap("<C-e>", "<cmd>lua require'nvim-tree'.toggle()<CR>")
+nmap("<C-o>", "<cmd>lua require'nvim-tree'.focus()<CR>")
+
 -- LSP
 nmap("gD", "<cmd>lua vim.lsp.buf.declaration()<CR>")
 nmap("gd", "<cmd>lua vim.lsp.buf.definition()<CR>")
@@ -140,10 +154,14 @@ nmap("<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>")
 nmap("<leader>ld", '<cmd>lua vim.diagnostic.open_float({ border = "rounded", max_width = 100 })<CR>')
 
 -- Telescope
+nmap("<leader>fb", ":Telescope buffers<CR>")
 nmap("<leader>ff", ":Telescope find_files<CR>")
 nmap("<leader>fg", ":Telescope live_grep<CR>")
-nmap("<leader>fp", ":Telescope projects<CR>")
-nmap("<leader>fb", ":Telescope buffers<CR>")
+nmap("<leader>fh", ":Telescope find_files hidden=true no_ignore=true<CR>")
+nmap("<leader>fk", ":Telescope keymaps<CR>")
+nmap("<leader>fo", ":Telescope oldfiles<CR>")
+nmap("<leader>pr", ":Telescope projects<CR>")
+nmap("<leader>fw", ":Telescope live_grep<CR>")
 
 -- Trouble
 nmap("<leader>t", ":TroubleToggle<cr>")
