@@ -163,6 +163,9 @@ nmap("<leader>fo", ":Telescope oldfiles<CR>")
 nmap("<leader>pr", ":Telescope projects<CR>")
 nmap("<leader>fw", ":Telescope live_grep<CR>")
 
+-- Session Manager
+
+
 -- Trouble
 nmap("<leader>t", ":TroubleToggle<cr>")
 
