@@ -112,7 +112,7 @@ return require("packer").startup(function(use)
 	use({ "hrsh7th/cmp-cmdline", after = "cmp-path" })
 
 	-- Formatting and linting
-	use({ "jose-elias-alvarez/null-ls.nvim", config = "require('talama.lsp.null-ls')" })
+	use({ "jose-elias-alvarez/null-ls.nvim", config = "require('talama.plugins.lsp.null-ls')" })
 
 	-- adds vscode-like pictograms to neovim built-in lsp
 	use({ "onsails/lspkind-nvim" })
