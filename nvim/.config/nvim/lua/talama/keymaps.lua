@@ -111,7 +111,7 @@ vmap("p", '"_dP')
 
 -- Stay in indent mode
 vmap("<", "<gv")
-vmap("<", "<gv")
+vmap(">", ">gv")
 
 -- Terminal Mode
 -- ESC to go to normal mode in terminal
