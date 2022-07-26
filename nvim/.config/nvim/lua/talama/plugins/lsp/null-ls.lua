@@ -25,19 +25,19 @@ function M.enable_format_on_save(bufnr)
 		end,
 		group = group,
 	})
-	require("notify")("Enabled format on save", "info", { title = "LSP", timeout = 2000 })
 end
 
 function M.disable_format_on_save()
 	vim.api.nvim_del_augroup_by_name("LspFormatting")
-	require("notify")("Disabled format on save", "info", { title = "LSP", timeout = 2000 })
 end
 
 function M.toggle_format_on_save(bufnr)
 	if vim.fn.exists("#LspFormatting#BufWritePre") == 0 then
 		M.enable_format_on_save(bufnr)
+		require("notify")("Enabled format on save", "info", { title = "LSP", timeout = 2000 })
 	else
 		M.disable_format_on_save()
+		require("notify")("Disabled format on save", "info", { title = "LSP", timeout = 2000 })
 	end
 end
 
