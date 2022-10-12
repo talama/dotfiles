@@ -2,7 +2,7 @@
 
 
 if [ -z "$@" ]; then
-    echo -en "[ Suspend]\n"guy blonde hair
+    echo -en "[ Suspend]\n"
     echo -en "[ Lock]\n"
     echo -en "[ Logout]\n"
     echo -en "[ Hibernate]\n"
