@@ -89,6 +89,16 @@ nmap("X", '"_X')
 vmap("x", '"_x')
 vmap("X", '"_X')
 
+-- Increment/Decrement
+nmap("+", "<C-a>")
+nmap("-", "<C-x>")
+
+-- Delete a word backwards
+nmap("dw", 'vb"_d')
+
+-- Select All
+nmap("<C-a>", "gg<S-v>G")
+
 -- Insert Mode
 -- Press jk fast to enter
 imap("jk", "<ESC>")
