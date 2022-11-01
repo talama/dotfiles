@@ -47,6 +47,19 @@ return packer.startup(function(use)
   -- Packer can manage itself
 	use("wbthomason/packer.nvim")
 
+  -- Impatient to optimize nvim load time
+  use({ 'lewis6991/impatient.nvim' })
+
+  -- Lua functions
+  use({ 'nvim-lua/plenary.nvim' })
+
+  -- Icons
+  use({ 'kyazdani42/nvim-web-devicons' })
+
+  -- Colorschemes
+	use({ 'navarasu/onedark.nvim' })
+	use({ 'olimorris/onedarkpro.nvim' })
+
   -- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then
