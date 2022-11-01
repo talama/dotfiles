@@ -62,6 +62,13 @@ return packer.startup(function(use)
 
   -- Lualine
   use({ "nvim-lualine/lualine.nvim", config = "require('talama.plugins.lualine')", requires = { 'kyazdani42/nvim-web-devicons', opt = true } })
+
+  -- Treesitter
+  use({
+		"nvim-treesitter/nvim-treesitter",
+		config = "require('talama.plugins.treesitter')",
+		run = ":TSUpdate",
+	})
   
   -- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
