@@ -10,7 +10,7 @@ local options = {
 	encoding = "utf-8", --- The encoding displayed
 	errorbells = false, --- Disables sound effect for errors
 	expandtab = true, --- Use spaces instead of tabs
-        fileencoding = "utf-8", --- The encoding written to file
+  fileencoding = "utf-8", --- The encoding written to file
 	fillchars = { eob = " " }, -- Disable `~` on nonexistent lines
 	foldlevelstart = 99, --- Expand all folds by default
 	foldtext = "CustomFold()", --- Emit custom function for foldtext
@@ -22,12 +22,12 @@ local options = {
 	number = true, --- Shows current line number
 	pumheight = 10, --- Max num of items in completion menu
 	relativenumber = true, --- Enables relative number
-        scrolloff = 8, --- Always keep space when scrolling to bottom/top edge
+  scrolloff = 8, --- Always keep space when scrolling to bottom/top edge
 	shiftwidth = 2, --- The number of spaces inserted for each indentation 
 	showmode = false, --- Don't show things like -- INSERT -- anymore
 	showtabline = 2, --- Always show tabs
 	sidescrolloff = 8, --- Always keep space when scrolling to the side
-	signcolumn = "yes:2", --- Add extra sign column next to line number
+	signcolumn = "yes:1", --- Add extra sign column next to line number
 	smartcase = true, --- Handle case in search
 	smartindent = true, --- Makes indenting smart
 	smarttab = true, --- Makes tabbing smarter will realize you have 2 vs 4
@@ -44,6 +44,9 @@ local options = {
 	wrap = false, --- Display long lines as just one line
 	writebackup = false, --- Not needed
 }
+
+vim.opt.whichwrap:append("<,>,[,],h,l")         -- keys allowed to move to the previous/next line when the beginning/end of line is reached
+vim.opt.iskeyword:append("-")                   -- treats words with `-` as single words
 
 for k, v in pairs(options) do
 	vim.opt[k] = v
