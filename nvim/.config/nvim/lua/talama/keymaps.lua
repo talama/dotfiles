@@ -1,16 +1,24 @@
--- Shorten keymap function name
 local keymap = vim.keymap.set
 -- Silent keymap option
 local opts = { silent = true }
 
--- Normal Mode
+-- Function for normal mode
 local function nmap(shortcut, command)
   keymap("n", shortcut, command, opts)
 end
 
--- Insert Mode
+-- Function for insert mode
 local function imap(shortcut, command)
   keymap("i", shortcut, command, opts)
+end
+
+-- Functions for visual mode
+local function vmap(shortcut, command)
+  keymap("v", shortcut, command, options)
+end
+
+local function xmap(shortcut, command)
+  keymap("x", shortcut, command, options)
 end
 
 --Remap space as leader key
@@ -59,9 +67,18 @@ nmap("dw", 'vb"_d')
 nmap("<C-a>", "gg<S-v>G")
 
 --- INSERT MODE ---
+-- Press jk fast to enter
+imap("jk", "<ESC>")
+
 -- Go to the beginning and end of the line
 imap("<C-b>", "<ESC>^i")
 imap("<C-e>", "<END>")
+
+-- Move text up and down
+imap("<A-k>", "<Esc>:m .-2<CR>==gi")
+imap("<A-j>", "<Esc>:m .+1<CR>==gi")
+imap("<A-Up>", "<Esc>:m .-2<CR>==gi")
+imap("<A-Down>", "<Esc>:m .+1<CR>==gi")
 
 -- Navigate while in insert mode
 imap("<C-h>", "<Left>")
@@ -71,3 +88,21 @@ imap("<C-k>", "<Up>")
 
 -- Save while in insert mode
 imap("<C-s>", "<ESC> :w <CR>")
+
+--- VISUAL MODE ---
+-- Better paste
+vmap("p", '"_dP')
+
+-- Don't yank on delete char
+vmap("x", '"_x')
+vmap("X", '"_X')
+
+-- Stay in indent mode
+vmap("<", "<gv")
+vmap(">", ">gv")
+
+-- Move text up and down
+xmap("<A-k>", ":move '<-2<CR>gv-gv")
+xmap("<A-j>", ":move '>+1<CR>gv-gv")
+xmap("<A-Up>", ":move '<-2<CR>gv-gv")
+xmap("<A-Down>", ":move '>+1<CR>gv-gv")
