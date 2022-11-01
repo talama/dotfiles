@@ -48,18 +48,21 @@ return packer.startup(function(use)
 	use("wbthomason/packer.nvim")
 
   -- Impatient to optimize nvim load time
-  use({ 'lewis6991/impatient.nvim' })
+  use({ "lewis6991/impatient.nvim" })
 
   -- Lua functions
-  use({ 'nvim-lua/plenary.nvim' })
+  use({ "nvim-lua/plenary.nvim" })
 
   -- Icons
-  use({ 'kyazdani42/nvim-web-devicons' })
+  use({ "kyazdani42/nvim-web-devicons" })
 
   -- Colorschemes
-	use({ 'navarasu/onedark.nvim' })
-	use({ 'olimorris/onedarkpro.nvim' })
+	use({ "navarasu/onedark.nvim" })
+	use({ "olimorris/onedarkpro.nvim" })
 
+  -- Lualine
+  use({ "nvim-lualine/lualine.nvim", config = "require('talama.plugins.lualine')", requires = { 'kyazdani42/nvim-web-devicons', opt = true } })
+  
   -- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then
