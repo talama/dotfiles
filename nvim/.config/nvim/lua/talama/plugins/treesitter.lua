@@ -11,14 +11,15 @@ treesitter.setup({
   highlight = {
     enable = true, -- false will disable the whole extension
     disable = {""}, -- list of languages that will be disabled
+    additional_vim_regex_highlighting = true,
   },
   incremental_selection = {
-    enable = false,
+    enable = true,
     keymaps = {
-      init_selection = "<leader>gnn",
-      node_incremental = "<leader>gnr",
-      scope_incremental = "<leader>gne",
-      node_decremental = "<leader>gnt",
+      init_selection = "<CR>",
+      node_incremental = "<CR>",
+      scope_incremental = "<TAB>",
+      node_decremental = "<S-TAB>",
     }
   },
   autopairs = {
@@ -30,6 +31,8 @@ treesitter.setup({
   },
   rainbow = {
 		enable = true,
+    extended = true, -- Highlight also non parentheses delimiters
+    max_file_lines = 1000,
 	},
   context_commentstring = {
 		enable = true,
