@@ -12,6 +12,15 @@ treesitter.setup({
     enable = true, -- false will disable the whole extension
     disable = {""}, -- list of languages that will be disabled
   },
+  incremental_selection = {
+    enable = false,
+    keymaps = {
+      init_selection = "<leader>gnn",
+      node_incremental = "<leader>gnr",
+      scope_incremental = "<leader>gne",
+      node_decremental = "<leader>gnt",
+    }
+  },
   autopairs = {
 		enable = true,
 	},
