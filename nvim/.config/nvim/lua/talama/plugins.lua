@@ -70,6 +70,13 @@ return packer.startup(function(use)
 		run = ":TSUpdate",
 	})
 
+  -- Telescope
+  use ({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
+  use ({ "nvim-telescope/telescope-ui-select.nvim" })
+  use ({ "nvim-lua/popup.nvim" })
+  use ({ "nvim-telescope/telescope.nvim", config = "require('talama.plugins.telescope')", requires = { { "nvim-lua/plenary.nvim" },
+			{ "nvim-telescope/telescope-fzf-native.nvim" }, } })
+
   -- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then
