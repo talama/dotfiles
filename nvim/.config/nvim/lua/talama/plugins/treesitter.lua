@@ -1,5 +1,5 @@
 local ok, treesitter = pcall(require, 'nvim-treesitter.configs')
-if not ok then 
+if not ok then
   return
 end
 
@@ -25,9 +25,9 @@ treesitter.setup({
   autopairs = {
 		enable = true,
 	},
-	indent = { 
-    enable = true, 
-    disable = {""} 
+	indent = {
+    enable = true,
+    disable = {""}
   },
   rainbow = {
 		enable = true,
