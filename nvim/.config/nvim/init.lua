@@ -7,4 +7,5 @@ else
   require "talama.keymaps"
   require "talama.plugins"
   require "talama.colorscheme"
+  require "talama.plugins.lsp"
 end

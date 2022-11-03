@@ -45,37 +45,43 @@ packer.init {
 return packer.startup(function(use) 
   -- PLUGINS
   -- Packer can manage itself
-	use("wbthomason/packer.nvim")
+	use{"wbthomason/packer.nvim"}
 
   -- Impatient to optimize nvim load time
-  use({ "lewis6991/impatient.nvim" })
+  use{ "lewis6991/impatient.nvim" }
 
   -- Lua functions
-  use({ "nvim-lua/plenary.nvim" })
+  use{ "nvim-lua/plenary.nvim" }
 
   -- Icons
-  use({ "kyazdani42/nvim-web-devicons" })
+  use{ "kyazdani42/nvim-web-devicons" }
 
   -- Colorschemes
-	use({ "navarasu/onedark.nvim" })
-	use({ "olimorris/onedarkpro.nvim" })
+	use{ "navarasu/onedark.nvim" }
+	use{ "olimorris/onedarkpro.nvim" }
 
   -- Lualine
-  use({ "nvim-lualine/lualine.nvim", config = "require('talama.plugins.lualine')", requires = { 'kyazdani42/nvim-web-devicons', opt = true } })
+  use{ "nvim-lualine/lualine.nvim", config = "require('talama.plugins.lualine')", requires = { 'kyazdani42/nvim-web-devicons', opt = true } }
 
   -- Treesitter
-  use({
+  use{
 		"nvim-treesitter/nvim-treesitter",
 		config = "require('talama.plugins.treesitter')",
 		run = ":TSUpdate",
-	})
+	}
 
   -- Telescope
-  use ({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
-  use ({ "nvim-telescope/telescope-ui-select.nvim" })
-  use ({ "nvim-lua/popup.nvim" })
-  use ({ "nvim-telescope/telescope.nvim", config = "require('talama.plugins.telescope')", requires = { { "nvim-lua/plenary.nvim" },
-			{ "nvim-telescope/telescope-fzf-native.nvim" }, } })
+  use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
+  use { "nvim-telescope/telescope-ui-select.nvim" }
+  use { "nvim-lua/popup.nvim" }
+  use { "nvim-telescope/telescope.nvim", config = "require('talama.plugins.telescope')", requires = { { "nvim-lua/plenary.nvim" },
+			{ "nvim-telescope/telescope-fzf-native.nvim" }, } }
+
+  -- LSP
+  use { "neovim/nvim-lspconfig" }
+  use { "williamboman/mason.nvim" }
+  use { "williamboman/mason-lspconfig.nvim" }
+
 
   -- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
