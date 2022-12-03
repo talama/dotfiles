@@ -114,6 +114,32 @@ return packer.startup(function(use)
 	use({ "onsails/lspkind-nvim" }) -- Adds vscode-like pictograms to neovim built-in lsp
 	use({ "folke/lsp-trouble.nvim", config = "require('talama.plugins.trouble')" }) -- Diagnostic
 
+	--- Nvim-tree
+	use({ "kyazdani42/nvim-tree.lua", config = "require('talama.plugins.tree')" })
+
+	-- Buffer Bar
+	use({
+		"romgrk/barbar.nvim",
+		requires = { "kyazdani42/nvim-web-devicons" },
+		config = "require('talama.plugins.barbar')",
+	})
+
+	-- Autopairs
+	use({
+		"windwp/nvim-autopairs",
+		after = { "nvim-treesitter", "nvim-cmp" },
+		config = "require('talama.plugins.autopairs')",
+	})
+
+	-- Autoclose tags
+	use({ "windwp/nvim-ts-autotag", after = { "nvim-treesitter" } })
+
+	-- Parenthesis highlighting
+	use({ "p00f/nvim-ts-rainbow", after = { "nvim-treesitter" } })
+
+	-- Indentation
+	use({ "lukas-reineke/indent-blankline.nvim", config = "require('talama.plugins.indent')" })
+
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then
