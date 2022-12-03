@@ -92,7 +92,7 @@ return packer.startup(function(use)
 	use({ "williamboman/mason.nvim" })
 	use({ "williamboman/mason-lspconfig.nvim" })
 
-	-- LSP CMP
+	-- CMP
 	use({ "hrsh7th/nvim-cmp", config = "require('talama.plugins.cmp') " })
 	use({ "hrsh7th/cmp-nvim-lua", after = "nvim-cmp" })
 	use({ "hrsh7th/cmp-nvim-lsp", after = "cmp-nvim-lua" })
@@ -100,6 +100,13 @@ return packer.startup(function(use)
 	use({ "hrsh7th/cmp-path", after = "cmp-buffer" })
 	use({ "hrsh7th/cmp-cmdline", after = "cmp-path" })
 	use({ "hrsh7th/cmp-calc", after = "cmp-cmdline" })
+
+	-- Snippets
+	use({ "saadparwaiz1/cmp_luasnip", after = "nvim-cmp" })
+	-- Snippets collection
+	use({ "rafamadriz/friendly-snippets" })
+	-- Snippets engine
+	use({ "L3MON4D3/LuaSnip", requires = { "rafamadriz/friendly-snippets" }, after = "cmp_luasnip" })
 
 	-- LSP Addons
 	use({ "jose-elias-alvarez/typescript.nvim" })
