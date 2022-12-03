@@ -1,36 +1,43 @@
-local ok, mason = pcall(require, "mason")
-if not ok then
-  return
+-- Setup installer & lsp configs
+local typescript_ok, typescript = pcall(require, "typescript")
+local mason_ok, mason = pcall(require, "mason")
+local mason_lsp_ok, mason_lsp = pcall(require, "mason-lspconfig")
+local cmp_ok, cmp_lsp = pcall(require, "cmp_nvim_lsp")
+
+if not mason_ok or not mason_lsp_ok or not cmp_ok then
+	return
 end
 
---- Servers to install automatically
 local servers = {
-  "sumneko_lua",
-  "eslint",
-  "emmet_ls",
-  "cssls",
-  "html",
-  "tsserver",
-  "pyright",
-  "bashls",
-  "jsonls",
+	"sumneko_lua",
+	"cssls",
+	"html",
+	"tsserver",
+	"pyright",
+	"bashls",
+	"jsonls",
+	"eslint",
+	"emmet_ls",
 }
 
 mason.setup({
-  ui = {
-    border = "rounded",
-    icons = {
-      package_installed = "✓",
-      package_pending = "➜",
-      package_uninstalled = "✗"
-    }
-  }
+	ui = {
+		-- The border to use for the UI window. Accepts same border values as |nvim_open_win()|.
+		border = "rounded",
+		icons = {
+			package_installed = "✓",
+			package_pending = "➜",
+			package_uninstalled = "✗",
+		},
+	},
 })
 
-require("mason-lspconfig").setup({
-  ensure_installed = servers,
-  automatic_installation = true,
+mason_lsp.setup({
+	ensure_installed = servers,
+	automatic_installation = true,
 })
+
+local lspconfig = require("lspconfig")
 
 -- Configure diagnostic
 local signs = {
@@ -43,90 +50,74 @@ for _, sign in ipairs(signs) do
 	vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
 end
 
-vim.diagnostic.config({
-	virtual_text = true,
-	signs = { active = signs },
-	update_in_insert = false,
-	underline = true,
-	severity_sort = true,
-	float = {
-		focusable = false,
-		style = "minimal",
-		border = "rounded",
-		source = "always",
-		header = "",
-		prefix = "",
-	},
-})
+local handlers = {
+	["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" }),
+	["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" }),
+	["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+		signs = true,
+		underline = false,
+		update_in_insert = false,
+		severity_sort = true,
+		virtual_text = { spacing = 2 },
+	}),
+}
 
--- Handlers
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-	border = "rounded",
-})
-
-vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-	border = "rounded",
-})
-
--- Servers capabilities
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-
--- Lsp keymaps
-local function lsp_keymaps(bufnr)
-  local opts = { noremap = true, silent = true }
-  -- shorten function name
-  local keymap = vim.api.nvim_buf_set_keymap
-  local function map(shortcut, command)
-    keymap(bufnr, "n", shortcut, command, opts)
-  end
-  -- mappings
-  map("gD", "<cmd>lua vim.lsp.buf.declaration()<CR>")
-  map("gd", "<cmd>lua vim.lsp.buf.definition()<CR>")
-  map("K", "<cmd>lua vim.lsp.buf.hover()<CR>")
-  map("gi", "<cmd>lua vim.lsp.buf.implementation()<CR>")
-  map("gr", "<cmd>lua vim.lsp.buf.references()<CR>")
-  map("dg", "<cmd>lua vim.diagnostic.open_float()<CR>")
-  map("<leader>dj", "<cmd>lua vim.diagnostic.goto_next()<CR>")
-  map("<leader>dk", "<cmd>lua vim.diagnostic.goto_prev()<CR>")
-  map("<leader>dq", "<cmd>lua vim.diagnostic.setloclist()<CR>")
-  map("<leader>bf", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>")
-  map("<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<cr>")
-  map("<leader>br", "<cmd>lua vim.lsp.buf.rename()<cr>")
-  map("<leader>bs", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
+local function on_attach(client, bufnr)
+	-- set up buffer keymaps, etc.
 end
 
--- General on_attach
-local on_attach = function(client, bufnr)
-  client.server_capabilities.documentFormattingProvider = false
-  client.server_capabilities.documentRangeFormattingProvider = false
-  lsp_keymaps(bufnr)
-  local ill_ok, illuminate = pcall(require, "illuminate")
-  if not ill_ok then
-    return
-  end
-  illuminate.on_attach(client)
+local capabilities = cmp_lsp.default_capabilities()
+
+capabilities.textDocument.foldingRange = {
+	dynamicRegistration = false,
+	lineFoldingOnly = true,
+}
+
+if typescript_ok then
+	typescript.setup({
+		disable_commands = false, -- prevent the plugin from creating Vim commands
+		debug = false, -- enable debug logging for commands
+		-- LSP Config options
+		server = {
+			capabilities = require("talama.plugins.lsp.servers.tsserver").capabilities,
+			handlers = handlers,
+			on_attach = require("talama.plugins.lsp.servers.tsserver").on_attach,
+		},
+	})
 end
 
--- LSP config
-local lsp_ok, lspconfig = pcall(require, "lspconfig")
-if not lsp_ok then
-  return
-end
+lspconfig.eslint.setup({
+	capabilities = capabilities,
+	handlers = handlers,
+	on_attach = require("talama.plugins.lsp.servers.eslint").on_attach,
+	settings = require("talama.plugins.lsp.servers.eslint").settings,
+})
 
-local default_opts = {}
+lspconfig.sumneko_lua.setup({
+	capabilities = capabilities,
+	handlers = handlers,
+	on_attach = on_attach,
+	settings = require("talama.plugins.lsp.servers.sumneko_lua").settings,
+})
 
--- Configure the installed servers
-for _, server in pairs(servers) do
-  default_opts = {
-    on_attach = on_attach,
-    capabilities = capabilities,
-  }
-  server = vim.split(server, "@")[1]
-  -- check if special options for the current server exists and add it to default options
-  local options_exist, special_opts = pcall(require, "talama.plugins.lsp.servers." .. server)
-  if options_exist then
-    default_opts = vim.tbl_deep_extend("force", special_opts, default_opts)
-  end
-  lspconfig[server].setup(default_opts)
+lspconfig.cssls.setup({
+	capabilities = capabilities,
+	handlers = handlers,
+	on_attach = require("talama.plugins.lsp.servers.cssls").on_attach,
+	settings = require("talama.plugins.lsp.servers.cssls").settings,
+})
+
+lspconfig.jsonls.setup({
+	capabilities = capabilities,
+	handlers = handlers,
+	on_attach = on_attach,
+	settings = require("talama.plugins.lsp.servers.jsonls").settings,
+})
+
+for _, server in ipairs({ "bashls", "emmet_ls", "html", "pyright" }) do
+	lspconfig[server].setup({
+		on_attach = on_attach,
+		capabilities = capabilities,
+		handlers = handlers,
+	})
 end
