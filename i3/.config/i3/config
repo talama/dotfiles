@@ -296,7 +296,7 @@ exec brave-browser; exec discord; exec brave-browser; exec kitty; '"
 # compositor #
 ##############
 
-exec_always --no-startup-id picom -b --experimental-backends --config  ~/.config/picom/picom.conf
+exec_always --no-startup-id picom -b --config  ~/.config/picom/picom.conf
 
 #############################################
 # autostart applications/services on login: #
