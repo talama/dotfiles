@@ -25,9 +25,9 @@ vim.cmd([[
 
 -- Use a protected call so we don't error out on first use
 local status_ok, packer = pcall(require, "packer")
-	autotag = {
-		enable = true,
-	
+if not status_ok then
+	return
+end
 
 -- Have packer use a popup window
 packer.init({
@@ -55,6 +55,9 @@ return packer.startup(function(use)
 
 	-- Icons
 	use({ "kyazdani42/nvim-web-devicons" })
+
+	-- Start screen
+	use({ "goolord/alpha-nvim", config = "require('talama.plugins.alpha')" })
 
 	-- Colorschemes
 	use({ "navarasu/onedark.nvim" })
