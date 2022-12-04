@@ -4,28 +4,28 @@ local opts = { silent = true }
 
 -- Function for normal mode
 local function nmap(shortcut, command)
-  keymap("n", shortcut, command, opts)
+	keymap("n", shortcut, command, opts)
 end
 
 -- Function for insert mode
 local function imap(shortcut, command)
-  keymap("i", shortcut, command, opts)
+	keymap("i", shortcut, command, opts)
 end
 
 -- Functions for visual mode
 local function vmap(shortcut, command)
-  keymap("v", shortcut, command, options)
+	keymap("v", shortcut, command, opts)
 end
 
 local function xmap(shortcut, command)
-  keymap("x", shortcut, command, options)
+	keymap("x", shortcut, command, opts)
 end
 
 --Remap space as leader key
 keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 
--- NORMAL MODE --- 
+-- NORMAL MODE ---
 -- Window navigation
 nmap("<C-h>", "<C-w>h")
 nmap("<C-j>", "<C-w>j")
@@ -116,4 +116,3 @@ nmap("<leader>fb", "<cmd> Telescope buffers <CR>")
 nmap("<leader>fh", "<cmd> Telescope help_tags <CR>")
 nmap("<leader>fo", "<cmd> Telescope oldfiles <CR>")
 nmap("<leader>fk", "<cmd> Telescope keymaps <CR>")
-
