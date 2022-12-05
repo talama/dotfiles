@@ -146,6 +146,9 @@ return packer.startup(function(use)
 	-- Terminal
 	use({ "akinsho/nvim-toggleterm.lua", branch = "main", config = "require('talama.plugins.toggleterm')" })
 
+	-- Better buffer closing
+	use({ "famiu/bufdelete.nvim", cmd = { "Bdelete", "Bwipeout" } })
+
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then
