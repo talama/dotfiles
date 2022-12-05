@@ -58,7 +58,7 @@ local handlers = {
 		underline = false,
 		update_in_insert = false,
 		severity_sort = true,
-		virtual_text = { spacing = 2 },
+		virtual_text = false,
 	}),
 }
 
