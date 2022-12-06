@@ -152,6 +152,10 @@ return packer.startup(function(use)
 	-- Highlight other use of word under the cursor.
 	use({ "RRethy/vim-illuminate", config = "require('talama.plugins.illuminate')" })
 
+	-- Comments
+	use({ "numToStr/Comment.nvim", config = "require('talama.plugins.comment')" })
+	use({ "JoosepAlviste/nvim-ts-context-commentstring", after = "nvim-treesitter" })
+
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then
