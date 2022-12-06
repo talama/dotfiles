@@ -62,6 +62,7 @@ return packer.startup(function(use)
 	-- Colorschemes
 	use({ "navarasu/onedark.nvim" })
 	use({ "olimorris/onedarkpro.nvim" })
+	use({ "lunarvim/darkplus.nvim" })
 
 	-- Lualine
 	use({
