@@ -29,13 +29,13 @@ workspace_layout default
 ##############################
 
 #border indicator on windows:
-default_border pixel 4
-default_floating_border pixel 4
+default_border pixel 2
+default_floating_border pixel 2
 # thin borders
 # hide_edge_borders smart
 
 # Set inner/outer gaps
-gaps inner 10
+gaps inner 5
 gaps outer 3
 
 # show window title bars (not officially supported with i3gaps)

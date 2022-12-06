@@ -36,7 +36,7 @@ nmap("<C-l>", "<C-w>l")
 nmap("<TAB>", ":bnext<CR>")
 nmap("<S-TAB>", ":bprevious<CR>")
 nmap("<C-n>", ":enew<CR>")
-nmap("<C-q>", "<cmd>Bdelete!<CR>")
+nmap("<C-q>", "<cmd>Bdelete<CR>")
 
 -- Save
 nmap("<C-s>", "<cmd>w<CR>")
