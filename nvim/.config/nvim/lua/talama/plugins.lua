@@ -80,6 +80,12 @@ return packer.startup(function(use)
 		config = "require('talama.plugins.treesitter')",
 		run = ":TSUpdate",
 	})
+	use({ "nvim-treesitter/playground" })
+	use({
+		"m-demare/hlargs.nvim",
+		config = "require('talama.plugins.hlargs')",
+		requires = { "nvim-treesitter/nvim-treesitter" },
+	}) -- highlight parameters inside function body
 
 	-- Telescope
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })

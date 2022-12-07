@@ -66,6 +66,9 @@ nmap("dw", 'vb"_d')
 -- Select All
 nmap("<C-a>", "gg<S-v>G")
 
+-- show treesitter highlight grp under cursor
+nmap("<C-t>", "<cmd> :TSHighlightCapturesUnderCursor <CR>")
+
 --- INSERT MODE ---
 -- Press jk fast to enter
 imap("jk", "<ESC>")

@@ -7,9 +7,21 @@ if colorscheme == "onedark" then
 	require("onedark").load()
 elseif colorscheme == "onedarkpro" then
 	require("onedarkpro").setup({
-		theme = "onedark_vivid",
+		theme = "onedark",
 		highlights = {
+			Hlargs = { fg = "${red}" },
+			SpecialComment = { fg = "${orange}" },
+			NvimTreeFolderIcon = { fg = "${blue}" },
+			NvimTreeFolderName = { fg = "${blue}" },
+			NvimTreeOpenedFolderName = { fg = "${blue}" },
+			NvimTreeRootFolder = { fg = "${orange}" },
+			NvimTreeJsonIcon = { fg = "${yellow}" },
+			NvimTreeVimIcon = { fg = "${white}" },
+			NvimTreeTextIcon = { fg = "${white}" },
 			["@variable.javascript"] = { fg = "${yellow}" },
+			["@parameter.javascript"] = { fg = "${red}", style = "italic" },
+			["@parameter.reference.javascript"] = { fg = "${red}", style = "italic" },
+			["@property"] = { fg = "${red}" },
 		},
 		styles = {
 			types = "NONE",
@@ -25,7 +37,6 @@ elseif colorscheme == "onedarkpro" then
 			virtual_text = "NONE",
 		},
 		options = {
-			bold = false,
 			cursorline = true,
 			transparency = true,
 		},
