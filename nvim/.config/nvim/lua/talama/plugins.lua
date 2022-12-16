@@ -60,9 +60,8 @@ return packer.startup(function(use)
 	use({ "goolord/alpha-nvim", config = "require('talama.plugins.alpha')" })
 
 	-- Colorschemes
-	use({ "navarasu/onedark.nvim" })
 	use({ "olimorris/onedarkpro.nvim" })
-	use({ "lunarvim/darkplus.nvim" })
+	use({ "catppuccin/nvim", as = "catppuccin" })
 
 	-- Lualine
 	use({
