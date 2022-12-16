@@ -20,9 +20,9 @@ toggleterm.setup({
 		Normal = {
 			link = "Normal",
 		},
-		NormalFloat = {
-			link = "Normal",
-		},
+		-- NormalFloat = {
+		-- 	link = "Normal",
+		-- },
 		FloatBorder = {
 			-- guifg = <VALUE-HERE>,
 			-- guibg = <VALUE-HERE>,
@@ -35,7 +35,7 @@ toggleterm.setup({
 	start_in_insert = true,
 	insert_mappings = true, -- whether or not the open mapping applies in insert mode
 	persist_size = true,
-	direction = "horizontal", -- | 'horizontal' | 'window' | 'float',
+	direction = "float", -- | 'horizontal' | 'window' | 'float',
 	close_on_exit = true, -- close the terminal window when the process exits
 	shell = vim.o.shell, -- change the default shell
 	-- This field is only relevant if direction is set to 'float'
@@ -45,9 +45,9 @@ toggleterm.setup({
 		-- the 'curved' border is a custom border type
 		-- not natively supported but implemented in this plugin.
 		border = "curved", -- single/double/shadow/curved
-		width = math.floor(0.7 * vim.fn.winwidth(0)),
+		width = math.floor(0.8 * vim.fn.winwidth(0)),
 		height = math.floor(0.8 * vim.fn.winheight(0)),
-		winblend = 4,
+		winblend = 0,
 	},
 	winbar = {
 		enabled = true,
@@ -57,10 +57,23 @@ toggleterm.setup({
 function _G.set_terminal_keymaps()
 	local opts = { noremap = true }
 	-- vim.api.nvim_buf_set_keymap(0, 't', '<esc>', [[<C-\><C-n>]], opts)
+	vim.api.nvim_buf_set_keymap(0, "t", "jk", [[<C-\><C-n>]], opts)
 	vim.api.nvim_buf_set_keymap(0, "t", "<C-h>", [[<C-\><C-n><C-W>h]], opts)
 	vim.api.nvim_buf_set_keymap(0, "t", "<C-j>", [[<C-\><C-n><C-W>j]], opts)
 	vim.api.nvim_buf_set_keymap(0, "t", "<C-k>", [[<C-\><C-n><C-W>k]], opts)
 	vim.api.nvim_buf_set_keymap(0, "t", "<C-l>", [[<C-\><C-n><C-W>l]], opts)
 end
 
-vim.cmd("autocmd! TermOpen term://*toggleterm#* lua set_terminal_keymaps()")
+vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
+
+local Terminal = require("toggleterm.terminal").Terminal
+
+local lazygit = Terminal:new({ cmd = "lazygit", hidden = true })
+function _LAZYGIT_TOGGLE()
+	lazygit:toggle()
+end
+
+local node = Terminal:new({ cmd = "node", hidden = "true" })
+function _NODE_TOGGLE()
+	node:toggle()
+end
