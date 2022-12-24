@@ -70,6 +70,16 @@ return packer.startup(function(use)
 		requires = { { "nvim-lua/plenary.nvim" }, { "nvim-telescope/telescope-fzf-native.nvim" } },
 	})
 
+  	-- Treesitter
+	use({
+		"nvim-treesitter/nvim-treesitter",
+		config = "require('talama.plugins.treesitter')",
+		run = ":TSUpdate",
+	})
+	use({ "nvim-treesitter/playground" })
+  -- Additional text objects via treesitter
+  use { 'nvim-treesitter/nvim-treesitter-textobjects', after = 'nvim-treesitter', }
+
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then
