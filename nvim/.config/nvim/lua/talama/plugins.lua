@@ -79,6 +79,10 @@ return packer.startup(function(use)
 	use({ "nvim-treesitter/playground" })
   -- Additional text objects via treesitter
   use { 'nvim-treesitter/nvim-treesitter-textobjects', after = 'nvim-treesitter', }
+  use({ "m-demare/hlargs.nvim",
+		config = "require('talama.plugins.hlargs')",
+		requires = { "nvim-treesitter/nvim-treesitter" },
+	}) -- highlight parameters inside function body
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
