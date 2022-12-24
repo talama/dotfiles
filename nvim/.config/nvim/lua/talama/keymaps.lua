@@ -107,7 +107,7 @@ xmap("<A-Down>", ":move '>+1<CR>gv-gv")
 --- PLUGINS ---
 -- Telescope
 nmap("<leader>ff", "<cmd> Telescope find_files <CR>")
-nmap("<leader>gf, "<cmd> Telescope git_fils <CR>")
+nmap("<leader>gf", "<cmd> Telescope git_files <CR>")
 nmap("<leader>fa", "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>")
 nmap("<leader>fw", "<cmd> Telescope live_grep <CR>")
 nmap("<leader>fb", "<cmd> Telescope buffers <CR>")
