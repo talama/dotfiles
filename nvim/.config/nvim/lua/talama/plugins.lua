@@ -56,6 +56,10 @@ return packer.startup(function(use)
 	-- Icons
 	use({ "kyazdani42/nvim-web-devicons" })
 
+  -- Colorschemes
+	use({ "olimorris/onedarkpro.nvim" })
+	use({ "catppuccin/nvim", as = "catppuccin" })
+
 		-- Telescope
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 	use({ "nvim-telescope/telescope-ui-select.nvim" })
