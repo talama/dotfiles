@@ -56,6 +56,9 @@ return packer.startup(function(use)
 	-- Icons
 	use({ "kyazdani42/nvim-web-devicons" })
 
+	-- Start screen
+	use({ "goolord/alpha-nvim", config = "require('talama.plugins.alpha')" })
+
 	-- Colorschemes
 	use({ "olimorris/onedarkpro.nvim" })
 	use({ "catppuccin/nvim", as = "catppuccin" })
