@@ -138,6 +138,9 @@ return packer.startup(function(use)
 	-- Indentation
 	use({ "lukas-reineke/indent-blankline.nvim", config = "require('talama.plugins.indent')" })
 
+	-- Terminal
+	use({ "akinsho/nvim-toggleterm.lua", branch = "main", config = "require('talama.plugins.toggleterm')" })
+
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then
