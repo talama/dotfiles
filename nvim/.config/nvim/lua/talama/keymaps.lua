@@ -32,6 +32,12 @@ nmap("<C-j>", "<C-w>j")
 nmap("<C-k>", "<C-w>k")
 nmap("<C-l>", "<C-w>l")
 
+-- Resize with arrows
+nmap("<C-Up>", ":resize -2<CR>")
+nmap("<C-Down>", ":resize +2<CR>")
+nmap("<C-Left>", ":vertical resize -2<CR>")
+nmap("<C-Right>", ":vertical resize +2<CR>")
+
 -- Buffers Navigation
 nmap("<TAB>", ":bnext<CR>")
 nmap("<S-TAB>", ":bprevious<CR>")
