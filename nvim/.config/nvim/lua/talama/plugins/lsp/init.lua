@@ -93,6 +93,12 @@ lsp.on_attach(
     vim.keymap.set('n', '<leader>lr', vim.lsp.buf.rename, opts)
     vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format, opts)
     vim.keymap.set('n', '<C-h>', vim.lsp.buf.signature_help, opts)
+
+    local status_ok, illuminate = pcall(require, "illuminate")
+	  if not status_ok then
+		  return
+	  end
+	  illuminate.on_attach(client)
   end)
 
 lsp.setup()

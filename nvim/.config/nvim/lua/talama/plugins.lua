@@ -122,6 +122,9 @@ return packer.startup(function(use)
 		requires = { "kyazdani42/nvim-web-devicons", opt = true },
 	})
 
+	-- Highlight other use of word under the cursor.
+	use({ "RRethy/vim-illuminate", config = "require('talama.plugins.illuminate')" })
+
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then
