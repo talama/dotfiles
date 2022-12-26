@@ -125,6 +125,13 @@ return packer.startup(function(use)
 	-- Highlight other use of word under the cursor.
 	use({ "RRethy/vim-illuminate", config = "require('talama.plugins.illuminate')" })
 
+	-- Autopairs
+	use({
+		"windwp/nvim-autopairs",
+		after = { "nvim-treesitter", "nvim-cmp" },
+		config = "require('talama.plugins.autopairs')",
+	})
+
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then
