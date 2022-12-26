@@ -117,3 +117,6 @@ nmap("<leader>fk", "<cmd> Telescope keymaps <CR>")
 
 -- Trouble
 nmap("<C-t>", "<cmd> TroubleToggle <CR>")
+
+-- Nvim-tree
+nmap("<leader>e", ":NvimTreeToggle<CR>")

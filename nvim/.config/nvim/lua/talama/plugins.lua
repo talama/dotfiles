@@ -115,7 +115,6 @@ return packer.startup(function(use)
 	})
 	-- Null-ls for linting/formatting
 	use({ "jose-elias-alvarez/null-ls.nvim", config = "require('talama.plugins.lsp.null-ls')" })
-	use({ "onsails/lspkind-nvim" }) -- Adds vscode-like pictograms to neovim built-in lsp
 	use({ "folke/lsp-trouble.nvim", config = "require('talama.plugins.trouble')" }) -- Diagnostic
 
 	-- Lualine
@@ -143,6 +142,15 @@ return packer.startup(function(use)
 
 	-- Terminal
 	use({ "akinsho/nvim-toggleterm.lua", branch = "main", config = "require('talama.plugins.toggleterm')" })
+
+	-- Bufferline
+	use({ "akinsho/bufferline.nvim", tag = "v3.*", requires = "nvim-tree/nvim-web-devicons", config = "require('talama.plugins.bufferline')" })
+
+	--- Nvim-tree
+	use({ "kyazdani42/nvim-tree.lua", config = "require('talama.plugins.tree')" })
+
+	-- Better buffer closing
+	use({ "famiu/bufdelete.nvim", cmd = { "Bdelete", "Bwipeout" } })
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
