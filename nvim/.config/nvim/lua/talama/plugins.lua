@@ -144,13 +144,21 @@ return packer.startup(function(use)
 	use({ "akinsho/nvim-toggleterm.lua", branch = "main", config = "require('talama.plugins.toggleterm')" })
 
 	-- Bufferline
-	use({ "akinsho/bufferline.nvim", tag = "v3.*", requires = "nvim-tree/nvim-web-devicons", config = "require('talama.plugins.bufferline')" })
+	use({
+		"akinsho/bufferline.nvim",
+		tag = "v3.*",
+		requires = "nvim-tree/nvim-web-devicons",
+		config = "require('talama.plugins.bufferline')",
+	})
 
 	--- Nvim-tree
-	use({ "kyazdani42/nvim-tree.lua", config = "require('talama.plugins.tree')" })
+	use({ "kyazdani42/nvim-tree.lua", config = "require('talama.plugins.nvim-tree')" })
 
 	-- Better buffer closing
 	use({ "famiu/bufdelete.nvim", cmd = { "Bdelete", "Bwipeout" } })
+
+	-- Comments
+	use({ "numToStr/Comment.nvim", config = "require('talama.plugins.comment')" })
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins

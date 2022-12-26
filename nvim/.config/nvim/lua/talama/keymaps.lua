@@ -120,3 +120,7 @@ nmap("<C-t>", "<cmd> TroubleToggle <CR>")
 
 -- Nvim-tree
 nmap("<leader>e", ":NvimTreeToggle<CR>")
+
+-- Comment
+nmap("<leader>/", "<cmd>lua require('Comment.api').toggle.linewise.current()<CR>")
+xmap("<leader>/", '<ESC><CMD>lua require("Comment.api").toggle.linewise(vim.fn.visualmode())<CR>')
