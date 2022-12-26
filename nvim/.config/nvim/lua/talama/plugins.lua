@@ -135,6 +135,9 @@ return packer.startup(function(use)
 	-- Autoclose tags
 	use({ "windwp/nvim-ts-autotag", after = { "nvim-treesitter" } })
 
+	-- Indentation
+	use({ "lukas-reineke/indent-blankline.nvim", config = "require('talama.plugins.indent')" })
+
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then
