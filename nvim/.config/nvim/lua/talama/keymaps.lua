@@ -32,11 +32,15 @@ nmap("<C-j>", "<C-w>j")
 nmap("<C-k>", "<C-w>k")
 nmap("<C-l>", "<C-w>l")
 
--- Buffer Navigation
+-- Buffers Navigation
 nmap("<TAB>", ":bnext<CR>")
 nmap("<S-TAB>", ":bprevious<CR>")
 nmap("<C-n>", ":enew<CR>")
 nmap("<C-q>", "<cmd>Bdelete<CR>")
+
+-- Current buffer navigation
+nmap("<C-d>", "<C-d>zz")
+nmap("<C-u>", "<C-u>zz")
 
 -- Save
 nmap("<C-s>", "<cmd>w<CR>")
@@ -47,6 +51,8 @@ nmap("ss", "<C-w>s")
 
 -- No highlight
 nmap("<leader>h", "<cmd>nohlsearch<CR>")
+nmap("J", "mzJ`z")
+nmap("J", "mzJ`z")
 
 -- Line numbers toggles
 nmap("<leader>n", "<cmd>set number!<CR>")
@@ -62,6 +68,18 @@ nmap("-", "<C-x>")
 
 -- Select All
 nmap("<C-a>", "gg<S-v>G")
+
+-- Yank to clipboard
+nmap("<leader>y", '"+y')
+nmap("<leader>Y", '"+Y')
+vmap("<leader>y", '"+y')
+
+-- Delete to void register
+nmap("<leader>d", '"_d')
+vmap("<leader>d", '"_d')
+
+--Replace word in current file
+nmap("<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 --- INSERT MODE ---
 -- Press jk fast to enter
@@ -103,6 +121,9 @@ xmap("<A-k>", ":move '<-2<CR>gv-gv")
 xmap("<A-j>", ":move '>+1<CR>gv-gv")
 xmap("<A-Up>", ":move '<-2<CR>gv-gv")
 xmap("<A-Down>", ":move '>+1<CR>gv-gv")
+
+-- paste deleting highlighted word into the void register
+xmap("<leader>p", '"_dP')
 
 --- PLUGINS ---
 -- Telescope
