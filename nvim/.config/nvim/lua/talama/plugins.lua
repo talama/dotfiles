@@ -159,6 +159,13 @@ return packer.startup(function(use)
 
 	-- Comments
 	use({ "numToStr/Comment.nvim", config = "require('talama.plugins.comment')" })
+	use({ "JoosepAlviste/nvim-ts-context-commentstring", after = "nvim-treesitter" })
+
+	-- tpope vim-surround
+	use({ "tpope/vim-surround" })
+
+	-- Gitsigns
+	use({ "lewis6991/gitsigns.nvim", config = "require('talama.plugins.gitsigns')" })
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
