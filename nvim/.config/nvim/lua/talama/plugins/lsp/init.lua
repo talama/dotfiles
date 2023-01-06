@@ -21,9 +21,14 @@ lsp.ensure_installed({
 	"emmet_ls",
 })
 
--- Fix Undefined global 'vim'
+-- Configure lsp servers.
+-- sumneko_lua
 lsp.configure("sumneko_lua", {
 	settings = require("talama.plugins.lsp.servers.sumneko_lua"),
+})
+-- json
+lsp.configure("jsonls", {
+	settings = require("talama.plugins.lsp.servers.jsonls"),
 })
 
 -- CMP
