@@ -3,7 +3,6 @@ local add_whitespaces = function(number)
 end
 
 local nvim_tree_events = require("nvim-tree.events")
-local bufferline_api = require("bufferline.api")
 
 local TREE_WIDTH = 40
 
@@ -158,11 +157,3 @@ require("nvim-tree").setup({
 })
 
 vim.api.nvim_set_keymap("n", "<C-e>", "<cmd>lua require'nvim-tree'.toggle()<CR>", { noremap = true, silent = true })
-
-nvim_tree_events.on_tree_open(function()
-	bufferline_api.set_offset(TREE_WIDTH + 1, add_whitespaces(13) .. "File Explorer")
-end)
-
-nvim_tree_events.on_tree_close(function()
-	bufferline_api.set_offset(0)
-end)

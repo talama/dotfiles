@@ -21,7 +21,7 @@ dashboard.section.header.opts = {
 }
 
 dashboard.section.buttons.val = {
-	dashboard.button("e", "  New file", "<cmd>ene <BAR> startinsert <CR>"),
+	dashboard.button("e", "  New file", ":ene <BAR> startinsert <CR>"),
 	dashboard.button("f", "  Find file", "<cmd>Telescope find_files <CR>"),
 	dashboard.button("t", "  Find text", "<cmd>Telescope live_grep <CR>"),
 	dashboard.button("r", "  Recently used files", "<cmd>Telescope oldfiles <CR>"),
@@ -50,8 +50,6 @@ dashboard.section.footer.opts = {
 
 local section = {
 	header = dashboard.section.header,
-	hi_top_section = hi_top_section,
-	hi_bottom_section = hi_bottom_section,
 	buttons = dashboard.section.buttons,
 	footer = dashboard.section.footer,
 }

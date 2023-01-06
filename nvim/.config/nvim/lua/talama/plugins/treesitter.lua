@@ -5,7 +5,7 @@ end
 
 treesitter.setup({
 	-- A list of parser names, or "all"
-	ensure_installed = { "javascript", "typescript", "html", "css", "markdown", "markdown_inline", "lua", "rust" },
+	ensure_installed = { "help", "c", "javascript", "typescript", "html", "css", "markdown", "markdown_inline", "lua", "rust" },
 	-- List of parsers to ignore installing (for "all")
 	ignore_install = { "" },
 	highlight = {
@@ -41,6 +41,50 @@ treesitter.setup({
 		enable = true,
 		enable_autocmd = false,
 	},
+
+  textobjects = {
+    move = {
+      enable = true,
+      set_jumps = true, -- whether to set jumps in the jumplist
+      goto_next_start = {
+        ["]]"] = "@function.outer",
+        ["]m"] = "@class.outer",
+      },
+      goto_next_end = {
+        ["]["] = "@function.outer",
+        ["]M"] = "@class.outer",
+      },
+      goto_previous_start = {
+        ["[["] = "@function.outer",
+        ["[m"] = "@class.outer",
+      },
+      goto_previous_end = {
+        ["[]"] = "@function.outer",
+        ["[M"] = "@class.outer",
+      },
+    },
+    select = {
+      enable = true,
+
+      -- Automatically jump forward to textobj, similar to targets.vim
+      lookahead = true,
+
+      keymaps = {
+        -- You can use the capture groups defined in textobjects.scm
+        ["af"] = "@function.outer",
+        ["if"] = "@function.inner",
+        ["ac"] = "@class.outer",
+        ["ic"] = "@class.inner",
+      },
+    },
+    swap = {
+      enable = true,
+      swap_next = {
+        ["~"] = "@parameter.inner",
+      },
+    },
+  },
+
 	playground = {
 		enable = true,
 		disable = {},

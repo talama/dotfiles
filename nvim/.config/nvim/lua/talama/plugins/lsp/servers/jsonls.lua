@@ -1,6 +1,4 @@
-local M = {}
-
-M.settings = {
+return {
 	json = {
 		schemas = {
 			{
@@ -38,5 +36,3 @@ M.settings = {
 		},
 	},
 }
-
-return M

@@ -1,14 +1,15 @@
--- Setup installer & lsp configs
-local typescript_ok, typescript = pcall(require, "typescript")
-local mason_ok, mason = pcall(require, "mason")
-local mason_lsp_ok, mason_lsp = pcall(require, "mason-lspconfig")
-local cmp_ok, cmp_lsp = pcall(require, "cmp_nvim_lsp")
+-- MASON settings
+require("mason.settings").set({
+	ui = {
+		border = "rounded",
+	},
+})
 
-if not mason_ok or not mason_lsp_ok or not cmp_ok then
-	return
-end
+-- lsp-zero
+local lsp = require("lsp-zero")
+lsp.preset("recommended")
 
-local servers = {
+lsp.ensure_installed({
 	"sumneko_lua",
 	"cssls",
 	"html",
@@ -18,106 +19,96 @@ local servers = {
 	"jsonls",
 	"eslint",
 	"emmet_ls",
-}
+})
 
-mason.setup({
-	ui = {
-		-- The border to use for the UI window. Accepts same border values as |nvim_open_win()|.
-		border = "rounded",
-		icons = {
-			package_installed = "✓",
-			package_pending = "➜",
-			package_uninstalled = "✗",
-		},
+-- Configure lsp servers.
+-- sumneko_lua
+lsp.configure("sumneko_lua", {
+	settings = require("talama.plugins.lsp.servers.sumneko_lua"),
+})
+-- json
+lsp.configure("jsonls", {
+	settings = require("talama.plugins.lsp.servers.jsonls"),
+})
+
+-- CMP
+-- Complete from all visible buffers (splits)
+local buffer_option = {
+	get_bufnrs = function()
+		local bufs = {}
+		for _, win in ipairs(vim.api.nvim_list_wins()) do
+			bufs[vim.api.nvim_win_get_buf(win)] = true
+		end
+		return vim.tbl_keys(bufs)
+	end,
+}
+-- Mappings
+local cmp = require("cmp")
+local cmp_select = { behavior = cmp.SelectBehavior.Select }
+local cmp_mappings = lsp.defaults.cmp_mappings({
+	["<C-k>"] = cmp.mapping.select_prev_item(cmp_select),
+	["<C-j>"] = cmp.mapping.select_next_item(cmp_select),
+	["<C-y>"] = cmp.mapping.confirm({ select = true }),
+	["<C-Space>"] = cmp.mapping.complete(),
+	["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-2), { "i", "c" }),
+	["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(2), { "i", "c" }),
+	["<C-e>"] = cmp.mapping({
+		i = cmp.mapping.abort(),
+		c = cmp.mapping.close(),
+	}),
+})
+
+lsp.setup_nvim_cmp({
+	sources = {
+		{ name = "nvim_lsp" },
+		{ name = "nvim_lua" },
+		{ name = "luasnip" },
+		{ name = "buffer", option = buffer_option },
+		{ name = "path" },
+		{ name = "npm" },
+	},
+	mappings = cmp_mappings,
+})
+
+--LSP
+lsp.set_preferences({
+	sign_icons = {
+		error = " ",
+		warn = " ",
+		hint = "",
+		info = " ",
 	},
 })
 
-mason_lsp.setup({
-	ensure_installed = servers,
-	automatic_installation = true,
+lsp.on_attach(function(client, bufnr)
+	local opts = { buffer = bufnr, remap = false }
+	vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+	vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+	vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+	vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+	vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+	vim.keymap.set("n", "ge", vim.diagnostic.open_float, opts)
+	vim.keymap.set("n", "<leader>li", "<cmd>LspInfo<cr>", opts)
+	vim.keymap.set("n", "<leader>m", "<cmd>Mason<cr>", opts)
+	vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action, opts)
+	vim.keymap.set("n", "<leader>lj", vim.diagnostic.goto_next, opts)
+	vim.keymap.set("n", "<leader>lk", vim.diagnostic.goto_prev, opts)
+	vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename, opts)
+	vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format, opts)
+
+	local status_ok, illuminate = pcall(require, "illuminate")
+	if not status_ok then
+		return
+	end
+	illuminate.on_attach(client)
+end)
+
+lsp.setup()
+
+vim.diagnostic.config({
+	signs = true,
+	underline = false,
+	update_in_insert = false,
+	severity_sort = true,
+	virtual_text = true,
 })
-
-local lspconfig = require("lspconfig")
-
--- Configure diagnostic
-local signs = {
-	{ name = "DiagnosticSignError", text = "" },
-	{ name = "DiagnosticSignWarn", text = "" },
-	{ name = "DiagnosticSignHint", text = "" },
-	{ name = "DiagnosticSignInfo", text = "" },
-}
-for _, sign in ipairs(signs) do
-	vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
-end
-
-local handlers = {
-	["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" }),
-	["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" }),
-	["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-		signs = true,
-		underline = false,
-		update_in_insert = false,
-		severity_sort = true,
-		virtual_text = false,
-	}),
-}
-
-local function on_attach(client, bufnr)
-	-- set up buffer keymaps, etc.
-end
-
-local capabilities = cmp_lsp.default_capabilities()
-
-capabilities.textDocument.foldingRange = {
-	dynamicRegistration = false,
-	lineFoldingOnly = true,
-}
-
-if typescript_ok then
-	typescript.setup({
-		disable_commands = false, -- prevent the plugin from creating Vim commands
-		debug = false, -- enable debug logging for commands
-		-- LSP Config options
-		server = {
-			capabilities = require("talama.plugins.lsp.servers.tsserver").capabilities,
-			handlers = handlers,
-			on_attach = require("talama.plugins.lsp.servers.tsserver").on_attach,
-		},
-	})
-end
-
-lspconfig.eslint.setup({
-	capabilities = capabilities,
-	handlers = handlers,
-	on_attach = require("talama.plugins.lsp.servers.eslint").on_attach,
-	settings = require("talama.plugins.lsp.servers.eslint").settings,
-})
-
-lspconfig.sumneko_lua.setup({
-	capabilities = capabilities,
-	handlers = handlers,
-	on_attach = on_attach,
-	settings = require("talama.plugins.lsp.servers.sumneko_lua").settings,
-})
-
-lspconfig.cssls.setup({
-	capabilities = capabilities,
-	handlers = handlers,
-	on_attach = require("talama.plugins.lsp.servers.cssls").on_attach,
-	settings = require("talama.plugins.lsp.servers.cssls").settings,
-})
-
-lspconfig.jsonls.setup({
-	capabilities = capabilities,
-	handlers = handlers,
-	on_attach = on_attach,
-	settings = require("talama.plugins.lsp.servers.jsonls").settings,
-})
-
-for _, server in ipairs({ "bashls", "emmet_ls", "html", "pyright" }) do
-	lspconfig[server].setup({
-		on_attach = on_attach,
-		capabilities = capabilities,
-		handlers = handlers,
-	})
-end

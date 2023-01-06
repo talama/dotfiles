@@ -32,11 +32,21 @@ nmap("<C-j>", "<C-w>j")
 nmap("<C-k>", "<C-w>k")
 nmap("<C-l>", "<C-w>l")
 
--- Buffer Navigation
+-- Resize with arrows
+nmap("<C-Up>", ":resize -2<CR>")
+nmap("<C-Down>", ":resize +2<CR>")
+nmap("<C-Left>", ":vertical resize -2<CR>")
+nmap("<C-Right>", ":vertical resize +2<CR>")
+
+-- Buffers Navigation
 nmap("<TAB>", ":bnext<CR>")
 nmap("<S-TAB>", ":bprevious<CR>")
 nmap("<C-n>", ":enew<CR>")
 nmap("<C-q>", "<cmd>Bdelete<CR>")
+
+-- Current buffer navigation
+nmap("<C-d>", "<C-d>zz")
+nmap("<C-u>", "<C-u>zz")
 
 -- Save
 nmap("<C-s>", "<cmd>w<CR>")
@@ -47,6 +57,8 @@ nmap("ss", "<C-w>s")
 
 -- No highlight
 nmap("<leader>h", "<cmd>nohlsearch<CR>")
+nmap("J", "mzJ`z")
+nmap("J", "mzJ`z")
 
 -- Line numbers toggles
 nmap("<leader>n", "<cmd>set number!<CR>")
@@ -60,11 +72,20 @@ nmap("X", '"_X')
 nmap("+", "<C-a>")
 nmap("-", "<C-x>")
 
--- Delete a word backwards
-nmap("dw", 'vb"_d')
-
 -- Select All
 nmap("<C-a>", "gg<S-v>G")
+
+-- Yank to clipboard
+nmap("<leader>y", '"+y')
+nmap("<leader>Y", '"+Y')
+vmap("<leader>y", '"+y')
+
+-- Delete to void register
+nmap("<leader>d", '"_d')
+vmap("<leader>d", '"_d')
+
+--Replace word in current file
+nmap("<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 --- INSERT MODE ---
 -- Press jk fast to enter
@@ -107,9 +128,13 @@ xmap("<A-j>", ":move '>+1<CR>gv-gv")
 xmap("<A-Up>", ":move '<-2<CR>gv-gv")
 xmap("<A-Down>", ":move '>+1<CR>gv-gv")
 
+-- paste deleting highlighted word into the void register
+xmap("<leader>p", '"_dP')
+
 --- PLUGINS ---
 -- Telescope
 nmap("<leader>ff", "<cmd> Telescope find_files <CR>")
+nmap("<leader>gf", "<cmd> Telescope git_files <CR>")
 nmap("<leader>fa", "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>")
 nmap("<leader>fw", "<cmd> Telescope live_grep <CR>")
 nmap("<leader>fb", "<cmd> Telescope buffers <CR>")
@@ -119,3 +144,10 @@ nmap("<leader>fk", "<cmd> Telescope keymaps <CR>")
 
 -- Trouble
 nmap("<C-t>", "<cmd> TroubleToggle <CR>")
+
+-- Nvim-tree
+nmap("<leader>e", ":NvimTreeToggle<CR>")
+
+-- Comment
+nmap("<leader>/", "<cmd>lua require('Comment.api').toggle.linewise.current()<CR>")
+xmap("<leader>/", '<ESC><CMD>lua require("Comment.api").toggle.linewise(vim.fn.visualmode())<CR>')

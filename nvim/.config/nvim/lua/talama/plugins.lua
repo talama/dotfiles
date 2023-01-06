@@ -63,29 +63,6 @@ return packer.startup(function(use)
 	use({ "olimorris/onedarkpro.nvim" })
 	use({ "catppuccin/nvim", as = "catppuccin" })
 
-	-- Lualine
-	use({
-		"nvim-lualine/lualine.nvim",
-		config = "require('talama.plugins.lualine')",
-		requires = { "kyazdani42/nvim-web-devicons", opt = true },
-	})
-
-	-- Notify
-	use({ "rcarriga/nvim-notify" })
-
-	-- Treesitter
-	use({
-		"nvim-treesitter/nvim-treesitter",
-		config = "require('talama.plugins.treesitter')",
-		run = ":TSUpdate",
-	})
-	use({ "nvim-treesitter/playground" })
-	use({
-		"m-demare/hlargs.nvim",
-		config = "require('talama.plugins.hlargs')",
-		requires = { "nvim-treesitter/nvim-treesitter" },
-	}) -- highlight parameters inside function body
-
 	-- Telescope
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 	use({ "nvim-telescope/telescope-ui-select.nvim" })
@@ -96,42 +73,59 @@ return packer.startup(function(use)
 		requires = { { "nvim-lua/plenary.nvim" }, { "nvim-telescope/telescope-fzf-native.nvim" } },
 	})
 
+	-- Treesitter
+	use({
+		"nvim-treesitter/nvim-treesitter",
+		config = "require('talama.plugins.treesitter')",
+		run = ":TSUpdate",
+	})
+	use({ "nvim-treesitter/playground" })
+	-- Additional text objects via treesitter
+	use({ "nvim-treesitter/nvim-treesitter-textobjects", after = "nvim-treesitter" })
+	-- Highlight parameters inside function body
+	use({
+		"m-demare/hlargs.nvim",
+		config = "require('talama.plugins.hlargs')",
+		requires = { "nvim-treesitter/nvim-treesitter" },
+	})
+
 	-- LSP
-	use({ "neovim/nvim-lspconfig" })
-	use({ "williamboman/mason.nvim" })
-	use({ "williamboman/mason-lspconfig.nvim" })
+	-- lsp-zero
+	use({
+		"VonHeikemen/lsp-zero.nvim",
+		requires = {
+			-- LSP Support
+			{ "neovim/nvim-lspconfig" },
+			{ "williamboman/mason.nvim" },
+			{ "williamboman/mason-lspconfig.nvim" },
 
-	-- CMP
-	use({ "hrsh7th/nvim-cmp", config = "require('talama.plugins.cmp') " })
-	use({ "hrsh7th/cmp-nvim-lua", after = "nvim-cmp" })
-	use({ "hrsh7th/cmp-nvim-lsp", after = "cmp-nvim-lua" })
-	use({ "hrsh7th/cmp-buffer", after = "cmp-nvim-lsp" })
-	use({ "hrsh7th/cmp-path", after = "cmp-buffer" })
-	use({ "hrsh7th/cmp-cmdline", after = "cmp-path" })
-	use({ "hrsh7th/cmp-calc", after = "cmp-cmdline" })
+			-- Autocompletion
+			{ "hrsh7th/nvim-cmp" },
+			{ "hrsh7th/cmp-buffer" },
+			{ "hrsh7th/cmp-path" },
+			{ "saadparwaiz1/cmp_luasnip" },
+			{ "hrsh7th/cmp-nvim-lsp" },
+			{ "hrsh7th/cmp-nvim-lua" },
+			{ "hrsh7th/cmp-cmdline" },
 
-	-- Snippets
-	use({ "saadparwaiz1/cmp_luasnip", after = "nvim-cmp" })
-	-- Snippets collection
-	use({ "rafamadriz/friendly-snippets" })
-	-- Snippets engine
-	use({ "L3MON4D3/LuaSnip", requires = { "rafamadriz/friendly-snippets" }, after = "cmp_luasnip" })
-
-	-- LSP Addons
-	use({ "jose-elias-alvarez/typescript.nvim" })
-	use({ "jose-elias-alvarez/null-ls.nvim", config = "require('talama.plugins.lsp.null-ls')" }) -- Linting / formatting
-	use({ "onsails/lspkind-nvim" }) -- Adds vscode-like pictograms to neovim built-in lsp
+			-- Snippets
+			{ "L3MON4D3/LuaSnip" },
+			{ "rafamadriz/friendly-snippets" },
+		},
+	})
+	-- Null-ls for linting/formatting
+	use({ "jose-elias-alvarez/null-ls.nvim", config = "require('talama.plugins.lsp.null-ls')" })
 	use({ "folke/lsp-trouble.nvim", config = "require('talama.plugins.trouble')" }) -- Diagnostic
 
-	--- Nvim-tree
-	use({ "kyazdani42/nvim-tree.lua", config = "require('talama.plugins.tree')" })
-
-	-- Buffer Bar
+	-- Lualine
 	use({
-		"romgrk/barbar.nvim",
-		requires = { "kyazdani42/nvim-web-devicons" },
-		config = "require('talama.plugins.barbar')",
+		"nvim-lualine/lualine.nvim",
+		config = "require('talama.plugins.lualine')",
+		requires = { "kyazdani42/nvim-web-devicons", opt = true },
 	})
+
+	-- Highlight other use of word under the cursor.
+	use({ "RRethy/vim-illuminate", config = "require('talama.plugins.illuminate')" })
 
 	-- Autopairs
 	use({
@@ -143,20 +137,25 @@ return packer.startup(function(use)
 	-- Autoclose tags
 	use({ "windwp/nvim-ts-autotag", after = { "nvim-treesitter" } })
 
-	-- Parenthesis highlighting
-	use({ "p00f/nvim-ts-rainbow", after = { "nvim-treesitter" } })
-
 	-- Indentation
 	use({ "lukas-reineke/indent-blankline.nvim", config = "require('talama.plugins.indent')" })
 
 	-- Terminal
 	use({ "akinsho/nvim-toggleterm.lua", branch = "main", config = "require('talama.plugins.toggleterm')" })
 
+	-- Bufferline
+	use({
+		"akinsho/bufferline.nvim",
+		tag = "v3.*",
+		requires = "nvim-tree/nvim-web-devicons",
+		config = "require('talama.plugins.bufferline')",
+	})
+
+	--- Nvim-tree
+	use({ "kyazdani42/nvim-tree.lua", config = "require('talama.plugins.nvim-tree')" })
+
 	-- Better buffer closing
 	use({ "famiu/bufdelete.nvim", cmd = { "Bdelete", "Bwipeout" } })
-
-	-- Highlight other use of word under the cursor.
-	use({ "RRethy/vim-illuminate", config = "require('talama.plugins.illuminate')" })
 
 	-- Comments
 	use({ "numToStr/Comment.nvim", config = "require('talama.plugins.comment')" })
@@ -164,6 +163,12 @@ return packer.startup(function(use)
 
 	-- tpope vim-surround
 	use({ "tpope/vim-surround" })
+
+	-- Gitsigns
+	use({ "lewis6991/gitsigns.nvim", config = "require('talama.plugins.gitsigns')" })
+
+	-- Zenmode
+	use({ "folke/zen-mode.nvim", config = "require('talama.plugins.zenmode')" })
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
