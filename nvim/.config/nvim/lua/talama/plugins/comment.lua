@@ -27,18 +27,19 @@ require("Comment").setup({
 	-- @type table
 	toggler = {
 		---line-comment keymap
-		line = "gcc",
+		-- line = "gcc",
+		line = "<leader>/",
 		---block-comment keymap
-		block = "gbc",
+		block = "<leader>\\",
 	},
 
 	-- LHS of operator-pending mapping in NORMAL + VISUAL mode
 	-- @type table
 	opleader = {
 		-- line-comment keymap
-		line = "gc",
+		line = "<leader>/",
 		-- block-comment keymap
-		block = "gb",
+		block = "<leader>\\",
 	},
 
 	-- Pre-hook, called before commenting the line
