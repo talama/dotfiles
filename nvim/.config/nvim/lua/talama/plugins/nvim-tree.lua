@@ -1,10 +1,4 @@
-local add_whitespaces = function(number)
-	return string.rep(" ", number)
-end
-
-local nvim_tree_events = require("nvim-tree.events")
-
-local TREE_WIDTH = 40
+local TREE_WIDTH = 30
 
 local git_icons = {
 	unstaged = "",
@@ -82,6 +76,18 @@ require("nvim-tree").setup({
 		},
 		icons = {
 			glyphs = {
+				default = "",
+				symlink = "",
+				folder = {
+					arrow_open = "",
+					arrow_closed = "",
+					default = "",
+					open = "",
+					empty = "",
+					empty_open = "",
+					symlink = "",
+					symlink_open = "",
+				},
 				git = git_icons,
 			},
 		},
