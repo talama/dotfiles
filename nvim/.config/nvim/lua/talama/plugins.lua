@@ -170,6 +170,9 @@ return packer.startup(function(use)
 	-- Zenmode
 	use({ "folke/zen-mode.nvim", config = "require('talama.plugins.zenmode')" })
 
+	-- which-key
+	use({ "folke/which-key.nvim", config = "require('talama.plugins.which-key')" })
+
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then

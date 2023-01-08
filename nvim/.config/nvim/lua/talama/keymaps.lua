@@ -26,6 +26,9 @@ keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 
 -- NORMAL MODE ---
+-- smart quit
+nmap("<C-q>", "<cmd>lua require('talama.utils').smart_quit()<cr>")
+
 -- Window navigation
 nmap("<C-h>", "<C-w>h")
 nmap("<C-j>", "<C-w>j")
@@ -42,7 +45,7 @@ nmap("<C-Right>", ":vertical resize +2<CR>")
 nmap("<TAB>", ":bnext<CR>")
 nmap("<S-TAB>", ":bprevious<CR>")
 nmap("<C-n>", ":enew<CR>")
-nmap("<C-q>", "<cmd>Bdelete<CR>")
+nmap("<leader>c", "<cmd>Bdelete<CR>")
 
 -- Current buffer navigation
 nmap("<C-d>", "<C-d>zz")
@@ -134,7 +137,7 @@ xmap("<leader>p", '"_dP')
 --- PLUGINS ---
 -- Telescope
 nmap("<leader>ff", "<cmd> Telescope find_files <CR>")
-nmap("<leader>gf", "<cmd> Telescope git_files <CR>")
+nmap("<leader>fg", "<cmd> Telescope git_files <CR>")
 nmap("<leader>fa", "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>")
 nmap("<leader>fw", "<cmd> Telescope live_grep <CR>")
 nmap("<leader>fb", "<cmd> Telescope buffers <CR>")
