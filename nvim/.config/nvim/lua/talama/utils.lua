@@ -1,3 +1,6 @@
+local lib = require("diffview.lib")
+local diffview = require("diffview")
+
 local M = {}
 
 function M.smart_quit()
@@ -17,6 +20,7 @@ function M.smart_quit()
 	end
 end
 
+-- toggles lazygit
 function M.lazygit_toggle()
 	local Terminal = require("toggleterm.terminal").Terminal
 	local lazygit = Terminal:new({
@@ -37,4 +41,30 @@ function M.lazygit_toggle()
 	lazygit:toggle()
 end
 
-return M
+-- toggle diffview file_history
+M.toggle_file_history = function()
+	local view = lib.get_current_view()
+	if view == nil then
+		diffview.file_history()
+		return
+	end
+
+	if view then
+		view:close()
+		lib.dispose_view(view)
+	end
+end
+
+-- toggle diffview
+M.toggle_status = function()
+	local view = lib.get_current_view()
+	if view == nil then
+		diffview.open()
+		return
+	end
+
+	if view then
+		view:close()
+		lib.dispose_view(view)
+	end
+end
