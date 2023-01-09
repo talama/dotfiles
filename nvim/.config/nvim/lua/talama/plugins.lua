@@ -167,6 +167,9 @@ return packer.startup(function(use)
 	-- Gitsigns
 	use({ "lewis6991/gitsigns.nvim", config = "require('talama.plugins.gitsigns')" })
 
+	-- diffview
+	use({ "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" })
+
 	-- Zenmode
 	use({ "folke/zen-mode.nvim", config = "require('talama.plugins.zenmode')" })
 
