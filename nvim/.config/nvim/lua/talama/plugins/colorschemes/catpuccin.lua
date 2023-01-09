@@ -1,8 +1,8 @@
 require("catppuccin").setup({
-	flavour = "macchiato", -- latte, frappe, macchiato, mocha
+	flavour = "frappe", -- latte, frappe, macchiato, mocha
 	background = { -- :h background
 		light = "latte",
-		dark = "macchiato",
+		dark = "frappe",
 	},
 	transparent_background = false,
 	term_colors = true,
@@ -29,10 +29,10 @@ require("catppuccin").setup({
 	},
 	color_overrides = {},
 	custom_highlights = function(colors)
-    return {
-    Hlargs = {fg = colors.yellow}
-}
-  end,
+		return {
+			Hlargs = { fg = colors.yellow },
+		}
+	end,
 	integrations = {
 		cmp = true,
 		gitsigns = true,
