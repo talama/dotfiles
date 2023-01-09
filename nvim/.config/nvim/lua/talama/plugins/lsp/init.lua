@@ -95,6 +95,7 @@ lsp.on_attach(function(client, bufnr)
 	vim.keymap.set("n", "<leader>lk", vim.diagnostic.goto_prev, opts)
 	vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename, opts)
 	vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format, opts)
+	vim.keymap.set("n", "<leader>lt", "<cmd>TroubleToggle<cr>", opts)
 
 	local status_ok, illuminate = pcall(require, "illuminate")
 	if not status_ok then

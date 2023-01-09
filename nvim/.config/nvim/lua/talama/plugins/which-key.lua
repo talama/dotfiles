@@ -118,6 +118,49 @@ local normal_mappings = {
 		h = { "<cmd>ToggleTerm direction=horizontal<cr>", "Terminal horizontal" },
 		v = { "<cmd>ToggleTerm direction=vertical<cr>", "Terminal vertical" },
 	},
+	-- Buffers
+	b = {
+		name = "Buffers",
+		d = { "<cmd>Bdelete<cr>", "Close buffer" },
+		f = { "cmd>Telescope buffers<cr>", "Find" },
+	},
+
+	-- Search
+	f = {
+		name = "Search",
+		a = { "<cmd> Telescope find_files follow=true noignore=true hidden=true<cr>", "Find All" },
+		b = { "<cmd> Telescope buffers<cr>", "Find Buffer" },
+		c = { "<cmd> Telescope colorscheme<cr>", "Colorscheme" },
+		f = { "<cmd> Telescope find_files<cr>", "Find File" },
+		g = { "<cmd> Telescope git_files<cr>", "Git Files" },
+		h = { "<cmd> Telescope help_tags<cr>", "Find Help" },
+		k = { "<cmd> Telescope keymaps<cr>", "Keymaps" },
+		m = { "<cmd> Telescope man_pages<cr>", "Man Pages" },
+		r = { "<cmd> Telescope oldfiles<cr>", "Recent Files" },
+		w = { "<cmd> Telescope live_grep<cr>", "Find Word" },
+	},
+	-- Git
+	g = {
+		name = "Git",
+		g = { "<cmd> lua require'talama.utils'.lazygit_toggle()<cr>", "LazyGit" },
+		d = { "<cmd> lua require'talama.utils'.toggle_file_history()<cr>", "Diff file" },
+		s = { "<cmd> lua require'talama.utils'.toggle_status()<cr>", "Status" },
+		b = { "<cmd> Telescope git_branches<cr>", "Checkout branch" },
+		c = { "<cmd> Telescope git_commits<cr>", "Checkout commit" },
+		o = { "<cmd> Telescope git_status<cr>", "Open changed file" },
+	},
+	-- LSP
+	l = {
+		name = "LSP",
+		a = { "<cmd> lua vim.lsp.buf.code_action()<cr>", "Code action" },
+		f = { "<cmd> lua vim.lsp.buf.format()<cr>", "Format" },
+		i = { "<cmd> LspInfo<cr>", "LspInfo" },
+		j = { "<cmd> lua vim.diagnostic.goto_next()<cr>", "Next diagnostic" },
+		k = { "<cmd> lua vim.diagnostic.goto_prev()<cr>", "Prev diagnostic" },
+		m = { "<cmd> Mason<cr>", "Mason" },
+		r = { "<cmd> lua vim.lsp.buf.rename()<cr>", "Rename" },
+		t = { "<cmd> TroubleToggle<cr>", "Trouble" },
+	},
 }
 local visual_mappings = {
 	["/"] = { "<Plug>(comment_toggle_linewise_visual)", "Comment toggle linewise" },

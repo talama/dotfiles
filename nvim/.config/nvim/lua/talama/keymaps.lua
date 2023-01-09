@@ -142,8 +142,9 @@ nmap("<leader>fa", "<cmd> Telescope find_files follow=true no_ignore=true hidden
 nmap("<leader>fw", "<cmd> Telescope live_grep <CR>")
 nmap("<leader>fb", "<cmd> Telescope buffers <CR>")
 nmap("<leader>fh", "<cmd> Telescope help_tags <CR>")
-nmap("<leader>fo", "<cmd> Telescope oldfiles <CR>")
+nmap("<leader>fr", "<cmd> Telescope oldfiles <CR>")
 nmap("<leader>fk", "<cmd> Telescope keymaps <CR>")
+nmap("<leader>fm", "<cmd> Telescope man_pages <CR>")
 
 -- Trouble
 nmap("<C-t>", "<cmd> TroubleToggle <CR>")
