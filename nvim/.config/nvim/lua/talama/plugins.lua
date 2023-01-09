@@ -121,7 +121,7 @@ return packer.startup(function(use)
 	use({
 		"nvim-lualine/lualine.nvim",
 		config = "require('talama.plugins.lualine')",
-		requires = { "kyazdani42/nvim-web-devicons", opt = true },
+		requires = { "nvim-tree/nvim-web-devicons", opt = true },
 	})
 
 	-- Highlight other use of word under the cursor.
@@ -152,7 +152,7 @@ return packer.startup(function(use)
 	})
 
 	--- Nvim-tree
-	use({ "kyazdani42/nvim-tree.lua", config = "require('talama.plugins.nvim-tree')" })
+	use({ "nvim-tree/nvim-tree.lua", config = "require('talama.plugins.nvim-tree')" })
 
 	-- Better buffer closing
 	use({ "famiu/bufdelete.nvim", cmd = { "Bdelete", "Bwipeout" } })
@@ -172,6 +172,9 @@ return packer.startup(function(use)
 
 	-- which-key
 	use({ "folke/which-key.nvim", config = "require('talama.plugins.which-key')" })
+
+	-- Colorizer
+	use({ "NvChad/nvim-colorizer.lua", config = "require('talama.plugins.colorizer')" })
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
