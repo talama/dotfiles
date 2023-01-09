@@ -1,3 +1,7 @@
+-- disable netrw for nvim-tree
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 local options = {
 	autoindent = true, -- Good autoindent
 	backup = false, --- no backup file
