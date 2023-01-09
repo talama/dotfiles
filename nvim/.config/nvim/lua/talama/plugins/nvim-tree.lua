@@ -33,7 +33,7 @@ local keymappings = {
 
 require("nvim-tree").setup({
 	-- disables netrw completely
-	disable_netrw = false,
+	disable_netrw = true,
 	-- hijack netrw window on startup
 	hijack_netrw = true,
 	-- open the tree when running this setup function
@@ -43,7 +43,7 @@ require("nvim-tree").setup({
 	-- opens the tree when changing/opening a new tab if the tree wasn't previously opened
 	open_on_tab = false,
 	-- hijack the cursor in the tree to put it at the start of the filename
-	hijack_cursor = false,
+	hijack_cursor = true,
 	-- updates the root directory of the tree on `DirChanged` (when your run `:cd` usually)
 	update_cwd = true,
 	-- opens in place of the unnamed buffer if it's empty
