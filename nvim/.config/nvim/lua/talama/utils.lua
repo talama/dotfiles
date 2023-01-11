@@ -68,3 +68,5 @@ M.toggle_status = function()
 		lib.dispose_view(view)
 	end
 end
+
+return M
