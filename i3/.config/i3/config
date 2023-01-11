@@ -243,7 +243,7 @@ bindsym XF86AudioPrev exec playerctl previous
 bindsym $mod+p exec /usr/local/bin/switch-audio-port
 
 ## App shortcuts
-bindsym $mod+b exec /usr/bin/brave-browser --passwod-store=gnome
+bindsym $mod+b exec /usr/bin/brave --passwod-store=gnome
 bindsym $mod+n exec /usr/bin/thunar
 bindsym Print exec scrot ~/%Y-%m-%d-%T-screenshot.png && notify-send "Screenshot saved to ~/$(date +"%Y-%m-%d-%T")-screenshot.png"
 
@@ -283,11 +283,11 @@ Workspace 2:; append_layout ~/.config/i3/layouts/ws2.json;
 Workspace 4:; append_layout ~/.config/i3/layouts/ws4.json;
 Workspace 3:; append_layout ~/.config/i3/layouts/ws3.json;
 Workspace 1:; append_layout ~/.config/i3/layouts/ws1.json;
-exec brave-browser; exec discord; exec brave-browser; exec kitty; '"
+exec brave; exec discord; exec brave; exec kitty; '"
 
 # bind program to workspace and focus to them on startup
 # assign [class="kitty"] $ws1
-# assign [class="brave-browser"] $ws2
+# assign [class="brave"] $ws2
 # assign [class="Thunar"] $ws3
 # assign [class="Thunderbird"] $ws4
 # assign [class="TelegramDesktop"] $ws5

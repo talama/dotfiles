@@ -109,11 +109,11 @@ element selected.normal {
     text-color:               @foreground;
     border:                   0px;
     border-radius:            8px;
-    border-color:             @selected;
+    border-color:             @active-border;
 }
 element selected.urgent {
     background-color:         @background;
-    text-color:               @off;
+    text-color:               @foreground;
 }
 element selected.active {
     background-color:         @background;
