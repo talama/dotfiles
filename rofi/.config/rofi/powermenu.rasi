@@ -2,12 +2,10 @@
 configuration {
     // modi: "window,run,drun";
     show-icons: true;
-    font: "Hack Nerd Font 10";
+    font: "JetBrains Mono Nerd Font 10";
 }
 
-
 @import "colors.rasi"
-
 
 #window {
     width: 600px;

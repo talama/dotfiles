@@ -1,16 +1,14 @@
 #!/bin/bash
-
-
 if [ -z "$@" ]; then
     echo -en "[ Suspend]\n"
     echo -en "[ Lock]\n"
     echo -en "[ Logout]\n"
     echo -en "[ Hibernate]\n"
     echo -en "[ Reboot]\n"
-    echo -en "[ Shutdown]\n"
+    echo -en "[ Poweroff]\n"
 else
-    if [ "$1" = "[ Shutdown]" ]; then
-        sudo shutdown now
+    if [ "$1" = "[ Poweroff]" ]; then
+        poweroff
     elif [ "$1" = "[ Logout]" ]; then
         i3-msg exit
     elif [ "$1" = "[ Reboot]" ]; then
@@ -21,6 +19,6 @@ else
         i3lock --nofork
         #sudo ~/.local/bin/betterlockscreen -l blur
     elif [ "$1" = "[ Hibernate]" ]; then
-        sudo systemctl hibernate
+        systemctl hibernate
     fi
 fi
