@@ -179,13 +179,11 @@ bindsym F1 exec ~/.config/i3/scripts/keyhint-2
 bindsym XF86MonBrightnessUp exec xbacklight +5 && notify-send "Brightness - $(xbacklight -get | cut -d '.' -f 1)%"
 bindsym XF86MonBrightnessDown exec xbacklight -5 && notify-send "Brightness - $(xbacklight -get | cut -d '.' -f 1)%"
 
-
-
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+bindsym $mod+h focus left
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -206,7 +204,7 @@ bindsym $mod+Shift+Right move right
 bindsym $mod+Shift+Left move left
 
 # split in horizontal orientation
-bindsym $mod+h split h
+# bindsym $mod+s split h
 
 # split in vertical orientation
 bindsym $mod+v split v
@@ -415,25 +413,62 @@ for_window [class="urxvt"] border pixel 1
 # color settings for bar and windows #
 ######################################
 
+#OnedarkPro
 # Define colors variables:
-set $darkbluetrans	#528bffe6
-set $darkblue		#528bff
-set $lightblue		#61afef
-set $urgentred		#e86671
-set $white		#ffffff
-set $black		#000000
-set $purple		#e345ff
-set $darkgrey		#393f4a
-set $grey		#abb2bf
-set $mediumgrey		#8b8b8b
-set $yellowbrown	#e5c07b
+# set $darkbluetrans	#528bffe6
+# set $darkblue		#528bff
+# set $lightblue		#61afef
+# set $urgentred		#e86671
+# set $white		#ffffff
+# set $black		#000000
+# set $purple		#e345ff
+# set $darkgrey		#393f4a
+# set $grey		#abb2bf
+# set $mediumgrey		#8b8b8b
+# set $yellowbrown	#e5c07b
 
 # define colors for windows:
 #class		        	border		bground		text		indicator	child_border
-client.focused		    $lightblue	$darkblue	$white		$darkgrey		$darkgrey
-client.unfocused	    $darkblue	$darkblue	$grey		$darkgrey		$darkgrey
-client.focused_inactive	$darkblue	$darkblue	$grey		$darkgrey		$darkgrey
-client.urgent		    $urgentred	$urgentred	$white		$urgentred		$yellowbrown
+# client.focused		    $lightblue	$darkblue	$white		$darkgrey		$darkgrey
+# client.unfocused	    $darkblue	$darkblue	$grey		$darkgrey		$darkgrey
+# client.focused_inactive	$darkblue	$darkblue	$grey		$darkgrey		$darkgrey
+# client.urgent		    $urgentred	$urgentred	$white		$urgentred		$yellowbrown
+
+# Catpuccin macchiato
+
+set $rosewater #f4dbd6
+set $flamingo  #f0c6c6
+set $pink      #f5bde6
+set $mauve     #c6a0f6
+set $red       #ed8796
+set $maroon    #ee99a0
+set $peach     #f5a97f
+set $green     #a6da95
+set $teal      #8bd5ca
+set $sky       #91d7e3
+set $sapphire  #7dc4e4
+set $blue      #8aadf4
+set $lavender  #b7bdf8
+set $text      #cad3f5
+set $subtext1  #b8c0e0
+set $subtext0  #a5adcb
+set $overlay2  #939ab7
+set $overlay1  #8087a2
+set $overlay0  #6e738d
+set $surface2  #5b6078
+set $surface1  #494d64
+set $surface0  #363a4f
+set $base      #24273a
+set $mantle    #1e2030
+set $crust     #181926
+
+# target                 title      bg    text   indicator  border
+client.focused           $subtext0  $base $text  $subtext0 $subtext0
+client.focused_inactive  $overlay0  $base $text  $subtext0 $overlay0
+client.unfocused         $overlay0  $base $text  $subtext0 $overlay0
+client.urgent            $subtext0  $base $peach $overlay0  $subtext0
+client.placeholder       $subtext0  $base $text  $overlay0  $subtext0
+client.background        $base
 
 ############################################
 # bar settings (input comes from i3blocks) #

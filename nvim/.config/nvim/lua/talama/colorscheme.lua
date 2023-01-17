@@ -1,4 +1,4 @@
-local colorscheme = "onedarkpro"
+local colorscheme = "catpuccin"
 
 if colorscheme == "onedarkpro" then
 	require("talama.plugins.colorschemes.onedarkpro")

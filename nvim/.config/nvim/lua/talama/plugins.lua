@@ -146,6 +146,7 @@ return packer.startup(function(use)
 	-- Bufferline
 	use({
 		"akinsho/bufferline.nvim",
+		after = "catppuccin",
 		tag = "v3.*",
 		requires = "nvim-tree/nvim-web-devicons",
 		config = "require('talama.plugins.bufferline')",

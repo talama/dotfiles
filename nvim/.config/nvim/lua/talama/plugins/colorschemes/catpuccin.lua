@@ -1,8 +1,9 @@
 require("catppuccin").setup({
-	flavour = "frappe", -- latte, frappe, macchiato, mocha
-	background = { -- :h background
+	flavour = "macchiato", -- latte, frappe, macchiato, mocha
+	background = {
+		-- :h background
 		light = "latte",
-		dark = "frappe",
+		dark = "macchiato",
 	},
 	transparent_background = false,
 	term_colors = true,
@@ -27,19 +28,55 @@ require("catppuccin").setup({
 		types = {},
 		operators = {},
 	},
-	color_overrides = {},
+	color_overrides = {
+		all = {},
+		latte = {},
+		frappe = {},
+		macchiato = {},
+		mocha = {},
+	},
+	-- Global highlight groups
 	custom_highlights = function(colors)
 		return {
+			["@variable"] = { fg = colors.text, style = {} },
 			Hlargs = { fg = colors.yellow },
 		}
 	end,
+	-- Per flavour overrides
+	highlight_overrides = {
+		all = function(colors) end,
+		frappe = function(colors) end,
+		macchiato = function(colors) end,
+		mocha = function(colors) end,
+	},
 	integrations = {
-		cmp = true,
+		bufferline = true,
 		gitsigns = true,
+		indent_blankline = { enabled = true, colored_indent_levels = false },
+		markdown = true,
+		mason = true,
+		cmp = true,
+		native_lsp = {
+			enabled = true,
+			virtual_text = {
+				errors = { "italic" },
+				hints = { "italic" },
+				warnings = { "italic" },
+				information = { "italic" },
+			},
+			underlines = {
+				errors = { "underline" },
+				hints = { "underline" },
+				warnings = { "underline" },
+				information = { "underline" },
+			},
+		},
 		nvimtree = true,
+		treesitter = true,
 		telescope = true,
-		notify = false,
-		mini = false,
+		lsp_trouble = true,
+		which_key = true,
+		illuminate = true,
 		-- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
 	},
 })

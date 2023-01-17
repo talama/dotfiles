@@ -4,6 +4,7 @@ if not status_ok then
 end
 
 bufferline.setup({
+  highlights = require("catppuccin.groups.integrations.bufferline").get(),
 	options = {
 		close_command = "Bdelete! %d", -- can be a string | function, see "Mouse actions"
 		right_mouse_command = "Bdelete! %d", -- can be a string | function, see "Mouse actions"
