@@ -315,7 +315,7 @@ exec brave; exec discord; exec brave; exec kitty; '"
 # compositor #
 ##############
 
-exec_always --no-startup-id picom -b --config  ~/.config/picom/picom.conf
+# exec_always --no-startup-id picom -b --config  ~/.config/picom/picom.conf
 
 #############################################
 # autostart applications/services on login: #
