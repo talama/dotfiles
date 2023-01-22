@@ -39,6 +39,8 @@ require("catppuccin").setup({
 	custom_highlights = function(colors)
 		return {
 			["@variable"] = { fg = colors.text, style = {} },
+			["@property"] = { fg = colors.teal, style = {} },
+			["@method.call"] = { fg = colors.blue },
 			Hlargs = { fg = colors.yellow },
 		}
 	end,
