@@ -10,7 +10,7 @@ local lsp = require("lsp-zero")
 lsp.preset("recommended")
 
 lsp.ensure_installed({
-	"sumneko_lua",
+	"lua_ls",
 	"cssls",
 	"html",
 	"tsserver",
@@ -23,8 +23,8 @@ lsp.ensure_installed({
 
 -- Configure lsp servers.
 -- sumneko_lua
-lsp.configure("sumneko_lua", {
-	settings = require("talama.plugins.lsp.servers.sumneko_lua"),
+lsp.configure("lua_ls", {
+	settings = require("talama.plugins.lsp.servers.lua_ls"),
 })
 -- json
 lsp.configure("jsonls", {
