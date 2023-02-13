@@ -5,6 +5,11 @@ set fish_greeting
 fish_add_path ~/.local/bin/
 fish_add_path /home/talama/.spicetify
 fish_add_path /home/talama/.cargo/bin
+# VULKAN SDK
+setenv VULKAN_SDK ~/vulkan/1.3.239.0/x86_64/
+fish_add_path VULKAN_SDK/bin 
+setenv LD_LIBRARY_PATH $VULKAN_SDK/lib
+setenv VK_LAYER_PATH $VULKAN_SDK/etc/vulkan/explicit_layer.d
 
 #ALIASES
 alias .rl=". ~/.config/fish/config.fish" #source fish config.
