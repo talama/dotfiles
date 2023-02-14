@@ -23,4 +23,4 @@ xmap("<C-l>", "<cmd> call VSCodeNotify('workbench.action.navigateRight') <CR>")
 
 -- which-key
 nmap("<Space>", "<cmd> call VSCodeNotify('whichkey.show') <cr>")
-xmap("<Space>", "<cmd> call VSCodeNotify('whichkey.show') <cr>")
+xmap("<Space>", "<cmd> call VSCodeNotifn ey('whichkey.show') <cr>")
