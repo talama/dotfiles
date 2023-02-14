@@ -19,6 +19,7 @@ lsp.ensure_installed({
 	"jsonls",
 	"eslint",
 	"emmet_ls",
+	"clangd",
 })
 
 -- Configure lsp servers.

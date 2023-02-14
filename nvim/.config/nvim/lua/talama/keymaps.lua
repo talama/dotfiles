@@ -1,6 +1,6 @@
 local keymap = vim.keymap.set
 -- Silent keymap option
-local opts = { silent = true }
+local opts = { noremap = true, silent = true }
 
 -- Function for normal mode
 local function nmap(shortcut, command)
