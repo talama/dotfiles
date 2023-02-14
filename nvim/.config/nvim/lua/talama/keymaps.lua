@@ -60,8 +60,8 @@ nmap("ss", "<C-w>s")
 
 -- No highlight
 nmap("<leader>h", "<cmd>nohlsearch<CR>")
-nmap("J", "mzJ`z")
-nmap("J", "mzJ`z")
+-- nmap("J", "mzJ`z")
+-- nmap("J", "mzJ`z")
 
 -- Line numbers toggles
 nmap("<leader>n", "<cmd>set number!<CR>")
