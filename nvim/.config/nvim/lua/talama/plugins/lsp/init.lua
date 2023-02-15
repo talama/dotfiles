@@ -34,42 +34,44 @@ lsp.configure("jsonls", {
 
 -- CMP
 -- Complete from all visible buffers (splits)
-local buffer_option = {
-	get_bufnrs = function()
-		local bufs = {}
-		for _, win in ipairs(vim.api.nvim_list_wins()) do
-			bufs[vim.api.nvim_win_get_buf(win)] = true
-		end
-		return vim.tbl_keys(bufs)
-	end,
-}
--- Mappings
-local cmp = require("cmp")
-local cmp_select = { behavior = cmp.SelectBehavior.Select }
-local cmp_mappings = lsp.defaults.cmp_mappings({
-	["<C-k>"] = cmp.mapping.select_prev_item(cmp_select),
-	["<C-j>"] = cmp.mapping.select_next_item(cmp_select),
-	["<C-y>"] = cmp.mapping.confirm({ select = true }),
-	["<C-Space>"] = cmp.mapping.complete(),
-	["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-2), { "i", "c" }),
-	["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(2), { "i", "c" }),
-	["<C-e>"] = cmp.mapping({
-		i = cmp.mapping.abort(),
-		c = cmp.mapping.close(),
-	}),
-})
+-- local buffer_option = {
+-- 	get_bufnrs = function()
+-- 		local bufs = {}
+-- 		for _, win in ipairs(vim.api.nvim_list_wins()) do
+-- 			bufs[vim.api.nvim_win_get_buf(win)] = true
+-- 		end
+-- 		return vim.tbl_keys(bufs)
+-- 	end,
+-- }
+-- -- Mappings
+-- local cmp = require("cmp")
+-- local cmp_select = { behavior = cmp.SelectBehavior.Select }
+-- local cmp_mappings = lsp.defaults.cmp_mappings({
+-- 	["<C-k>"] = cmp.mapping.select_prev_item(cmp_select),
+-- 	["<C-j>"] = cmp.mapping.select_next_item(cmp_select),
+-- 	["<C-y>"] = cmp.mapping.confirm({ select = true }),
+-- 	["<C-Space>"] = cmp.mapping.complete(),
+-- 	["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-2), { "i", "c" }),
+-- 	["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(2), { "i", "c" }),
+-- 	["<C-e>"] = cmp.mapping({
+-- 		i = cmp.mapping.abort(),
+-- 		c = cmp.mapping.close(),
+-- 	}),
+-- })
+--
+-- lsp.setup_nvim_cmp({
+-- 	sources = {
+-- 		{ name = "nvim_lsp", priority = 10 },
+-- 		{ name = "nvim_lua", prioriyt = 5 },
+-- 		{ name = "luasnip", priority = 7, max_item_count = 8 },
+-- 		{ name = "buffer", priority = 7, option = buffer_option },
+-- 		{ name = "path", priority = 4 },
+-- 		{ name = "npm", priority = 3 },
+-- 	},
+-- 	mappings = cmp_mappings,
+-- })
 
-lsp.setup_nvim_cmp({
-	sources = {
-		{ name = "nvim_lsp", priority = 9 },
-		{ name = "nvim_lua", prioriyt = 5 },
-		{ name = "luasnip", priority = 7, max_item_count = 8 },
-		{ name = "buffer", priority = 7, option = buffer_option },
-		{ name = "path", priority = 4 },
-		{ name = "npm", priority = 3 },
-	},
-	mappings = cmp_mappings,
-})
+lsp.setup_nvim_cmp({})
 
 --LSP
 lsp.set_preferences({
