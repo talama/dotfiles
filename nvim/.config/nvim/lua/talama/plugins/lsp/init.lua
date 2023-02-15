@@ -61,12 +61,12 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
 
 lsp.setup_nvim_cmp({
 	sources = {
-		{ name = "nvim_lsp" },
-		{ name = "nvim_lua" },
-		{ name = "luasnip" },
-		{ name = "buffer", option = buffer_option },
-		{ name = "path" },
-		{ name = "npm" },
+		{ name = "nvim_lsp", priority = 9 },
+		{ name = "nvim_lua", prioriyt = 5 },
+		{ name = "luasnip", priority = 7, max_item_count = 8 },
+		{ name = "buffer", priority = 7, option = buffer_option },
+		{ name = "path", priority = 4 },
+		{ name = "npm", priority = 3 },
 	},
 	mappings = cmp_mappings,
 })

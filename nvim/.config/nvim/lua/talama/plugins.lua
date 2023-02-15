@@ -101,11 +101,11 @@ return packer.startup(function(use)
 
 			-- Autocompletion
 			{ "hrsh7th/nvim-cmp" },
+			{ "hrsh7th/cmp-nvim-lsp" },
+			{ "hrsh7th/cmp-nvim-lua" },
 			{ "hrsh7th/cmp-buffer" },
 			{ "hrsh7th/cmp-path" },
 			{ "saadparwaiz1/cmp_luasnip" },
-			{ "hrsh7th/cmp-nvim-lsp" },
-			{ "hrsh7th/cmp-nvim-lua" },
 			{ "hrsh7th/cmp-cmdline" },
 
 			-- Snippets
@@ -156,7 +156,7 @@ return packer.startup(function(use)
 	use({ "nvim-tree/nvim-tree.lua", config = "require('talama.plugins.nvim-tree')" })
 
 	-- Better buffer closing
-	use({ "famiu/bufdelete.nvim"}) --  cmd = { "Bdelete", "Bwipeout" } })
+	use({ "famiu/bufdelete.nvim" }) --  cmd = { "Bdelete", "Bwipeout" } })
 
 	-- Comments
 	use({ "numToStr/Comment.nvim", config = "require('talama.plugins.comment')" })
@@ -183,7 +183,7 @@ return packer.startup(function(use)
 	-- DAP
 	use({ "mfussenegger/nvim-dap", config = "require('talama.plugins.dap')" })
 	use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
-  use({ "theHamsta/nvim-dap-virtual-text" })
+	use({ "theHamsta/nvim-dap-virtual-text" })
 	-- use({ "Pocco81/DAPInstall.nvim" })
 
 	-- Automatically set up your configuration after cloning packer.nvim
