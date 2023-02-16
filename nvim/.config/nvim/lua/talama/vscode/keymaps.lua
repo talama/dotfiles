@@ -21,21 +21,14 @@ local function xmap(shortcut, command)
 	keymap("x", shortcut, command, opts)
 end
 
---Remap space as leader key
-keymap("", "<Space>", "<Nop>", opts)
-vim.g.mapleader = " "
-
 -- NORMAL MODE ---
-
+-- vim.keymap.set("n", "x", '"_x', {noremap = true, silent = true})
 -- Current buffer navigation
 nmap("<C-d>", "<C-d>zz")
 nmap("<C-u>", "<C-u>zz")
 
 -- Save
 nmap("<C-s>", "<cmd>w<CR>")
-
--- No highlight
-nmap("<leader>h", "<cmd>nohlsearch<CR>")
 
 -- Don't yank on delete char
 nmap("x", '"_x')

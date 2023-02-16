@@ -41,6 +41,7 @@ require("catppuccin").setup({
 			["@variable"] = { fg = colors.text, style = {} },
 			["@property"] = { fg = colors.teal, style = {} },
 			["@method.call"] = { fg = colors.blue },
+			["@type"] = { fg = colors.yellow },
 			Hlargs = { fg = colors.yellow },
 		}
 	end,

@@ -21,6 +21,22 @@ xmap("<C-h>", "<cmd> call VSCodeNotify('workbench.action.navigateLeft') <CR>")
 nmap("<C-l>", "<cmd> call VSCodeNotify('workbench.action.navigateRight') <CR>")
 xmap("<C-l>", "<cmd> call VSCodeNotify('workbench.action.navigateRight') <CR>")
 
+-- Window resize
+nmap("<C-Left>", "<cmd> call VSCodeNotify('workbench.action.decreaseViewWidth') <CR>")
+xmap("<C-Left>", "<cmd> call VSCodeNotify('workbench.action.decreaseViewWidth') <CR>")
+nmap("<C-Right>", "<cmd> call VSCodeNotify('workbench.action.increaseViewWidth') <CR>")
+xmap("<C-Right>", "<cmd> call VSCodeNotify('workbench.action.increaseViewWidth') <CR>")
+nmap("<C-Up>", "<cmd> call VSCodeNotify('workbench.action.increaseViewHeight') <CR>")
+xmap("<C-Up>", "<cmd> call VSCodeNotify('workbench.action.increaseViewHeight') <CR>")
+nmap("<C-Down>", "<cmd> call VSCodeNotify('workbench.action.decreaseViewHeight') <CR>")
+xmap("<C-Down>", "<cmd> call VSCodeNotify('workbench.action.decreaseViewHeight') <CR>")
+
+-- Window Split
+nmap("vv", "<cmd> call VSCodeNotify('workbench.action.splitEditor') <CR>")
+xmap("vv", "<cmd> call VSCodeNotify('workbench.action.splitEditor') <CR>")
+nmap("ss", "<cmd> call VSCodeNotify('workbench.action.splitEditorDown') <CR>")
+xmap("ss", "<cmd> call VSCodeNotify('workbench.action.splitEditorDown') <CR>")
+
 -- which-key
 nmap("<Space>", "<cmd> call VSCodeNotify('whichkey.show') <cr>")
-xmap("<Space>", "<cmd> call VSCodeNotifn ey('whichkey.show') <cr>")
+xmap("<Space>", "<cmd> call VSCodeNotify('whichkey.show') <cr>")
