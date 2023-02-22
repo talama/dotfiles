@@ -1,3 +1,8 @@
+local snip_status_ok, luasnip = pcall(require, "luasnip")
+if not snip_status_ok then
+	return
+end
+
 -- MASON settings
 require("mason.settings").set({
 	ui = {
@@ -34,42 +39,71 @@ lsp.configure("jsonls", {
 
 -- CMP
 -- Complete from all visible buffers (splits)
--- local buffer_option = {
--- 	get_bufnrs = function()
--- 		local bufs = {}
--- 		for _, win in ipairs(vim.api.nvim_list_wins()) do
--- 			bufs[vim.api.nvim_win_get_buf(win)] = true
--- 		end
--- 		return vim.tbl_keys(bufs)
--- 	end,
--- }
--- -- Mappings
--- local cmp = require("cmp")
--- local cmp_select = { behavior = cmp.SelectBehavior.Select }
--- local cmp_mappings = lsp.defaults.cmp_mappings({
--- 	["<C-k>"] = cmp.mapping.select_prev_item(cmp_select),
--- 	["<C-j>"] = cmp.mapping.select_next_item(cmp_select),
--- 	["<C-y>"] = cmp.mapping.confirm({ select = true }),
--- 	["<C-Space>"] = cmp.mapping.complete(),
--- 	["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-2), { "i", "c" }),
--- 	["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(2), { "i", "c" }),
--- 	["<C-e>"] = cmp.mapping({
--- 		i = cmp.mapping.abort(),
--- 		c = cmp.mapping.close(),
--- 	}),
--- })
---
--- lsp.setup_nvim_cmp({
--- 	sources = {
--- 		{ name = "nvim_lsp", priority = 10 },
--- 		{ name = "nvim_lua", prioriyt = 5 },
--- 		{ name = "luasnip", priority = 7, max_item_count = 8 },
--- 		{ name = "buffer", priority = 7, option = buffer_option },
--- 		{ name = "path", priority = 4 },
--- 		{ name = "npm", priority = 3 },
--- 	},
--- 	mappings = cmp_mappings,
--- })
+local buffer_option = {
+	get_bufnrs = function()
+		local bufs = {}
+		for _, win in ipairs(vim.api.nvim_list_wins()) do
+			bufs[vim.api.nvim_win_get_buf(win)] = true
+		end
+		return vim.tbl_keys(bufs)
+	end,
+}
+-- Mappings
+local cmp = require("cmp")
+local cmp_select = { behavior = cmp.SelectBehavior.Select }
+local cmp_mappings = lsp.defaults.cmp_mappings({
+	["<C-k>"] = cmp.mapping.select_prev_item(cmp_select),
+	["<C-j>"] = cmp.mapping.select_next_item(cmp_select),
+	["<C-y>"] = cmp.mapping.confirm({ select = true }),
+	["<C-Space>"] = cmp.mapping.complete(),
+	["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-2), { "i", "c" }),
+	["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(2), { "i", "c" }),
+	["<C-e>"] = cmp.mapping({
+		i = cmp.mapping.abort(),
+		c = cmp.mapping.close(),
+	}),
+	-- Accept currently selected item. If none selected, `select` first item.
+	-- Set `select` to `false` to only confirm explicitly selected items.
+	["<CR>"] = cmp.mapping.confirm({ select = true }),
+	["<Tab>"] = cmp.mapping(function(fallback)
+		if cmp.visible() then
+			cmp.select_next_item()
+		elseif luasnip.expandable() then
+			luasnip.expand()
+		elseif luasnip.expand_or_jumpable() then
+			luasnip.expand_or_jump()
+		else
+			fallback()
+		end
+	end, {
+		"i",
+		"s",
+	}),
+	["<S-Tab>"] = cmp.mapping(function(fallback)
+		if cmp.visible() then
+			cmp.select_prev_item()
+		elseif luasnip.jumpable(-1) then
+			luasnip.jump(-1)
+		else
+			fallback()
+		end
+	end, {
+		"i",
+		"s",
+	}),
+})
+
+lsp.setup_nvim_cmp({
+	sources = {
+		{ name = "nvim_lua" },
+		{ name = "luasnip", max_item_count = 8 },
+		{ name = "nvim_lsp" },
+		{ name = "buffer", option = buffer_option },
+		{ name = "path" },
+		{ name = "npm" },
+	},
+	mappings = cmp_mappings,
+})
 
 lsp.setup_nvim_cmp({})
 
