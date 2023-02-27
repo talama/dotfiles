@@ -92,6 +92,8 @@ dapui.setup({
 vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "DiagnosticSignError", linehl = "", numhl = "" })
 
 -- DAP setup
+dap.set_log_level("TRACE")
+
 dap.listeners.after.event_initialized["dapui_config"] = function()
 	dapui.open()
 end
@@ -103,6 +105,9 @@ end
 dap.listeners.before.event_exited["dapui_config"] = function()
 	dapui.close()
 end
+
+-- Enable virtual text
+vim.g.dap_virtual_text = true
 
 -- Keybindings
 local continue = function()
@@ -173,18 +178,18 @@ dap.configurations.javascript = {
 	},
 }
 
-dap.configurations.javascript = {
-	{
-		type = "chrome",
-		request = "attach",
-		program = "${file}",
-		cwd = vim.fn.getcwd(),
-		sourceMaps = true,
-		protocol = "inspector",
-		port = 9222,
-		webRoot = "${workspaceFolder}",
-	},
-}
+-- dap.configurations.javascript = {
+-- 	{
+-- 		type = "chrome",
+-- 		request = "attach",
+-- 		program = "${file}",
+-- 		cwd = vim.fn.getcwd(),
+-- 		sourceMaps = true,
+-- 		protocol = "inspector",
+-- 		port = 9222,
+-- 		webRoot = "${workspaceFolder}",
+-- 	},
+-- }
 
 dap.configurations.javascriptreact = {
 	{
