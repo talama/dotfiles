@@ -105,8 +105,6 @@ lsp.setup_nvim_cmp({
 	mappings = cmp_mappings,
 })
 
-lsp.setup_nvim_cmp({})
-
 --LSP
 lsp.set_preferences({
 	sign_icons = {
