@@ -91,30 +91,33 @@ return packer.startup(function(use)
 
 	-- LSP
 	-- lsp-zero
-	use({
-		"VonHeikemen/lsp-zero.nvim",
-		requires = {
-			-- LSP Support
-			{ "neovim/nvim-lspconfig" },
-			{ "williamboman/mason.nvim" },
-			{ "williamboman/mason-lspconfig.nvim" },
-
-			-- Autocompletion
-			{ "hrsh7th/nvim-cmp" },
-			{ "hrsh7th/cmp-nvim-lsp" },
-			{ "hrsh7th/cmp-nvim-lua" },
-			{ "hrsh7th/cmp-buffer" },
-			{ "hrsh7th/cmp-path" },
-			{ "saadparwaiz1/cmp_luasnip" },
-			{ "hrsh7th/cmp-cmdline" },
-
-			-- Snippets
-			{ "L3MON4D3/LuaSnip" },
-			{ "rafamadriz/friendly-snippets" },
-		},
-	})
+	-- use({
+	-- 	"VonHeikemen/lsp-zero.nvim",
+	-- 	requires = {
+	-- 		-- LSP Support
+	-- 		{ "neovim/nvim-lspconfig" },
+	-- 		{ "williamboman/mason.nvim" },
+	-- 		{ "williamboman/mason-lspconfig.nvim" },
+	--
+	-- 		-- Autocompletion
+	-- 		{ "hrsh7th/nvim-cmp" },
+	-- 		{ "hrsh7th/cmp-nvim-lsp" },
+	-- 		{ "hrsh7th/cmp-nvim-lua" },
+	-- 		{ "hrsh7th/cmp-buffer" },
+	-- 		{ "hrsh7th/cmp-path" },
+	-- 		{ "saadparwaiz1/cmp_luasnip" },
+	-- 		{ "hrsh7th/cmp-cmdline" },
+	--
+	-- 		-- Snippets
+	-- 		{ "L3MON4D3/LuaSnip" },
+	-- 		{ "rafamadriz/friendly-snippets" },
+	-- 	},
+	-- })
+	--
 	-- Null-ls for linting/formatting
 	use({ "jose-elias-alvarez/null-ls.nvim", config = "require('talama.plugins.lsp.null-ls')" })
+
+	-- Trouble
 	use({ "folke/lsp-trouble.nvim", config = "require('talama.plugins.trouble')" }) -- Diagnostic
 
 	-- Lualine
@@ -127,12 +130,12 @@ return packer.startup(function(use)
 	-- Highlight other use of word under the cursor.
 	use({ "RRethy/vim-illuminate", config = "require('talama.plugins.illuminate')" })
 
-	-- Autopairs
-	use({
-		"windwp/nvim-autopairs",
-		after = { "nvim-treesitter", "nvim-cmp" },
-		config = "require('talama.plugins.autopairs')",
-	})
+	-- -- Autopairs
+	-- use({
+	-- 	"windwp/nvim-autopairs",
+	-- 	after = { "nvim-treesitter", "nvim-cmp" },
+	-- 	config = "require('talama.plugins.autopairs')",
+	-- })
 
 	-- Autoclose tags
 	use({ "windwp/nvim-ts-autotag", after = { "nvim-treesitter" } })
