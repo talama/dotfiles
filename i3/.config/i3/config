@@ -303,6 +303,8 @@ workspace $ws10 output HDMI-0
 # for_window [class=Thunderbird] focus
 # for_window [class=TelegramDesktop] focu
 
+exec setxkbmap -option caps:ctrl_modifier
+
 # Restore saved layouts
 exec --no-startup-id "i3-msg '
 Workspace 2:; append_layout ~/.config/i3/layouts/ws2.json;
