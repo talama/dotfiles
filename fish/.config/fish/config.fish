@@ -5,6 +5,7 @@ set fish_greeting
 fish_add_path ~/.local/bin/
 fish_add_path /home/talama/.spicetify
 fish_add_path /home/talama/.cargo/bin
+
 # VULKAN SDK
 setenv VULKAN_SDK ~/vulkan/1.3.239.0/x86_64/
 fish_add_path VULKAN_SDK/bin 
@@ -33,10 +34,12 @@ alias la "ls -A"
 alias ll "exa -l -g --icons"
 alias lla "ll -a"
 
+alias tm "~/.tmux/tmux-sessionizer.sh"
+
 #auto launch ssh-agent
 setenv SSH_ENV $HOME/.ssh/environment
 
-function start_agent                                                                                                                                                                    
+function start_agent
     echo "Initializing new SSH agent ..."
     ssh-agent -c | sed 's/^echo/#echo/' > $SSH_ENV
     echo "succeeded"
@@ -45,7 +48,7 @@ function start_agent
     ssh-add
 end
 
-function test_identities                                                                                                                                                                
+function test_identities
     ssh-add -l | grep "The agent has no identities" > /dev/null
     if [ $status -eq 0 ]
         ssh-add
@@ -55,19 +58,19 @@ function test_identities
     end
 end
 
-if [ -n "$SSH_AGENT_PID" ] 
+if [ -n "$SSH_AGENT_PID" ]
     ps -ef | grep $SSH_AGENT_PID | grep ssh-agent > /dev/null
     if [ $status -eq 0 ]
         test_identities
-    end  
+    end
 else
     if [ -f $SSH_ENV ]
         . $SSH_ENV > /dev/null
-    end  
+    end
     ps -ef | grep $SSH_AGENT_PID | grep -v grep | grep ssh-agent > /dev/null
     if [ $status -eq 0 ]
         test_identities
-    else 
+    else
         start_agent
-    end  
+    end
 end
