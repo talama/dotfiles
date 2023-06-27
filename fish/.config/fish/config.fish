@@ -24,6 +24,7 @@ alias .nvim="cd ~/.config/nvim && nvim lua/talama/plugins.lua"
 alias .kitty="cd ~/.config/kitty && nvim kitty.conf"
 alias .i3="cd ~/.config/i3 && nvim config"
 alias .picom="cd ~/.config/picom && nvim picom.conf"
+alias .tmux="nvim ~/.tmux.conf"
 
 # aliases
 alias nv="nvim"
