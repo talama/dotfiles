@@ -83,11 +83,11 @@ return packer.startup(function(use)
 	-- Additional text objects via treesitter
 	use({ "nvim-treesitter/nvim-treesitter-textobjects", after = "nvim-treesitter" })
 	-- Highlight parameters inside function body
-	use({
-		"m-demare/hlargs.nvim",
-		config = "require('talama.plugins.hlargs')",
-		requires = { "nvim-treesitter/nvim-treesitter" },
-	})
+	-- use({
+	-- 	"m-demare/hlargs.nvim",
+	-- 	config = "require('talama.plugins.hlargs')",
+	-- 	requires = { "nvim-treesitter/nvim-treesitter" },
+	-- })
 
 	-- LSP
 	-- lsp-zero

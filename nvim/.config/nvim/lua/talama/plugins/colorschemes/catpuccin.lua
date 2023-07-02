@@ -42,7 +42,8 @@ require("catppuccin").setup({
 			["@property"] = { fg = colors.teal, style = {} },
 			["@method.call"] = { fg = colors.blue },
 			["@type"] = { fg = colors.yellow },
-			Hlargs = { fg = colors.yellow },
+			["@lsp.mod.readonly"] = { fg = colors.yellow },
+			["@lsp.type.parameter"] = { fg = colors.teal },
 		}
 	end,
 	-- Per flavour overrides
