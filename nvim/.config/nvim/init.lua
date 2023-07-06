@@ -1,12 +1,2 @@
-if vim.g.vscode then
-	require("talama.vscode.settings")
-	require("talama.vscode.options")
-	require("talama.vscode.keymaps")
-else
-	require("talama.impatient")
-	require("talama.options")
-	require("talama.keymaps")
-	require("talama.plugins")
-	require("talama.colorscheme")
-	require("talama.plugins.lsp")
-end
+-- bootstrap lazy.nvim, LazyVim and your plugins
+require("config.lazy")
