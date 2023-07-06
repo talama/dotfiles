@@ -1,6 +1,6 @@
 [user]
   name = talama
-  email = talama@protonmail.com
+	email = talama@proton.me
 [alias]
   gl = config --global -l
   st = status -sb
