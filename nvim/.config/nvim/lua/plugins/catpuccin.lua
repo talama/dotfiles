@@ -28,7 +28,7 @@ return {
     custom_highlights = function(colors)
       return {
         ["@variable"] = { fg = colors.text, style = {} },
-        ["@property"] = { fg = colors.teal, style = {} },
+        ["@property"] = { fg = colors.yellow, style = {} },
         ["@method.call"] = { fg = colors.blue },
         ["@type"] = { fg = colors.yellow },
         ["@lsp.mod.readonly"] = { fg = colors.yellow },
