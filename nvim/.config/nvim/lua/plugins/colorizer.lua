@@ -15,7 +15,6 @@ return {
           "html",
         },
         virtualtext = "■",
-        mode = { "background" },
       },
     },
   },
