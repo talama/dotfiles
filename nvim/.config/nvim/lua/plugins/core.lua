@@ -45,6 +45,13 @@ return {
     end,
   },
 
+  {
+    "L3MON4D3/LuaSnip",
+    keys = function()
+      return {}
+    end,
+  },
+
   -- supertab in cmp
   {
     "hrsh7th/nvim-cmp",
