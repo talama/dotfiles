@@ -1,7 +1,35 @@
--- Options are automatically loaded before lazy.nvim startup
--- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
--- Add any additional options here
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+local opt = vim.opt
 
-vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-vim.opt.fen = false
+opt.autowrite = true -- Enable auto write
+opt.clipboard = "unnamedplus" -- Sync with system clipboard
+opt.completeopt = "menu,menuone,noselect"
+opt.conceallevel = 3 -- Hide * markup for bold and italic
+opt.confirm = true -- Confirm to save changes before exiting modified buffer
+opt.cursorline = true -- Enable highlighting of the current line
+opt.expandtab = true -- Use spaces instead of tabs
+opt.ignorecase = true -- Ignore case
+opt.list = true
+opt.laststatus= 3 -- Set global statusline
+-- opt.lazyredraw = true -- Faster scrolling
+-- opt.linebreak = true  -- Wrap on word boundary
+opt.mouse = "a" -- Enable mouse mode
+opt.number = true -- Print line number
+opt.relativenumber = true -- Relative line numbers
+opt.scrolloff = 4 -- Lines of context
+opt.shiftwidth = 2 -- Size of an indent
+opt.showmode = false -- Dont show mode since we have a statusline
+opt.sidescrolloff = 8 -- Columns of context
+opt.signcolumn = "yes"
+opt.smartcase = true -- Don't ignore case with capitals
+opt.smartindent = true -- Insert indents automatically
+opt.spelllang = { "en" }
+opt.splitbelow = true -- Put new windows below current
+opt.splitright = true -- Put new windows right of current
+opt.tabstop = 2 -- Number of spaces tabs count for
+opt.termguicolors = true -- True color support
+opt.undolevels = 10000
+opt.updatetime = 200

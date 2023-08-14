@@ -1,6 +1,7 @@
 return {
   "catppuccin/nvim",
-  lazy = true,
+  lazy = false,
+  priority = 1000,
   name = "catppuccin",
   opts = {
     flavour = "macchiato", -- latte, frappe, macchiato, mocha
@@ -28,7 +29,7 @@ return {
     custom_highlights = function(colors)
       return {
         ["@variable"] = { fg = colors.text, style = {} },
-        ["@property"] = { fg = colors.yellow, style = {} },
+        ["@property"] = { fg = colors.text, style = {} },
         ["@method.call"] = { fg = colors.blue },
         ["@type"] = { fg = colors.yellow },
         ["@lsp.mod.readonly"] = { fg = colors.yellow },

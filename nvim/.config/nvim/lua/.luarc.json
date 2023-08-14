@@ -1,0 +1,31 @@
+{
+    "workspace.library": [
+        "/home/edika/.local/share/nvim/lazy/neodev.nvim/types/stable",
+        "/usr/share/nvim/runtime/lua",
+        "/home/edika/.local/share/nvim/lazy/mason-lspconfig.nvim/lua",
+        "/home/edika/.local/share/nvim/lazy/nvim/lua",
+        "/home/edika/.local/share/nvim/lazy/cmp_luasnip/lua",
+        "/home/edika/.local/share/nvim/lazy/cmp-nvim-lsp/lua",
+        "/home/edika/.local/share/nvim/lazy/nvim-web-devicons/lua",
+        "/home/edika/.local/share/nvim/lazy/nvim-autopairs/lua",
+        "/home/edika/.local/share/nvim/lazy/nvim-cmp/lua",
+        "/home/edika/.local/share/nvim/lazy/indent-blankline.nvim/lua",
+        "/home/edika/.local/share/nvim/lazy/neoconf.nvim/lua",
+        "/home/edika/.local/share/nvim/lazy/LuaSnip/lua",
+        "/home/edika/.local/share/nvim/lazy/lazy.nvim/lua",
+        "/home/edika/.local/share/nvim/lazy/nvim-tree.lua/lua",
+        "/home/edika/.local/share/nvim/lazy/nvim-treesitter-textobjects/lua",
+        "/home/edika/.local/share/nvim/lazy/neodev.nvim/lua",
+        "/home/edika/.local/share/nvim/lazy/catppuccin/lua",
+        "/home/edika/.local/share/nvim/lazy/cmp-path/lua",
+        "/home/edika/.local/share/nvim/lazy/cmp-buffer/lua",
+        "/home/edika/.local/share/nvim/lazy/telescope.nvim/lua",
+        "/home/edika/.local/share/nvim/lazy/nvim-treesitter/lua",
+        "/home/edika/.local/share/nvim/lazy/mason.nvim/lua",
+        "/home/edika/.local/share/nvim/lazy/nvim-lspconfig/lua",
+        "/home/edika/.local/share/nvim/lazy/plenary.nvim/lua",
+        "/home/edika/.local/share/nvim/lazy/telescope-fzf-native.nvim/lua",
+        "/home/edika/.config/nvim/lua",
+        "${3rd}/luv/library"
+    ]
+}

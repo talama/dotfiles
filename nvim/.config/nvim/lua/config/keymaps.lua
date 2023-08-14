@@ -1,65 +1,121 @@
--- Keymaps are automatically loaded on the VeryLazy event
--- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
--- Add any additional keymaps here
-
 local function map(mode, lhs, rhs, opts)
-  local keys = require("lazy.core.handler").handlers.keys
-  ---@cast keys LazyKeysHandler
-  -- do not create the keymap if a lazy keys handler exists
-  if not keys.active[keys.parse({ lhs, mode = mode }).id] then
-    opts = opts or {}
-    opts.silent = opts.silent ~= false
-    if opts.remap and not vim.g.vscode then
-      opts.remap = nil
-    end
-    vim.keymap.set(mode, lhs, rhs, opts)
-  end
+	vim.keymap.set(mode, lhs, rhs, opts)
 end
 
--- Buffer
-map("n", "<TAB>", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev buffer" })
-map("n", "<S-TAB>", "<cmd>BufferLineCycleNext<cr>", { desc = "Next buffer" })
-map("n", "<C-n>", "<cmd>enew<cr>", { desc = "New buffer" })
+vim.g.mapleader = " "
+
+-- better up/down
+map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+map({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+
+-- Move to window using the <ctrl> hjkl keys
+map("n", "<C-h>", "<C-w>h", { desc = "Go to left window", remap = true })
+map("n", "<C-j>", "<C-w>j", { desc = "Go to lower window", remap = true })
+map("n", "<C-k>", "<C-w>k", { desc = "Go to upper window", remap = true })
+map("n", "<C-l>", "<C-w>l", { desc = "Go to right window", remap = true })
+
+-- Resize window using <ctrl> arrow keys
+map("n", "<C-Up>", "<cmd>resize +2<cr>", { desc = "Increase window height" })
+map("n", "<C-Down>", "<cmd>resize -2<cr>", { desc = "Decrease window height" })
+map("n", "<C-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease window width" })
+map("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase window width" })
+
+-- Buffer Navigation
+map("n", "<TAB>", ":bnext<CR>", { desc = "Next Buffer" })
+map("n", "<S-TAB>", ":bprevious<CR>", { desc = "Previous Buffer" })
+map("n", "<C-n>", ":enew<CR>", { desc = "New Buffer" })
+
+-- Current buffer navigation
+map("n", "<C-u>", "<C-u>zz", { desc = "Move Up" })
+map("n", "<C-d>", "<C-d>zz", { desc = "Move Down" })
+
+--Easy window split
+map("n", "vv", "<C-w>v", { desc = "Split Vertical" })
 
 -- Don't yank on delete char
-map({ "n", "x" }, "x", '"_x')
-map({ "n", "x" }, "X", '"_X')
+map({ "n", "v" }, "x", '"_x')
+map({ "n", "v" }, "X", '"_X')
 
--- Yank to clipboard
-map({ "n", "v" }, "<leader>y", '"+y', { desc = "Yank to clipboard" })
-map({ "n", "v" }, "<leader>Y", '"+Y', { desc = "Yank to clipboard" })
-
--- Delete to void register
-map("n", "<leader>d", '"_d', { desc = "Delete to void register" })
-map("x", "<leader>d", '"_d', { desc = "Delete to void register" })
+-- Select All
+map("n", "<C-a>", "gg<S-v>G", { desc = "Select all" })
 
 -- Better paste
 map("v", "p", '"_dP')
 
--- Movement
-map("i", "<C-b>", "<ESC>^i", { desc = "Move to beginning of line" })
-map("n", "<C-b>", "^", { desc = "Move to beginning of line" })
-map({ "n", "i" }, "<C-e>", "<END>", { desc = "Move to end line" })
-map("i", "<C-h>", "<Left>")
-map("i", "<C-j>", "<Down>")
-map("i", "<C-k>", "<Up>")
-map("i", "<C-l>", "<Right>")
+-- paste deleting highlighted word into the void register
+map("x", "<leader>p", '"_dP')
 
--- Comments
-vim.keymap.set("x", "<leader>/", "gc", { remap = true })
-vim.keymap.set("n", "<leader>/", "gcc", { remap = true })
+-- Go to the beginning and end of the line
+map({ "n", "i" }, "<C-b>", "<ESC>^i")
+map({ "n", "i" }, "<C-e>", "<END>")
 
--- vscode
-if vim.g.vscode then
-  -- Better window navigation
-  -- map({ "n", "x" }, "<C-j>", "<cmd> call VSCodeNotify('workbench.action.navigateDown') <CR>")
-  -- map({ "n", "x" }, "<C-k>", "<cmd> call VSCodeNotify('workbench.action.navigateUp') <CR>")
-  -- map({ "n", "x" }, "<C-h>", "<cmd> call VSCodeNotify('workbench.action.navigateLeft') <CR>")
-  -- map({ "n", "x" }, "<C-l>", "<cmd> call VSCodeNotify('workbench.action.navigateRight') <CR>")
+-- Move Lines
+map("n", "<A-j>", "<cmd>m .+1<cr>==", { desc = "Move down" })
+map("n", "<A-k>", "<cmd>m .-2<cr>==", { desc = "Move up" })
+map("i", "<A-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move down" })
+map("i", "<A-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move up" })
+map("v", "<A-j>", ":m '>+1<cr>gv=gv", { desc = "Move down" })
+map("v", "<A-k>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
 
-  -- Window resize
-  map({ "n", "x" }, "<C-Left>", "<cmd> call VSCodeNotify('workbench.action.decreaseViewWidth') <CR>")
-  map({ "n", "x" }, "<C-Right>", "<cmd> call VSCodeNotify('workbench.action.increaseViewWidth') <CR>")
-  map({ "n", "x" }, "<C-Up>", "<cmd> call VSCodeNotify('workbench.action.increaseViewHeight') <CR>")
-  map({ "n", "x" }, "<C-Down>", "<cmd> call VSCodeNotify('workbench.action.decreaseViewHeight') <CR>")
+-- Clear search with <esc>
+map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
+
+map({ "n", "x" }, "gw", "*N", { desc = "Search word under cursor" })
+
+-- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
+map("n", "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" })
+map("x", "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" })
+map("o", "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" })
+map("n", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result" })
+map("x", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result" })
+map("o", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result" })
+
+-- save file
+map({ "i", "v", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save file" })
+
+-- better indenting
+map("v", "<", "<gv")
+map("v", ">", ">gv")
+
+-- lazy
+map("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" })
+
+-- new file
+map("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" })
+
+map("n", "<leader>xl", "<cmd>lopen<cr>", { desc = "Location List" })
+map("n", "<leader>xq", "<cmd>copen<cr>", { desc = "Quickfix List" })
+
+-- quit
+map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit all" })
+
+-- highlights under cursor
+if vim.fn.has("nvim-0.9.0") == 1 then
+	map("n", "<leader>ui", vim.show_pos, { desc = "Inspect Pos" })
 end
+
+-- Terminal Mappings
+map("t", "<esc><esc>", "<c-\\><c-n>", { desc = "Enter Normal Mode" })
+map("t", "<C-h>", "<cmd>wincmd h<cr>", { desc = "Go to left window" })
+map("t", "<C-j>", "<cmd>wincmd j<cr>", { desc = "Go to lower window" })
+map("t", "<C-k>", "<cmd>wincmd k<cr>", { desc = "Go to upper window" })
+map("t", "<C-l>", "<cmd>wincmd l<cr>", { desc = "Go to right window" })
+map("t", "<C-/>", "<cmd>close<cr>", { desc = "Hide Terminal" })
+map("t", "<c-_>", "<cmd>close<cr>", { desc = "which_key_ignore" })
+
+-- windows
+map("n", "<leader>ww", "<C-W>p", { desc = "Other window", remap = true })
+map("n", "<leader>wd", "<C-W>c", { desc = "Delete window", remap = true })
+map("n", "<leader>w-", "<C-W>s", { desc = "Split window below", remap = true })
+map("n", "<leader>w|", "<C-W>v", { desc = "Split window right", remap = true })
+map("n", "<leader>-", "<C-W>s", { desc = "Split window below", remap = true })
+map("n", "<leader>|", "<C-W>v", { desc = "Split window right", remap = true })
+
+-- PLUGINS
+-- Nvim-tree
+map("n", "<leader>e", ":NvimTreeToggle <CR>", { desc = "Toggle nvim-tree" })
+
+-- ToggleTerm
+map("n", "<leader>th", ":ToggleTerm direction=horizontal<CR>", {desc = "Horizontal Terminal"})
+map("n", "<leader>tv", ":ToggleTerm direction=vertical<CR>", {desc = "Vertical Terminal"})
+map("n", "<leader>tf", ":ToggleTerm direction=float<CR>", {desc = "Float Terminal"})
