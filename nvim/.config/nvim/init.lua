@@ -22,7 +22,16 @@ require("lazy").setup({
 	require("config.options"),
 	require("config.keymaps"),
 	require("config.autocmds"),
-
+	install = {
+		colorscheme = { "catppuccin" },
+	},
+	checker = {
+		enabled = true,
+		notify = true,
+	},
+	change_detection = {
+		notify = true,
+	},
 	spec = {
 		{
 			"catppuccin/nvim",
