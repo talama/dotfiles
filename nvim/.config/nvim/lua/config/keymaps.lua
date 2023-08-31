@@ -111,11 +111,13 @@ map("n", "<leader>w|", "<C-W>v", { desc = "Split window right", remap = true })
 map("n", "<leader>-", "<C-W>s", { desc = "Split window below", remap = true })
 map("n", "<leader>|", "<C-W>v", { desc = "Split window right", remap = true })
 
+map("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Replace word in file" })
+
 -- PLUGINS
 -- Nvim-tree
 map("n", "<leader>e", ":NvimTreeToggle <CR>", { desc = "Toggle nvim-tree" })
 
 -- ToggleTerm
-map("n", "<leader>th", ":ToggleTerm direction=horizontal<CR>", {desc = "Horizontal Terminal"})
-map("n", "<leader>tv", ":ToggleTerm direction=vertical<CR>", {desc = "Vertical Terminal"})
-map("n", "<leader>tf", ":ToggleTerm direction=float<CR>", {desc = "Float Terminal"})
+map("n", "<leader>th", ":ToggleTerm direction=horizontal<CR>", { desc = "Horizontal Terminal" })
+map("n", "<leader>tv", ":ToggleTerm direction=vertical<CR>", { desc = "Vertical Terminal" })
+map("n", "<leader>tf", ":ToggleTerm direction=float<CR>", { desc = "Float Terminal" })
