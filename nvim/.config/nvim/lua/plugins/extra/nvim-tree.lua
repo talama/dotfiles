@@ -61,6 +61,7 @@ return {
         group_empty = true,
         highlight_git = true,
         highlight_opened_files = "none",
+        -- root_folder_label = false,
         root_folder_modifier = ":~",
         indent_markers = {
           enable = false,
@@ -98,7 +99,6 @@ return {
       view = {
         -- width of the window, can be either a number (columns) or a string in `%`
         width = 30,
-        hide_root_folder = false,
         -- side of the tree, can be one of 'left' | 'right' | 'top' | 'bottom'
         side = "left",
         number = false,
