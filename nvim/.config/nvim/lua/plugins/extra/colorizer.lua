@@ -11,7 +11,7 @@ return {
         sass = { enable = "true", parsers = { "css" } },
         filetypes = {
           "css",
-          "javascript",
+          --[[ "javascript", ]]
           "html",
         },
         virtualtext = "■",
