@@ -6,6 +6,8 @@ fish_add_path ~/.local/bin/
 fish_add_path ~/bin/
 fish_add_path /home/talama/.spicetify
 fish_add_path /home/talama/.cargo/bin
+fish_add_path /home/talama/bin/idea-IU-232.10227.8/bin/
+
 
 # VULKAN SDK
 setenv VULKAN_SDK ~/vulkan/1.3.239.0/x86_64/
