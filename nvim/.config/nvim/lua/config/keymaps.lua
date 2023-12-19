@@ -4,9 +4,19 @@ end
 
 vim.g.mapleader = " "
 
+-- map esc to kk
+map("i", "kk", "<Esc>")
+
+-- Reload configuration without restart nvim
+map("n", "<leader>r", ":so %<CR>")
+
 -- better up/down
 map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 map({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+
+-- Change split orientation
+map("n", "<leader>tv", "<C-w>t<C-w>K")
+map("n", "<leader>th", "<C-w>t<C-w>H")
 
 -- Move to window using the <ctrl> hjkl keys
 map("n", "<C-h>", "<C-w>h", { desc = "Go to left window", remap = true })
@@ -31,6 +41,7 @@ map("n", "<C-d>", "<C-d>zz", { desc = "Move Down" })
 
 --Easy window split
 map("n", "vv", "<C-w>v", { desc = "Split Vertical" })
+map("n", "ss", "<C-w>s", { desc = "Split Horizontal" })
 
 -- Don't yank on delete char
 map({ "n", "v" }, "x", '"_x')
@@ -60,7 +71,11 @@ map("v", "<A-k>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
 -- Clear search with <esc>
 map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
 
+-- Search word
 map({ "n", "x" }, "gw", "*N", { desc = "Search word under cursor" })
+
+-- Replace word
+map("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Replace word in file" })
 
 -- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
 map("n", "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" })
@@ -78,7 +93,7 @@ map("v", "<", "<gv")
 map("v", ">", ">gv")
 
 -- lazy
-map("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" })
+map("n", "<leader>lz", "<cmd>Lazy<cr>", { desc = "Lazy" })
 
 -- new file
 map("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" })
@@ -106,18 +121,9 @@ map("t", "<c-_>", "<cmd>close<cr>", { desc = "which_key_ignore" })
 -- windows
 map("n", "<leader>ww", "<C-W>p", { desc = "Other window", remap = true })
 map("n", "<leader>wd", "<C-W>c", { desc = "Delete window", remap = true })
-map("n", "<leader>w-", "<C-W>s", { desc = "Split window below", remap = true })
-map("n", "<leader>w|", "<C-W>v", { desc = "Split window right", remap = true })
 map("n", "<leader>-", "<C-W>s", { desc = "Split window below", remap = true })
 map("n", "<leader>|", "<C-W>v", { desc = "Split window right", remap = true })
-
-map("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Replace word in file" })
 
 -- PLUGINS
 -- Nvim-tree
 map("n", "<leader>e", ":NvimTreeToggle <CR>", { desc = "Toggle nvim-tree" })
-
--- ToggleTerm
-map("n", "<leader>th", ":ToggleTerm direction=horizontal<CR>", { desc = "Horizontal Terminal" })
-map("n", "<leader>tv", ":ToggleTerm direction=vertical<CR>", { desc = "Vertical Terminal" })
-map("n", "<leader>tf", ":ToggleTerm direction=float<CR>", { desc = "Float Terminal" })

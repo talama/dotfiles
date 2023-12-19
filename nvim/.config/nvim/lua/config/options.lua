@@ -1,35 +1,92 @@
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
-local opt = vim.opt
+-- General Neovim settings and configuration
+-----------------------------------------------------------
 
-opt.autowrite = true -- Enable auto write
-opt.clipboard = "unnamedplus" -- Sync with system clipboard
-opt.completeopt = "menu,menuone,noselect"
-opt.conceallevel = 3 -- Hide * markup for bold and italic
-opt.confirm = true -- Confirm to save changes before exiting modified buffer
-opt.cursorline = true -- Enable highlighting of the current line
-opt.expandtab = true -- Use spaces instead of tabs
-opt.ignorecase = true -- Ignore case
-opt.list = true
-opt.laststatus= 3 -- Set global statusline
--- opt.lazyredraw = true -- Faster scrolling
--- opt.linebreak = true  -- Wrap on word boundary
-opt.mouse = "a" -- Enable mouse mode
-opt.number = true -- Print line number
+-- Default options are not included
+-- See: https://neovim.io/doc/user/vim_diff.html
+-- [2] Defaults - *nvim-defaults*
+
+local g = vim.g     -- Global variables
+local opt = vim.opt -- Set options (global/buffer/windows-scoped)
+
+-----------------------------------------------------------
+-- General
+-----------------------------------------------------------
+-- vim.cmd.colorscheme("catppuccin-macchiato")
+opt.mouse = "a"                                    -- Enable mouse support
+opt.clipboard = "unnamedplus"                      -- Copy/paste to system clipboard
+opt.swapfile = false                               -- Don't use swapfile
+opt.completeopt = "menu,menuone,noinsert,noselect" -- Autocomplete options
+
+-----------------------------------------------------------
+-- Neovim UI
+-----------------------------------------------------------
+opt.number = true         -- Show line number
 opt.relativenumber = true -- Relative line numbers
-opt.scrolloff = 4 -- Lines of context
-opt.shiftwidth = 2 -- Size of an indent
-opt.showmode = false -- Dont show mode since we have a statusline
-opt.sidescrolloff = 8 -- Columns of context
-opt.signcolumn = "yes"
-opt.smartcase = true -- Don't ignore case with capitals
-opt.smartindent = true -- Insert indents automatically
-opt.spelllang = { "en" }
-opt.splitbelow = true -- Put new windows below current
-opt.splitright = true -- Put new windows right of current
-opt.tabstop = 2 -- Number of spaces tabs count for
-opt.termguicolors = true -- True color support
-opt.undolevels = 10000
-opt.updatetime = 200
+opt.showmatch = true      -- Highlight matching parenthesis
+opt.foldmethod = "marker" -- Enable folding (default 'foldmarker')
+-- opt.colorcolumn = '80' -- Line lenght marker at 80 columns
+opt.splitright = true     -- Vertical split to the right
+opt.splitbelow = true     -- Horizontal split to the bottom
+opt.ignorecase = true     -- Ignore case letters when search
+opt.smartcase = true      -- Ignore lowercase for the whole pattern
+opt.linebreak = true      -- Wrap on word boundary
+opt.termguicolors = true  -- Enable 24-bit RGB colors
+opt.laststatus = 3        -- Set global statusline
+opt.signcolumn = "yes"    -- Signcolumn always on
+opt.cursorline = true     -- Enable highlighting of the current line
+opt.showmode = false      -- Don't show mode since we have a statusline
+----------------------------------------------------------
+-- Tabs, indent
+-----------------------------------------------------------
+opt.expandtab = true   -- Use spaces instead of tabs
+opt.shiftwidth = 2     -- Shift 4 spaces when tab
+opt.tabstop = 2        -- 1 tab == 4 spaces
+opt.smartindent = true -- Autoindent new lines
+
+-----------------------------------------------------------
+-- Memory, CPU
+-----------------------------------------------------------
+opt.hidden = true     -- Enable background buffers
+opt.history = 100     -- Remember N lines in history
+-- opt.lazyredraw = true -- Faster scrolling
+opt.synmaxcol = 240   -- Max column for syntax highlight
+opt.updatetime = 250  -- ms to wait for trigger an event
+
+-----------------------------------------------------------
+-- Startup
+-----------------------------------------------------------
+-- Disable nvim intro
+opt.shortmess:append("sI")
+
+-- -- Disable builtin plugins
+local disabled_built_ins = {
+  "2html_plugin",
+  "getscript",
+  "getscriptPlugin",
+  "gzip",
+  "logipat",
+  "netrw",
+  "netrwPlugin",
+  "netrwSettings",
+  "netrwFileHandlers",
+  "matchit",
+  "tar",
+  "tarPlugin",
+  "rrhelper",
+  "spellfile_plugin",
+  "vimball",
+  "vimballPlugin",
+  "zip",
+  "zipPlugin",
+  "tutor",
+  "rplugin",
+  "synmenu",
+  "optwin",
+  "compiler",
+  "bugreport",
+  "ftplugin",
+}
+
+for _, plugin in pairs(disabled_built_ins) do
+  g["loaded_" .. plugin] = 1
+end

@@ -1,32 +1,63 @@
-local function augroup(name)
-  return vim.api.nvim_create_augroup(name, { clear = true })
-end
+-- Define autocommands with Lua APIs
+-- See: h:api-autocmd, h:augroup
+
+local augroup = vim.api.nvim_create_augroup   -- Create/get autocommand group
+local autocmd = vim.api.nvim_create_autocmd   -- Create autocommand
+
+-- General settings:
+--------------------
+
+-- Highlight on yank
+augroup('YankHighlight', { clear = true })
+autocmd('TextYankPost', {
+  group = 'YankHighlight',
+  callback = function()
+    vim.highlight.on_yank({ higroup = 'IncSearch', timeout = '1000' })
+  end
+})
+
+-- Remove whitespace on save
+autocmd('BufWritePre', {
+  pattern = '',
+  command = ":%s/\\s\\+$//e"
+})
+
+-- Don't auto commenting new lines
+autocmd('BufEnter', {
+  pattern = '',
+  command = 'set fo-=c fo-=r fo-=o'
+})
 
 -- Check if we need to reload the file when it changed
 vim.api.nvim_create_autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
-  group = augroup("checktime"),
+  group = augroup("checktime", { clear = true }),
   command = "checktime",
 })
 
--- Highlight on yank
-vim.api.nvim_create_autocmd("TextYankPost", {
-  group = augroup("highlight_yank"),
-  callback = function()
-    vim.highlight.on_yank()
-  end,
-})
-
 -- resize splits if window got resized
-vim.api.nvim_create_autocmd({ "VimResized" }, {
-  group = augroup("resize_splits"),
+augroup('resize_splits', { clear = true })
+autocmd("VimResized", {
+  group = "resize_splits",
   callback = function()
     vim.cmd("tabdo wincmd =")
   end,
 })
 
+-- Settings for filetypes:
+--------------------------
+
+-- Disable line length marker
+augroup('setLineLength', { clear = true })
+autocmd('Filetype', {
+  group = 'setLineLength',
+  pattern = { 'text', 'markdown', 'html', 'xhtml', 'javascript', 'typescript' },
+  command = 'setlocal cc=0'
+})
+
 -- close some filetypes with <q>
-vim.api.nvim_create_autocmd("FileType", {
-  group = augroup("close_with_q"),
+augroup("close_with_q", { clear = true })
+autocmd("FileType", {
+  group = "close_with_q",
   pattern = {
     "PlenaryTestPopup",
     "help",
@@ -49,8 +80,8 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 -- Auto create dir when saving a file, in case some intermediate directory does not exist
-vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-  group = augroup("auto_create_dir"),
+autocmd({ "BufWritePre" }, {
+  group = augroup("auto_create_dir", { clear = true }),
   callback = function(event)
     if event.match:match("^%w%w+://") then
       return
@@ -59,3 +90,30 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
     vim.fn.mkdir(vim.fn.fnamemodify(file, ":p:h"), "p")
   end,
 })
+
+-- Terminal settings:
+---------------------
+
+-- Open a Terminal on the right tab
+autocmd('CmdlineEnter', {
+  command = 'command! Term :botright vsplit term://$SHELL'
+})
+
+-- Enter insert mode when switching to terminal
+autocmd('TermOpen', {
+  command = 'setlocal listchars= nonumber norelativenumber nocursorline',
+})
+
+autocmd('TermOpen', {
+  pattern = '',
+  command = 'startinsert'
+})
+
+-- Close terminal buffer on process exit
+autocmd('BufLeave', {
+  pattern = 'term://*',
+  command = 'stopinsert'
+})
+
+
+
