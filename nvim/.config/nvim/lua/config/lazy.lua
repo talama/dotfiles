@@ -36,6 +36,8 @@ if vim.g.vscode then
 				opts = { highlight = { enable = false } },
 			},
 			{ "tpope/vim-repeat", event = "VeryLazy" },
+			{ "tpope/vim-surround" },
+			{ "nvim-lua/plenary.nvim" },
 		},
 	})
 else
@@ -81,6 +83,7 @@ else
 			{ import = "plugins.core" },
 			{ import = "plugins.common" },
 			{ import = "plugins.extra" },
+			{ import = "plugins.lang" },
 		},
 	})
 end

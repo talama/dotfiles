@@ -61,7 +61,7 @@ return {
 			keymap.set("n", "<leader>lr", vim.lsp.buf.rename, opts)
 
 			opts.desc = "Format buffer"
-			keymap.set("n", "<leader>gf", vim.lsp.buf.format, opts)
+			keymap.set("n", "<leader>lf", vim.lsp.buf.format, opts)
 		end
 
 		-- used to enable autocompletion (assign to every lsp server config)
