@@ -33,7 +33,7 @@ return {
 				["@type"] = { fg = colors.yellow },
 				["@lsp.mod.readonly"] = { fg = colors.yellow },
 				["@lsp.type.parameter"] = { fg = colors.teal },
-        ["@string"] = { fg = colors.flamingo },
+        ["@string"] = { fg = colors.green },
         ["@function.builtin"] = { fg = colors.blue},
 			}
 		end,
