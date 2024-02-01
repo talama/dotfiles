@@ -6,6 +6,8 @@ return {
 		local lint = require("lint")
 
 		lint.linters_by_ft = {
+      css = { "stylelint" },
+      html = { "stylelint" },
 			javascript = { "eslint_d" },
 			typescript = { "eslint_d" },
 			javascriptreact = { "eslint_d" },

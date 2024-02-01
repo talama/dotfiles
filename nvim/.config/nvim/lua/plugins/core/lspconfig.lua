@@ -107,6 +107,13 @@ return {
 			on_attach = on_attach,
 		})
 
+		-- configure stylelint server
+		lspconfig["stylelint_lsp"].setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
+			filetypes = { "html", "css", "sass", "scss", "less" },
+		})
+
 		-- configure svelte server
 		lspconfig["svelte"].setup({
 			capabilities = capabilities,
