@@ -13,3 +13,5 @@
   last = log -1 HEAD --stat
   lo = log --oneline --decorate
   lg = log --graph --abbrev-commit --decorate --pretty=format:'%C(bold blue)%h%C(reset) -%C(bold yellow)%d%C(reset) %C(white)%s%C(reset) %Cgreen(%cr)%C(reset) %C(dim white)<%an>%Creset'
+[init]
+	defaultBranch = main
