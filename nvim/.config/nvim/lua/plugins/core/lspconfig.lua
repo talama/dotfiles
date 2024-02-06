@@ -31,19 +31,19 @@ return {
 			keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
 
 			opts.desc = "Show LSP definitions"
-			keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
+			keymap.set("n", "ld", "<cmd>Telescope lsp_definitions<CR>", opts)
 
 			opts.desc = "Go to declaration"
-			vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+			vim.keymap.set("n", "lD", vim.lsp.buf.declaration, opts)
 
 			opts.desc = "Show LSP implementations"
-			vim.keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<CR>", opts)
+			vim.keymap.set("n", "li", "<cmd>Telescope lsp_implementations<CR>", opts)
 
 			opts.desc = "Show LSP references"
-			vim.keymap.set("n", "gr", "<cmd>Telescope lsp_references<CR>", opts)
+			vim.keymap.set("n", "lr", "<cmd>Telescope lsp_references<CR>", opts)
 
 			opts.desc = "Show LSP type definitions"
-			keymap.set("n", "gt", "<cmd>Telescope lsp_type_definitions<CR>", opts)
+			keymap.set("n", "lt", "<cmd>Telescope lsp_type_definitions<CR>", opts)
 
 			opts.desc = "Show documentation for what is under cursor"
 			keymap.set("n", "K", vim.lsp.buf.hover, opts)
