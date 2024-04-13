@@ -79,6 +79,9 @@ else
 			-- tmux navigator
 			{ "christoomey/vim-tmux-navigator" },
 
+      -- nvim-nio
+      { "nvim-neotest/nvim-nio" },
+
 			-- Plugins
 			{ import = "plugins.core" },
 			{ import = "plugins.common" },
