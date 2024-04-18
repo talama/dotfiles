@@ -89,17 +89,25 @@ return {
 			on_attach = on_attach,
 		})
 
+		-- configure css server
+		lspconfig["cssls"].setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
+		})
+
 		-- configure typescript server
 		lspconfig["tsserver"].setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
 		})
 
-		-- configure css server
-		lspconfig["cssls"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-		})
+    -- configure go server
+    lspconfig["gopls"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+      cmd = {"gopls"},
+      filetypes = {"go", "gomod", "gowork", "gotmpl"},
+    })
 
 		-- configure tailwindcss server
 		lspconfig["tailwindcss"].setup({

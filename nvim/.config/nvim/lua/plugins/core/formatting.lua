@@ -23,7 +23,7 @@ return {
 				graphql = { { "prettierd", "prettier" } },
 				lua = { "stylua" },
 				python = { "isort", "black" },
-				go = { "gofmt" },
+				go = { "goimports", "gofumpt" },
 				rust = { "rustfmt" },
 			},
 
