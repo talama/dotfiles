@@ -27,9 +27,6 @@ return {
 				"tsserver",
 				"html",
 				"cssls",
-        "goimports",
-        "gofumpt",
-        "delve",
 				"tailwindcss",
 				"svelte",
 				"lua_ls",
@@ -50,6 +47,8 @@ return {
 				"black", -- python formatter
 				"pylint", -- python linter
 				"eslint_d", -- js linter
+        "gofumpt",
+        "goimports",
 			},
 		})
 	end,
