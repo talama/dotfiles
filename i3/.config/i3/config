@@ -248,7 +248,8 @@ bindsym XF86AudioPrev exec playerctl previous
 bindsym $mod+p exec /usr/local/bin/switch-audio-port
 
 ## App shortcuts
-bindsym $mod+b exec /usr/bin/brave --passwod-store=gnome
+# bindsym $mod+b exec /usr/bin/brave --passwod-store=gnome
+bindsym $mod+b exec /usr/bin/firefox
 bindsym $mod+n exec /usr/bin/thunar
 bindsym Print exec scrot ~/%d-%m-%Y-%T-screenshot.png && notify-send "Screenshot saved to ~/$(date +"%d-%m-%Y-%T")-screenshot.png"
 bindsym Shift+Print exec /usr/bin/flameshot gui -p ~ && notify-send "Screenshot saved to ~/$(date +"%d-%m-%Y-%T")-screenshot.png"
@@ -309,12 +310,12 @@ workspace $ws10 output HDMI-0
 exec setxkbmap -option caps:ctrl_modifier
 
 # Restore saved layouts
-exec --no-startup-id "i3-msg '
-Workspace 2:; append_layout ~/.config/i3/layouts/ws2.json;
-Workspace 4:; append_layout ~/.config/i3/layouts/ws4.json;
-Workspace 3:; append_layout ~/.config/i3/layouts/ws3.json;
-Workspace 1:; append_layout ~/.config/i3/layouts/ws1.json;
-exec brave; exec discord; exec brave; exec kitty; '"
+# exec --no-startup-id "i3-msg '
+# Workspace 2:; append_layout ~/.config/i3/layouts/ws2.json;
+# Workspace 4:; append_layout ~/.config/i3/layouts/ws4.json;
+# Workspace 3:; append_layout ~/.config/i3/layouts/ws3.json;
+# Workspace 1:; append_layout ~/.config/i3/layouts/ws1.json;
+# exec brave; exec discord; exec brave; exec kitty; '"
 
 ##############
 # compositor #
@@ -338,7 +339,7 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id dex --autostart --environment i3
 
 # start welcome app
-#exec --no-startup-id sh /usr/share/endeavouros/scripts/welcome --startdelay=3 
+#exec --no-startup-id sh /usr/share/endeavouros/scripts/welcome --startdelay=3
 
 # num lock activated
 #exec --no-startup-id numlockx on
@@ -409,7 +410,7 @@ for_window [class="urxvt"] border pixel 1
 
 # set size of floating window
 #for_window [window_role="(?i)GtkFileChooserDialog"] resize set 640 480 #to set size of file choose dialog
-#for_window [class=".*"] resize set 640 480 #to change size of all floating windows 
+#for_window [class=".*"] resize set 640 480 #to change size of all floating windows
 
 # set position of floating window
 #for_window [class=".*"] move position center
