@@ -101,13 +101,19 @@ return {
 			on_attach = on_attach,
 		})
 
-    -- configure go server
-    lspconfig["gopls"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-      cmd = {"gopls"},
-      filetypes = {"go", "gomod", "gowork", "gotmpl"},
-    })
+		-- configure json server
+		lspconfig["jsonls"].setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
+		})
+
+		-- configure go server
+		lspconfig["gopls"].setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
+			cmd = { "gopls" },
+			filetypes = { "go", "gomod", "gowork", "gotmpl" },
+		})
 
 		-- configure tailwindcss server
 		lspconfig["tailwindcss"].setup({
