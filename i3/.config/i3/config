@@ -310,7 +310,7 @@ workspace $ws10 output HDMI-0
 exec setxkbmap -option caps:ctrl_modifier
 
 # Restore saved layouts
-# exec --no-startup-id "i3-msg '
+exec --no-startup-id "i3-msg '
 # Workspace 2:; append_layout ~/.config/i3/layouts/ws2.json;
 # Workspace 4:; append_layout ~/.config/i3/layouts/ws4.json;
 # Workspace 3:; append_layout ~/.config/i3/layouts/ws3.json;
