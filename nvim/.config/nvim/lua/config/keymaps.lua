@@ -123,7 +123,3 @@ map("n", "<leader>ww", "<C-W>p", { desc = "Other window", remap = true })
 map("n", "<leader>wd", "<C-W>c", { desc = "Delete window", remap = true })
 map("n", "<leader>-", "<C-W>s", { desc = "Split window below", remap = true })
 map("n", "<leader>|", "<C-W>v", { desc = "Split window right", remap = true })
-
--- PLUGINS
--- Nvim-tree
-map("n", "<leader>e", ":NvimTreeToggle <CR>", { desc = "Toggle nvim-tree" })
