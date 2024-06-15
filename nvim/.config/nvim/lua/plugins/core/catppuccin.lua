@@ -33,13 +33,16 @@ return {
 				["@type"] = { fg = colors.yellow },
 				["@lsp.mod.readonly"] = { fg = colors.yellow },
 				["@lsp.type.parameter"] = { fg = colors.teal },
-        ["@string"] = { fg = colors.green },
-        ["@function.builtin"] = { fg = colors.blue},
+				["@string"] = { fg = colors.green },
+				["@function.builtin"] = { fg = colors.blue },
 			}
 		end,
 		integrations = {
 			alpha = true,
 			cmp = true,
+			dap = true,
+			dap_ui = true,
+			flash = true,
 			gitsigns = true,
 			illuminate = true,
 			indent_blankline = { enabled = true },
@@ -49,6 +52,12 @@ return {
 			mini = true,
 			native_lsp = {
 				enabled = true,
+				virtual_text = {
+					errors = { "italic" },
+					hints = { "italic" },
+					warnings = { "italic" },
+					information = { "italic" },
+				},
 				underlines = {
 					errors = { "undercurl" },
 					hints = { "undercurl" },
