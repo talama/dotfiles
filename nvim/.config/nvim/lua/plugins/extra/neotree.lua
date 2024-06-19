@@ -43,7 +43,7 @@ return {
 			},
 			window = {
 				position = "left",
-				width = 35,
+				width = 30,
 			},
 			filesystem = {
 				filtered_items = {
