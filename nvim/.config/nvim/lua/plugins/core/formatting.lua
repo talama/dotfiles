@@ -1,7 +1,7 @@
 return {
 	"stevearc/conform.nvim",
 	lazy = true,
-	event = { "BufWritePre" }, -- to disable, comment this out
+	event = { "BufEnter", "BufWritePre" },
 	config = function()
 		local conform = require("conform")
 		local slow_format_filetypes = {}
@@ -12,8 +12,8 @@ return {
 				javascriptreact = { { "prettierd", "prettier" } },
 				typescriptreact = { { "prettierd", "prettier" } },
 				svelte = { { "prettierd", "prettier" } },
+        html = { "prettierd", "prettier" },
 				css = { "stylelint" },
-				html = { "stylelint" },
 				sass = { "styelelint" },
 				scss = { "styelelint" },
 				less = { "styelelint" },
@@ -40,7 +40,7 @@ return {
 						slow_format_filetypes[vim.bo[bufnr].filetype] = true
 					end
 				end
-				return { timeout_ms = 1000, lsp_fallback = true }, on_format
+				return { timeout_ms = 200, lsp_format = "fallback" }, on_format
 			end,
 
 			format_after_save = function(bufnr)
@@ -50,15 +50,14 @@ return {
 				if not slow_format_filetypes[vim.bo[bufnr].filetype] then
 					return
 				end
-				return { lsp_fallback = true }
+				return { lsp_format = "fallback" }
 			end,
 		})
 
 		vim.keymap.set({ "n", "v" }, "<leader>mp", function()
 			conform.format({
-				lsp_fallback = true,
+				lsp_format = "fallback",
 				async = true,
-				timeout_ms = 500,
 			})
 		end, { desc = "Format file or range (in visual mode)" })
 	end,
