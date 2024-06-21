@@ -7,11 +7,37 @@ return {
 		"3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
 	},
 	cmd = "Neotree",
+	keys = {
+		{
+			"<leader>e",
+			function()
+				require("neo-tree.command").execute({ toggle = true, dir = vim.uv.cwd() })
+			end,
+			desc = "Explorer NeoTree (cwd)",
+		},
+		{
+			"<leader>ge",
+			function()
+				require("neo-tree.command").execute({ source = "git_status", toggle = true })
+			end,
+			desc = "Git Explorer",
+		},
+		{
+			"<leader>be",
+			function()
+				require("neo-tree.command").execute({ source = "buffers", toggle = true })
+			end,
+			desc = "Buffer Explorer",
+		},
+	},
+	deactivate = function()
+		vim.cmd([[Neotree close]])
+	end,
 	config = function()
-		local wk = require("which-key")
-		wk.register({
-			["<leader>e"] = { "<cmd>Neotree toggle<CR>", "Explorer" },
-		})
+		-- local wk = require("which-key")
+		-- wk.register({
+		-- 	["<leader>e"] = { "<cmd>Neotree toggle<CR>", "Explorer" },
+		-- })
 
 		-- If you want icons for diagnostic errors, you'll need to define them somewhere:
 		vim.fn.sign_define("DiagnosticSignError", { text = " ", texthl = "DiagnosticSignError" })
@@ -41,11 +67,15 @@ return {
 					},
 				},
 			},
+			open_files_do_not_replace_types = { "terminal", "Trouble", "trouble", "qf", "Outline" },
 			window = {
 				position = "left",
 				width = 30,
 			},
 			filesystem = {
+				bind_to_cwd = false,
+				follow_current_file = { enabled = true },
+				use_libuv_file_watcher = true,
 				filtered_items = {
 					visible = true,
 					hide_dotfiles = false,
