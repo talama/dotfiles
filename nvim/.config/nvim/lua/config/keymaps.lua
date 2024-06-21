@@ -50,8 +50,11 @@ map({ "n", "v" }, "X", '"_X')
 -- Select All
 map("n", "<C-a>", "gg<S-v>G", { desc = "Select all" })
 
--- Better paste
+-- Better paste / yank
 map("v", "p", '"_dP')
+
+map({ "n", "v" }, "<leader>y", '"+y')
+map("n", "<leader>Y", '"+Y')
 
 -- paste deleting highlighted word into the void register
 map("x", "<leader>p", '"_dP')
