@@ -308,9 +308,10 @@ workspace $ws10 output HDMI-0
 # for_window [class=TelegramDesktop] focu
 
 exec setxkbmap -option caps:ctrl_modifier
+exec --no-startup-id i3-msg 'Workspace 1:; exec /usr/bin/kitty'
 
 # Restore saved layouts
-exec --no-startup-id "i3-msg '
+# exec --no-startup-id "i3-msg '
 # Workspace 2:; append_layout ~/.config/i3/layouts/ws2.json;
 # Workspace 4:; append_layout ~/.config/i3/layouts/ws4.json;
 # Workspace 3:; append_layout ~/.config/i3/layouts/ws3.json;
@@ -336,7 +337,7 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 # if enabled you should comment welcome app.
 # https://github.com/jceb/dex
 #exec --no-startup-id dex -a -s /etc/xdg/autostart/:~/.config/autostart/
-exec --no-startup-id dex --autostart --environment i3
+# exec --no-startup-id dex --autostart --environment i3
 
 # start welcome app
 #exec --no-startup-id sh /usr/share/endeavouros/scripts/welcome --startdelay=3
