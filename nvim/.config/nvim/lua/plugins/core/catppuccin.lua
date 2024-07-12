@@ -9,6 +9,7 @@ return {
 			light = "latte",
 			dark = "macchiato",
 		},
+		darkmode = true,
 		transparent_background = false,
 		styles = {
 			comments = { "italic" },
@@ -28,12 +29,11 @@ return {
 		custom_highlights = function(colors)
 			return {
 				["@variable"] = { fg = colors.text, style = {} },
+				["@parameter"] = { fg = colors.teal },
 				-- ["@property"] = { fg = colors.red, style = {} },
-				["@method.call"] = { fg = colors.blue },
+				-- ["method.call"] = { fg = colors.blue },
 				["@type"] = { fg = colors.yellow },
-				["@lsp.mod.readonly"] = { fg = colors.yellow },
-				["@lsp.type.parameter"] = { fg = colors.teal },
-				["@string"] = { fg = colors.green },
+				["@lsp.typemod.variable.readonly"] = { fg = colors.yellow },
 				["@function.builtin"] = { fg = colors.blue },
 			}
 		end,
