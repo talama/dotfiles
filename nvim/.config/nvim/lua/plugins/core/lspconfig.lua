@@ -134,21 +134,21 @@ return {
 		})
 
 		-- configure svelte server
-		lspconfig["svelte"].setup({
-			capabilities = capabilities,
-			on_attach = function(client, bufnr)
-				on_attach(client, bufnr)
-
-				vim.api.nvim_create_autocmd("BufWritePost", {
-					pattern = { "*.js", "*.ts" },
-					callback = function(ctx)
-						if client.name == "svelte" then
-							client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.file })
-						end
-					end,
-				})
-			end,
-		})
+		-- lspconfig["svelte"].setup({
+		-- 	capabilities = capabilities,
+		-- 	on_attach = function(client, bufnr)
+		-- 		on_attach(client, bufnr)
+		--
+		-- 		vim.api.nvim_create_autocmd("BufWritePost", {
+		-- 			pattern = { "*.js", "*.ts" },
+		-- 			callback = function(ctx)
+		-- 				if client.name == "svelte" then
+		-- 					client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.file })
+		-- 				end
+		-- 			end,
+		-- 		})
+		-- 	end,
+		-- })
 
 		-- configure prisma orm server
 		lspconfig["prismals"].setup({
@@ -187,11 +187,15 @@ return {
 						globals = { "vim" },
 					},
 					workspace = {
-						-- make language server aware of runtime files
+						checkThirdParty = false,
 						library = {
-							[vim.fn.expand("$VIMRUNTIME/lua")] = true,
-							[vim.fn.stdpath("config") .. "/lua"] = true,
+							vim.env.VIMRUNTIME,
+							-- Depending on the usage, you might want to add additional paths here.
+							"${3rd}/luv/library",
+							-- "${3rd}/busted/library",
 						},
+						-- or pull in all of 'runtimepath'. NOTE: this is a lot slower
+						-- library = vim.api.nvim_get_runtime_file("", true)
 					},
 				},
 			},
