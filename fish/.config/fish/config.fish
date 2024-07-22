@@ -35,7 +35,7 @@ alias g="git"
 
 alias ls "ls -p -G"
 alias la "ls -A"
-alias ll "eza -l -g --icons"
+alias ll "eza -l -g --icons=always"
 alias lla "ll -a"
 
 alias tm "~/.tmux/tmux-sessionizer.sh"
