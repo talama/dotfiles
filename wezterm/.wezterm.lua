@@ -12,7 +12,8 @@ config.adjust_window_size_when_changing_font_size = false
 config.enable_tab_bar = false
 config.window_decorations = "RESIZE"
 config.window_padding = {
-  bottom = 0,
+	bottom = 0,
+  left = 0,
 }
 
 config.color_scheme = "Catppuccin Macchiato"
