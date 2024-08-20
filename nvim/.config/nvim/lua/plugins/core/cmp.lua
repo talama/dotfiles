@@ -12,6 +12,7 @@ return {
 			"saadparwaiz1/cmp_luasnip", -- completion source for snippets
 			"rafamadriz/friendly-snippets", -- useful snippets
 			"onsails/lspkind.nvim",
+			{ "roobert/tailwindcss-colorizer-cmp.nvim", opts = { color_square_width = 2 } },
 		},
 		config = function()
 			-- function for super-tab
@@ -25,9 +26,14 @@ return {
 			local cmp = require("cmp")
 			local luasnip = require("luasnip")
 			local lspkind = require("lspkind")
+      local tailwindcss_colorizer_cmp = require("tailwindcss-colorizer-cmp")
 
 			-- load vscode style snippets from installed plugins (friendly-snippets)
 			require("luasnip.loaders.from_vscode").lazy_load()
+
+			-- cmp.config.formatting = {
+			-- 	format = require("tailwindcss-colorizer-cmp").formatter,
+			-- }
 
 			cmp.setup({
 				completion = {
@@ -88,7 +94,9 @@ return {
 				-- lspkind
 				formatting = {
 					format = lspkind.cmp_format({
-						maxwidth = 50,
+						mode = "symbol_text",
+            before = tailwindcss_colorizer_cmp.formatter,
+						-- maxwidth = 50,
 						ellipsis_char = "...",
 					}),
 				},
