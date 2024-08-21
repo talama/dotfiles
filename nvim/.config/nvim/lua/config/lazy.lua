@@ -46,6 +46,10 @@ else
 		install = {
 			colorscheme = { "catppuccin" },
 		},
+		defaults = {
+			lazy = false,
+			version = false,
+		},
 		checker = {
 			enabled = true,
 			notify = true,
@@ -53,19 +57,12 @@ else
 		change_detection = {
 			notify = true,
 		},
-		spec = {
-			-- Colorscheme:
-			-- The colorscheme should be available when starting Neovim.
-			{
-				"catppuccin/nvim",
-				lazy = false,
-				priority = 1000,
-				config = function()
-					require("catppuccin").setup()
-					vim.cmd([[colorscheme catppuccin-macchiato]])
-				end,
+		performance = {
+			cache = {
+				enabled = true,
 			},
-
+		},
+		spec = {
 			-- Plenary
 			{ "nvim-lua/plenary.nvim" },
 
@@ -79,14 +76,27 @@ else
 			-- tmux navigator
 			{ "christoomey/vim-tmux-navigator" },
 
-      -- nvim-nio
-      { "nvim-neotest/nvim-nio" },
+			-- nvim-nio
+			{ "nvim-neotest/nvim-nio" },
 
 			-- Plugins
 			{ import = "plugins.core" },
 			{ import = "plugins.common" },
 			{ import = "plugins.extra" },
 			{ import = "plugins.lang" },
+		},
+		rtp = {
+			disabled_plugins = {
+				"gzip",
+				-- "matchit",
+				-- "matchparen",
+				"netrwPlugin",
+				"rplugin",
+				"tarPlugin",
+				"tohtml",
+				"tutor",
+				"zipPlugin",
+			},
 		},
 	})
 end
