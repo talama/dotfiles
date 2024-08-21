@@ -1,3 +1,17 @@
+---@param bufnr integer
+---@param ... string
+---@return string
+local function first(bufnr, ...)
+	local conform = require("conform")
+	for i = 1, select("#", ...) do
+		local formatter = select(i, ...)
+		if conform.get_formatter_info(formatter, bufnr).available then
+			return formatter
+		end
+	end
+	return select(1, ...)
+end
+
 return {
 	"stevearc/conform.nvim",
 	lazy = true,
@@ -7,57 +21,45 @@ return {
 		local slow_format_filetypes = {}
 		conform.setup({
 			formatters_by_ft = {
-				javascript = { { "prettierd", "prettier" } },
-				typescript = { { "prettierd", "prettier" } },
-				javascriptreact = { { "prettierd", "prettier" } },
-				typescriptreact = { { "prettierd", "prettier" } },
-				svelte = { { "prettierd", "prettier" } },
-				html = { { "prettierd", "prettier" } },
-				css = { "stylelint", { "prettierd", "prettier" } },
-				sass = { "stylelint", { "prettierd", "prettier" } },
-				scss = { "stylelint", { "prettierd", "prettier" } },
-				less = { "stylelint", { "prettierd", "prettier" } },
-				json = { { "prettierd", "prettier" } },
-				yaml = { { "prettierd", "prettier" } },
-				markdown = { { "prettierd", "prettier" } },
-				graphql = { { "prettierd", "prettier" } },
+				javascript = { "prettierd", "prettier", stop_after_first = true },
+				typescript = { "prettierd", "prettier", stop_after_first = true },
+				javascriptreact = { "prettierd", "prettier", stop_after_first = true },
+				typescriptreact = { "prettierd", "prettier", stop_after_first = true },
+				svelte = { "prettierd", "prettier", stop_after_first = true },
+				html = { "prettierd", "prettier", stop_after_first = true },
+				css = function(bufnr)
+					return { first(bufnr, "prettierd", "prettier"), "stylelint" }
+				end,
+				sass = function(bufnr)
+					return { first(bufnr, "prettierd", "prettier"), "stylelint" }
+				end,
+				scss = function(bufnr)
+					return { first(bufnr, "prettierd", "prettier"), "stylelint" }
+				end,
+				less = function(bufnr)
+					return { first(bufnr, "prettierd", "prettier"), "stylelint" }
+				end,
+				json = { "prettierd", "prettier", stop_after_first = true },
+				yaml = { "prettierd", "prettier", stop_after_first = true },
+				markdown = { "prettierd", "prettier", stop_after_first = true },
+				graphql = { "prettierd", "prettier", stop_after_first = true },
 				lua = { "stylua" },
 				python = { "isort", "black" },
 				go = { "goimports", "gofumpt" },
 				rust = { "rustfmt" },
 			},
-
-			-- detect which formatters take too long to run synchronously and will run them async on save instead.
-			format_on_save = function(bufnr)
-				if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
-					return
-				end
-				if slow_format_filetypes[vim.bo[bufnr].filetype] then
-					return
-				end
-				local function on_format(err)
-					if err and err:match("timeout$") then
-						slow_format_filetypes[vim.bo[bufnr].filetype] = true
-					end
-				end
-				return { timeout_ms = 200, lsp_format = "fallback" }, on_format
-			end,
-
-			format_after_save = function(bufnr)
-				if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
-					return
-				end
-				if not slow_format_filetypes[vim.bo[bufnr].filetype] then
-					return
-				end
-				return { lsp_format = "fallback" }
-			end,
+			format_on_save = {
+				lsp_fallback = true,
+				async = false,
+				timeout_ms = 1000,
+			},
 		})
 
 		vim.keymap.set({ "n", "v" }, "<leader>mp", function()
 			conform.format({
 				lsp_format = "fallback",
-				async = true,
+				async = false,
+				timeout_ms = 1000,
 			})
 		end, { desc = "Format file or range (in visual mode)" })
 	end,
