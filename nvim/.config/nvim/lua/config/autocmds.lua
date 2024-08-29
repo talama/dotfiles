@@ -23,9 +23,6 @@ vim.api.nvim_create_user_command("FormatEnable", function()
 end, {
 	desc = "Re-enable autoformat-on-save",
 })
--- Disable format on save by default
-vim.g.disable_autoformat = true
-vim.b.disable_autoformat = true
 
 -- General settings:
 --------------------
