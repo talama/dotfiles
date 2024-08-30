@@ -1,4 +1,3 @@
-
 return {
 	"nvim-treesitter/nvim-treesitter-textobjects",
 	lazy = true,
@@ -18,14 +17,8 @@ return {
 						["l="] = { query = "@assignment.lhs", desc = "Select left hand side of an assignment" },
 						["r="] = { query = "@assignment.rhs", desc = "Select right hand side of an assignment" },
 
-						-- works for javascript/typescript files (custom capture I created in after/queries/ecma/textobjects.scm)
-						["a:"] = { query = "@property.outer", desc = "Select outer part of an object property" },
-						["i:"] = { query = "@property.inner", desc = "Select inner part of an object property" },
-						["l:"] = { query = "@property.lhs", desc = "Select left part of an object property" },
-						["r:"] = { query = "@property.rhs", desc = "Select right part of an object property" },
-
-						["aa"] = { query = "@parameter.outer", desc = "Select outer part of a parameter/argument" },
-						["ia"] = { query = "@parameter.inner", desc = "Select inner part of a parameter/argument" },
+						["ap"] = { query = "@parameter.outer", desc = "Select outer part of a parameter/argument" },
+						["ip"] = { query = "@parameter.inner", desc = "Select inner part of a parameter/argument" },
 
 						["ai"] = { query = "@conditional.outer", desc = "Select outer part of a conditional" },
 						["ii"] = { query = "@conditional.inner", desc = "Select inner part of a conditional" },
@@ -53,12 +46,10 @@ return {
 					enable = true,
 					swap_next = {
 						["<leader>na"] = "@parameter.inner", -- swap parameters/argument with next
-						["<leader>n:"] = "@property.outer", -- swap object property with next
 						["<leader>nm"] = "@function.outer", -- swap function with next
 					},
 					swap_previous = {
 						["<leader>pa"] = "@parameter.inner", -- swap parameters/argument with prev
-						["<leader>p:"] = "@property.outer", -- swap object property with prev
 						["<leader>pm"] = "@function.outer", -- swap function with previous
 					},
 				},
@@ -109,9 +100,9 @@ return {
 		vim.keymap.set({ "n", "x", "o" }, ",", ts_repeat_move.repeat_last_move_opposite)
 
 		-- Optionally, make builtin f, F, t, T also repeatable with ; and ,
-		-- vim.keymap.set({ "n", "x", "o" }, "f", ts_repeat_move.builtin_f)
-		-- vim.keymap.set({ "n", "x", "o" }, "F", ts_repeat_move.builtin_F)
-		-- vim.keymap.set({ "n", "x", "o" }, "t", ts_repeat_move.builtin_t)
-		-- vim.keymap.set({ "n", "x", "o" }, "T", ts_repeat_move.builtin_T)
+		vim.keymap.set({ "n", "x", "o" }, "f", ts_repeat_move.builtin_f)
+		vim.keymap.set({ "n", "x", "o" }, "F", ts_repeat_move.builtin_F)
+		vim.keymap.set({ "n", "x", "o" }, "t", ts_repeat_move.builtin_t)
+		vim.keymap.set({ "n", "x", "o" }, "T", ts_repeat_move.builtin_T)
 	end,
 }

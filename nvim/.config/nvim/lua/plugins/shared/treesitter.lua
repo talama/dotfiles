@@ -2,8 +2,9 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		version = false,
-		event = { "BufReadPost", "BufNewFile" },
+		event = { "BufReadPre", "BufNewFile" },
 		build = ":TSUpdate",
+		cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
 		dependencies = {
 			-- set commentstirng for files that support multiple embedded languages
 			"JoosepAlviste/nvim-ts-context-commentstring",
@@ -12,7 +13,6 @@ return {
 			-- syntax aware text-objects
 			"nvim-treesitter/nvim-treesitter-textobjects",
 		},
-		cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
 		opts = {
 			highlight = { enable = true },
 			indent = { enable = true },
@@ -65,8 +65,8 @@ return {
 					return true
 				end, opts.ensure_installed)
 			end
-			require("ts_context_commentstring").setup()
 			require("nvim-treesitter.configs").setup(opts)
+			require("ts_context_commentstring").setup()
 			require("nvim-ts-autotag").setup({
 				opts = {
 					enable_close = true, -- Auto close tags
