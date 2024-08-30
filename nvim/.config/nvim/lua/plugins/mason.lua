@@ -34,6 +34,7 @@ return {
 				"prismals",
 				"pyright",
 				"tsserver",
+				"eslint",
 			},
 			-- auto-install configured servers (with lspconfig)
 			automatic_installation = true, -- not the same as ensure_installed
@@ -42,7 +43,7 @@ return {
 		mason_tool_installer.setup({
 			ensure_installed = {
 				"prettier",
-        "prettierd",
+				"prettierd",
 				"stylua",
 				"isort",
 				"black",
