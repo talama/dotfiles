@@ -13,7 +13,6 @@ return {
 		bufferline.setup({
 			highlights = require("catppuccin.groups.integrations.bufferline").get(),
 			options = {
-				mode = "tabs",
         -- stylua: ignore
         close_command = function(n) require("mini.bufremove").delete(n, false) end,
         -- stylua: ignore
