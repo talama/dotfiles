@@ -72,12 +72,6 @@ return {
 				-- set keybinds
 				local opts = { buffer = bufnr, silent = true }
 
-				opts.desc = "Show buffer diagnostics"
-				keymap("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", opts)
-
-				opts.desc = "Show line diagnostics"
-				keymap("n", "<leader>d", vim.diagnostic.open_float, opts)
-
 				opts.desc = "Goto previous diagnostic"
 				keymap("n", "[d", vim.diagnostic.goto_prev, opts)
 
@@ -104,22 +98,25 @@ return {
 				keymap("n", "K", vim.lsp.buf.hover, opts)
 
 				opts.desc = "Signature help"
-				keymap("n", "lh", vim.lsp.buf.signature_help, opts)
+				keymap("n", "gh", vim.lsp.buf.signature_help, opts)
 
 				opts.desc = "Restart LSP"
 				keymap("n", "<leader>lR", ":LspRestart<CR>", opts)
 
-				opts.desc = "LspInfo"
-				keymap("n", "<leader>li", "<cmd>LspInfo<cr>", opts)
-
 				opts.desc = "See available code actions"
 				keymap({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
 
+				opts.desc = "Show line diagnostics"
+				keymap("n", "<leader>cd", vim.diagnostic.open_float, opts)
+
+				opts.desc = "Show buffer diagnostics"
+				keymap("n", "<leader>cD", "<cmd>Telescope diagnostics bufnr=0<CR>", opts)
+
 				opts.desc = "Smart rename"
-				keymap("n", "<leader>lr", vim.lsp.buf.rename, opts)
+				keymap("n", "<leader>cr", vim.lsp.buf.rename, opts)
 
 				opts.desc = "Format buffer"
-				keymap("n", "<leader>lf", vim.lsp.buf.format, opts)
+				keymap("n", "<leader>cF", vim.lsp.buf.format, opts)
 
 				if client and client.server_capabilities.inlayHintProvider then
 					vim.lsp.inlay_hint.enable(true, { bufnr })

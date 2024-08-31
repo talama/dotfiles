@@ -73,8 +73,8 @@ map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and Clear hlsea
 --Easy window split
 -- map("n", "vv", "<C-w>v", { desc = "Split Vertical", remap = true })
 -- map("n", "ss", "<C-w>s", { desc = "Split Horizontal", remap = true })
-map("n", "<leader>-", "<C-W>s", { desc = "Split window below", remap = true })
-map("n", "<leader>|", "<C-W>v", { desc = "Split window right", remap = true })
+map("n", "<leader>wh", "<C-W>s", { desc = "Split window below", remap = true })
+map("n", "<leader>wv", "<C-W>v", { desc = "Split window right", remap = true })
 map("n", "<leader>wd", "<C-W>c", { desc = "Close current split", remap = true })
 map("n", "<leader>we", "<C-W>=", { desc = "Make splits equal", remap = true })
 
