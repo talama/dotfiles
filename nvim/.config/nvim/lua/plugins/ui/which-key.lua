@@ -21,7 +21,7 @@ return {
 			{ "<leader>c", group = "+code" },
 			{ "<leader>d", group = "+debug" },
 			{ "<leader>f", group = "+file/find" },
-			{ "<leader>gh", group = "+hunks" },
+			{ "<leader>h", group = "+hunks" },
 			{ "<leader>q", group = "+quit.session" },
 			{ "<leader>s", group = "+search" },
 			{ "<leader>t", group = "+tabs" },
