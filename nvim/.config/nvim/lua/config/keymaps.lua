@@ -7,9 +7,6 @@ vim.g.mapleader = " "
 -- lazy
 map("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" })
 
--- Reload configuration without restart nvim
-map("n", "<leader>r", ":source %<CR>")
-
 -- map esc to kk
 map("i", "kk", "<Esc>")
 map("i", "<C-c>", "<Esc>")
