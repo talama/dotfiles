@@ -175,7 +175,7 @@ return {
 								globals = { "vim" },
 							},
 							hint = {
-								enable = false,
+								enable = true,
 								setType = false,
 								paramType = true,
 								await = true,
@@ -193,9 +193,7 @@ return {
 								codeLens = {
 									enable = true,
 								},
-								completion = {
-									callSnippet = "Replace",
-								},
+								completion = { workspaceWord = true, callSnippet = "Replace" },
 								doc = {
 									privateName = { "^_" },
 								},

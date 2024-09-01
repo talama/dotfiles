@@ -1,7 +1,3 @@
--- Run the first available formatter followed by more formatters
----@param bufnr integer
----@param ... string
----@return string
 local function first(bufnr, ...)
 	local conform = require("conform")
 	for i = 1, select("#", ...) do
@@ -28,9 +24,7 @@ return {
 			desc = "Format buffer",
 		},
 	},
-	-- This will provide type hinting with LuaLS
-	---@module "conform"
-	---@type conform.setupOpts
+
 	opts = {
 		-- Define your formatters
 		formatters_by_ft = {

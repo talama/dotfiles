@@ -1,7 +1,7 @@
 return {
 	"NvChad/nvim-colorizer.lua",
 	config = function()
-		local colorizer = require("colorizer").setup({
+		require("colorizer").setup({
 			filetypes = { "*" },
 			user_default_options = {
 				RGB = true, -- #RGB hex codes
