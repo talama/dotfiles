@@ -1,4 +1,1 @@
-require("config/options")
-require("config/lazy")
-require("config/keymaps")
-require("config/autocmds")
+../../dotfiles/nvim/.config/nvim/init.lua

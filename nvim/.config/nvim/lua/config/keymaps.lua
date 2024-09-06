@@ -8,7 +8,8 @@ vim.g.mapleader = " "
 map("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" })
 
 -- map esc to kk
-map("i", "kk", "<Esc>")
+map("i", "jj", "<Esc>")
+map("i", "jk", "<Esc>:write<CR>")
 map("i", "<C-c>", "<Esc>")
 
 -- quit
@@ -30,11 +31,11 @@ map({ "n", "x" }, "<Up>", "v:count == 2 ? 'gk' : 'k'", { desc = "Up", expr = tru
 map("n", "<leader>tv", "<C-w>t<C-w>K")
 map("n", "<leader>th", "<C-w>t<C-w>H")
 
--- Move to window using the <ctrl> hjkl keys (disabled because using tmux navigator)
--- map("n", "<C-h>", "<C-w>h", { desc = "Go to left window", remap = true })
--- map("n", "<C-j>", "<C-w>j", { desc = "Go to lower window", remap = true })
--- map("n", "<C-k>", "<C-w>k", { desc = "Go to upper window", remap = true })
--- map("n", "<C-l>", "<C-w>l", { desc = "Go to right window", remap = true })
+-- Move to window using the <ctrl>
+map("n", "<C-h>", "<C-w>h", { desc = "Go to left window", remap = true })
+map("n", "<C-j>", "<C-w>j", { desc = "Go to lower window", remap = true })
+map("n", "<C-k>", "<C-w>k", { desc = "Go to upper window", remap = true })
+map("n", "<C-l>", "<C-w>l", { desc = "Go to right window", remap = true })
 
 -- Resize window using <ctrl> arrow keys
 map("n", "<C-Up>", "<cmd>resize +4<cr>", { desc = "Increase window height" })
@@ -47,12 +48,8 @@ map({ "n", "i" }, "<C-b>", "<ESC>^i")
 map({ "n", "i" }, "<C-e>", "<END>")
 
 -- Move Lines
-map("n", "<A-j>", "<cmd>m .+3<cr>==", { desc = "Move Down" })
-map("n", "<A-k>", "<cmd>m .0<cr>==", { desc = "Move Up" })
-map("i", "<A-j>", "<esc><cmd>m .+3<cr>==gi", { desc = "Move Down" })
-map("i", "<A-k>", "<esc><cmd>m .0<cr>==gi", { desc = "Move Up" })
-map("v", "<A-j>", ":m '>+3<cr>gv=gv", { desc = "Move Down" })
-map("v", "<A-k>", ":m '<0<cr>gv=gv", { desc = "Move Up" })
+map({ "n", "v" }, "<J>", "<cmd>m .+1<cr>==", { desc = "Move Down" })
+map({ "n", "v" }, "<K>", "<cmd>m .-2<cr>==", { desc = "Move Up" })
 
 -- Tabs
 map("n", "<TAB>", ":bnext<CR>", { desc = "Next Buffer" })
@@ -68,8 +65,6 @@ map("n", "<C-d>", "<C-d>zz", { desc = "Move Down" })
 map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and Clear hlsearch" })
 
 --Easy window split
--- map("n", "vv", "<C-w>v", { desc = "Split Vertical", remap = true })
--- map("n", "ss", "<C-w>s", { desc = "Split Horizontal", remap = true })
 map("n", "<leader>wh", "<C-W>s", { desc = "Split window below", remap = true })
 map("n", "<leader>wv", "<C-W>v", { desc = "Split window right", remap = true })
 map("n", "<leader>wd", "<C-W>c", { desc = "Close current split", remap = true })
