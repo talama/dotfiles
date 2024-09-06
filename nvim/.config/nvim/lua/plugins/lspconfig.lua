@@ -222,7 +222,7 @@ return {
 
 			-- Typescript language server
 			["tsserver"] = function()
-				lspconfig["tsserver"].setup({
+				lspconfig["ts_ls"].setup({
 					capabilities = capabilities,
 					handlers = handlers,
 					single_file_support = true,
