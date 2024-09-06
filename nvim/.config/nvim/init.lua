@@ -1,1 +1,6 @@
-../../dotfiles/nvim/.config/nvim/init.lua
+require("config/options")
+require("config/keymaps")
+if vim.g.vscode then
+	require("config/keymaps_vscode")
+end
+require("config/lazy")
