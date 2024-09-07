@@ -219,6 +219,7 @@ return {
 					},
 				})
 			end,
+
 			["vtsls"] = function()
 				lspconfig["vtsls"].setup({
 					capabilities = capabilities,
