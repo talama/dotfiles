@@ -33,7 +33,7 @@ return {
 				"emmet_ls",
 				"prismals",
 				"pyright",
-				"tsserver",
+				"vtsls",
 				"eslint",
 				"jsonls",
 			},

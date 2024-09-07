@@ -219,44 +219,97 @@ return {
 					},
 				})
 			end,
-
-			-- Typescript language server
-			["tsserver"] = function()
-				lspconfig["ts_ls"].setup({
+			["vtsls"] = function()
+				lspconfig["vtsls"].setup({
 					capabilities = capabilities,
 					handlers = handlers,
-					single_file_support = true,
-					completions = {
-						completeFunctionCalls = true,
-					},
 					settings = {
+						enableMoveToFileCodeAction = true,
+						autoUseWorkspaceTsdk = true,
+						experimental = {
+							completion = {
+								enableServerSideFuzzyMatch = true,
+							},
+						},
 						javascript = {
+							suggest = {
+								completeFunctionCalls = true,
+							},
 							inlayHints = {
-								includeInlayParameterNameHints = "literals", -- 'none' | 'literals' | 'all'
-								includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-								includeInlayVariableTypeHints = false,
-								includeInlayFunctionParameterTypeHints = false,
-								includeInlayVariableTypeHintsWhenTypeMatchesName = false,
-								includeInlayPropertyDeclarationTypeHints = false,
-								includeInlayFunctionLikeReturnTypeHints = true,
-								includeInlayEnumMemberValueHints = true,
+								parameterNames = {
+									enabled = "literals",
+									suppressWhenArgumentMatchesName = true,
+								},
+								parameterTypes = false,
+								variableTypes = {
+									enabled = false,
+									suppressWhenTypeMatchesName = true,
+								},
+								propertyDeclarationTypes = false,
+								functionLikeReturnTypes = false,
+								enumMemberValues = false,
 							},
 						},
 						typescript = {
+							updateImportsOnFileMove = { enabled = "always" },
+							suggest = {
+								completeFunctionCalls = true,
+							},
 							inlayHints = {
-								includeInlayParameterNameHints = "literals", -- 'none' | 'literals' | 'all'
-								includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-								includeInlayVariableTypeHints = false,
-								includeInlayFunctionParameterTypeHints = false,
-								includeInlayVariableTypeHintsWhenTypeMatchesName = false,
-								includeInlayPropertyDeclarationTypeHints = false,
-								includeInlayFunctionLikeReturnTypeHints = true,
-								includeInlayEnumMemberValueHints = true,
+								parameterNames = {
+									enabled = "all",
+									suppressWhenArgumentMatchesName = true,
+								},
+								parameterTypes = true,
+								variableTypes = {
+									enabled = true,
+									suppressWhenTypeMatchesName = true,
+								},
+								propertyDeclarationTypes = true,
+								functionLikeReturnTypes = true,
+								enumMemberValues = true,
 							},
 						},
 					},
 				})
 			end,
+			-- Typescript language server
+			-- ["tsserver"] = function()
+			-- 	lspconfig["ts_ls"].setup({
+			-- 		capabilities = capabilities,
+			-- 		handlers = handlers,
+			-- 		single_file_support = true,
+			-- 		completions = {
+			-- 			completeFunctionCalls = true,
+			-- 		},
+			-- 		settings = {
+			-- 			javascript = {
+			-- 				inlayHints = {
+			-- 					includeInlayParameterNameHints = "literals", -- 'none' | 'literals' | 'all'
+			-- 					includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+			-- 					includeInlayVariableTypeHints = false,
+			-- 					includeInlayFunctionParameterTypeHints = false,
+			-- 					includeInlayVariableTypeHintsWhenTypeMatchesName = false,
+			-- 					includeInlayPropertyDeclarationTypeHints = false,
+			-- 					includeInlayFunctionLikeReturnTypeHints = true,
+			-- 					includeInlayEnumMemberValueHints = true,
+			-- 				},
+			-- 			},
+			-- 			typescript = {
+			-- 				inlayHints = {
+			-- 					includeInlayParameterNameHints = "literals", -- 'none' | 'literals' | 'all'
+			-- 					includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+			-- 					includeInlayVariableTypeHints = false,
+			-- 					includeInlayFunctionParameterTypeHints = false,
+			-- 					includeInlayVariableTypeHintsWhenTypeMatchesName = false,
+			-- 					includeInlayPropertyDeclarationTypeHints = false,
+			-- 					includeInlayFunctionLikeReturnTypeHints = true,
+			-- 					includeInlayEnumMemberValueHints = true,
+			-- 				},
+			-- 			},
+			-- 		},
+			-- 	})
+			-- end,
 
 			-- CSS language server
 			["cssls"] = function()
