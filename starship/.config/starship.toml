@@ -1,0 +1,76 @@
+#                                  ▓
+
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# Inserts a blank line between shell prompts
+add_newline = false
+
+format = """
+$directory\
+[](fg:#8087a2 bg:#494d64)\
+$git_branch\
+$git_status\
+[ ](fg:#494d64 bg:#212736)\
+"""
+
+right_format = """
+$c\
+$golang\
+$lua\
+$python\
+$rust\
+$nodejs\
+"""
+
+[directory]
+style = "fg:#eeefef bg:#8087a2"
+format = "[ $path ]($style)"
+
+[git_branch]
+symbol = ""
+style = "fg:#eeefef bg:#494d64"
+format = '[ $symbol $branch ]($style)'
+
+[git_status]
+ahead='↑${count}' 
+behind='↓${count}' 
+diverged = '↕↑${ahead_count}↓${behind_count}'
+untracked='?${count}' 
+stashed = '\$${count}'
+modified ='!${count}' 
+staged='+${count}' 
+renamed='↠${count}' 
+deleted='✘${count}' 
+style = "fg:#eeefef bg:#494d64"
+format ='[$ahead_behind$all_status]($style)' 
+
+[c]
+symbol = ""
+style = "fg:#eeefef bg:#494d64"
+format = '[$symbol ($version)]($style)'
+
+[golang]
+symbol = ""
+style = "fg:#eeefef bg:#494d64"
+format = '[$symbol ($version)]($style)'
+
+[lua]
+symbol = ""
+style = "fg:#eeefef bg:#494d64"
+format = '[$symbol ($version)]($style)'
+
+[nodejs]
+symbol = ""
+style = "fg:#eeefef bg:#494d64"
+format = '[$symbol ($version)]($style)'
+
+[python]
+symbol = ''
+style = "fg:#eeefef bg:#494d64"
+format = '[$symbol ($version)]($style)'
+
+[rust]
+symbol = ""
+style = "fg:#eeefef bg:#494d64"
+format = '[$symbol ($version)]($style)'
