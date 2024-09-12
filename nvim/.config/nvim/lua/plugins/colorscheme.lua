@@ -2,7 +2,7 @@ return {
 	"catppuccin/nvim",
 	lazy = false,
 	priority = 1000,
-  name = "catppuccin",
+	name = "catppuccin",
 
 	config = function()
 		require("catppuccin").setup({
@@ -46,6 +46,7 @@ return {
 					["@type"] = { fg = colors.yellow },
 					["@lsp.typemod.variable.readonly"] = { fg = colors.yellow },
 					["@function.builtin"] = { fg = colors.blue },
+					["@lsp.type.namespace.go"] = { fg = colors.red },
 				}
 			end,
 			default_integrations = true,
