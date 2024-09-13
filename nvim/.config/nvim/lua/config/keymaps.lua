@@ -48,8 +48,8 @@ map({ "n", "i" }, "<C-b>", "<ESC>^i")
 map({ "n", "i" }, "<C-e>", "<END>")
 
 -- Move Lines
-map({ "n", "v" }, "<J>", "<cmd>m .+1<cr>==", { desc = "Move Down" })
-map({ "n", "v" }, "<K>", "<cmd>m .-2<cr>==", { desc = "Move Up" })
+map({ "n", "v" }, "<A-j>", "<cmd>m .+1<cr>==", { desc = "Move Down" })
+map({ "n", "v" }, "<A-k>", "<cmd>m .-2<cr>==", { desc = "Move Up" })
 
 -- Tabs
 map("n", "<TAB>", ":bnext<CR>", { desc = "Next Buffer" })
