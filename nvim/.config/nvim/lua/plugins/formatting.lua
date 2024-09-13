@@ -52,7 +52,7 @@ return {
 			graphql = { "prettierd", "prettier", stop_after_first = true },
 			lua = { "stylua" },
 			python = { "isort", "black" },
-			go = { "goimports", "gofumpt" },
+			go = { "gofumpt" },
 			rust = { "rustfmt" },
 		},
 		-- Set default options
