@@ -242,7 +242,7 @@ return {
 						},
 						javascript = {
 							suggest = {
-								completeFunctionCalls = true,
+								completeFunctionCalls = false,
 							},
 							inlayHints = {
 								parameterNames = {
@@ -262,11 +262,11 @@ return {
 						typescript = {
 							updateImportsOnFileMove = { enabled = "always" },
 							suggest = {
-								completeFunctionCalls = true,
+								completeFunctionCalls = false,
 							},
 							inlayHints = {
 								parameterNames = {
-									enabled = "all",
+									enabled = "literal",
 									suppressWhenArgumentMatchesName = true,
 								},
 								parameterTypes = true,
@@ -349,6 +349,7 @@ return {
 					settings = {
 						gopls = {
 							gofumpt = true,
+							completeFunctionCalls = false,
 							codelenses = {
 								gc_details = false,
 								generate = true,
