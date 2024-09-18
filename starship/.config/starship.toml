@@ -41,7 +41,7 @@ stashed = '\$${count} '
 modified ='!${count} ' 
 staged='+${count} ' 
 renamed='↠${count} ' 
-deleted='✘${count}' 
+deleted='✘${count} ' 
 style = "fg:#eeefef bg:#494d64"
 format ='[$ahead_behind$all_status]($style)' 
 
