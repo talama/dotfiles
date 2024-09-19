@@ -29,8 +29,8 @@ return {
 			"saadparwaiz1/cmp_luasnip",
 
 			-- Adds other completion capabilities.
-			--  nvim-cmp does not ship with all sources by default. They are split
-			--  into multiple repos for maintenance purposes.
+			-- nvim-cmp does not ship with all sources by default. They are split
+			-- into multiple repos for maintenance purposes.
 			"hrsh7th/cmp-nvim-lsp", -- lsp completion
 			"hrsh7th/cmp-path", -- source for file system paths
 			"hrsh7th/cmp-buffer", -- source for text in buffer
@@ -45,18 +45,6 @@ return {
 			local luasnip = require("luasnip")
 			luasnip.config.setup({})
 			cmp.setup({
-
-				-- Disable completion in comments
-				enabled = function()
-					local context = require("cmp.config.context")
-					-- keep command mode completion enabled when cursor is in a comment
-					if vim.api.nvim_get_mode().mode == "c" then
-						return true
-					else
-						return not context.in_treesitter_capture("comment") and not context.in_syntax_group("Comment")
-					end
-				end,
-
 				snippet = {
 					expand = function(args)
 						require("luasnip").lsp_expand(args.body)
