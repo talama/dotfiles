@@ -17,29 +17,31 @@ return {
 						["l="] = { query = "@assignment.lhs", desc = "Select left hand side of an assignment" },
 						["r="] = { query = "@assignment.rhs", desc = "Select right hand side of an assignment" },
 
-						["ap"] = { query = "@parameter.outer", desc = "Select outer part of a parameter/argument" },
-						["ip"] = { query = "@parameter.inner", desc = "Select inner part of a parameter/argument" },
+						["ac"] = { query = "@conditional.outer", desc = "Select outer part of a conditional" },
+						["ic"] = { query = "@conditional.inner", desc = "Select inner part of a conditional" },
 
-						["ai"] = { query = "@conditional.outer", desc = "Select outer part of a conditional" },
-						["ii"] = { query = "@conditional.inner", desc = "Select inner part of a conditional" },
+						["ad"] = { query = "@comment.outer", desc = "Select outer part of a comment" },
+
+						["aC"] = { query = "@class.outer", desc = "Select outer part of a class" },
+						["iC"] = { query = "@class.inner", desc = "Select inner part of a class" },
+
+						["ae"] = { query = "@block.outer", desc = "Select outer part of a block" },
+						["ie"] = { query = "@block.inner", desc = "Select inner part of a block" },
+
+						["af"] = { query = "@function.outer", desc = "Select outer part of a function call" },
+						["if"] = { query = "@function.inner", desc = "Select inner part of a function call" },
 
 						["al"] = { query = "@loop.outer", desc = "Select outer part of a loop" },
 						["il"] = { query = "@loop.inner", desc = "Select inner part of a loop" },
 
-						["af"] = { query = "@call.outer", desc = "Select outer part of a function call" },
-						["if"] = { query = "@call.inner", desc = "Select inner part of a function call" },
+						["am"] = { query = "@call.outer", desc = "Select outer part of a method/function definition" },
+						["im"] = { query = "@call.inner", desc = "Select inner part of a method/function definition" },
 
-						["am"] = {
-							query = "@function.outer",
-							desc = "Select outer part of a method/function definition",
-						},
-						["im"] = {
-							query = "@function.inner",
-							desc = "Select inner part of a method/function definition",
-						},
+						["ap"] = { query = "@parameter.outer", desc = "Select outer part of a parameter/argument" },
+						["ip"] = { query = "@parameter.inner", desc = "Select inner part of a parameter/argument" },
 
-						["ac"] = { query = "@class.outer", desc = "Select outer part of a class" },
-						["ic"] = { query = "@class.inner", desc = "Select inner part of a class" },
+						["as"] = { query = "@statement.outer", desc = "Select outer part of a statement" },
+						["is"] = { query = "@statement.inner", desc = "Select inner part of a statement" },
 					},
 				},
 				-- swap = {
@@ -57,10 +59,10 @@ return {
 					enable = true,
 					set_jumps = true, -- whether to set jumps in the jumplist
 					goto_next_start = {
-						["]f"] = { query = "@call.outer", desc = "Next function call start" },
-						["]m"] = { query = "@function.outer", desc = "Next method/function def start" },
-						["]c"] = { query = "@class.outer", desc = "Next class start" },
-						["]i"] = { query = "@conditional.outer", desc = "Next conditional start" },
+						["]m"] = { query = "@call.outer", desc = "Next function call start" },
+						["]f"] = { query = "@function.outer", desc = "Next method/function def start" },
+						["]C"] = { query = "@class.outer", desc = "Next class start" },
+						["]c"] = { query = "@conditional.outer", desc = "Next conditional start" },
 						["]l"] = { query = "@loop.outer", desc = "Next loop start" },
 
 						-- You can pass a query group to use query from `queries/<lang>/<query_group>.scm file in your runtime path.
@@ -69,24 +71,24 @@ return {
 						["]z"] = { query = "@fold", query_group = "folds", desc = "Next fold" },
 					},
 					goto_next_end = {
-						["]F"] = { query = "@call.outer", desc = "Next function call end" },
-						["]M"] = { query = "@function.outer", desc = "Next method/function def end" },
-						["]C"] = { query = "@class.outer", desc = "Next class end" },
-						["]I"] = { query = "@conditional.outer", desc = "Next conditional end" },
+						["]M"] = { query = "@call.outer", desc = "Next function call end" },
+						["]F"] = { query = "@function.outer", desc = "Next method/function def end" },
+						-- ["]C"] = { query = "@class.outer", desc = "Next class end" },
+						["]C"] = { query = "@conditional.outer", desc = "Next conditional end" },
 						["]L"] = { query = "@loop.outer", desc = "Next loop end" },
 					},
 					goto_previous_start = {
-						["[f"] = { query = "@call.outer", desc = "Prev function call start" },
-						["[m"] = { query = "@function.outer", desc = "Prev method/function def start" },
-						["[c"] = { query = "@class.outer", desc = "Prev class start" },
-						["[i"] = { query = "@conditional.outer", desc = "Prev conditional start" },
+						["[m"] = { query = "@call.outer", desc = "Prev function call start" },
+						["[f"] = { query = "@function.outer", desc = "Prev method/function def start" },
+						["[C"] = { query = "@class.outer", desc = "Prev class start" },
+						["[c"] = { query = "@conditional.outer", desc = "Prev conditional start" },
 						["[l"] = { query = "@loop.outer", desc = "Prev loop start" },
 					},
 					goto_previous_end = {
-						["[F"] = { query = "@call.outer", desc = "Prev function call end" },
-						["[M"] = { query = "@function.outer", desc = "Prev method/function def end" },
-						["[C"] = { query = "@class.outer", desc = "Prev class end" },
-						["[I"] = { query = "@conditional.outer", desc = "Prev conditional end" },
+						["[M"] = { query = "@call.outer", desc = "Prev function call end" },
+						["[F"] = { query = "@function.outer", desc = "Prev method/function def end" },
+						-- ["[C"] = { query = "@class.outer", desc = "Prev class end" },
+						["[C"] = { query = "@conditional.outer", desc = "Prev conditional end" },
 						["[L"] = { query = "@loop.outer", desc = "Prev loop end" },
 					},
 				},
