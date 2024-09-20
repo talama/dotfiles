@@ -134,3 +134,36 @@ autocmd("BufLeave", {
 	pattern = "term://*",
 	command = "stopinsert",
 })
+
+-- Go template support
+autocmd({ "BufNewFile", "BufRead" }, {
+	pattern = { "*.tmpl", "*.gohtml" },
+	callback = function()
+		vim.bo.filetype = "gohtmltmpl"
+	end,
+})
+
+-- Detect Go HTML templates in HTML files
+local function detect_gohtmltmpl()
+	if vim.fn.expand("%:e") == "html" and vim.fn.search("{{") ~= 0 then
+		vim.bo.filetype = "gohtmltmpl"
+	end
+end
+
+augroup("filetypedetect", { clear = true })
+autocmd({ "BufRead", "BufNewFile" }, {
+	pattern = "*.html",
+	callback = detect_gohtmltmpl,
+	group = "filetypedetect",
+})
+
+vim.filetype.add({
+	extension = {
+		gotmpl = "gohtmltmpl",
+	},
+	pattern = {
+		[".*/templates/.*%.tpl"] = "helm",
+		[".*/templates/.*%.ya?ml"] = "helm",
+		["helmfile.*%.ya?ml"] = "helm",
+	},
+})
