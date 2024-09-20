@@ -2,6 +2,16 @@ return {
 	"folke/noice.nvim",
 	event = "VeryLazy",
 	opts = {
+		-- REMOVE THIS once this issue is fixed: https://github.com/yioneko/vtsls/issues/159
+		routes = {
+			{
+				filter = {
+					event = "notify",
+					find = "Request textDocument/inlayHint failed",
+				},
+				opts = { skip = true },
+			},
+		},
 		lsp = {
 			-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
 			override = {
