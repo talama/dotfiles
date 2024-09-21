@@ -173,6 +173,59 @@ return {
 				})
 			end,
 
+			-- HTML language server
+			["html"] = function()
+				lspconfig["html"].setup({
+					handlers = handlers,
+					capabilities = capabilities,
+					filetypes = { "html", "templ", "gohtmltmpl", "gotmpl" },
+				})
+			end,
+
+			-- Emmet
+			["emmet_ls"] = function()
+				lspconfig["emmet_ls"].setup({
+					handlers = handlers,
+					capabilities = capabilities,
+					filetypes = {
+						"astro",
+						"css",
+						"eruby",
+						"gohtmltmpl",
+						"gotmpl",
+						"html",
+						"htmldjango",
+						"javascriptreact",
+						"less",
+						"pug",
+						"sass",
+						"scss",
+						"svelte",
+						"typescriptreact",
+						"vue",
+						"htmlangular",
+					},
+				})
+			end,
+
+			-- CSS language server
+			["cssls"] = function()
+				lspconfig["cssls"].setup({
+					handlers = handlers,
+					capabilities = capabilities,
+					completions = {
+						completeFunctionCalls = true,
+					},
+					settings = {
+						css = {
+							lint = {
+								unknownAtRules = "ignore",
+							},
+						},
+					},
+				})
+			end,
+
 			["jsonls"] = function()
 				lspconfig["jsonls"].setup({
 					on_new_config = function(new_config)
@@ -282,6 +335,7 @@ return {
 					},
 				})
 			end,
+
 			-- Typescript language server
 			-- ["tsserver"] = function()
 			-- 	lspconfig["ts_ls"].setup({
@@ -320,29 +374,12 @@ return {
 			-- 	})
 			-- end,
 
-			-- CSS language server
-			["cssls"] = function()
-				lspconfig["cssls"].setup({
-					handlers = handlers,
-					capabilities = capabilities,
-					completions = {
-						completeFunctionCalls = true,
-					},
-					settings = {
-						css = {
-							lint = {
-								unknownAtRules = "ignore",
-							},
-						},
-					},
-				})
-			end,
-
 			-- Go language server
 			["gopls"] = function()
 				lspconfig["gopls"].setup({
 					handlers = handlers,
 					capabilities = capabilities,
+					filetypes = { "go", "gomod", "gowork" },
 					completions = {
 						completeFunctionCalls = false,
 					},
@@ -350,6 +387,7 @@ return {
 						gopls = {
 							gofumpt = true,
 							completeFunctionCalls = false,
+							-- ["build.templateExtensions"] = { "gohtml", "html", "gotmpl", "tmpl" },
 							codelenses = {
 								gc_details = false,
 								generate = true,

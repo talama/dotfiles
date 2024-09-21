@@ -46,7 +46,8 @@ return {
 					["@type"] = { fg = colors.yellow },
 					["@lsp.typemod.variable.readonly"] = { fg = colors.yellow },
 					["@function.builtin"] = { fg = colors.blue },
-					["@lsp.type.namespace.go"] = { fg = colors.red },
+					["@property.gotmpl"] = { fg = colors.peach },
+					["@punctuation.delimiter.gotmpl"] = { fg = colors.peach },
 				}
 			end,
 			default_integrations = true,

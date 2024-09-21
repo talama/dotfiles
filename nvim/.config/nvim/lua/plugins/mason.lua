@@ -32,6 +32,7 @@ return {
 				"graphql",
 				"emmet_ls",
 				"prismals",
+				"templ",
 				"pyright",
 				"vtsls",
 				"eslint",

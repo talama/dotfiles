@@ -28,7 +28,7 @@ return {
 	opts = {
 		-- Define your formatters
 		formatters_by_ft = {
-			templs = { "templ" },
+			gotmpl = { "prettierd" },
 			javascript = { "prettierd", "prettier", stop_after_first = true },
 			typescript = { "prettierd", "prettier", stop_after_first = true },
 			javascriptreact = { "prettierd", "prettier", stop_after_first = true },
