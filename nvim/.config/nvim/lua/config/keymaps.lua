@@ -27,6 +27,11 @@ map({ "n", "x" }, "<Down>", "v:count == 2 ? 'gj' : 'j'", { desc = "Down", expr =
 map({ "n", "x" }, "k", "v:count == 2 ? 'gk' : 'k'", { desc = "Up", expr = true, silent = true })
 map({ "n", "x" }, "<Up>", "v:count == 2 ? 'gk' : 'k'", { desc = "Up", expr = true, silent = true })
 
+map("n", "H", "^", { desc = "Beginning of line" })
+map("n", "L", "$", { desc = "End of line" })
+map("n", "J", "}", { desc = "Paragraph Up" })
+map("n", "K", "{", { desc = "Paragraph Down" })
+
 -- Change split orientation
 map("n", "<leader>tv", "<C-w>t<C-w>K")
 map("n", "<leader>th", "<C-w>t<C-w>H")

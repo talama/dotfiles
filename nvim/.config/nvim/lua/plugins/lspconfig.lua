@@ -81,10 +81,10 @@ return {
 				local opts = { buffer = bufnr, silent = true }
 
 				opts.desc = "Goto previous diagnostic"
-				keymap("n", "[d", vim.diagnostic.goto_prev, opts)
+				keymap("n", "gp", vim.diagnostic.goto_prev, opts)
 
 				opts.desc = "Goto next diagnostic"
-				keymap("n", "]d", vim.diagnostic.goto_next, opts)
+				keymap("n", "gn", vim.diagnostic.goto_next, opts)
 
 				opts.desc = "Show LSP definitions"
 				keymap("n", "gd", vim.lsp.buf.definition, opts)
@@ -103,7 +103,7 @@ return {
 				keymap("n", "gr", vim.lsp.buf.references, opts)
 
 				opts.desc = "Show documentation for what is under cursor"
-				keymap("n", "K", vim.lsp.buf.hover, opts)
+				keymap("n", "M", vim.lsp.buf.hover, opts)
 
 				opts.desc = "Signature help"
 				keymap("n", "gh", vim.lsp.buf.signature_help, opts)
@@ -112,7 +112,7 @@ return {
 				keymap("n", "<leader>lR", ":LspRestart<CR>", opts)
 
 				opts.desc = "See available code actions"
-				keymap({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
+				keymap({ "n", "v" }, "<leader>sa", vim.lsp.buf.code_action, opts)
 
 				opts.desc = "Show line diagnostics"
 				keymap("n", "<leader>cd", vim.diagnostic.open_float, opts)
