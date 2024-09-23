@@ -112,7 +112,7 @@ return {
 				keymap("n", "<leader>lR", ":LspRestart<CR>", opts)
 
 				opts.desc = "See available code actions"
-				keymap({ "n", "v" }, "<leader>sa", vim.lsp.buf.code_action, opts)
+				keymap({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
 
 				opts.desc = "Show line diagnostics"
 				keymap("n", "<leader>cd", vim.diagnostic.open_float, opts)
