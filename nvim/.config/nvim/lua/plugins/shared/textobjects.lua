@@ -7,20 +7,19 @@ return {
 				select = {
 					enable = true,
 
-					-- Automatically jump forward to textobj, similar to targets.vim
+					-- Automatcally jump forward to textobj, similar to targets.vim
 					lookahead = true,
 
 					keymaps = {
 						-- You can use the capture groups defined in textobjects.scm
 						["a="] = { query = "@assignment.outer", desc = "Select outer part of an assignment" },
 						["i="] = { query = "@assignment.inner", desc = "Select inner part of an assgnment" },
-						["l="] = { query = "@assignment.lhs", desc = "Select left hand side of an assignment" },
-						["r="] = { query = "@assignment.rhs", desc = "Select right hand side of an assignment" },
 
 						["ac"] = { query = "@conditional.outer", desc = "Select outer part of a conditional" },
 						["ic"] = { query = "@conditional.inner", desc = "Select inner part of a conditional" },
 
 						["ad"] = { query = "@comment.outer", desc = "Select outer part of a comment" },
+						["id"] = { query = "@comment.inner", desc = "Select inner part of a comment" },
 
 						["aC"] = { query = "@class.outer", desc = "Select outer part of a class" },
 						["iC"] = { query = "@class.inner", desc = "Select inner part of a class" },
@@ -41,7 +40,6 @@ return {
 						["ip"] = { query = "@parameter.inner", desc = "Select inner part of a parameter/argument" },
 
 						["as"] = { query = "@statement.outer", desc = "Select outer part of a statement" },
-						["is"] = { query = "@statement.inner", desc = "Select inner part of a statement" },
 					},
 				},
 				-- swap = {
