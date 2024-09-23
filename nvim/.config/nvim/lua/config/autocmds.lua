@@ -135,10 +135,26 @@ autocmd("BufLeave", {
 	command = "stopinsert",
 })
 
+-- Gotmpl
 -- Autocmd to set filetype from gohtmltmpl to gotmpl
-vim.api.nvim_create_autocmd("FileType", {
+autocmd("FileType", {
 	pattern = "gohtmltmpl",
 	callback = function()
 		vim.bo.filetype = "gotmpl"
 	end,
+})
+
+vim.api.nvim_create_augroup("filetypedetect", { clear = true })
+
+-- Check if html file contains gotmpl syntax
+local function detect_go_html_tmpl()
+	if vim.fn.expand("%:e") == "html" and vim.fn.search("{{") ~= 0 then
+		vim.bo.filetype = "gotmpl"
+	end
+end
+
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+	pattern = "*",
+	callback = detect_go_html_tmpl,
+	group = "filetypedetect",
 })
