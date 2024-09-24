@@ -50,7 +50,7 @@ return {
 						require("luasnip").lsp_expand(args.body)
 					end,
 				},
-				completion = { completeopt = "menu,menuone,noinsert" },
+				completion = { completeopt = "menu,menuone,noinsert,noselect" },
 				window = {
 					completion = cmp.config.window.bordered(),
 					documentation = cmp.config.window.bordered(),
@@ -59,20 +59,7 @@ return {
 				-- Keymaps
 				mapping = cmp.mapping.preset.insert({
 					-- confirm completion and supertab
-					["<CR>"] = cmp.mapping(function(fallback)
-						if cmp.visible() then
-							if luasnip.expandable() then
-								luasnip.expand()
-							else
-								cmp.confirm({
-									select = true,
-								})
-							end
-						else
-							fallback()
-						end
-					end),
-
+					["<CR>"] = cmp.mapping.confirm({ select = false }),
 					["<Tab>"] = cmp.mapping(function(fallback)
 						if cmp.visible() then
 							cmp.select_next_item()
@@ -105,13 +92,9 @@ return {
 					["<C-b>"] = cmp.mapping.scroll_docs(-4),
 				}),
 				sources = cmp.config.sources({
-					{
-						name = "lazydev",
-						-- set group index to 0 to skip loading LuaLS completions as lazydev recommends it
-						group_index = 0,
-					},
 					{ name = "nvim_lsp" },
 					{ name = "luasnip" },
+					{ name = "buffer" },
 					{ name = "path" },
 				}),
 				formatting = {
