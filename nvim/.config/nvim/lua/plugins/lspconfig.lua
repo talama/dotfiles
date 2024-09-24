@@ -381,7 +381,7 @@ return {
 					capabilities = capabilities,
 					filetypes = { "go", "gomod", "gowork" },
 					completions = {
-						completeFunctionCalls = false,
+						completeFunctionCalls = true,
 					},
 					settings = {
 						gopls = {
