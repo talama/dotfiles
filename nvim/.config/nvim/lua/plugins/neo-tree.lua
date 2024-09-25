@@ -60,6 +60,13 @@ return {
 			window = {
 				position = "left",
 				width = 30,
+				mappings = {
+					["G"] = function(state)
+						state.filtered_items.visible = false
+						state.filtered_items.hide_gitignored = not state.filtered_items.hide_gitignored
+						require("neo-tree.sources.manager").refresh("filesystem")
+					end,
+				},
 			},
 			filesystem = {
 				bind_to_cwd = false,
