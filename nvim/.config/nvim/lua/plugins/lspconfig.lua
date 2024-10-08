@@ -133,7 +133,7 @@ return {
 				if client then
 					if client.name == "eslint" then
 						client.server_capabilities.documentFormattingProvider = true
-					elseif client.name == "tsserver" then
+					elseif client.name == "vtsls" then
 						client.server_capabilities.documentFormattingProvider = false
 					elseif client.name == "html" then
 						client.server_capabilities.documentFormattingProvider = false
@@ -286,17 +286,20 @@ return {
 					capabilities = capabilities,
 					handlers = handlers,
 					settings = {
-						enableMoveToFileCodeAction = true,
-						autoUseWorkspaceTsdk = true,
-						experimental = {
-							completion = {
-								enableServerSideFuzzyMatch = true,
+						vtsls = {
+							enableMoveToFileCodeAction = true,
+							autoUseWorkspaceTsdk = true,
+							experimental = {
+								completion = {
+									enableServerSideFuzzyMatch = true,
+								},
 							},
 						},
 						javascript = {
 							suggest = {
-								completeFunctionCalls = false,
+								completeFunctionCalls = true,
 							},
+							updateImportsOnFileMove = { enabled = "always" },
 							inlayHints = {
 								parameterNames = {
 									enabled = "literals",
@@ -315,7 +318,7 @@ return {
 						typescript = {
 							updateImportsOnFileMove = { enabled = "always" },
 							suggest = {
-								completeFunctionCalls = false,
+								completeFunctionCalls = true,
 							},
 							inlayHints = {
 								parameterNames = {
@@ -386,7 +389,7 @@ return {
 					settings = {
 						gopls = {
 							gofumpt = true,
-							completeFunctionCalls = false,
+							completeFunctionCalls = true,
 							-- ["build.templateExtensions"] = { "gohtml", "html", "gotmpl", "tmpl" },
 							codelenses = {
 								gc_details = false,
