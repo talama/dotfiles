@@ -91,7 +91,7 @@ map("n", "<leader>ui", vim.show_pos, { desc = "Inspect Pos" })
 map("n", "<leader>uI", "<cmd>InspectTree<cr>", { desc = "Inspect Tree" })
 
 -- Better paste / yank
-map({ "v", "x" }, "p", [["_dP]])
+map({ "v", "x" }, "<leader>p", [["_dP]])
 
 map({ "n", "v" }, "<leader>y", [["+y]])
 map("n", "<leader>Y", [["+Y]])
