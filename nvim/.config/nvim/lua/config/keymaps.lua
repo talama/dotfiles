@@ -84,7 +84,7 @@ map("v", ">", ">gv")
 
 -- comments
 map({ "n", "v" }, "<leader>/", "gcc", { remap = true, desc = "Comment line" })
-map({ "n", "v" }, "<leader>.", "gcb", { remap = true, desc = "Comment line" })
+map({ "n", "v" }, "<leader>.", "gcb", { remap = true, desc = "Comment block" })
 
 -- highlights under cursor
 map("n", "<leader>ui", vim.show_pos, { desc = "Inspect Pos" })
