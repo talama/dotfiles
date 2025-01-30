@@ -327,7 +327,7 @@ return {
 								},
 								parameterTypes = true,
 								variableTypes = {
-									enabled = true,
+									enabled = false,
 									suppressWhenTypeMatchesName = true,
 								},
 								propertyDeclarationTypes = true,
