@@ -35,7 +35,7 @@ return {
 				"templ",
 				"pyright",
 				"vtsls",
-				"eslint",
+				-- "eslint",
 				"jsonls",
 			},
 			-- auto-install configured servers (with lspconfig)
