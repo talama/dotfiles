@@ -182,6 +182,16 @@ return {
 				})
 			end,
 
+			-- ["eslint"] = function()
+			-- 	lspconfig["eslint"].setup({
+			-- 		handlers = handlers,
+			-- 		capabilities = capabilities,
+			-- 		directory = function(bufnr)
+			-- 			return { directory = vim.fs.root(bufnr, { "package.json" }) }
+			-- 		end,
+			-- 		filetypes = { "javascriptreact", "typescriptreact", "svelte", "astro" },
+			-- 	})
+
 			-- Emmet
 			["emmet_ls"] = function()
 				lspconfig["emmet_ls"].setup({
