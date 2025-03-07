@@ -8,7 +8,6 @@ return {
 		lint.linters_by_ft = {
 			css = { "stylelint" },
 			html = { "stylelint" },
-			-- using eslint lsp instead
 			javascript = { "eslint_d" },
 			typescript = { "eslint_d" },
 			javascriptreact = { "eslint_d" },
