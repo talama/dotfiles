@@ -12,6 +12,7 @@ opt.completeopt = "menu,menuone,noinsert,noselect" -- Autocomplete options
 -----------------------------------------------------------
 -- Neovim UI
 -----------------------------------------------------------
+vim.g.snacks_animate = false
 opt.number = true -- Show line number
 opt.relativenumber = true -- Relative line numbers
 opt.showmatch = true -- Highlight matching parenthesis
