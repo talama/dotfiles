@@ -250,7 +250,7 @@ return {
 					settings = {
 						Lua = {
 							diagnostics = {
-								globals = { "vim" },
+								globals = { "vim", "Snacks" },
 							},
 							hint = {
 								enable = true,
