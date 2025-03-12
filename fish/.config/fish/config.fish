@@ -32,7 +32,7 @@ alias .tmux="nvim ~/.tmux.conf"
 # aliases
 alias nv="nvim"
 alias g="git"
-
+alias ff='set selected $(fzf --preview="bat --color=always {}") && [ -n "$selected" ] && nvim "$selected"'
 alias ls "ls -p -G"
 alias la "ls -A"
 alias ll "eza -l -g --icons=always"
