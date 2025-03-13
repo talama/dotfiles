@@ -17,7 +17,7 @@ return {
 			enabled = true,
 			layout = {
 				cycle = true,
-				--- Use the default layout or vertical if the window is too narrow
+				--- Use telescope layout or vertical if the window is too narrow
 				preset = function()
 					return vim.o.columns >= 120 and "telescope" or "vertical"
 				end,
@@ -27,7 +27,6 @@ return {
 					hidden = true,
 					ignored = true,
 					exclude = { "node_modules", ".git", "build", "dist" },
-					auto_close = true,
 				},
 			},
 		},
