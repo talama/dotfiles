@@ -12,7 +12,16 @@ return {
 			enabled = true,
 			timeout = 3000,
 		},
-		picker = { enabled = true },
+		picker = {
+			enabled = true,
+			sources = {
+				explorer = {
+					hidden = true,
+					ignored = true,
+					exclude = { "node_modules", ".git", "build", "dist" },
+				},
+			},
+		},
 		quickfile = { enabled = true },
 		scope = { enabled = true },
 		scroll = { enabled = true },
@@ -26,34 +35,6 @@ return {
 	},
 	keys = {
 		-- Top Pickers & Explorer
-		{
-			"<leader><space>",
-			function()
-				Snacks.picker.smart()
-			end,
-			desc = "Smart Find Files",
-		},
-		{
-			"<leader>,",
-			function()
-				Snacks.picker.buffers()
-			end,
-			desc = "Buffers",
-		},
-		{
-			"<leader>/",
-			function()
-				Snacks.picker.grep()
-			end,
-			desc = "Grep",
-		},
-		{
-			"<leader>:",
-			function()
-				Snacks.picker.command_history()
-			end,
-			desc = "Command History",
-		},
 		{
 			"<leader>n",
 			function()
@@ -69,6 +50,13 @@ return {
 			desc = "File Explorer",
 		},
 		-- find
+		{
+			"<leader>fa",
+			function()
+				Snacks.picker.files({ hidden = true })
+			end,
+			desc = "Find All",
+		},
 		{
 			"<leader>fb",
 			function()
@@ -111,6 +99,13 @@ return {
 			end,
 			desc = "Recent",
 		},
+		{
+			"<leader>fw",
+			function()
+				Snacks.picker.grep()
+			end,
+			desc = "Grep",
+		},
 		-- git
 		{
 			"<leader>gb",
@@ -125,13 +120,6 @@ return {
 				Snacks.picker.git_log()
 			end,
 			desc = "Git Log",
-		},
-		{
-			"<leader>gL",
-			function()
-				Snacks.picker.git_log_line()
-			end,
-			desc = "Git Log Line",
 		},
 		{
 			"<leader>gs",
@@ -177,13 +165,6 @@ return {
 			desc = "Grep Open Buffers",
 		},
 		{
-			"<leader>sg",
-			function()
-				Snacks.picker.grep()
-			end,
-			desc = "Grep",
-		},
-		{
 			"<leader>sw",
 			function()
 				Snacks.picker.grep_word()
@@ -192,34 +173,6 @@ return {
 			mode = { "n", "x" },
 		},
 		-- search
-		{
-			'<leader>s"',
-			function()
-				Snacks.picker.registers()
-			end,
-			desc = "Registers",
-		},
-		{
-			"<leader>s/",
-			function()
-				Snacks.picker.search_history()
-			end,
-			desc = "Search History",
-		},
-		{
-			"<leader>sa",
-			function()
-				Snacks.picker.autocmds()
-			end,
-			desc = "Autocmds",
-		},
-		{
-			"<leader>sb",
-			function()
-				Snacks.picker.lines()
-			end,
-			desc = "Buffer Lines",
-		},
 		{
 			"<leader>sc",
 			function()
@@ -247,27 +200,6 @@ return {
 				Snacks.picker.diagnostics_buffer()
 			end,
 			desc = "Buffer Diagnostics",
-		},
-		{
-			"<leader>sh",
-			function()
-				Snacks.picker.help()
-			end,
-			desc = "Help Pages",
-		},
-		{
-			"<leader>sH",
-			function()
-				Snacks.picker.highlights()
-			end,
-			desc = "Highlights",
-		},
-		{
-			"<leader>si",
-			function()
-				Snacks.picker.icons()
-			end,
-			desc = "Icons",
 		},
 		{
 			"<leader>sj",
@@ -319,25 +251,11 @@ return {
 			desc = "Quickfix List",
 		},
 		{
-			"<leader>sR",
-			function()
-				Snacks.picker.resume()
-			end,
-			desc = "Resume",
-		},
-		{
 			"<leader>su",
 			function()
 				Snacks.picker.undo()
 			end,
 			desc = "Undo History",
-		},
-		{
-			"<leader>uC",
-			function()
-				Snacks.picker.colorschemes()
-			end,
-			desc = "Colorschemes",
 		},
 		-- LSP
 		{
@@ -406,20 +324,6 @@ return {
 			desc = "Toggle Zoom",
 		},
 		{
-			"<leader>.",
-			function()
-				Snacks.scratch()
-			end,
-			desc = "Toggle Scratch Buffer",
-		},
-		{
-			"<leader>S",
-			function()
-				Snacks.scratch.select()
-			end,
-			desc = "Select Scratch Buffer",
-		},
-		{
 			"<leader>n",
 			function()
 				Snacks.notifier.show_history()
@@ -432,13 +336,6 @@ return {
 				Snacks.bufdelete()
 			end,
 			desc = "Delete Buffer",
-		},
-		{
-			"<leader>cR",
-			function()
-				Snacks.rename.rename_file()
-			end,
-			desc = "Rename File",
 		},
 		{
 			"<leader>gB",
@@ -456,25 +353,11 @@ return {
 			desc = "Lazygit",
 		},
 		{
-			"<leader>un",
-			function()
-				Snacks.notifier.hide()
-			end,
-			desc = "Dismiss All Notifications",
-		},
-		{
 			"<c-/>",
 			function()
 				Snacks.terminal()
 			end,
 			desc = "Toggle Terminal",
-		},
-		{
-			"<c-_>",
-			function()
-				Snacks.terminal()
-			end,
-			desc = "which_key_ignore",
 		},
 		{
 			"]]",
@@ -491,24 +374,6 @@ return {
 			end,
 			desc = "Prev Reference",
 			mode = { "n", "t" },
-		},
-		{
-			"<leader>N",
-			desc = "Neovim News",
-			function()
-				Snacks.win({
-					file = vim.api.nvim_get_runtime_file("doc/news.txt", false)[1],
-					width = 0.6,
-					height = 0.6,
-					wo = {
-						spell = false,
-						wrap = false,
-						signcolumn = "yes",
-						statuscolumn = " ",
-						conceallevel = 3,
-					},
-				})
-			end,
 		},
 	},
 	init = function()
