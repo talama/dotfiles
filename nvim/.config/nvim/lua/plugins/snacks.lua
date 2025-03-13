@@ -6,6 +6,7 @@ return {
 		bigfile = { enabled = true },
 		dashboard = { enabled = true },
 		explorer = { enabled = true },
+		image = { enabled = true },
 		indent = { enabled = true },
 		input = { enabled = true },
 		notifier = {
@@ -14,11 +15,19 @@ return {
 		},
 		picker = {
 			enabled = true,
+			layout = {
+				cycle = true,
+				--- Use the default layout or vertical if the window is too narrow
+				preset = function()
+					return vim.o.columns >= 120 and "telescope" or "vertical"
+				end,
+			},
 			sources = {
 				explorer = {
 					hidden = true,
 					ignored = true,
 					exclude = { "node_modules", ".git", "build", "dist" },
+					auto_close = true,
 				},
 			},
 		},
@@ -353,7 +362,7 @@ return {
 			desc = "Lazygit",
 		},
 		{
-			"<c-/>",
+			"<a-1>",
 			function()
 				Snacks.terminal()
 			end,
