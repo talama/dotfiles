@@ -18,7 +18,14 @@ return {
         -- stylua: ignore
         right_mouse_command = function(n) require("mini.bufremove").delete(n, false) end,
 				diagnostics = "nvim_lsp",
-				offsets = { { filetype = "neo-tree", text = "Neo-Tree", padding = 1 } },
+				-- offsets = { { filetype = "neo-tree", text = "Neo-Tree", padding = 1 } },
+				offsets = {
+					{
+						filetype = "snacks_layout_box",
+						text = "󰙅  File Explorer",
+						separator = true,
+					},
+				},
 				separator_style = "thick",
 			},
 		})
