@@ -5,6 +5,7 @@ set fish_greeting
 fish_add_path ~/.local/bin/
 fish_add_path ~/bin/
 fish_add_path /home/talama/.spicetify
+fish_add_path /home/talama/go/bin
 fish_add_path /home/talama/.cargo/bin
 fish_add_path /home/talama/.local/share/JetBrains/Toolbox/scripts
 
@@ -92,3 +93,6 @@ end
 starship init fish | source
 enable_transience
 
+
+# Generated for envman. Do not edit.
+test -s ~/.config/envman/load.fish; and source ~/.config/envman/load.fish
