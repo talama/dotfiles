@@ -15,18 +15,16 @@ map("i", "<C-c>", "<Esc>")
 -- quit
 map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit All" })
 
--- new buffer
-map("n", "<C-n>", ":enew<CR>", { desc = "New Buffer" })
-
 -- Select All
 -- map("n", "<C-a>", "gg<S-v>G", { desc = "Select all" })
 
--- better up/down
+-- Better up/down
 map({ "n", "x" }, "j", "v:count == 2 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
 map({ "n", "x" }, "<Down>", "v:count == 2 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
 map({ "n", "x" }, "k", "v:count == 2 ? 'gk' : 'k'", { desc = "Up", expr = true, silent = true })
 map({ "n", "x" }, "<Up>", "v:count == 2 ? 'gk' : 'k'", { desc = "Up", expr = true, silent = true })
 
+-- Move line/paragraph
 map("n", "H", "^", { desc = "Beginning of line" })
 map("n", "L", "$", { desc = "End of line" })
 map("n", "J", "}", { desc = "Paragraph Up" })
@@ -53,18 +51,42 @@ map({ "n", "i" }, "<C-b>", "<ESC>^i")
 map({ "n", "i" }, "<C-e>", "<END>")
 
 -- Move Lines
-map({ "n", "v" }, "<A-j>", "<cmd>m .+1<cr>==", { desc = "Move Down" })
-map({ "n", "v" }, "<A-k>", "<cmd>m .-2<cr>==", { desc = "Move Up" })
+map("n", "<A-j>", "<cmd>execute 'move .+' . v:count1<cr>==", { desc = "Move Down" })
+map("n", "<A-k>", "<cmd>execute 'move .-' . (v:count1 + 1)<cr>==", { desc = "Move Up" })
+map("i", "<A-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move Down" })
+map("i", "<A-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move Up" })
+map("v", "<A-j>", ":<C-u>execute \"'<,'>move '>+\" . v:count1<cr>gv=gv", { desc = "Move Down" })
+map("v", "<A-k>", ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv", { desc = "Move Up" })
 
--- Tabs
-map("n", "<TAB>", ":bnext<CR>", { desc = "Next Buffer" })
-map("n", "<S-TAB>", ":bprevious<CR>", { desc = "Previous Buffer" })
+-- Buffers
+map("n", "<C-n>", ":enew<CR>", { desc = "New Buffer" })
+map("n", "<leader>bd", function()
+	Snacks.bufdelete()
+end, { desc = "Delete Buffer" })
+map("n", "<leader>bo", function()
+	Snacks.bufdelete.other()
+end, { desc = "Delete Other Buffers" })
+map("n", "<leader>bD", "<cmd>:bd<cr>", { desc = "Delete Buffer and Window" })
+map("n", "<Tab>", "<cmd>bnext<cr>", { desc = "Next Buffer" })
+map("n", "<S-Tab>", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
+map("n", "[b", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
+map("n", "]b", "<cmd>bnext<cr>", { desc = "Next Buffer" })
+map("n", "<leader>bb", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
+map("n", "<leader>`", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
 map("n", "<leader>to", "<cmd>tabnew<CR>", { desc = "Open new tab" })
 map("n", "<leader>tx", "<cmd>tabclose<CR>", { desc = "Close current tab" })
+
+-- tabs
+map("n", "<leader><tab>l", "<cmd>tablast<cr>", { desc = "Last Tab" })
+map("n", "<leader><tab>o", "<cmd>tabonly<cr>", { desc = "Close Other Tabs" })
+map("n", "<leader><tab>f", "<cmd>tabfirst<cr>", { desc = "First Tab" })
 
 -- Current buffer navigation
 map("n", "<C-u>", "<C-u>zz", { desc = "Move Up" })
 map("n", "<C-d>", "<C-d>zz", { desc = "Move Down" })
+
+-- new file
+map("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" })
 
 -- Clear search with <esc>
 map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and Clear hlsearch" })
@@ -85,6 +107,8 @@ map("v", ">", ">gv")
 -- comments
 map({ "n", "v" }, "<leader>/", "gcc", { remap = true, desc = "Comment line" })
 map({ "n", "v" }, "<leader>.", "gcb", { remap = true, desc = "Comment block" })
+map("n", "gco", "o<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>", { desc = "Add Comment Below" })
+map("n", "gcO", "O<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>", { desc = "Add Comment Above" })
 
 -- highlights under cursor
 map("n", "<leader>ui", vim.show_pos, { desc = "Inspect Pos" })
@@ -107,11 +131,6 @@ map("n", "<leader>rw", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], {
 -- Increment/Decrement numbers
 map("n", "<leader>+", "<C-a>", { desc = "Increment number" })
 map("n", "<leader>-", "<C-x>", { desc = "Decrement number" })
-
--- Zen mode
-map("n", "<leader>zz", function()
-	require("zen-mode").toggle()
-end, { desc = "Toggle zen-mode" })
 
 -- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
 map("n", "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" })

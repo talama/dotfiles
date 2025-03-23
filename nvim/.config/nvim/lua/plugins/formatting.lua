@@ -28,29 +28,30 @@ return {
 	opts = {
 		-- Define your formatters
 		formatters_by_ft = {
-			gotmpl = { "prettierd" },
-			javascript = { "prettierd", "prettier", stop_after_first = true },
-			typescript = { "prettierd", "prettier", stop_after_first = true },
-			javascriptreact = { "prettierd", "prettier", stop_after_first = true },
-			typescriptreact = { "prettierd", "prettier", stop_after_first = true },
-			svelte = { "prettierd", "prettier", stop_after_first = true },
-			html = { "prettierd", "prettier", stop_after_first = true },
+			gotmpl = { "prettier" },
+			javascript = { "prettier" },
+			typescript = { "prettier" },
+			javascriptreact = { "prettier" },
+			typescriptreact = { "prettier" },
+			svelte = { "prettier" },
+			html = { "prettier" },
 			css = function(bufnr)
-				return { first(bufnr, "prettierd", "prettier"), "stylelint" }
+				return { first(bufnr, "prettier"), "stylelint" }
 			end,
 			sass = function(bufnr)
-				return { first(bufnr, "prettierd", "prettier"), "stylelint" }
+				return { first(bufnr, "prettier"), "stylelint" }
 			end,
 			scss = function(bufnr)
-				return { first(bufnr, "prettierd", "prettier"), "stylelint" }
+				return { first(bufnr, "prettier"), "stylelint" }
 			end,
 			less = function(bufnr)
-				return { first(bufnr, "prettierd", "prettier"), "stylelint" }
+				return { first(bufnr, "prettier"), "stylelint" }
 			end,
-			json = { "prettierd", "prettier", stop_after_first = true },
-			yaml = { "prettierd", "prettier", stop_after_first = true },
-			markdown = { "prettierd", "prettier", stop_after_first = true },
-			graphql = { "prettierd", "prettier", stop_after_first = true },
+			json = { "prettier" },
+			yaml = { "prettier" },
+			["markdown"] = { "prettier", "markdownlint-cli2", "markdown-toc" },
+			["markdown.mdx"] = { "prettier", "markdownlint-cli2", "markdown-toc" },
+			graphql = { "prettier" },
 			lua = { "stylua" },
 			python = { "isort", "black" },
 			go = { "gofumpt" },
@@ -67,7 +68,7 @@ return {
 			if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
 				return
 			end
-			return { timeout_ms = 500, lsp_format = "fallback" }
+			return { timeout_ms = 1000, lsp_format = "fallback" }
 		end,
 		-- Customize formatters
 		formatters = {},

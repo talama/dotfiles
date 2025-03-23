@@ -149,7 +149,7 @@ bindsym $mod+Ctrl+Shift+Left resize grow width 10 px or 10 ppt
 ######################################
 
 # start a terminal
-bindsym $mod+Return exec wezterm
+bindsym $mod+Return exec kitty
 
 # kill focused window
 bindsym $mod+q kill
@@ -308,7 +308,7 @@ workspace $ws10 output HDMI-0
 # for_window [class=TelegramDesktop] focu
 
 exec setxkbmap -option caps:ctrl_modifier
-exec --no-startup-id i3-msg 'Workspace 1:; exec /usr/bin/wezterm'
+exec --no-startup-id i3-msg 'Workspace 1:; exec /usr/bin/kitty'
 
 # Restore saved layouts
 # exec --no-startup-id "i3-msg '
