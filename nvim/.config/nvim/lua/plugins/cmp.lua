@@ -95,6 +95,7 @@ return {
 					{ name = "luasnip" },
 					{ name = "buffer" },
 					{ name = "path" },
+					{ name = "emoji" },
 				}),
 				formatting = {
 					fields = { "abbr", "kind", "menu" },
@@ -106,6 +107,7 @@ return {
 							luasnip = "[SNP]",
 							buffer = "[BUF]",
 							path = "[PTH]",
+							emoji = "[EMJ]",
 						},
 						maxwith = 50,
 						ellipsis_char = "...",
