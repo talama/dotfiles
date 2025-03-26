@@ -149,4 +149,4 @@ map("t", "<C-l>", "<cmd>wincmd l<cr>", { desc = "Go to right window" })
 map("t", "<C-/>", "<cmd>close<cr>", { desc = "Hide Terminal" })
 map("t", "<c-_>", "<cmd>close<cr>", { desc = "which_key_ignore" })
 
-map("n", "<leader>ei", "<cmd>lua require('emoji').insert()<cr>", { desc = "insert emoj" })
+map("n", "<leader>ji", "<cmd>lua require('emoji').insert()<cr>", { desc = "insert emoj" })
