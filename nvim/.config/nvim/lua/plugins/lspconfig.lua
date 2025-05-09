@@ -18,7 +18,6 @@ return {
 	config = function()
 		local lspconfig = require("lspconfig")
 		local cmp_nvim_lsp = require("cmp_nvim_lsp")
-		local mason_lspconfig = require("mason-lspconfig")
 
 		-- enable autocompletion
 		local capabilities = vim.tbl_deep_extend(
@@ -62,10 +61,6 @@ return {
 			},
 		})
 
-		local handlers = {
-			["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single" }),
-			["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "single" }),
-		}
 		local keymap = vim.keymap.set
 
 		vim.api.nvim_create_autocmd("LspAttach", {
@@ -79,12 +74,6 @@ return {
 
 				-- set keybinds
 				local opts = { buffer = bufnr, silent = true }
-
-				opts.desc = "Goto previous diagnostic"
-				keymap("n", "gp", vim.diagnostic.goto_prev, opts)
-
-				opts.desc = "Goto next diagnostic"
-				keymap("n", "gn", vim.diagnostic.goto_next, opts)
 
 				opts.desc = "Show LSP definitions"
 				keymap("n", "gd", vim.lsp.buf.definition, opts)
@@ -103,7 +92,9 @@ return {
 				keymap("n", "gr", vim.lsp.buf.references, opts)
 
 				opts.desc = "Show documentation for what is under cursor"
-				keymap("n", "M", vim.lsp.buf.hover, opts)
+				keymap("n", "M", function()
+					vim.lsp.buf.hover({ border = "rounded" })
+				end)
 
 				opts.desc = "Signature help"
 				keymap("n", "gh", vim.lsp.buf.signature_help, opts)
@@ -151,281 +142,210 @@ return {
 			end,
 		})
 
-		mason_lspconfig.setup_handlers({
-			-- The first entry (without a key) will be the default handler
-			-- and will be called for each installed server that doesn't have
-			-- a dedicated handler.
-			function(server_name) -- default handler (optional)
-				lspconfig[server_name].setup({
-					capabilities = capabilities,
-					handlers = handlers,
-				})
+		-- Next, you can provide a dedicated handler for specific servers.
+		lspconfig.bashls.setup({
+			capabilities = capabilities,
+			completions = {
+				completeFunctionCalls = true,
+			},
+			filetypes = { "sh", "zsh" },
+		})
+
+		-- HTML language server
+		lspconfig.html.setup({
+			capabilities = capabilities,
+			filetypes = { "html", "templ", "gohtmltmpl", "gotmpl" },
+		})
+
+		-- Emmet
+		lspconfig.emmet_ls.setup({
+			capabilities = capabilities,
+			filetypes = {
+				"astro",
+				"css",
+				"eruby",
+				"gohtmltmpl",
+				"gotmpl",
+				"html",
+				"htmldjango",
+				"javascriptreact",
+				"less",
+				"pug",
+				"sass",
+				"scss",
+				"svelte",
+				"typescriptreact",
+				"vue",
+				"htmlangular",
+			},
+		})
+
+		-- CSS language server
+		lspconfig.cssls.setup({
+			capabilities = capabilities,
+			completions = {
+				completeFunctionCalls = true,
+			},
+			settings = {
+				css = {
+					lint = {
+						unknownAtRules = "ignore",
+					},
+				},
+			},
+		})
+
+		lspconfig.jsonls.setup({
+			on_new_config = function(new_config)
+				new_config.settings.json.schemas = new_config.settings.json.schemas or {}
+				vim.list_extend(new_config.settings.json.schemas, require("schemastore").json.schemas())
 			end,
-			-- Next, you can provide a dedicated handler for specific servers.
-			["bashls"] = function()
-				lspconfig["bashls"].setup({
-					handlers = handlers,
-					capabilities = capabilities,
-					completions = {
+			settings = {
+				json = {
+					format = {
+						enable = true,
+					},
+					validate = { enable = true },
+				},
+			},
+		})
+
+		-- Lua language server
+		lspconfig.lua_ls.setup({
+			capabilities = capabilities,
+			settings = {
+				Lua = {
+					diagnostics = {
+						globals = { "vim", "Snacks" },
+					},
+					hint = {
+						enable = true,
+						setType = false,
+						paramType = true,
+						await = true,
+						paramName = "Disable",
+						semicolon = "Disable",
+						arrayIndex = "Disable",
+					},
+					workspace = {
+						library = {
+							checkThirdParty = false,
+							[vim.fn.expand("$VIMRUNTIME/lua")] = true,
+							[vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
+							[vim.fn.stdpath("data") .. "/lazy/lazy.nvim/lua/lazy"] = true,
+						},
+						codeLens = {
+							enable = true,
+						},
+						completion = { workspaceWord = true, callSnippet = "Replace" },
+						doc = {
+							privateName = { "^_" },
+						},
+					},
+				},
+			},
+		})
+
+		lspconfig.vtsls.setup({
+			capabilities = capabilities,
+			settings = {
+				vtsls = {
+					enableMoveToFileCodeAction = true,
+					autoUseWorkspaceTsdk = true,
+					experimental = {
+						maxInlayHintLength = 30,
+						completion = {
+							enableServerSideFuzzyMatch = true,
+						},
+					},
+				},
+				javascript = {
+					suggest = {
 						completeFunctionCalls = true,
 					},
-					filetypes = { "sh", "zsh" },
-				})
-			end,
-
-			-- HTML language server
-			["html"] = function()
-				lspconfig["html"].setup({
-					handlers = handlers,
-					capabilities = capabilities,
-					filetypes = { "html", "templ", "gohtmltmpl", "gotmpl" },
-				})
-			end,
-
-			-- Emmet
-			["emmet_ls"] = function()
-				lspconfig["emmet_ls"].setup({
-					handlers = handlers,
-					capabilities = capabilities,
-					filetypes = {
-						"astro",
-						"css",
-						"eruby",
-						"gohtmltmpl",
-						"gotmpl",
-						"html",
-						"htmldjango",
-						"javascriptreact",
-						"less",
-						"pug",
-						"sass",
-						"scss",
-						"svelte",
-						"typescriptreact",
-						"vue",
-						"htmlangular",
+					updateImportsOnFileMove = { enabled = "always" },
+					inlayHints = {
+						parameterNames = {
+							enabled = "literals",
+							suppressWhenArgumentMatchesName = true,
+						},
+						parameterTypes = { enabled = false },
+						variableTypes = {
+							enabled = false,
+							suppressWhenTypeMatchesName = true,
+						},
+						propertyDeclarationTypes = { enabled = false },
+						functionLikeReturnTypes = { enabled = false },
+						enumMemberValues = { enabled = false },
 					},
-				})
-			end,
-
-			-- CSS language server
-			["cssls"] = function()
-				lspconfig["cssls"].setup({
-					handlers = handlers,
-					capabilities = capabilities,
-					completions = {
+				},
+				typescript = {
+					updateImportsOnFileMove = { enabled = "always" },
+					suggest = {
 						completeFunctionCalls = true,
 					},
-					settings = {
-						css = {
-							lint = {
-								unknownAtRules = "ignore",
-							},
+					inlayHints = {
+						parameterNames = {
+							enabled = "literal",
+							suppressWhenArgumentMatchesName = true,
 						},
+						parameterTypes = { enabled = true },
+						variableTypes = {
+							enabled = false,
+							suppressWhenTypeMatchesName = true,
+						},
+						propertyDeclarationTypes = { enabled = true },
+						functionLikeReturnTypes = { enabled = true },
+						enumMemberValues = { enabled = true },
 					},
-				})
-			end,
+				},
+			},
+		})
 
-			["jsonls"] = function()
-				lspconfig["jsonls"].setup({
-					on_new_config = function(new_config)
-						new_config.settings.json.schemas = new_config.settings.json.schemas or {}
-						vim.list_extend(new_config.settings.json.schemas, require("schemastore").json.schemas())
-					end,
-					settings = {
-						json = {
-							format = {
-								enable = true,
-							},
-							validate = { enable = true },
-						},
+		-- Go language server
+		lspconfig.gopls.setup({
+			capabilities = capabilities,
+			filetypes = { "go", "gomod", "gowork" },
+			completions = {
+				completeFunctionCalls = true,
+			},
+			settings = {
+				gopls = {
+					gofumpt = true,
+					completeFunctionCalls = true,
+					-- ["build.templateExtensions"] = { "gohtml", "html", "gotmpl", "tmpl" },
+					codelenses = {
+						gc_details = false,
+						generate = true,
+						regenerate_cgo = true,
+						run_govulncheck = true,
+						test = true,
+						tidy = true,
+						upgrade_dependency = true,
+						vendor = true,
 					},
-				})
-			end,
-
-			-- Lua language server
-			["lua_ls"] = function()
-				lspconfig["lua_ls"].setup({
-					capabilities = capabilities,
-					settings = {
-						Lua = {
-							diagnostics = {
-								globals = { "vim", "Snacks" },
-							},
-							hint = {
-								enable = true,
-								setType = false,
-								paramType = true,
-								await = true,
-								paramName = "Disable",
-								semicolon = "Disable",
-								arrayIndex = "Disable",
-							},
-							workspace = {
-								library = {
-									checkThirdParty = false,
-									[vim.fn.expand("$VIMRUNTIME/lua")] = true,
-									[vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
-									[vim.fn.stdpath("data") .. "/lazy/lazy.nvim/lua/lazy"] = true,
-								},
-								codeLens = {
-									enable = true,
-								},
-								completion = { workspaceWord = true, callSnippet = "Replace" },
-								doc = {
-									privateName = { "^_" },
-								},
-							},
-						},
+					hints = {
+						assignVariableTypes = false,
+						compositeLiteralFields = false,
+						compositeLiteralTypes = false,
+						constantValues = false,
+						functionTypeParameters = false,
+						parameterNames = false,
+						rangeVariableTypes = false,
 					},
-				})
-			end,
-
-			["vtsls"] = function()
-				lspconfig["vtsls"].setup({
-					capabilities = capabilities,
-					handlers = handlers,
-					settings = {
-						vtsls = {
-							enableMoveToFileCodeAction = true,
-							autoUseWorkspaceTsdk = true,
-							experimental = {
-								maxInlayHintLength = 30,
-								completion = {
-									enableServerSideFuzzyMatch = true,
-								},
-							},
-						},
-						javascript = {
-							suggest = {
-								completeFunctionCalls = true,
-							},
-							updateImportsOnFileMove = { enabled = "always" },
-							inlayHints = {
-								parameterNames = {
-									enabled = "literals",
-									suppressWhenArgumentMatchesName = true,
-								},
-								parameterTypes = { enabled = false },
-								variableTypes = {
-									enabled = false,
-									suppressWhenTypeMatchesName = true,
-								},
-								propertyDeclarationTypes = { enabled = false },
-								functionLikeReturnTypes = { enabled = false },
-								enumMemberValues = { enabled = false },
-							},
-						},
-						typescript = {
-							updateImportsOnFileMove = { enabled = "always" },
-							suggest = {
-								completeFunctionCalls = true,
-							},
-							inlayHints = {
-								parameterNames = {
-									enabled = "literal",
-									suppressWhenArgumentMatchesName = true,
-								},
-								parameterTypes = { enabled = true },
-								variableTypes = {
-									enabled = false,
-									suppressWhenTypeMatchesName = true,
-								},
-								propertyDeclarationTypes = { enabled = true },
-								functionLikeReturnTypes = { enabled = true },
-								enumMemberValues = { enabled = true },
-							},
-						},
+					analyses = {
+						nilness = true,
+						unusedparams = true,
+						unusedwrite = true,
+						useany = true,
 					},
-				})
-			end,
-
-			-- Typescript language server
-			-- ["tsserver"] = function()
-			-- 	lspconfig["ts_ls"].setup({
-			-- 		capabilities = capabilities,
-			-- 		handlers = handlers,
-			-- 		single_file_support = true,
-			-- 		completions = {
-			-- 			completeFunctionCalls = true,
-			-- 		},
-			-- 		settings = {
-			-- 			javascript = {
-			-- 				inlayHints = {
-			-- 					includeInlayParameterNameHints = "literals", -- 'none' | 'literals' | 'all'
-			-- 					includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-			-- 					includeInlayVariableTypeHints = false,
-			-- 					includeInlayFunctionParameterTypeHints = false,
-			-- 					includeInlayVariableTypeHintsWhenTypeMatchesName = false,
-			-- 					includeInlayPropertyDeclarationTypeHints = false,
-			-- 					includeInlayFunctionLikeReturnTypeHints = true,
-			-- 					includeInlayEnumMemberValueHints = true,
-			-- 				},
-			-- 			},
-			-- 			typescript = {
-			-- 				inlayHints = {
-			-- 					includeInlayParameterNameHints = "literals", -- 'none' | 'literals' | 'all'
-			-- 					includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-			-- 					includeInlayVariableTypeHints = false,
-			-- 					includeInlayFunctionParameterTypeHints = false,
-			-- 					includeInlayVariableTypeHintsWhenTypeMatchesName = false,
-			-- 					includeInlayPropertyDeclarationTypeHints = false,
-			-- 					includeInlayFunctionLikeReturnTypeHints = true,
-			-- 					includeInlayEnumMemberValueHints = true,
-			-- 				},
-			-- 			},
-			-- 		},
-			-- 	})
-			-- end,
-
-			-- Go language server
-			["gopls"] = function()
-				lspconfig["gopls"].setup({
-					handlers = handlers,
-					capabilities = capabilities,
-					filetypes = { "go", "gomod", "gowork" },
-					completions = {
-						completeFunctionCalls = true,
-					},
-					settings = {
-						gopls = {
-							gofumpt = true,
-							completeFunctionCalls = true,
-							-- ["build.templateExtensions"] = { "gohtml", "html", "gotmpl", "tmpl" },
-							codelenses = {
-								gc_details = false,
-								generate = true,
-								regenerate_cgo = true,
-								run_govulncheck = true,
-								test = true,
-								tidy = true,
-								upgrade_dependency = true,
-								vendor = true,
-							},
-							hints = {
-								assignVariableTypes = false,
-								compositeLiteralFields = false,
-								compositeLiteralTypes = false,
-								constantValues = false,
-								functionTypeParameters = false,
-								parameterNames = false,
-								rangeVariableTypes = false,
-							},
-							analyses = {
-								nilness = true,
-								unusedparams = true,
-								unusedwrite = true,
-								useany = true,
-							},
-							usePlaceholders = true,
-							completeUnimported = true,
-							staticcheck = true,
-							directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules" },
-							semanticTokens = true,
-						},
-					},
-				})
-			end,
+					usePlaceholders = true,
+					completeUnimported = true,
+					staticcheck = true,
+					directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules" },
+					semanticTokens = true,
+				},
+			},
 		})
 	end,
 }
