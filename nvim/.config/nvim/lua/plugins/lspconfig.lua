@@ -128,6 +128,8 @@ return {
 						client.server_capabilities.documentFormattingProvider = false
 					elseif client.name == "html" then
 						client.server_capabilities.documentFormattingProvider = false
+					elseif client.name == "ruff" then
+						client.server_capabilities.hoverProvider = false
 					elseif client.name == "gopls" and not client.server_capabilities.semanticTokensProvider then
 						local semantic = client.config.capabilities.textDocument.semanticTokens
 						if semantic then
@@ -246,6 +248,30 @@ return {
 			},
 		})
 
+		-- Python pyright
+		lspconfig.pyright.setup({
+			capabilities = capabilities,
+			settings = {
+				pyright = {
+					-- Using Ruff's import organizer
+					disableOrganizeImports = true,
+					-- autoImportCompletion = true,
+				},
+				python = {
+					analysis = {
+						-- Ignore all files for analysis to exclusively use Ruff for linting
+						ignore = { "*" },
+					},
+				},
+			},
+		})
+
+		-- Python ruff
+		lspconfig.ruff.setup({
+			capabilities = capabilities,
+		})
+
+		-- Typescript/Javascript server
 		lspconfig.vtsls.setup({
 			capabilities = capabilities,
 			settings = {
