@@ -228,8 +228,9 @@ bindsym XF86AudioMute exec "amixer sset Master toggle | sed -En '/\[on\]/ s/.*\[
 exec setxkbmap -option caps:ctrl_modifier
 exec --no-startup-id i3-msg 'Workspace 1:; exec /usr/bin/kitty'
 
-exec xrandr --output HDMI-1 --mode 1920x1080 --rate 60 --scale 1x1
+# exec xrandr --output HDMI-1 --mode 1920x1080 --rate 60 --scale 1x1
 #exec xrandr --auto --output HDMI-1 --mode 1920x1080 --above HDMI-2
+exec --no-startup-id ~/.screenlayout/monitor.sh
 
 # set wallpaper
 # exec feh --bg-fill ~/.config/i3/wallpaper.png
