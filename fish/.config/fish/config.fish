@@ -28,6 +28,7 @@ alias .nvim="cd ~/.config/nvim && nvim lua/config/lazy.lua"
 alias .kitty="cd ~/.config/kitty && nvim kitty.conf"
 alias .i3="cd ~/.config/i3 && nvim config"
 alias .picom="cd ~/.config/picom && nvim picom.conf"
+alias .rofi="cd ~/.config/rofi && nvim cofig.rasi"
 alias .tmux="nvim ~/.tmux.conf"
 
 # aliases
