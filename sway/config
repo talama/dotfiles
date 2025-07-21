@@ -1,0 +1,249 @@
+# set the mod key to window key
+set $mod Mod4
+
+input type:keyboard {
+    xkb_layout it,us
+}
+
+#Font for window titles.
+font pango:JetBrainsMono NF 8
+floating_modifier $mod
+
+#set inner/outer gaps
+gaps inner 8
+gaps outer 3
+
+# window title aligment
+title_align center
+
+# KEYBINDINGS
+# start a terminal
+set $term kitty
+bindsym $mod+Return exec $term
+
+#border on windows
+default_border pixel 2
+default_floating_border pixel 2
+
+#swayfx
+smart_corner_radius on
+corner_radius 14
+default_dim_inactive 0.1
+blur enable
+blur_passes 4
+blur_radius 4
+shadows on
+shadow_blur_radius 20
+
+for_window [app_id="kitty"] opacity 0.85
+
+# kill focused window
+bindsym $mod+q kill
+
+bindsym $mod+Shift+c reload
+
+# rofi bindings for application menu
+bindsym $mod+d exec rofi -show drun -config ~/.config/rofi/rofidmenu.rasi
+
+# rofi bindings for window menu
+bindsym $mod+t exec rofi -show window -config ~/.config/rofi/rofidmenu.rasi
+
+# rofi bindinggs for power menu
+bindsym $mod+Shift+e exec ~/.config/rofi/scripts/launcher.sh powermenu
+
+# switch/iterate between workspaces
+bindsym $mod+Tab workspace next
+bindsym $mod+Shift+Tab workspace prev
+
+# change focus
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+bindsym $mod+h focus left
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+bindsym $mod+Shift+h move left
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+# bindsym $mod+Shift+w sticky toggle
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 5 px or 5 ppt
+        bindsym Down resize grow height 5 px or 5 ppt
+        bindsym Up resize shrink height 5 px or 5 ppt
+        bindsym Right resize grow width 5 px or 5 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+## App shortcuts
+bindsym $mod+b exec /usr/bin/brave
+# bindsym $mod+b exec /usr/bin/firefox
+
+# audio control
+bindsym XF86AudioPlay exec playerctl play
+bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
+# Define names for default workspaces for which we configure key bindings later on.
+# We use variables to avoid repeating the names in multiple places.
+set $ws1 "1:"
+set $ws2 "2:"
+set $ws3 "3:"
+set $ws4 "4:"
+set $ws5 "5:"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10: "
+
+# switch to workspace
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+bindsym $mod+0 workspace number $ws10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+0 move container to workspace number $ws10
+
+
+##################
+# floating rules #
+##################
+for_window [class="Yad" instance="yad"] floating enable
+for_window [class="Galculator" instance="galculator"] floating enable
+for_window [class="Blueberry.py" instance="blueberry.py"] floating enable
+for_window [class="VirtualBoxVM" instance="VirtualBoxVM"] floating enable
+for_window [class="Putty" instance="Putty"] floating enable
+for_window [class="Xsane" instance="xsane"] floating enable
+for_window [class="Pavucontrol" instance="pavucontrol"] floating enable
+for_window [class="qt5ct" instance="qt5ct"] floating enable
+for_window [class="Blueberry.py" instance="blueberry.py"] floating enable
+for_window [class="Bluetooth-sendto" instance="bluetooth-sendto"] floating enable
+for_window [class="Pamac-manager"] floating enable
+for_window [window_role="About"] floating enable
+for_window [class="cachyos-welcome"] floating enable
+
+# set border of floating window
+for_window [class="urxvt"] border pixel 1
+
+######################################
+# color settings for bar and windows #
+######################################
+
+# Catpuccin macchiato
+set $rosewater #f4dbd6
+set $flamingo  #f0c6c6
+set $pink      #f5bde6
+set $mauve     #c6a0f6
+set $red       #ed8796
+set $maroon    #ee99a0
+set $peach     #f5a97f
+set $green     #a6da95
+set $teal      #8bd5ca
+set $sky       #91d7e3
+set $sapphire  #7dc4e4
+set $blue      #8aadf4
+set $lavender  #b7bdf8
+set $text      #cad3f5
+set $subtext1  #b8c0e0
+set $subtext0  #a5adcb
+set $overlay2  #939ab7
+set $overlay1  #8087a2
+set $overlay0  #6e738d
+set $surface2  #5b6078
+set $surface1  #494d64
+set $surface0  #363a4f
+set $base      #24273a
+set $mantle    #1e2030
+set $crust     #181926
+
+# target                 title      bg    text   indicator  border
+client.focused           $subtext0  $base $text  $subtext0 $subtext0
+client.focused_inactive  $overlay0  $base $text  $subtext0 $overlay0
+client.unfocused         $overlay0  $base $text  $subtext0 $overlay0
+client.urgent            $subtext0  $base $peach $overlay0 $subtext0
+client.placeholder       $subtext0  $base $text  $overlay0 $subtext0
+client.background        $base
+
+# HOTKEYS
+bindsym XF86AudioRaiseVolume exec "pamixer -ui 3 && pamixer --get-volume > /tmp/xobpipe"
+bindsym XF86AudioLowerVolume exec "pamixer -ud 3 && pamixer --get-volume > /tmp/xobpipe"
+# mute sound
+bindsym XF86AudioMute exec "amixer sset Master toggle | sed -En '/\[on\]/ s/.*\[([0-9]+)%\].*/\1/ p; /\[off\]/ s/.*/0/p' | head -1 > /tmp/xobpipe"
+
+
+
+# AUTOLOAD
+exec setxkbmap -option caps:ctrl_modifier
+exec --no-startup-id i3-msg 'Workspace 1:; exec /usr/bin/kitty'
+
+exec xrandr --output HDMI-1 --mode 1920x1080 --rate 60 --scale 1x1
+#exec xrandr --auto --output HDMI-1 --mode 1920x1080 --above HDMI-2
+
+# set wallpaper
+exec swaybg -i ~/Pictures/wallpapers/nordWave.png -m fill
+
+# Desktop notifications
+exec --no-startup-id dunst -config ~/.config/dunst/dunstrc
+
+exec --no-startup-id redshift
+exec --no-startup-id dex -a -s /etc/xdg/autostart/:~/.config/autostart/
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+
+exec_always mkfifo /tmp/xobpipe && tail -f /tmp/xobpipe | xob -t 2170 & disown
