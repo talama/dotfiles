@@ -53,7 +53,7 @@ return {
 			["markdown.mdx"] = { "prettier", "markdownlint-cli2", "markdown-toc" },
 			graphql = { "prettier" },
 			lua = { "stylua" },
-			python = { "black" },
+			python = { "isort", "black" },
 			go = { "gofumpt" },
 			rust = { "rustfmt" },
 		},

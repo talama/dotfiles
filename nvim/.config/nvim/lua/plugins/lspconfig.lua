@@ -259,8 +259,9 @@ return {
 				},
 				python = {
 					analysis = {
+						typeCheckingMode = "standard",
 						-- Ignore all files for analysis to exclusively use Ruff for linting
-						ignore = { "*" },
+						-- ignore = { "*" },
 					},
 				},
 			},
@@ -269,6 +270,12 @@ return {
 		-- Python ruff
 		lspconfig.ruff.setup({
 			capabilities = capabilities,
+			cmd_env = { RUFF_TRACE = "messages" },
+			init_options = {
+				settings = {
+					logLevel = "info",
+				},
+			},
 		})
 
 		-- Typescript/Javascript server
