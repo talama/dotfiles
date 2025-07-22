@@ -18,8 +18,8 @@ set $term kitty
 bindsym $mod+Return exec $term
 
 #border on windows
-default_border pixel 0
-# default_floating_border pixel 2
+default_border pixel 1
+default_floating_border pixel 1
 
 # kill focused window
 bindsym $mod+q kill
@@ -243,7 +243,7 @@ exec --no-startup-id dunst -config ~/.config/dunst/dunstrc
 exec_always --no-startup-id picom --experimental-backends -b --config ~/.config/picom/picom.conf
 
 # active window border
-exec_always --no-startup-id xborders --border-rgba=#a5adcb --border-mode=inside --border-radius=18 --border-width=3
+#exec_always --no-startup-id xborders --border-rgba=#a5adcb --border-mode=inside --border-radius=18 --border-width=3
 
 # network applet for polybar tray
 exec_always --no-startup-id nm-applet &
