@@ -50,6 +50,7 @@ return {
 				}
 			end,
 			default_integrations = true,
+			auto_integrations = true,
 			integrations = {
 				alpha = true,
 				cmp = true,

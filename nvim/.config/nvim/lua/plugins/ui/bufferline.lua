@@ -1,5 +1,6 @@
 return {
 	"akinsho/bufferline.nvim",
+	after = "catppuccin",
 	dependencies = { "nvim-tree/nvim-web-devicons", "echasnovski/mini.bufremove" },
 	version = "*",
 	event = "VeryLazy",
@@ -11,7 +12,7 @@ return {
 	config = function()
 		local bufferline = require("bufferline")
 		bufferline.setup({
-			highlights = require("catppuccin.groups.integrations.bufferline").get(),
+			highlights = require("catppuccin.groups.integrations.bufferline").get_theme(),
 			options = {
         -- stylua: ignore
         close_command = function(n) require("mini.bufremove").delete(n, false) end,
