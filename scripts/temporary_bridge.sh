@@ -20,5 +20,5 @@ ip link set br0 up
 sudo ip addr add 192.168.0.20/24 dev br0
 sudo ip route add default 192.168.1.1
 
-# DNS
+# DN
 echo "nameserver 8.8.8.8" | sudo tee /etc/resolv.conf
