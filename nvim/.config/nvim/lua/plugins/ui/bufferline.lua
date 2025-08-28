@@ -1,7 +1,7 @@
 return {
 	"akinsho/bufferline.nvim",
 	after = "catppuccin",
-	dependencies = { "nvim-tree/nvim-web-devicons", "echasnovski/mini.bufremove" },
+	dependencies = { "nvim-tree/nvim-web-devicons", "nvim-mini/mini.bufremove" },
 	version = "*",
 	event = "VeryLazy",
 	keys = {
