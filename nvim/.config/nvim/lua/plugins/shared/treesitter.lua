@@ -15,16 +15,6 @@ return {
 		},
 		config = function()
 			require("nvim-treesitter.configs").setup({
-				vim.filetype.add({
-					extension = {
-						gotmpl = "gotmpl",
-						gohtml = "gotmpl",
-						gohtmltmpl = "gotmpl",
-						gohtxttmpl = "gotmpl",
-						gohtexttmpl = "gotmpl",
-						njk = "html.jinja",
-					},
-				}),
 				highlight = { enable = true, additional_vim_regex_highlighting = true },
 				indent = {
 					enable = true,
