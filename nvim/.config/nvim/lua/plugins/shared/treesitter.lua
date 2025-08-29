@@ -14,7 +14,22 @@ return {
 			"nvim-treesitter/nvim-treesitter-textobjects",
 		},
 		config = function()
+			vim.filetype.add({
+				extension = {
+					gotmpl = "gotmpl",
+					gohtml = "gotmpl",
+					gohtmltmpl = "gotmpl",
+					gohtxttmpl = "gotmpl",
+					gohtexttmpl = "gotmpl",
+					jinja = "jinja",
+					jinja2 = "jinja",
+					j2 = "jinja",
+					py = "python",
+					njk = "html.jinja",
+				},
+			})
 			require("nvim-treesitter.configs").setup({
+				vim.treesitter.language.register("njk", "html.jinja"),
 				highlight = { enable = true, additional_vim_regex_highlighting = true },
 				indent = {
 					enable = true,

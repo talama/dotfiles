@@ -19,21 +19,6 @@ return {
 		local lspconfig = require("lspconfig")
 		local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
-		vim.filetype.add({
-			extension = {
-				gotmpl = "gotmpl",
-				gohtml = "gotmpl",
-				gohtmltmpl = "gotmpl",
-				gohtxttmpl = "gotmpl",
-				gohtexttmpl = "gotmpl",
-				jinja = "jinja",
-				jinja2 = "jinja",
-				j2 = "jinja",
-				py = "python",
-				njk = "html.jinja",
-			},
-		})
-
 		-- enable autocompletion
 		local capabilities = vim.tbl_deep_extend(
 			"force",
