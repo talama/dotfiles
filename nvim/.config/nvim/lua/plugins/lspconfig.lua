@@ -338,6 +338,14 @@ return {
 			},
 		})
 
+		-- Jinja language server
+		lspconfig.jinja_lsp.setup({
+			capabilities = capabilities,
+			filetypes = { "nunjucks", "njk", "jinja", "html.jinja" },
+			root_markers = { "package.json", ".git" },
+			settings = {},
+		})
+
 		-- Go language server
 		lspconfig.gopls.setup({
 			capabilities = capabilities,

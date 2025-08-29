@@ -22,9 +22,10 @@ return {
 						gohtmltmpl = "gotmpl",
 						gohtxttmpl = "gotmpl",
 						gohtexttmpl = "gotmpl",
+						njk = "html.jinja",
 					},
 				}),
-				highlight = { enable = true, additional_vim_regex_highlighting = false },
+				highlight = { enable = true, additional_vim_regex_highlighting = true },
 				indent = {
 					enable = true,
 				},
