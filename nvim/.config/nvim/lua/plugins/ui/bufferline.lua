@@ -27,7 +27,7 @@ return {
 						separator = true,
 					},
 				},
-				separator_style = "thick",
+				separator_style = "slant",
 			},
 		})
 	end,

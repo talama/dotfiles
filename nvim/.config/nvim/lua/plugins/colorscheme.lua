@@ -14,9 +14,9 @@ return {
 				dark = "macchiato",
 			},
 			darkmode = true,
-			transparent_background = true,
+			transparent_background = false,
 			show_end_of_buffer = false,
-			term_colors = false,
+			term_colors = true,
 			dim_inactive = {
 				enabled = true,
 				shade = "dark",
@@ -53,6 +53,7 @@ return {
 			auto_integrations = true,
 			integrations = {
 				alpha = true,
+				bufferline = true,
 				cmp = true,
 				dap = true,
 				dap_ui = true,
