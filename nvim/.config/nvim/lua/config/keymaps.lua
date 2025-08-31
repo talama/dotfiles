@@ -8,9 +8,9 @@ vim.g.mapleader = " "
 map("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" })
 
 -- map esc to kk
-map("i", "jj", "<Esc>")
-map("i", "jk", "<Esc>:write<CR>")
-map("i", "<C-c>", "<Esc>")
+-- map("i", "jj", "<Esc>")
+-- map("i", "jk", "<Esc>:write<CR>")
+-- map("i", "<C-c>", "<Esc>")
 
 -- quit
 map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit All" })
