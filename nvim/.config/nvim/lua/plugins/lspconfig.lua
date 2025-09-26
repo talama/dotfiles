@@ -16,7 +16,6 @@ return {
 		},
 	},
 	config = function()
-		local lspconfig = require("lspconfig")
 		local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
 		-- enable autocompletion
@@ -144,255 +143,235 @@ return {
 			end,
 		})
 
-		-- Next, you can provide a dedicated handler for specific servers.
-		lspconfig.bashls.setup({
-			capabilities = capabilities,
-			completions = {
-				completeFunctionCalls = true,
+		local servers = {
+			html = {
+				capabilities = capabilities,
+				filetypes = { "html", "templ", "gohtmltmpl", "gotmpl" },
 			},
-			filetypes = { "sh", "zsh" },
-		})
-
-		-- HTML language server
-		lspconfig.html.setup({
-			capabilities = capabilities,
-			filetypes = { "html", "templ", "gohtmltmpl", "gotmpl" },
-		})
-
-		-- Emmet
-		lspconfig.emmet_ls.setup({
-			capabilities = capabilities,
-			filetypes = {
-				"astro",
-				"css",
-				"eruby",
-				"gohtmltmpl",
-				"gotmpl",
-				"html",
-				"htmldjango",
-				"javascriptreact",
-				"less",
-				"pug",
-				"sass",
-				"scss",
-				"svelte",
-				"typescriptreact",
-				"vue",
-				"htmlangular",
-			},
-		})
-
-		-- CSS language server
-		lspconfig.cssls.setup({
-			capabilities = capabilities,
-			completions = {
-				completeFunctionCalls = true,
-			},
-			settings = {
-				css = {
-					lint = {
-						unknownAtRules = "ignore",
-					},
+			emmet_ls = {
+				capabilities = capabilities,
+				filetypes = {
+					"astro",
+					"css",
+					"eruby",
+					"gohtmltmpl",
+					"gotmpl",
+					"html",
+					"htmldjango",
+					"javascriptreact",
+					"less",
+					"pug",
+					"sass",
+					"scss",
+					"svelte",
+					"typescriptreact",
+					"vue",
+					"htmlangular",
 				},
 			},
-		})
-
-		lspconfig.jsonls.setup({
-			on_new_config = function(new_config)
-				new_config.settings.json.schemas = new_config.settings.json.schemas or {}
-				vim.list_extend(new_config.settings.json.schemas, require("schemastore").json.schemas())
-			end,
-			settings = {
-				json = {
-					format = {
-						enable = true,
-					},
-					validate = { enable = true },
+			css_ls = {
+				capabilities = capabilities,
+				completions = {
+					completeFunctionCalls = true,
 				},
-			},
-		})
-
-		-- Lua language server
-		lspconfig.lua_ls.setup({
-			capabilities = capabilities,
-			settings = {
-				Lua = {
-					diagnostics = {
-						globals = { "vim", "Snacks" },
-					},
-					hint = {
-						enable = true,
-						setType = false,
-						paramType = true,
-						await = true,
-						paramName = "Disable",
-						semicolon = "Disable",
-						arrayIndex = "Disable",
-					},
-					workspace = {
-						library = {
-							checkThirdParty = false,
-							[vim.fn.expand("$VIMRUNTIME/lua")] = true,
-							[vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
-							[vim.fn.stdpath("data") .. "/lazy/lazy.nvim/lua/lazy"] = true,
+				settings = {
+					css = {
+						lint = {
+							unknownAtRules = "ignore",
 						},
-						codeLens = {
+					},
+				},
+			},
+			jsonls = {
+				on_new_config = function(new_config)
+					new_config.settings.json.schemas = new_config.settings.json.schemas or {}
+					vim.list_extend(new_config.settings.json.schemas, require("schemastore").json.schemas())
+				end,
+				settings = {
+					json = {
+						format = {
 							enable = true,
 						},
-						completion = { workspaceWord = true, callSnippet = "Replace" },
-						doc = {
-							privateName = { "^_" },
-						},
+						validate = { enable = true },
 					},
 				},
 			},
-		})
-
-		-- Python pyright
-		lspconfig.pyright.setup({
-			capabilities = capabilities,
-			settings = {
-				pyright = {
-					-- Using Ruff's import organizer
-					disableOrganizeImports = true,
-					-- autoImportCompletion = true,
-				},
-				python = {
-					analysis = {
-						autoSearchPaths = true,
-						typeCheckingMode = "standard",
-						diagnosticMode = "workspace",
-						extraPaths = { "./.venv/lib/python3.x/site-packages" },
-						-- Ignore all files for analysis to exclusively use Ruff for linting
-						-- ignore = { "*" },
-					},
-				},
-			},
-		})
-
-		-- Python ruff
-		lspconfig.ruff.setup({
-			capabilities = capabilities,
-			cmd_env = { RUFF_TRACE = "messages" },
-			init_options = {
+			lua_ls = {
+				capabilities = capabilities,
 				settings = {
-					logLevel = "info",
-				},
-			},
-		})
-
-		-- Typescript/Javascript server
-		lspconfig.vtsls.setup({
-			capabilities = capabilities,
-			settings = {
-				vtsls = {
-					enableMoveToFileCodeAction = true,
-					autoUseWorkspaceTsdk = true,
-					experimental = {
-						maxInlayHintLength = 30,
-						completion = {
-							enableServerSideFuzzyMatch = true,
+					Lua = {
+						diagnostics = {
+							globals = { "vim", "Snacks" },
+						},
+						hint = {
+							enable = true,
+							setType = false,
+							paramType = true,
+							await = true,
+							paramName = "Disable",
+							semicolon = "Disable",
+							arrayIndex = "Disable",
+						},
+						workspace = {
+							library = {
+								checkThirdParty = false,
+								[vim.fn.expand("$VIMRUNTIME/lua")] = true,
+								[vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
+								[vim.fn.stdpath("data") .. "/lazy/lazy.nvim/lua/lazy"] = true,
+							},
+							codeLens = {
+								enable = true,
+							},
+							completion = { workspaceWord = true, callSnippet = "Replace" },
+							doc = {
+								privateName = { "^_" },
+							},
 						},
 					},
 				},
-				javascript = {
-					suggest = {
-						completeFunctionCalls = true,
+			},
+			pyright = {
+				capabilities = capabilities,
+				settings = {
+					pyright = {
+						-- Using Ruff's import organizer
+						disableOrganizeImports = true,
+						-- autoImportCompletion = true,
 					},
-					updateImportsOnFileMove = { enabled = "always" },
-					inlayHints = {
-						parameterNames = {
-							enabled = "literals",
-							suppressWhenArgumentMatchesName = true,
+					python = {
+						analysis = {
+							autoSearchPaths = true,
+							typeCheckingMode = "standard",
+							diagnosticMode = "workspace",
+							extraPaths = { "./.venv/lib/python3.x/site-packages" },
+							-- Ignore all files for analysis to exclusively use Ruff for linting
+							-- ignore = { "*" },
 						},
-						parameterTypes = { enabled = false },
-						variableTypes = {
-							enabled = false,
-							suppressWhenTypeMatchesName = true,
-						},
-						propertyDeclarationTypes = { enabled = false },
-						functionLikeReturnTypes = { enabled = false },
-						enumMemberValues = { enabled = false },
-					},
-				},
-				typescript = {
-					updateImportsOnFileMove = { enabled = "always" },
-					suggest = {
-						completeFunctionCalls = true,
-					},
-					inlayHints = {
-						parameterNames = {
-							enabled = "literal",
-							suppressWhenArgumentMatchesName = true,
-						},
-						parameterTypes = { enabled = true },
-						variableTypes = {
-							enabled = false,
-							suppressWhenTypeMatchesName = true,
-						},
-						propertyDeclarationTypes = { enabled = true },
-						functionLikeReturnTypes = { enabled = true },
-						enumMemberValues = { enabled = true },
 					},
 				},
 			},
-		})
-
-		-- Jinja language server
-		lspconfig.jinja_lsp.setup({
-			capabilities = capabilities,
-			filetypes = { "nunjucks", "njk", "jinja", "html.jinja" },
-			root_markers = { "package.json", ".git" },
-			settings = {
-				template_extensions = { "njk", "html.jinja", "jinja" },
-				backend = { "./src" },
+			ruff = {
+				capabilities = capabilities,
+				cmd_env = { RUFF_TRACE = "messages" },
+				init_options = {
+					settings = {
+						logLevel = "info",
+					},
+				},
 			},
-		})
-
-		-- Go language server
-		lspconfig.gopls.setup({
-			capabilities = capabilities,
-			filetypes = { "go", "gomod", "gowork" },
-			completions = {
-				completeFunctionCalls = true,
+			vtsls = {
+				capabilities = capabilities,
+				settings = {
+					vtsls = {
+						enableMoveToFileCodeAction = true,
+						autoUseWorkspaceTsdk = true,
+						experimental = {
+							maxInlayHintLength = 30,
+							completion = {
+								enableServerSideFuzzyMatch = true,
+							},
+						},
+					},
+					javascript = {
+						suggest = {
+							completeFunctionCalls = true,
+						},
+						updateImportsOnFileMove = { enabled = "always" },
+						inlayHints = {
+							parameterNames = {
+								enabled = "literals",
+								suppressWhenArgumentMatchesName = true,
+							},
+							parameterTypes = { enabled = false },
+							variableTypes = {
+								enabled = false,
+								suppressWhenTypeMatchesName = true,
+							},
+							propertyDeclarationTypes = { enabled = false },
+							functionLikeReturnTypes = { enabled = false },
+							enumMemberValues = { enabled = false },
+						},
+					},
+					typescript = {
+						updateImportsOnFileMove = { enabled = "always" },
+						suggest = {
+							completeFunctionCalls = true,
+						},
+						inlayHints = {
+							parameterNames = {
+								enabled = "literal",
+								suppressWhenArgumentMatchesName = true,
+							},
+							parameterTypes = { enabled = true },
+							variableTypes = {
+								enabled = false,
+								suppressWhenTypeMatchesName = true,
+							},
+							propertyDeclarationTypes = { enabled = true },
+							functionLikeReturnTypes = { enabled = true },
+							enumMemberValues = { enabled = true },
+						},
+					},
+				},
 			},
-			settings = {
-				gopls = {
-					gofumpt = true,
+			jinja_lsp = {
+				capabilities = capabilities,
+				filetypes = { "nunjucks", "njk", "jinja", "html.jinja" },
+				root_markers = { "package.json", ".git" },
+				settings = {
+					template_extensions = { "njk", "html.jinja", "jinja" },
+					backend = { "./src" },
+				},
+			},
+			gopls = {
+				capabilities = capabilities,
+				filetypes = { "go", "gomod", "gowork" },
+				completions = {
 					completeFunctionCalls = true,
-					-- ["build.templateExtensions"] = { "gohtml", "html", "gotmpl", "tmpl" },
-					codelenses = {
-						gc_details = false,
-						generate = true,
-						regenerate_cgo = true,
-						run_govulncheck = true,
-						test = true,
-						tidy = true,
-						upgrade_dependency = true,
-						vendor = true,
+				},
+				settings = {
+					gopls = {
+						gofumpt = true,
+						completeFunctionCalls = true,
+						-- ["build.templateExtensions"] = { "gohtml", "html", "gotmpl", "tmpl" },
+						codelenses = {
+							gc_details = false,
+							generate = true,
+							regenerate_cgo = true,
+							run_govulncheck = true,
+							test = true,
+							tidy = true,
+							upgrade_dependency = true,
+							vendor = true,
+						},
+						hints = {
+							assignVariableTypes = false,
+							compositeLiteralFields = false,
+							compositeLiteralTypes = false,
+							constantValues = false,
+							functionTypeParameters = false,
+							parameterNames = false,
+							rangeVariableTypes = false,
+						},
+						analyses = {
+							nilness = true,
+							unusedparams = true,
+							unusedwrite = true,
+							useany = true,
+						},
+						usePlaceholders = true,
+						completeUnimported = true,
+						staticcheck = true,
+						directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules" },
+						semanticTokens = true,
 					},
-					hints = {
-						assignVariableTypes = false,
-						compositeLiteralFields = false,
-						compositeLiteralTypes = false,
-						constantValues = false,
-						functionTypeParameters = false,
-						parameterNames = false,
-						rangeVariableTypes = false,
-					},
-					analyses = {
-						nilness = true,
-						unusedparams = true,
-						unusedwrite = true,
-						useany = true,
-					},
-					usePlaceholders = true,
-					completeUnimported = true,
-					staticcheck = true,
-					directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules" },
-					semanticTokens = true,
 				},
 			},
-		})
+		}
+
+		for name, opts in pairs(servers) do
+			vim.lsp.config(name, opts)
+			vim.lsp.enable(name)
+		end
 	end,
 }
