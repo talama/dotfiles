@@ -1,4 +1,4 @@
-font_size 14
+font_size 12
 
 adjust_line_height 110%
 
@@ -73,12 +73,12 @@ tab_fade 1
 
 
 # BEGIN_KITTY_THEME
-# Catppuccin Kitty Macchiato
+# Catppuccin-Macchiato
 include current-theme.conf
 # END_KITTY_THEME
 
 # BEGIN_KITTY_FONTS
-font_family      family='JetBrainsMono Nerd Font' postscript_name=JetBrainsMonoNF-Regular
+font_family      family="JetBrainsMono Nerd Font"
 bold_font        auto
 italic_font      auto
 bold_italic_font auto
