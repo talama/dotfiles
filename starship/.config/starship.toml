@@ -6,6 +6,8 @@
 # Inserts a blank line between shell prompts
 add_newline = false
 
+scan_timeout = 50
+
 format = """
 $directory\
 [](fg:#8087a2 bg:#494d64)\
