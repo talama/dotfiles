@@ -7,7 +7,7 @@ input type:keyboard {
 }
 
 # Switch to next layout using Alt+Shift+K
-bindsym Alt+Shift+K exec swaymsg input type:keyboard xkb_switch_layout next   
+bindsym Alt+Shift+K exec swaymsg input type:keyboard xkb_switch_layout next
 
 #Font for window titles.
 font pango:JetBrainsMono NF 8
@@ -86,6 +86,9 @@ bindsym $mod+Shift+Right move right
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
+# toggle waybar visibility
+bindsym $mod+Shift+v exec pkill -USR1 waybar
+
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
@@ -124,6 +127,10 @@ bindsym $mod+b exec /usr/bin/brave
 
 bindsym $mod+n exec /usr/bin/nemo
 
+
+# Screenshot
+bindsym Shift+Print exec sh -c 'grim"$(slurp)" ~/Pictures/Screenshots/$(date +"%Y-%m-%d_%H-%M-%S").png'
+
 # audio control
 bindsym XF86AudioPlay exec playerctl play
 bindsym XF86AudioPause exec playerctl pause
@@ -142,6 +149,16 @@ set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
+
+# use workspaces on different displays:
+# where you have to replace VGA-0/HDMI-0 with the names for your displays
+# you can get from xrandr command
+workspace $ws1 output HDMI-0
+workspace $ws2 output HDMI-0
+workspace $ws3 output DP-0
+workspace $ws4 output DP-0
+workspace $ws5 output DP-0
+workspace $ws10 output HDMI-0
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -237,8 +254,9 @@ bindsym XF86AudioMute exec "amixer sset Master toggle | sed -En '/\[on\]/ s/.*\[
 
 
 # AUTOLOAD
-exec setxkbmap -option caps:ctrl_modifier
-#exec --no-startup-id i3-msg 'Workspace 1:; exec /usr/bin/kitty'
+exec --no-startup-id setxkbmap -option caps:ctrl_modifier
+exec --no-startup-id setxkbmap -option compose:ralt
+exec --no-startup-id swaymsg 'Workspace 1; exec /usr/bin/kitty'
 
 #exec xrandr --output HDMI-1 --mode 1920x1080 --rate 60 --scale 1x1
 #exec xrandr --auto --output HDMI-1 --mode 1920x1080 --above HDMI-2
@@ -249,7 +267,7 @@ bar {
   }
 
 # set wallpaper
-exec --no-startup-id swaybg -i /home/talama/Pictures/wallpapers/flatppuccin_4k_macchiato.png
+exec --no-startup-id swaybg -i /home/talama/Pictures/wallpapers/flatppuccin_4k_mocha.png
 
 # Desktop notifications
 exec --no-startup-id dunst -config ~/.config/dunst/dunstrc

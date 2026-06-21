@@ -52,6 +52,8 @@ window#waybar.hidden {
   background-color: #f38ba8;
 }
 
+#disk,
+#cpu,
 #memory,
 #custom-power,
 #battery,
@@ -80,8 +82,30 @@ window#waybar.hidden {
   color: #1793d1;
 }
 
+#disk {
+  background-color: #89b4fa;
+}
+
+#cpu {
+  background-color: #eba0ac;
+}
+
 #memory {
   background-color: #fab387;
+}
+
+#memory.warning {
+  color: #fab387;
+}
+
+#memory.critical {
+  color: #f38ba8;
+  font-weight: bold;
+}
+
+#memory.warning,
+#memory.critical {
+  background-color: #ff0000;
 }
 
 #battery {

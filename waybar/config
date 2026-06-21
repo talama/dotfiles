@@ -13,6 +13,8 @@
         "clock"
     ],
     "modules-right": [
+        "disk",
+        "cpu",
         "memory",
         "network",
         "wireplumber",
@@ -53,11 +55,26 @@
             "5": []
         }
     },
+    "disk": {
+    "interval": 30,
+    "path": "/",
+    "format": "  {used}",
+    "tooltip-format": "{used} used of {total} ({percentage_used}%)"
+  },
+    "cpu": {
+      "interval": 2,
+      "format": " {usage}%",
+      "tooltip-format": "CPU\nUsage: {usage}%\nFrequency: {avg_frequency} GHz"
+  },
     "memory": {
-        "interval": 5,
-        "format": "󰍛 {}%",
-        "max-length": 10
-    },
+      "interval": 5,
+      "format": " {used}GiB",
+      "tooltip-format": "Used: {used}\nTotal: {total}",
+      "states": {
+        "warning": 70,
+        "critical": 90
+    }
+  },
     "tray": {
         "spacing": 10
     },
@@ -81,7 +98,7 @@
 	"nospacing": 1,
     },
     "wireplumber": {
-        "format": "{icon}",
+        "format": "{volume}% {icon}",
         "format-bluetooth": "󰂰",
         "nospacing": 1,
         "tooltip-format": "Volume : {volume}%",
