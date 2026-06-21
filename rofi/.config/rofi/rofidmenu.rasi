@@ -2,8 +2,11 @@ configuration {
   modi: [run,drun,window];
     show-icons:               false;
     display-drun:             "  Apps";
-    display-run:              "  Run";
-    display-window:           "  Window";
+    display-run:                "";
+    display-filebrowser:        "";
+    display-window:             "";
+    display-emoji:              "󰞅";
+    display-clipboard:          "";
     /* drun-display-format:   "{name}"; */
     window-format:            "[{w}] - {c}";
     disable-history:          false;
@@ -12,7 +15,7 @@ configuration {
     sidebar-mode:             true;
 }
 
-@import "catpuccin-macchiato.rasi"
+@import "/home/talama/dotfiles/rofi/.config/rofi/catppuccin-mocha.rasi"
 
 * {
     font:                     "JetBrains Mono Nerd Font 12";

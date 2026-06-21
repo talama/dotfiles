@@ -2,7 +2,9 @@
     "layer": "top",
     "position": "top",
     "spacing": 0,
-    "height": 34,
+    "margin-left": 5,
+    "margin-right": 5,
+    "height": 42,
     "modules-left": [
         "custom/logo",
         "sway/workspaces"
@@ -11,11 +13,11 @@
         "clock"
     ],
     "modules-right": [
-        "tray",
         "memory",
         "network",
         "wireplumber",
         "battery",
+        "tray",
         "custom/power"
     ],
     "wlr/taskbar": {
@@ -26,22 +28,22 @@
         "icon-size": 25,
         "tooltip-format": "{title}"
     },
-    "hyprland/workspaces": {
+    "sway/workspaces": {
         "on-click": "activate",
         "format": "{icon}",
         "format-icons": {
-            "default": "",
-            "1": "1",
-            "2": "2",
-            "3": "3",
-            "4": "4",
-            "5": "5",
-            "6": "6",
-            "7": "7",
-            "8": "8",
-            "9": "9",
+            "1":"",
+            "2":"",
+            "3":"",
+            "4":"",
+            "5":" ",
+            "6":" ",
+            "7":"7",
+            "8":"8",
+            "9":"9",
             "active": "󱓻",
-            "urgent": "󱓻"
+            "urgent": "󱓻",
+            "default":""
         },
         "persistent_workspaces": {
             "1": [],
@@ -94,7 +96,7 @@
     "custom/logo": {
         "format": "  ",
         "tooltip": false,
-        "on-click": "~/.config/rofi/launchers/misc/launcher.sh &"
+        "on-click": "rofi -show drun -theme ~/.config/rofi/rofidmenu.rasi"
     },
     "battery": {
         "format": "{capacity}% {icon}",
@@ -135,6 +137,6 @@
     "custom/power": {
         "format": "󰤆",
         "tooltip": false,
-        "on-click": "~/.config/rofi/powermenu/type-2/powermenu.sh &"
+        "on-click": "~/.config/rofi/scripts/launcher.sh powermenu"
     }
 }

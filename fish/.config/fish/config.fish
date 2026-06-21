@@ -9,13 +9,6 @@ fish_add_path /home/talama/go/bin
 fish_add_path /home/talama/.cargo/bin
 fish_add_path /home/talama/.local/share/JetBrains/Toolbox/scripts
 
-
-# VULKAN SDK
-setenv VULKAN_SDK ~/vulkan/1.3.239.0/x86_64/
-fish_add_path VULKAN_SDK/bin
-setenv LD_LIBRARY_PATH $VULKAN_SDK/lib
-setenv VK_LAYER_PATH $VULKAN_SDK/etc/vulkan/explicit_layer.d
-
 #ALIASES
 alias .rl=". ~/.config/fish/config.fish" #source fish config.
 alias ak='ANKI_NOHIGHDPI=1 anki'
@@ -33,7 +26,6 @@ alias .tmux="nvim ~/.tmux.conf"
 
 # aliases
 alias nv="nvim"
-alias g="git"
 alias ff='set selected $(fzf --preview="bat --color=always {}") && [ -n "$selected" ] && nvim "$selected"'
 alias ls "ls -p -G"
 alias la "ls -A"
@@ -84,16 +76,15 @@ end
 # pnpm
 set -gx PNPM_HOME "/home/talama/.local/share/pnpm"
 if not string match -q -- $PNPM_HOME $PATH
-  set -gx PATH "$PNPM_HOME" $PATH
+    set -gx PATH "$PNPM_HOME" $PATH
 end
 # pnpm end
 
 function starship_transient_prompt_func
-  starship module character
+    starship module character
 end
 starship init fish | source
 enable_transience
-
 
 # Generated for envman. Do not edit.
 test -s ~/.config/envman/load.fish; and source ~/.config/envman/load.fish

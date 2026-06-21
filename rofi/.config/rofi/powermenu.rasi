@@ -5,20 +5,20 @@ configuration {
     font: "JetBrainsMono NF 10";
 }
 
-@import "catpuccin-macchiato.rasi"
+@import "/home/talama/dotfiles/rofi/.config/rofi/catppuccin-mocha.rasi"
 
 #window {
     width: 500px;
     height: 110px;
     background-color: @active-border;
-    padding: 5px;
-    border-radius: 8px;
+    padding: 2px;
+    border-radius: 5px;
 }
 
 #mainbox {
     border:  0;
     padding: 0;
-    border-radius: 8px;
+    border-radius: 5px;
     children: [listview];
     background-color: @selection-background;
 }
@@ -32,7 +32,7 @@ configuration {
 element {
     margin: 6px;
     padding: 0px;
-    border-radius: 8px;
+    border-radius: 5px;
     orientation: horizontal;
     horizontal-align: 0.5;
     vertical-align: 0.5;
@@ -67,7 +67,7 @@ element-icon {
 #element.selected.normal {
     background-color: @blue-dark;
     text-color:       @black;
-    border-color:     @acive-border;
+    border-color:     @active-border;
 }
 
 #mode-switcher {
