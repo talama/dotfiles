@@ -2,7 +2,7 @@
 set $mod Mod4
 
 input type:keyboard {
-    xkb_layout it,us
+    xkb_layout us,it
     xkb_options grp:off
 }
 
@@ -153,12 +153,12 @@ set $ws10 "10"
 # use workspaces on different displays:
 # where you have to replace VGA-0/HDMI-0 with the names for your displays
 # you can get from xrandr command
-workspace $ws1 output HDMI-0
-workspace $ws2 output HDMI-0
-workspace $ws3 output DP-0
-workspace $ws4 output DP-0
-workspace $ws5 output DP-0
-workspace $ws10 output HDMI-0
+# workspace $ws1 output HDMI-0
+# workspace $ws2 output HDMI-0
+# workspace $ws3 output DP-0
+# workspace $ws4 output DP-0
+# workspace $ws5 output DP-0
+# workspace $ws10 output HDMI-0
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
