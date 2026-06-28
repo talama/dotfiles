@@ -20,13 +20,15 @@ alias .fish="cd ~/.config/fish && nvim config.fish"
 alias .nvim="cd ~/.config/nvim && nvim lua/config/lazy.lua"
 alias .kitty="cd ~/.config/kitty && nvim kitty.conf"
 alias .i3="cd ~/.config/i3 && nvim config"
+alias .sway="cd ~/.config/sway && nvim config"
 alias .picom="cd ~/.config/picom && nvim picom.conf"
 alias .rofi="cd ~/.config/rofi && nvim cofig.rasi"
 alias .tmux="nvim ~/.tmux.conf"
 
-# aliases
+# apps alias
 alias nv="nvim"
 alias ff='set selected $(fzf --preview="bat --color=always {}") && [ -n "$selected" ] && nvim "$selected"'
+alias icat="kitten icat"
 alias ls "ls -p -G"
 alias la "ls -A"
 alias ll "eza -l -g --icons=always"
