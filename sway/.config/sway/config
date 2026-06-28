@@ -104,6 +104,7 @@ bindsym $mod+space focus mode_toggle
 # focus the parent container
 bindsym $mod+a focus parent
 
+
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
@@ -126,6 +127,9 @@ bindsym $mod+b exec /usr/bin/brave
 # bindsym $mod+b exec /usr/bin/firefox
 
 bindsym $mod+n exec /usr/bin/nemo
+
+# swaylock
+bindsym $mod+Shift+s exec swaylock -f
 
 
 # Screenshot
