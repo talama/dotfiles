@@ -7,4 +7,5 @@ location=/home
 [ -d "$location" ] || exit
 
 icon=" "
-echo "$icon $(df -h "$location" | awk ' /[0-9]/ {printf"%s %s\n",$4, $5} ')"
+
+echo "$icon $(df -h "$location" | awk 'NR==2 {printf "%s %s\n", $3, $5}')"
