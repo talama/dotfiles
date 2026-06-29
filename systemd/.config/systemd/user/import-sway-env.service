@@ -1,0 +1,11 @@
+[Unit]
+Description=Import Sway environment into systemd user session
+After=graphical-session.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XDG_SESSION_TYPE XDG_RUNTIME_DIR
+ExecStart=/usr/bin/dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XDG_SESSION_TYPE XDG_RUNTIME_DIR
+
+[Install]
+WantedBy=default.target
