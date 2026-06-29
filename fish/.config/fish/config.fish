@@ -28,7 +28,7 @@ alias .tmux="nvim ~/.tmux.conf"
 # apps alias
 alias nv="nvim"
 alias ff='set selected $(fzf --preview="bat --color=always {}") && [ -n "$selected" ] && nvim "$selected"'
-alias icat="kitten icat"
+alias icat="kitten icat#b4befe"
 alias ls "ls -p -G"
 alias la "ls -A"
 alias ll "eza -l -g --icons=always"
